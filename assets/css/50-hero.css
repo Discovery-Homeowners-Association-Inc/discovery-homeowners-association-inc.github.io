@@ -1,0 +1,109 @@
+/* ===========================================================================
+   HERO
+   A full-bleed photograph with a warm scrim, not a gradient with an icon row.
+   =========================================================================== */
+
+/* The photograph is positioned, not laid out, so it never drives the hero's
+   height — otherwise a tall source image makes the hero as tall as the image
+   scaled to the viewport width. Height comes from the copy plus a min/max. */
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-items: end;
+  min-height: min(30rem, 68svh);
+  max-height: 44rem;
+  overflow: hidden;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+/* <picture> is an inline box by default, so a height:100% on the <img> inside it
+   resolves against nothing and the image keeps its natural height. Both need to
+   be block-level and full height for object-fit to do its job. */
+.hero__media picture,
+.hero__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero__img {
+  object-fit: cover;
+  object-position: center 40%;
+}
+
+/* Warm scrim: sand-tinted, heavier at the bottom where the text sits, so the
+   headline stays legible over any photograph without flattening the image. */
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to top,
+      color-mix(in srgb, var(--c-ink-900) 82%, transparent) 0%,
+      color-mix(in srgb, var(--c-ink-900) 55%, transparent) 38%,
+      color-mix(in srgb, var(--c-ink-900) 12%, transparent) 75%,
+      transparent 100%
+    );
+}
+
+.hero__body {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--space-xl);
+  color: #fff;
+}
+
+.hero__title {
+  max-width: 18ch;
+  font-size: var(--step-4);
+  font-variation-settings: "wght" 650;
+  text-shadow: 0 1px 24px rgb(0 0 0 / .35);
+}
+
+.hero__sub {
+  max-width: 50ch;
+  margin-top: var(--space-s);
+  font-size: var(--step-1);
+  line-height: var(--leading-snug);
+  color: rgb(255 255 255 / .92);
+  text-shadow: 0 1px 16px rgb(0 0 0 / .4);
+}
+
+.hero__actions {
+  margin-top: var(--space-l);
+}
+
+/* On the hero the outline button sits on a photograph, so it needs a light
+   border rather than the page's sand-coloured one. */
+.hero__portal.btn--outline {
+  border-color: rgb(255 255 255 / .5);
+  color: #fff;
+}
+
+.hero__portal.btn--outline:hover {
+  background: rgb(255 255 255 / .14);
+  border-color: #fff;
+  color: #fff;
+}
+
+/* No photograph: fall back to a solid ground rather than white text on sand. */
+.hero:not(:has(.hero__media)) {
+  min-height: 0;
+  max-height: none;
+  background: var(--color-primary);
+}
+
+.hero:not(:has(.hero__media)) .hero__body {
+  color: var(--color-on-primary);
+}
+
+.hero:not(:has(.hero__media)) .hero__title,
+.hero:not(:has(.hero__media)) .hero__sub {
+  text-shadow: none;
+}

@@ -1,0 +1,15 @@
+{{- /*
+  Returns a map's keys as a sorted slice.
+
+  Hugo has no `keys` function, and error messages are much more useful when they
+  can say "valid keys are: acc, general, pool_rec" instead of just rejecting the
+  input. Used only on error paths.
+
+    {{ errorf "unknown key %q. Valid: %s" $k (delimit (partial "util/map-keys.html" $m) ", ") }}
+*/ -}}
+
+{{- $out := slice -}}
+{{- range $key, $_ := . -}}
+  {{- $out = $out | append $key -}}
+{{- end -}}
+{{- return (sort $out) -}}

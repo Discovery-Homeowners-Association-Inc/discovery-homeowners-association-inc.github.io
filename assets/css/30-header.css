@@ -1,0 +1,163 @@
+/* ===========================================================================
+   SITE HEADER
+   =========================================================================== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+  min-height: 4rem;
+}
+
+/* ── Brand ─────────────────────────────────────────────────────────────── */
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  margin-right: auto;
+  flex: none;                /* never let the nav squeeze the wordmark */
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.site-brand__mark {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+  border-radius: var(--radius-m);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.site-brand__mark .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.site-brand__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.site-brand__name {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-variation-settings: "wght" 650;
+  letter-spacing: var(--tracking-tight);
+}
+
+.site-brand__sub {
+  font-size: var(--step--2);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ── Header actions ────────────────────────────────────────────────────── */
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+/* The search field is the first thing to go when the header runs out of room.
+   It only appears at 76rem and up: at 56rem the nav has just become a
+   horizontal bar of seven items, and adding a search box there overflowed the
+   viewport at common laptop widths. Below 76rem search is still reachable from
+   the /search/ page linked in the menu. */
+.site-search {
+  display: none;
+}
+
+.site-header__pay {
+  white-space: nowrap;
+}
+
+/* At phone widths the wordmark, the menu button and the Pay Dues button do not
+   all fit on one line. Drop the two least important pieces of text rather than
+   letting the header overflow the viewport — Pay Dues survives because paying
+   is the most common reason someone opens this site on a phone. */
+@media (max-width: 30rem) {
+  .site-brand__sub,
+  .nav__toggle-text {
+    display: none;
+  }
+
+  .site-header__inner {
+    gap: var(--space-2xs);
+  }
+}
+
+@media (min-width: 76rem) {
+  .site-search {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3xs);
+
+    padding: 0 var(--space-3xs) 0 var(--space-2xs);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-pill);
+    background: var(--color-surface);
+
+    transition: border-color var(--transition);
+  }
+
+  .site-search:focus-within {
+    border-color: var(--color-primary);
+  }
+
+  .site-search__input {
+    width: 8rem;
+    min-height: 2.25rem;
+    padding: 0 var(--space-3xs);
+    border: 0;
+    background: none;
+    font-size: var(--step--1);
+    transition: width var(--transition);
+  }
+
+  .site-search__input:focus {
+    width: 12rem;
+    outline: none;   /* the ring is drawn on the wrapper via :focus-within */
+  }
+
+  .site-search__input::-webkit-search-cancel-button {
+    cursor: pointer;
+  }
+
+  .site-search__submit {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    flex: none;
+    border-radius: 50%;
+    color: var(--color-text-muted);
+  }
+
+  .site-search__submit:hover {
+    color: var(--color-primary);
+    background: var(--color-primary-soft);
+  }
+
+  .site-search__submit .icon {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+}

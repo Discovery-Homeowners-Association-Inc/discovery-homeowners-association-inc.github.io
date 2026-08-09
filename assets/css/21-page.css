@@ -1,0 +1,80 @@
+/* ===========================================================================
+   PAGE FURNITURE — breadcrumb, page heading, section child grid
+   =========================================================================== */
+
+/* ── Breadcrumb ────────────────────────────────────────────────────────── */
+
+.breadcrumb {
+  padding-top: var(--space-s);
+}
+
+.breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs) var(--space-2xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--step--1);
+  color: var(--color-text-muted);
+}
+
+.breadcrumb__item + .breadcrumb__item::before {
+  content: "/";
+  margin-right: var(--space-2xs);
+  color: var(--color-border-strong);
+}
+
+.breadcrumb__item a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.breadcrumb__item a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.breadcrumb__item[aria-current="page"] {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* ── Page heading ──────────────────────────────────────────────────────── */
+
+.page-head {
+  max-width: var(--measure);
+  margin-bottom: var(--space-l);
+}
+
+.page-head > * + * {
+  margin-top: var(--space-2xs);
+}
+
+.page-head h1 {
+  font-size: var(--step-3);
+}
+
+/* ── Child-page cards on a section landing ─────────────────────────────── */
+
+.section-children {
+  margin-top: var(--space-xl);
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  color: var(--color-primary);
+  font-weight: 650;
+}
+
+.link-arrow .icon {
+  width: 1em;
+  height: 1em;
+  transition: translate var(--transition);
+}
+
+.card--linked:hover .link-arrow .icon {
+  translate: 0.2em 0;
+}

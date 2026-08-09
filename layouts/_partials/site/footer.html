@@ -1,0 +1,77 @@
+{{- $org := hugo.Data.organization -}}
+{{- $office := $org.office -}}
+
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+
+    {{- /* Contact block. Every value here comes from data/organization.yaml —
+           there is no second copy of any of it anywhere in the site. */ -}}
+    <div class="site-footer__block">
+      <h2 class="site-footer__heading">{{ $org.legal_name }}</h2>
+      <address class="site-footer__address">
+        {{ $office.street }}<br>
+        {{ $office.city }}, {{ $office.state }} {{ $office.zip }}
+        {{- with $office.mailing }}<br>
+        <span class="text-muted">Mail: {{ . }}</span>
+        {{- end }}
+      </address>
+      <ul class="site-footer__contact" role="list">
+        <li>{{ partial "util/phone-link.html" . }}</li>
+        {{- with $office.fax }}<li class="text-muted">Fax {{ . }}</li>{{ end }}
+        <li>{{ partial "util/email-link.html" (dict "key" "general") }}</li>
+      </ul>
+    </div>
+
+    {{- /* Office hours */ -}}
+    <div class="site-footer__block">
+      <h2 class="site-footer__heading">Office hours</h2>
+      <dl class="hours">
+        {{- range $office.hours }}
+        <div class="hours__row">
+          <dt class="hours__days">{{ .days }}</dt>
+          <dd class="hours__time">{{ .open }} – {{ .close }}</dd>
+        </div>
+        {{- end }}
+      </dl>
+      <p class="text-small text-muted">
+        {{ $org.meetings.board.rule }} — board meeting, {{ $org.meetings.board.time }}.<br>
+        {{ $org.meetings.board.open_to }}
+      </p>
+    </div>
+
+    {{- /* Links */ -}}
+    <div class="site-footer__block">
+      <h2 class="site-footer__heading">Quick links</h2>
+      <ul class="site-footer__links" role="list">
+        {{- range site.Menus.footer }}
+          {{- $name := .Name -}}
+          {{- $href := .URL -}}
+          {{- $external := false -}}
+          {{- /* An entry may resolve its URL from organization.yaml instead of
+                 hardcoding it, so a link can be retargeted from the CMS. */ -}}
+          {{- with .Params.externalKey -}}
+            {{- $href = partial "util/external-url.html" . -}}
+            {{- $external = true -}}
+          {{- end -}}
+          {{- with $href }}
+        <li>
+          <a href="{{ . }}"{{ if $external }} target="_blank" rel="noopener"{{ end }}>{{ $name }}</a>
+        </li>
+          {{- end }}
+        {{- end }}
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="site-footer__legal">
+    <div class="wrap cluster">
+      <p class="text-small text-muted">
+        © {{ now.Year }} {{ $org.legal_name }}. {{ $org.locality }}, {{ $org.county }}, {{ $org.state }}.
+      </p>
+      <p class="text-small text-muted">
+        Board members can <a href="/admin/">edit this site</a>.
+      </p>
+    </div>
+  </div>
+</footer>

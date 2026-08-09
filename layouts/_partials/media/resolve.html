@@ -1,0 +1,39 @@
+{{- /*
+  THE ONE PLACE that maps a CMS media path to a real Hugo resource.
+
+  The CMS writes `/media/foo.jpg` into front matter and markdown. That URL is
+  never served — images live in assets/media/ and are published only as resized
+  derivatives. Both the front-matter image partial and the markdown image render
+  hook delegate here, so the mapping rule exists exactly once.
+
+    {{ $res := partial "media/resolve.html" (dict "src" "/media/home/pool.jpg" "page" .) }}
+
+  Returns the resource, or nil after emitting a warning that names the page.
+  `--panicOnWarning` turns that warning into a failed CI build, so a broken
+  image path is loud rather than a silent 404 in production.
+
+  Params:
+    src  - required: the path as written by the CMS
+    page - optional: the page, used to make the warning actionable
+*/ -}}
+
+{{- $src := .src -}}
+{{- $page := .page -}}
+{{- $res := "" -}}
+
+{{- with $src -}}
+  {{- /* Accept /media/x.jpg, media/x.jpg, and x.jpg alike. */ -}}
+  {{- $path := strings.TrimPrefix "/" . -}}
+  {{- $path = strings.TrimPrefix "media/" $path -}}
+  {{- $path = printf "media/%s" $path -}}
+
+  {{- $res = resources.Get $path -}}
+
+  {{- if not $res -}}
+    {{- $where := "" -}}
+    {{- with $page -}}{{- $where = printf " referenced by %s" .RelPermalink -}}{{- end -}}
+    {{- warnf "Image not found: %q (looked for assets/%s)%s" $src $path $where -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $res -}}

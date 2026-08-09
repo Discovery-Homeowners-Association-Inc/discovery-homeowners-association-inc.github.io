@@ -1,1 +1,104 @@
-# website
+# Discovery Homeowners Association — Website
+
+The public website for the Discovery Homeowners Association, Inc. of Walkersville,
+Frederick County, Maryland.
+
+**Live site:** https://dhoa.naponline.net/
+**Edit the site:** https://dhoa.naponline.net/admin/
+
+---
+
+## For board members — editing the site
+
+You do not need to install anything. Go to **https://dhoa.naponline.net/admin/**,
+click **Login with GitHub**, and edit from any browser, including your phone.
+Changes go live about two minutes after you click Publish.
+
+See **[docs/EDITING.md](docs/EDITING.md)** for a walkthrough of adding an
+announcement, adding an event, uploading a form, and changing the office phone
+number.
+
+---
+
+## For developers
+
+### Requirements
+
+**One binary: [Hugo extended](https://gohugo.io/installation/) v0.146.0 or newer.**
+No Node, no npm, no Ruby, no build step beyond Hugo itself. This is deliberate —
+see [docs/DECISIONS.md](docs/DECISIONS.md).
+
+```bash
+hugo version   # must say "+extended"
+```
+
+### Run it locally
+
+```bash
+git clone git@github.com:Discovery-Homeowners-Association-Inc/discovery-homeowners-association-inc.github.io.git
+cd discovery-homeowners-association-inc.github.io
+hugo server -D --navigateToChanged
+```
+
+Open http://localhost:1313/.
+
+### Other commands
+
+```bash
+# Exactly what CI runs — warnings are errors
+hugo --gc --minify --panicOnWarning
+
+# Template hygiene: unused templates, duplicate output paths
+hugo --printUnusedTemplates --printPathWarnings
+
+# Inspect resolved config and content (catches YAML shape mistakes)
+hugo config
+hugo list all
+
+# Serve the production build the way GitHub Pages will
+hugo --gc --minify && (cd public && python3 -m http.server 8080)
+```
+
+> **Warning:** `/admin/` talks to the GitHub API directly, so opening it on
+> `localhost` still edits the **live repository**. A "test" publish from
+> localhost is a real commit to `main`.
+
+### Where things live
+
+| Path | What |
+|---|---|
+| `hugo.toml` | Build settings and navigation structure only — **no contact info** |
+| `data/organization.yaml` | Single source of truth for address, phone, email, hours, dues, external links |
+| `data/*.yaml` | Board roster, committees, community links, who-to-call, parks, trash schedule |
+| `content/` | Pages, announcements, events, documents |
+| `layouts/` | Templates ([Hugo v0.146+ layout system](https://gohugo.io/templates/new-templatesystem-overview/) — no `_default/`) |
+| `assets/css/` | Hand-written CSS, concatenated in filename order |
+| `assets/media/` | Images — processed and resized by Hugo |
+| `static/documents/` | PDFs — served verbatim so printed links never break |
+| `static/admin/` | Sveltia CMS |
+
+### The one rule
+
+`hugo.toml` holds **only** what a developer changes. Every organizational fact —
+address, phone, email, office hours, dues, external URLs — lives in
+`data/organization.yaml` and nowhere else.
+
+This is enforced at build time: `layouts/_partials/data/validate.html` fails the
+build if contact fields reappear under `[params]`. A previous version of this
+site stored the office email in two places and shipped `Dhoa@verizon.net` in one
+of them.
+
+### Deployment
+
+Every push to `main` triggers `.github/workflows/deploy.yml`, which builds with
+Hugo and publishes to GitHub Pages. Cloudflare provides DNS and SSL. See
+[docs/DECISIONS.md](docs/DECISIONS.md) for the Cloudflare SSL configuration —
+it must be **Full (strict)**, never Flexible.
+
+---
+
+## License
+
+[MIT](LICENSE) for the site code. Association content, governing documents, and
+photographs are the property of the Discovery Homeowners Association, Inc. and
+their respective copyright holders.

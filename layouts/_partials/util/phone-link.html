@@ -1,0 +1,41 @@
+{{- /*
+  Renders a tel: link for the office, or for an arbitrary number.
+
+    {{ partial "util/phone-link.html" . }}                        office number
+    {{ partial "util/phone-link.html" (dict "number" "911") }}    literal number
+
+  A tel: link is what makes the number tappable on a phone, which is how most
+  residents will reach the office.
+
+  Params:
+    number - optional; defaults to the office number from organization.yaml
+    label  - optional link text; defaults to the number as written
+    class  - optional CSS class
+*/ -}}
+
+{{- $office := hugo.Data.organization.office -}}
+{{- $number := "" -}}
+{{- $label := "" -}}
+{{- $class := "" -}}
+
+{{- if reflect.IsMap . -}}
+  {{- $number = .number -}}
+  {{- $label = .label -}}
+  {{- $class = .class -}}
+{{- end -}}
+
+{{- if not $number -}}
+  {{- $number = $office.phone -}}
+{{- end -}}
+
+{{- /* Build a dialable form: keep a leading +, strip everything else that is
+       not a digit, and assume +1 for a bare 10-digit US number. */ -}}
+{{- $digits := replaceRE `[^0-9+]` "" $number -}}
+{{- $href := $digits -}}
+{{- if and (eq $number $office.phone) $office.phone_e164 -}}
+  {{- $href = $office.phone_e164 -}}
+{{- else if and (not (hasPrefix $digits "+")) (eq (len $digits) 10) -}}
+  {{- $href = printf "+1%s" $digits -}}
+{{- end -}}
+
+<a href="tel:{{ $href }}"{{ with $class }} class="{{ . }}"{{ end }}>{{ or $label $number }}</a>

@@ -1,0 +1,38 @@
+{{- $org := hugo.Data.organization -}}
+{{- $office := $org.office -}}
+
+<div class="card info-card">
+  <h2 class="card__title">
+    {{ partial "ui/icon.html" "pin" }}
+    The office
+  </h2>
+
+  <address class="info-card__address">
+    {{ $office.street }}<br>
+    {{ $office.city }}, {{ $office.state }} {{ $office.zip }}
+  </address>
+
+  <dl class="hours">
+    {{- range $office.hours }}
+    <div class="hours__row">
+      <dt class="hours__days">{{ .days }}</dt>
+      <dd class="hours__time">{{ .open }} &ndash; {{ .close }}</dd>
+    </div>
+    {{- end }}
+  </dl>
+
+  <ul class="info-card__contact" role="list">
+    <li>
+      {{ partial "ui/icon.html" "phone" }}
+      {{ partial "util/phone-link.html" . }}
+    </li>
+    <li>
+      {{ partial "ui/icon.html" "mail" }}
+      {{ partial "util/email-link.html" (dict "key" "general") }}
+    </li>
+  </ul>
+
+  {{- with $office.mailing }}
+  <p class="text-small text-muted">Mail: {{ . }}</p>
+  {{- end }}
+</div>

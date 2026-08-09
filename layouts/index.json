@@ -1,0 +1,36 @@
+{{- /*
+  Client-side search index.
+
+  Deliberately shallow: title, URL, a short summary and one keyword. No body
+  text. Full text would be 10-20x larger for marginal benefit on a site this
+  size, and the whole point is that search costs one small fetch and ~58 lines
+  of JavaScript instead of a 29 KB search library.
+
+  Keys are single letters to shave roughly 15% off the payload:
+    t = title, u = url, s = summary, k = keyword/section
+*/ -}}
+
+{{- $pages := where site.RegularPages "Params.private" "!=" true -}}
+{{- $limit := site.Params.searchSnippetChars | default 160 -}}
+{{- $out := slice -}}
+
+{{- range $pages -}}
+  {{- /* Documents generate no page of their own, so point the search result
+         straight at the PDF. Searching "RV lot" should hand you the form. */ -}}
+  {{- $url := .RelPermalink -}}
+  {{- if and (eq .Section "documents") .Params.file -}}
+    {{- $url = .Params.file -}}
+  {{- end -}}
+
+  {{- $summary := or .Params.summary .Description (.Summary | plainify) -}}
+  {{- $summary = $summary | plainify | chomp | truncate $limit "" -}}
+
+  {{- $out = $out | append (dict
+      "t" .Title
+      "u" $url
+      "s" $summary
+      "k" (or .Params.category .Section)
+  ) -}}
+{{- end -}}
+
+{{- $out | jsonify -}}

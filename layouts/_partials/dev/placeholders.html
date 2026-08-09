@@ -1,0 +1,36 @@
+{{- /*
+  Local-development banner listing every external link still marked
+  `is_placeholder: true` in data/organization.yaml.
+
+  Rendered only under `hugo server`, never in a production build, so residents
+  never see it — but nobody can forget that the Pay Dues button currently points
+  at a generic login page.
+*/ -}}
+
+{{- if hugo.IsServer -}}
+  {{- $pending := slice -}}
+  {{- range $key, $svc := hugo.Data.organization.external -}}
+    {{- if and $svc.is_placeholder (ne $svc.enabled false) -}}
+      {{- $pending = $pending | append (dict "key" $key "svc" $svc) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- with $pending }}
+  <aside class="dev-banner" aria-label="Development notice">
+    <div class="wrap">
+      <p class="dev-banner__title">
+        <strong>{{ len . }} placeholder link{{ if ne (len .) 1 }}s{{ end }}</strong>
+        still need real URLs. This banner appears only in local development.
+      </p>
+      <ul class="dev-banner__list">
+        {{- range . }}
+        <li>
+          <code>external.{{ .key }}</code> — {{ .svc.label }}
+          <span class="text-muted">({{ or .svc.url .svc.portal_url }})</span>
+        </li>
+        {{- end }}
+      </ul>
+    </div>
+  </aside>
+  {{- end }}
+{{- end -}}

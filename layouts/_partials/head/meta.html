@@ -1,0 +1,59 @@
+{{- $org := hugo.Data.organization -}}
+
+{{- /* Title: the home page uses the association name alone rather than
+       repeating it twice. */ -}}
+{{- $title := "" -}}
+{{- if .IsHome -}}
+  {{- $title = printf "%s — %s, %s" site.Title $org.locality $org.state_abbr -}}
+{{- else -}}
+  {{- $title = printf "%s | %s" .Title site.Title -}}
+{{- end -}}
+
+{{- $desc := or .Description .Params.summary (.Summary | plainify | truncate 160 "") site.Params.description
+      (printf "%s in %s, %s." $org.legal_name $org.locality $org.state) -}}
+{{- $desc = $desc | plainify | chomp -}}
+
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+<link rel="canonical" href="{{ .Permalink }}">
+<meta name="theme-color" content="{{ site.Params.themeColor }}">
+
+{{- /* Social preview image. Falls back to the site default. */ -}}
+{{- $ogImage := "" -}}
+{{- with (or .Params.hero .Params.image site.Params.ogImage) -}}
+  {{- $src := strings.TrimPrefix "/media/" . -}}
+  {{- $src = strings.TrimPrefix "media/" $src -}}
+  {{- with resources.Get (printf "media/%s" $src) -}}
+    {{- with (.Resize "1200x630 webp q85") -}}
+      {{- $ogImage = .Permalink -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="{{ if eq .Section "news" }}article{{ else }}website{{ end }}">
+<meta property="og:locale" content="en_US">
+{{- with $ogImage }}
+<meta property="og:image" content="{{ . }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+{{- end }}
+
+<meta name="twitter:card" content="{{ if $ogImage }}summary_large_image{{ else }}summary{{ end }}">
+
+{{- /* Keep the CMS and the search index out of search results. */ -}}
+{{- if or .Params.private (eq .Layout "search") }}
+<meta name="robots" content="noindex, follow">
+{{- end }}
+
+{{- with .OutputFormats.Get "rss" }}
+<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ site.Title }}">
+{{- end }}
+
+{{- /* The events calendar feed is discoverable from the events section. */ -}}
+{{- with .OutputFormats.Get "ics" }}
+<link rel="alternate" type="text/calendar" href="{{ .Permalink }}" title="{{ $.Title }} calendar">
+{{- end }}

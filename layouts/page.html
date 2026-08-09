@@ -1,0 +1,23 @@
+{{ define "main" }}
+  {{ partial "site/breadcrumb.html" . }}
+
+  <article class="section">
+    <div class="wrap">
+
+      <header class="page-head">
+        {{- with .Parent }}{{ if not .IsHome }}
+        <span class="eyebrow">{{ .Title }}</span>
+        {{ end }}{{ end }}
+        <h1>{{ .Title }}</h1>
+        {{- with or .Params.summary .Description }}
+        <p class="lede">{{ . }}</p>
+        {{- end }}
+      </header>
+
+      <div class="prose">
+        {{ .Content }}
+      </div>
+
+    </div>
+  </article>
+{{ end }}

@@ -1,0 +1,70 @@
+{{- /*
+  JSON-LD. Helps search engines surface the office address, phone and hours
+  directly, which is what most residents are actually looking for.
+  Every value comes from data/organization.yaml like everything else.
+*/ -}}
+
+{{- $org := hugo.Data.organization -}}
+{{- $office := $org.office -}}
+
+{{- /* Office hours are stored the way a board member would write them
+       ("Monday, Wednesday, Friday" / "9:00 am"). schema.org wants day names in
+       a list and times as 24-hour HH:MM, so convert here rather than making an
+       editor maintain a second machine-readable copy. */ -}}
+{{- $spec := slice -}}
+{{- range $office.hours -}}
+  {{- $entry := . -}}
+  {{- $days := slice -}}
+  {{- range (split $entry.days ",") -}}
+    {{- with (trim . " ") -}}
+      {{- $days = $days | append . -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $times := dict -}}
+  {{- range $key := slice "open" "close" -}}
+    {{- $raw := lower (index $entry $key) -}}
+    {{- $isPM := strings.Contains $raw "pm" -}}
+    {{- $clock := trim (replaceRE `(am|pm)` "" $raw) " " -}}
+    {{- $parts := split $clock ":" -}}
+    {{- $h := int (index $parts 0) -}}
+    {{- $m := "00" -}}
+    {{- if gt (len $parts) 1 }}{{ $m = index $parts 1 }}{{ end -}}
+    {{- if and $isPM (lt $h 12) }}{{ $h = add $h 12 }}{{ end -}}
+    {{- if and (not $isPM) (eq $h 12) }}{{ $h = 0 }}{{ end -}}
+    {{- $times = merge $times (dict $key (printf "%02d:%s" $h $m)) -}}
+  {{- end -}}
+
+  {{- $spec = $spec | append (dict
+      "@type" "OpeningHoursSpecification"
+      "dayOfWeek" $days
+      "opens" $times.open
+      "closes" $times.close) -}}
+{{- end -}}
+
+{{- $schema := dict
+  "@context" "https://schema.org"
+  "@type" "Organization"
+  "name" $org.legal_name
+  "alternateName" $org.short_name
+  "description" (printf "%s serves the Discovery community in %s, %s, %s." $org.legal_name $org.locality $org.county $org.state)
+  "url" site.BaseURL
+  "email" $office.email
+  "telephone" $office.phone
+  "foundingDate" (string $org.founded)
+  "areaServed" (dict "@type" "Place" "name" (printf "%s, %s" $org.locality $org.state))
+  "address" (dict
+    "@type" "PostalAddress"
+    "streetAddress" $office.street
+    "addressLocality" $office.city
+    "addressRegion" $office.state
+    "postalCode" $office.zip
+    "addressCountry" "US")
+  "openingHoursSpecification" $spec
+-}}
+
+{{- with $office.fax -}}
+  {{- $schema = merge $schema (dict "faxNumber" .) -}}
+{{- end -}}
+
+<script type="application/ld+json">{{ $schema | jsonify }}</script>

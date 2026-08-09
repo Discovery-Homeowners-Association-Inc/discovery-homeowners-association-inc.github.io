@@ -1,0 +1,96 @@
+/* ===========================================================================
+   SITE FOOTER
+   =========================================================================== */
+
+.site-footer {
+  margin-top: var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-alt);
+}
+
+.site-footer__inner {
+  display: grid;
+  gap: var(--space-xl);
+  padding-block: var(--space-xl);
+}
+
+@media (min-width: 44rem) {
+  .site-footer__inner {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+}
+
+.site-footer__block > * + * {
+  margin-top: var(--space-2xs);
+}
+
+.site-footer__heading {
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.site-footer__address {
+  font-style: normal;
+  line-height: var(--leading-snug);
+}
+
+.site-footer__contact,
+.site-footer__links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__contact li,
+.site-footer__links li {
+  padding-block: var(--space-3xs);
+}
+
+/* ── Office hours ──────────────────────────────────────────────────────── */
+
+.hours {
+  margin: 0;
+}
+
+.hours__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs) var(--space-2xs);
+  justify-content: space-between;
+  padding-block: var(--space-3xs);
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.hours__row:last-child {
+  border-bottom: 0;
+}
+
+.hours__days {
+  font-weight: 600;
+}
+
+.hours__time {
+  margin: 0;
+  margin-left: auto;   /* stays right-aligned even when the days wrap onto their own line */
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* ── Legal strip ───────────────────────────────────────────────────────── */
+
+.site-footer__legal {
+  border-top: 1px solid var(--color-border);
+}
+
+.site-footer__legal .cluster {
+  justify-content: space-between;
+  padding-block: var(--space-s);
+}
+
+.site-footer__legal p {
+  margin: 0;
+}

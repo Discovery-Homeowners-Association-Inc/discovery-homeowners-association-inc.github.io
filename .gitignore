@@ -1,0 +1,16 @@
+# Hugo build output
+/public/
+
+# Hugo resource cache (processed images, bundled CSS/JS).
+# Regenerated on every build; cached in CI via actions/cache.
+/resources/
+
+# Hugo lock file
+.hugo_build.lock
+
+# Editor / OS noise
+.DS_Store
+*~
+*.swp
+.idea/
+.vscode/

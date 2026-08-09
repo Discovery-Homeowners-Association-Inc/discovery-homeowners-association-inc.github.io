@@ -1,0 +1,32 @@
+{{- /* Build-time assertions. Runs once; fails the build on a data problem. */ -}}
+{{- partial "data/validate.html" . -}}
+<!doctype html>
+<html lang="{{ site.Language.Locale | default "en-US" }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {{ partial "head/meta.html" . }}
+  {{ partial "head/icons.html" . }}
+
+  {{- /* Preload the display font: it is used by the first heading on every
+         page, so discovering it via the stylesheet would delay that paint. */ -}}
+  <link rel="preload" href="/fonts/fraunces-display.woff2" as="font" type="font/woff2" crossorigin>
+
+  {{ partial "head/css.html" . }}
+  {{ partial "head/schema.html" . }}
+</head>
+
+<body>
+  {{ partial "site/skip-link.html" . }}
+  {{ partial "dev/placeholders.html" . }}
+  {{ partial "site/header.html" . }}
+
+  <main id="main">
+    {{ block "main" . }}{{ end }}
+  </main>
+
+  {{ partial "site/footer.html" . }}
+  {{ partial "head/js.html" . }}
+</body>
+</html>

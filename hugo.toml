@@ -1,0 +1,172 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  CONFIG POLICY — read this before adding anything.
+#
+#  This file holds ONLY technical build settings and navigation STRUCTURE.
+#
+#  Every organizational fact — address, phone, fax, email, office hours, dues,
+#  external service URLs — lives in data/organization.yaml and is edited through
+#  /admin/. Do NOT add contact information here.
+#
+#  A previous version of this site stored the office email in both places. They
+#  drifted, and the site shipped two different spellings of it. The build now
+#  FAILS if contact fields reappear under [params]; see
+#  layouts/_partials/data/validate.html and docs/DECISIONS.md.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Root path, not a subpath. This repository is named <org>.github.io, so Pages
+# serves it at "/". Never pass --baseURL on the command line; see DECISIONS #8.
+baseURL = "https://dhoa.naponline.net/"
+
+title                  = "Discovery Homeowners Association"
+locale                 = "en-US"
+defaultContentLanguage = "en"
+timeZone               = "America/New_York"
+
+enableRobotsTXT      = true
+enableGitInfo        = true   # gives every page a real .Lastmod from git history
+capitalizeListTitles = false
+summaryLength        = 30
+
+# Categories are used for filtering, not for browsing. Skipping taxonomy pages
+# avoids generating ~30 near-empty archive pages.
+disableKinds = ["taxonomy", "term"]
+
+[pagination]
+  pagerSize = 12
+
+[permalinks]
+  [permalinks.page]
+    news = "/news/:year/:slug/"
+
+[outputs]
+  home    = ["html", "rss", "json"]   # json is the client-side search index
+  section = ["html", "rss"]
+  page    = ["html"]
+
+# ─── Calendar output ─────────────────────────────────────────────────────────
+# Events emit .ics directly from a template. This is why the calendar feature
+# needs zero JavaScript.
+[mediaTypes]
+  [mediaTypes."text/calendar"]
+    suffixes = ["ics"]
+
+[outputFormats]
+  [outputFormats.ics]
+    mediaType     = "text/calendar"
+    isPlainText   = true
+    baseName      = "index"
+    permalinkable = true
+
+[markup]
+  [markup.goldmark.renderer]
+    # Raw HTML in markdown is disabled. The old site needed it only to embed
+    # hand-written <details> blocks in the community links page; that content is
+    # now data/links.yaml, so the escape hatch can stay shut. This matters more
+    # than usual because markdown here is authored through a web CMS.
+    unsafe = false
+  [markup.goldmark.parser]
+    wrapStandAloneImageWithinParagraph = false
+  [markup.goldmark.extensions]
+    typographer = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel   = 3
+
+[imaging]
+  quality        = 82
+  resampleFilter = "Lanczos"
+  hint           = "photo"
+  [imaging.exif]
+    disableDate    = false
+    disableLatLong = true   # community photos must not leak GPS coordinates
+
+[minify]
+  disableXML = true
+
+[build]
+  writeStats = false
+  # Hot-reload the concatenated CSS bundle in `hugo server` when any part changes.
+  [[build.cachebusters]]
+    source = "assets/css/.*\\.css"
+    target = "css"
+  [[build.cachebusters]]
+    source = "assets/js/.*\\.js"
+    target = "js"
+
+[services.rss]
+  limit = 20
+
+[params]
+  # PRESENTATION ONLY. Nothing here is an organizational fact.
+  # If you are about to add a phone number or an address, it belongs in
+  # data/organization.yaml — and the build will reject it here.
+  themeColor         = "#2f5d43"
+  ogImage            = "media/social/og-default.jpg"
+  searchSnippetChars = 160
+  imageWidths        = [400, 640, 900, 1280, 1800]
+  logoText           = "Discovery"
+
+# ─── NAVIGATION ──────────────────────────────────────────────────────────────
+# Structure is developer-owned so a content edit cannot break the menu.
+# `pageRef` (not `url`) makes Hugo resolve each link at build time and fail on a
+# broken reference.
+#
+# There are deliberately NO sub-menu entries. Each section has a real landing
+# page that lists its children as cards — better on mobile, and it removes the
+# collapsible-sidebar JavaScript the previous version needed.
+
+[[menus.main]]
+  name    = "About"
+  pageRef = "/about"
+  weight  = 10
+
+[[menus.main]]
+  name    = "Board"
+  pageRef = "/board"
+  weight  = 20
+
+[[menus.main]]
+  name    = "Amenities"
+  pageRef = "/amenities"
+  weight  = 30
+
+[[menus.main]]
+  name    = "Rules & Requests"
+  pageRef = "/rules"
+  weight  = 40
+
+[[menus.main]]
+  name    = "News & Events"
+  pageRef = "/news"
+  weight  = 50
+
+[[menus.main]]
+  name    = "Documents"
+  pageRef = "/documents"
+  weight  = 60
+
+[[menus.main]]
+  name    = "Contact"
+  pageRef = "/contact"
+  weight  = 70
+
+[[menus.footer]]
+  name   = "Governing Documents"
+  weight = 10
+  [menus.footer.params]
+    externalKey = "governing_documents"   # URL resolved from data/organization.yaml
+
+[[menus.footer]]
+  name   = "Community Links"
+  pageRef = "/contact/community-links"
+  weight = 20
+
+[[menus.footer]]
+  name   = "Report a Problem"
+  pageRef = "/rules/report-a-problem"
+  weight = 30
+
+[[menus.footer]]
+  name   = "Edit this site"
+  url    = "/admin/"
+  weight = 90
