@@ -1,0 +1,45 @@
+{{- /*
+  A grid of every image in a folder under assets/media/.
+
+      {{< gallery dir="media/history" >}}
+
+  Alt text comes from a sibling YAML file if one exists — assets/media/<dir>.yaml
+  keyed by filename — so captions and alt text are editable without touching
+  markup:
+
+      1972-aerial-construction.jpg:
+        alt: "Aerial photograph of Discovery under construction"
+        caption: "Looking north across the first townhouse rows."
+
+  Renders nothing at all when the folder is empty, so a gallery can be placed on
+  a page before there are any photographs to put in it.
+*/ -}}
+
+{{- $dir := .Get "dir" -}}
+{{- if not $dir -}}
+  {{- errorf `gallery shortcode in %s: needs dir="media/…"` .Page.File.Path -}}
+{{- end -}}
+
+{{- $images := sort (resources.Match (printf "%s/*.{jpg,jpeg,png,webp}" $dir)) "Name" -}}
+{{- $meta := index hugo.Data (path.Base $dir) -}}
+
+{{- with $images }}
+<ul class="gallery" role="list">
+  {{- range . }}
+  {{- $name := path.Base .Name -}}
+  {{- $info := index ($meta | default dict) $name | default dict -}}
+  <li class="gallery__item">
+    <figure class="figure">
+      {{ partial "media/image.html" (dict
+          "src" (printf "/%s/%s" $dir $name)
+          "alt" ($info.alt | default "")
+          "page" $.Page
+          "sizes" "(min-width: 56rem) 22rem, (min-width: 40rem) 45vw, 100vw") }}
+      {{- with $info.caption }}
+      <figcaption class="figure__caption">{{ . }}</figcaption>
+      {{- end }}
+    </figure>
+  </li>
+  {{- end }}
+</ul>
+{{- end }}

@@ -1,0 +1,33 @@
+{{- /*
+  A processed image with a caption and optional credit.
+
+      {{< figure src="/media/history/1972-aerial-construction.jpg"
+                 alt="Aerial photograph of Discovery in 1972"
+                 caption="Discovery under construction, 1972."
+                 credit="Maryland Room, C. Burr Artz Public Library" >}}
+
+  Credit is a first-class parameter rather than something tacked onto the
+  caption, because archive photographs come with attribution conditions and
+  those should not be easy to drop by accident.
+*/ -}}
+
+{{- $alt := .Get "alt" -}}
+{{- if not (isset .Params "alt") -}}
+  {{- errorf `figure shortcode in %s: alt is required. Pass alt="" only if the image is purely decorative.` .Page.File.Path -}}
+{{- end -}}
+
+<figure class="figure">
+  {{ partial "media/image.html" (dict
+      "src" (.Get "src")
+      "alt" $alt
+      "page" .Page
+      "sizes" (.Get "sizes" | default "(min-width: 48rem) 44rem, 100vw")) }}
+  {{- if or (.Get "caption") (.Get "credit") }}
+  <figcaption class="figure__caption">
+    {{- with .Get "caption" }}{{ . }}{{ end }}
+    {{- with .Get "credit" }}
+    <span class="figure__credit">{{ . }}</span>
+    {{- end }}
+  </figcaption>
+  {{- end }}
+</figure>

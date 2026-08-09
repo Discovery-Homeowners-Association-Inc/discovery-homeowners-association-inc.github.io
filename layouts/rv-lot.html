@@ -10,16 +10,47 @@
       </header>
 
       <div class="with-rail">
-        <div class="prose">{{ .Content }}</div>
+        <div class="stack-l">
+          <div class="prose">{{ .Content }}</div>
+
+          {{- with .Params.rules }}
+          {{ partial "content/rule-list.html" (dict "items" . "title" "Lot rules" "variant" "yes") }}
+          {{- end }}
+
+          {{- with .Params.planned_improvements }}
+          <div class="callout callout--note">
+            {{ partial "ui/icon.html" "clock" }}
+            <div class="callout__body"><p>{{ . }}</p></div>
+          </div>
+          {{- end }}
+        </div>
 
         <aside class="stack-m">
+          {{- with .Params.fees }}
+          <div class="card card--feature">
+            <h2 class="card__title">{{ partial "ui/icon.html" "payment" }} What it costs</h2>
+            <dl class="fee-pair">
+              <div>
+                <dt>Monthly</dt>
+                <dd><strong>{{ .monthly }}</strong> <span class="text-muted text-small">{{ .monthly_note }}</span></dd>
+              </div>
+              <div>
+                <dt>Quarterly</dt>
+                <dd><strong>{{ .quarterly }}</strong> <span class="text-muted text-small">{{ .quarterly_note }}</span></dd>
+              </div>
+            </dl>
+            <p class="text-small">{{ .payment }}</p>
+            <p class="card__foot text-small text-muted">In effect since {{ .effective }}.</p>
+          </div>
+          {{- end }}
+
           <div class="card">
             <h2 class="card__title">To register you need</h2>
             {{ partial "content/rule-list.html" (dict
                 "items" .Params.registration_requirements
                 "variant" "yes") }}
             <p class="card__foot text-small">
-              {{ partial "util/phone-link.html" . }} ·
+              {{ partial "util/phone-link.html" . }} &middot;
               {{ partial "util/email-link.html" (dict "key" "general") }}
             </p>
           </div>

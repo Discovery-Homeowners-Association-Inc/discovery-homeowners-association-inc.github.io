@@ -1,0 +1,35 @@
+{{- /*
+  One document in a list.
+
+    {{ partial "content/document-row.html" (dict "doc" $page) }}
+
+  Used by the documents library, by the {{< docs >}} shortcode, and by the
+  "related forms" block on amenity pages — one row markup, three surfaces.
+
+  data-* attributes are here so the filter script in Phase 6 has something to
+  match on without the row needing to be re-rendered client side.
+*/ -}}
+
+{{- $doc := .doc -}}
+{{- $p := $doc.Params -}}
+{{- $search := lower (printf "%s %s %s" $doc.Title ($p.summary | default "") ($p.category | default "")) -}}
+
+<li class="doc"
+    data-category="{{ $p.category | default "general" }}"
+    data-lang="{{ $p.language | default "en" }}"
+    data-search="{{ $search }}">
+  <a class="doc__link" href="{{ $p.file }}">
+    <span class="doc__icon" aria-hidden="true">{{ partial "ui/icon.html" "pdf" }}</span>
+    <span class="doc__text">
+      <span class="doc__title">{{ $doc.Title }}</span>
+      {{- with $p.summary }}
+      <span class="doc__summary">{{ . }}</span>
+      {{- end }}
+      <span class="doc__meta">
+        PDF
+        {{- with $p.date }} &middot; {{ dateFormat "January 2006" . }}{{ end }}
+        {{- if eq ($p.language | default "en") "es" }} &middot; <span lang="es">Español</span>{{ end }}
+      </span>
+    </span>
+  </a>
+</li>

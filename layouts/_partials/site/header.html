@@ -6,7 +6,7 @@
 
     <a class="site-brand" href="{{ "/" | relURL }}">
       <span class="site-brand__mark" aria-hidden="true">
-        {{- partial "ui/icon.html" "home" -}}
+        {{- partial "ui/mark.html" (dict "class" "mark--compact") -}}
       </span>
       <span class="site-brand__text">
         <span class="site-brand__name">{{ site.Params.logoText }}</span>

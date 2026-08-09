@@ -2,10 +2,6 @@
 title: "History"
 summary: "Discovery was Frederick County's first planned unit development, built on 160 acres of farmland starting in 1972."
 weight: 10
-hero: "/media/history/1972-aerial-construction.jpg"
-hero_alt: "Aerial photograph of Discovery in 1972, with the first rows of townhouses built and the rest still open farmland"
-photo_credit: "Photographs courtesy of the Maryland Room at C. Burr Artz Public Library, Frederick County Public Libraries."
-gallery_dir: "media/history"
 ---
 
 In 1972, four miles outside Frederick City, a 160-acre tract of farmland became
@@ -16,12 +12,18 @@ conventional approach was to divide land into lots and let the amenities work
 themselves out. Discovery was drawn the other way round: housing, parks, and
 shared facilities laid out together from the start, as one thing.
 
+{{< figure
+    src="/media/history/1972-aerial-construction.jpg"
+    alt="Aerial photograph of Discovery in 1972. The first rows of townhouses and detached houses stand on bare graded ground, surrounded on every side by open farmland and ploughed fields."
+    caption="Discovery under construction in 1972. Revelation Avenue, Inquiry Court, Dream Place, Discovery Place, Discovery Boulevard, Seekers Walk, Daring Court, and Inspiration Court are all being cut into the fields."
+    credit="Photograph courtesy of the Maryland Room, C. Burr Artz Public Library, Frederick County Public Libraries." >}}
+
 ## What was drawn
 
 The master plan called for 255 single-family houses and 400 townhouses, a
 6.5-acre shopping center, a swimming pool, tennis courts, a day care center, and
-a set of recreational facilities scattered through the neighborhood rather than
-gathered at one edge of it.
+recreational facilities scattered through the neighborhood rather than gathered
+at one edge of it.
 
 Not all of it survived contact with the next fifty years. The shopping center
 and the day care are no longer part of the association. The pool, the Recreation
@@ -33,10 +35,15 @@ reason the association exists.
 Whoever named the streets committed to the theme completely, and the result is
 one of the more cheerful street grids in the county: Revelation Avenue, Inquiry
 Court, Dream Place, Discovery Place, Discovery Boulevard, Seekers Walk, Daring
-Court, Inspiration Court.
+Court, Inspiration Court. Later sections kept it up — Eureka Lane, Foresight
+Lane, Imagination Court, Curiosity Court, Triumphant Court, Successful Way.
 
-The photograph at the top of this page was taken in 1972, while those streets
-were under construction. The bare ground in it is now front yards.
+The bare ground in the photograph above is now front yards.
+
+{{< figure
+    src="/media/home/discovery-entrance-sign.jpg"
+    alt="The Discovery entrance sign: white letters on a dark green board, set on a low clipped hedge behind a split-rail fence, with bare winter trees behind."
+    caption="The entrance sign on Discovery Boulevard." >}}
 
 ## Still run by the people who live here
 

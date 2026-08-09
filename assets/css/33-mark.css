@@ -1,0 +1,22 @@
+/* ===========================================================================
+   THE ASSOCIATION MARK
+   A sun rising over farmland with an orchard tree — the association's own
+   emblem, redrawn from the only surviving copy (a scanned letterhead).
+   =========================================================================== */
+
+.mark {
+  display: block;
+  color: inherit;
+}
+
+/* Below roughly 48px the ploughed-field stipple stops reading as texture and
+   starts reading as dirt on the screen, so the compact variant drops it. */
+.mark--compact .mark__texture {
+  display: none;
+}
+
+/* Large display use — the About page and the footer. */
+.mark--display {
+  width: clamp(6rem, 14vw, 9rem);
+  color: var(--color-primary);
+}

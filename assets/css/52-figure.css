@@ -26,3 +26,34 @@
 .prose picture {
   display: block;
 }
+
+/* Archive photographs carry attribution conditions, so the credit gets its own
+   line and its own styling rather than being buried in the caption text. */
+.figure__credit {
+  display: block;
+  margin-top: var(--space-3xs);
+  font-size: var(--step--2);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+/* ── Gallery ───────────────────────────────────────────────────────────── */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(18rem, 100%), 1fr));
+  gap: var(--space-m);
+  margin: var(--space-l) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gallery__item {
+  margin: 0;
+}
+
+.gallery img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  width: 100%;
+}

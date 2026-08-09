@@ -1,0 +1,90 @@
+/* ===========================================================================
+   NEIGHBORHOOD MAP
+   Inline SVG, so every colour here follows the theme tokens — including in
+   dark mode, which a raster map screenshot could never do.
+   =========================================================================== */
+
+/* The neighborhood is roughly 1 km by 0.65 km, so the map is strongly portrait.
+   At full container width it would run to well over a screen tall, so cap it
+   and centre it rather than letting it dominate the page. */
+.neighborhood-map {
+  margin: 0 auto;
+  max-width: 34rem;
+}
+
+.neighborhood-map__frame {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l);
+  background: var(--color-bg-alt);
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.map__ground {
+  fill: var(--color-bg-alt);
+}
+
+/* Roads outside the neighborhood: present for orientation, quiet enough to
+   stay out of the way. */
+.map__context {
+  stroke: var(--color-border-strong);
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.map__street {
+  stroke: var(--color-border);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+
+.map__path {
+  stroke: var(--color-border-strong);
+  stroke-width: 1.6;
+  stroke-dasharray: 5 5;
+  stroke-linecap: round;
+  opacity: 0.7;
+}
+
+/* Discovery itself. */
+.map__theme {
+  stroke: var(--color-primary);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* paint-order puts the halo behind the glyphs, so labels stay readable where
+   they cross a road. */
+.map__labels text {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--color-text);
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: var(--color-bg-alt);
+  stroke-width: 3.5;
+  stroke-linejoin: round;
+}
+
+.neighborhood-map__caption {
+  margin-top: var(--space-2xs);
+  font-size: var(--step--1);
+  color: var(--color-text-muted);
+  text-wrap: pretty;
+}
+
+/* The map is portrait and detailed; on a narrow screen give it room and hide
+   the smallest labels rather than shrinking them into illegibility. */
+@media (max-width: 40rem) {
+  .map__labels text {
+    font-size: 15px;
+    stroke-width: 4.5;
+  }
+}
