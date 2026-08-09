@@ -1,59 +1,105 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 66" class="mark"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 122" class="mark"
      role="img" aria-label="Discovery Homeowners Association">
   <!--
-    The association's own mark, redrawn as vector art.
+    The association's mark, redrawn as vector art.
 
-    The only surviving copy was the letterhead on a scanned fax-quality PDF
-    (an RV lot notice), so this is a faithful redraw rather than a trace of the
-    scan: a sun rising behind a ridge of farmland, with an orchard tree below.
-    Apt for a neighborhood built on 160 acres of former farm in 1972.
+    The only surviving copy is the letterhead on a fax-quality scan (the RV lot
+    notice of August 2025), so this is a measured redraw rather than a trace.
+    Geometry came from that scan rendered at 1200 dpi: the fourteen fruit are
+    the centroids found by eroding the bitmap until only the discs survived, and
+    the ridge lines were sampled column by column across the frame.
 
-    Drawn with currentColor so it inherits whatever colour it is placed on and
-    works in both light and dark themes.
+    The scene: a ring sun at the crest of a stippled far ridge, a nearer hill
+    crossing behind, and an orchard tree of fourteen fruit in four staggered
+    columns. Apt for a neighborhood laid out over a farm in 1972.
+
+    The ridge stipple is knocked OUT of the band with a mask rather than drawn
+    on top of it, which is how the original reads — light specks in a dark
+    band — and it keeps working whatever colour sits behind the mark.
+
+    Drawn with currentColor so it inherits its surroundings and works in both
+    light and dark themes.
   -->
-  <g fill="none" stroke="currentColor" stroke-width="2.4"
-     stroke-linecap="round" stroke-linejoin="round">
+  <defs>
+    <clipPath id="mark-interior">
+      <rect x="5.2" y="5.2" width="89.6" height="111.6" rx="4"/>
+    </clipPath>
 
-    <!-- Frame -->
-    <rect x="1.6" y="1.6" width="56.8" height="62.8" rx="5"/>
+    <mask id="mark-stipple">
+      <rect x="0" y="20" width="100" height="45" fill="#fff"/>
+      <g fill="#000">
+        <!-- 131 specks, generated to fill the band evenly and jittered so the
+             texture does not read as a row of dots. See the note above. -->
+        <circle cx="2.5" cy="46.5" r="0.62"/><circle cx="2.4" cy="48.6" r="0.62"/><circle cx="2.8" cy="50.5" r="0.62"/><circle cx="3.0" cy="52.1" r="0.62"/><circle cx="5.3" cy="45.5" r="0.62"/><circle cx="4.8" cy="47.4" r="0.62"/>
+        <circle cx="5.9" cy="49.6" r="0.62"/><circle cx="5.0" cy="51.4" r="0.62"/><circle cx="8.4" cy="45.1" r="0.62"/><circle cx="7.7" cy="47.0" r="0.62"/><circle cx="7.2" cy="49.2" r="0.62"/><circle cx="7.5" cy="51.1" r="0.62"/>
+        <circle cx="9.7" cy="44.0" r="0.62"/><circle cx="10.6" cy="46.1" r="0.62"/><circle cx="10.3" cy="47.9" r="0.62"/><circle cx="10.0" cy="50.2" r="0.62"/><circle cx="12.0" cy="43.5" r="0.62"/><circle cx="12.2" cy="45.1" r="0.62"/>
+        <circle cx="12.5" cy="47.5" r="0.62"/><circle cx="12.7" cy="49.2" r="0.62"/><circle cx="14.7" cy="42.7" r="0.62"/><circle cx="15.3" cy="44.9" r="0.62"/><circle cx="15.1" cy="46.4" r="0.62"/><circle cx="15.5" cy="48.6" r="0.62"/>
+        <circle cx="17.1" cy="42.2" r="0.62"/><circle cx="16.9" cy="44.3" r="0.62"/><circle cx="17.8" cy="45.8" r="0.62"/><circle cx="17.4" cy="47.5" r="0.62"/><circle cx="20.0" cy="41.0" r="0.62"/><circle cx="19.9" cy="43.4" r="0.62"/>
+        <circle cx="19.5" cy="45.4" r="0.62"/><circle cx="19.9" cy="47.2" r="0.62"/><circle cx="22.1" cy="40.6" r="0.62"/><circle cx="22.8" cy="42.7" r="0.62"/><circle cx="22.4" cy="44.4" r="0.62"/><circle cx="22.5" cy="46.0" r="0.62"/>
+        <circle cx="25.3" cy="40.0" r="0.62"/><circle cx="24.3" cy="42.0" r="0.62"/><circle cx="24.8" cy="43.6" r="0.62"/><circle cx="24.5" cy="45.2" r="0.62"/><circle cx="26.5" cy="38.9" r="0.62"/><circle cx="27.4" cy="40.7" r="0.62"/>
+        <circle cx="26.6" cy="42.7" r="0.62"/><circle cx="27.5" cy="44.7" r="0.62"/><circle cx="29.3" cy="38.2" r="0.62"/><circle cx="29.9" cy="40.4" r="0.62"/><circle cx="29.9" cy="42.4" r="0.62"/><circle cx="29.3" cy="43.9" r="0.62"/>
+        <circle cx="32.3" cy="37.7" r="0.62"/><circle cx="31.3" cy="40.0" r="0.62"/><circle cx="31.4" cy="41.3" r="0.62"/><circle cx="31.8" cy="43.2" r="0.62"/><circle cx="33.9" cy="37.2" r="0.62"/><circle cx="34.1" cy="38.6" r="0.62"/>
+        <circle cx="34.3" cy="40.7" r="0.62"/><circle cx="34.5" cy="43.0" r="0.62"/><circle cx="36.8" cy="36.4" r="0.62"/><circle cx="36.0" cy="38.4" r="0.62"/><circle cx="37.0" cy="40.4" r="0.62"/><circle cx="37.0" cy="42.2" r="0.62"/>
+        <circle cx="38.9" cy="35.7" r="0.62"/><circle cx="39.2" cy="37.3" r="0.62"/><circle cx="38.4" cy="39.1" r="0.62"/><circle cx="38.5" cy="41.0" r="0.62"/><circle cx="40.8" cy="35.0" r="0.62"/><circle cx="40.9" cy="36.6" r="0.62"/>
+        <circle cx="41.2" cy="38.5" r="0.62"/><circle cx="41.9" cy="40.2" r="0.62"/><circle cx="43.3" cy="34.6" r="0.62"/><circle cx="43.6" cy="36.1" r="0.62"/><circle cx="43.3" cy="38.0" r="0.62"/><circle cx="44.5" cy="40.1" r="0.62"/>
+        <circle cx="46.2" cy="33.8" r="0.62"/><circle cx="45.6" cy="35.3" r="0.62"/><circle cx="45.9" cy="37.3" r="0.62"/><circle cx="45.7" cy="39.4" r="0.62"/><circle cx="49.2" cy="33.2" r="0.62"/><circle cx="48.1" cy="35.9" r="0.62"/>
+        <circle cx="47.9" cy="38.2" r="0.62"/><circle cx="51.7" cy="32.9" r="0.62"/><circle cx="51.3" cy="35.5" r="0.62"/><circle cx="50.8" cy="37.4" r="0.62"/><circle cx="53.8" cy="32.1" r="0.62"/><circle cx="53.8" cy="34.6" r="0.62"/>
+        <circle cx="53.0" cy="36.7" r="0.62"/><circle cx="56.5" cy="32.7" r="0.62"/><circle cx="56.2" cy="34.9" r="0.62"/><circle cx="56.1" cy="37.1" r="0.62"/><circle cx="58.2" cy="32.7" r="0.62"/><circle cx="57.5" cy="35.0" r="0.62"/>
+        <circle cx="57.9" cy="36.9" r="0.62"/><circle cx="60.9" cy="33.3" r="0.62"/><circle cx="60.5" cy="35.8" r="0.62"/><circle cx="61.3" cy="37.9" r="0.62"/><circle cx="62.8" cy="34.3" r="0.62"/><circle cx="62.6" cy="35.8" r="0.62"/>
+        <circle cx="62.6" cy="37.7" r="0.62"/><circle cx="66.0" cy="34.6" r="0.62"/><circle cx="65.4" cy="36.7" r="0.62"/><circle cx="65.8" cy="38.4" r="0.62"/><circle cx="68.0" cy="34.8" r="0.62"/><circle cx="68.2" cy="37.2" r="0.62"/>
+        <circle cx="67.8" cy="38.9" r="0.62"/><circle cx="70.6" cy="35.4" r="0.62"/><circle cx="70.6" cy="37.3" r="0.62"/><circle cx="70.1" cy="39.5" r="0.62"/><circle cx="73.2" cy="36.2" r="0.62"/><circle cx="72.1" cy="38.1" r="0.62"/>
+        <circle cx="72.1" cy="39.4" r="0.62"/><circle cx="75.4" cy="37.2" r="0.62"/><circle cx="75.5" cy="38.3" r="0.62"/><circle cx="75.2" cy="40.5" r="0.62"/><circle cx="77.5" cy="37.4" r="0.62"/><circle cx="76.7" cy="38.9" r="0.62"/>
+        <circle cx="77.6" cy="41.0" r="0.62"/><circle cx="80.4" cy="38.6" r="0.62"/><circle cx="80.3" cy="40.8" r="0.62"/><circle cx="81.8" cy="39.5" r="0.62"/><circle cx="81.9" cy="41.3" r="0.62"/><circle cx="84.7" cy="39.8" r="0.62"/>
+        <circle cx="84.5" cy="41.9" r="0.62"/><circle cx="87.6" cy="40.4" r="0.62"/><circle cx="86.9" cy="42.6" r="0.62"/><circle cx="90.0" cy="41.5" r="0.62"/><circle cx="90.0" cy="43.3" r="0.62"/><circle cx="91.8" cy="42.2" r="0.62"/>
+        <circle cx="91.1" cy="44.1" r="0.62"/><circle cx="93.8" cy="43.0" r="0.62"/><circle cx="94.6" cy="44.5" r="0.62"/><circle cx="96.6" cy="43.6" r="0.62"/><circle cx="96.7" cy="45.7" r="0.62"/>
+      </g>
+    </mask>
+  </defs>
 
-    <!-- Sun, rising behind the ridge -->
-    <circle cx="30" cy="21" r="5.4" stroke-width="2"/>
+  <g clip-path="url(#mark-interior)">
+    <!-- Far ridge: a heavy stippled band, thicker at the left as in the
+         original, peaking just under the sun. -->
+    <path class="mark__ridge" fill="currentColor" mask="url(#mark-stipple)"
+          d="M0 45.5 Q 27 36.5 54.1 29.9 Q 78 34.8 100 43.2
+             L100 48.6 Q 78 41.5 54.1 38.9 Q 27 46.5 0 55.5 Z"/>
 
-    <!-- The ridge: two lines meeting at a shallow peak, as on the original -->
-    <path d="M4 34 Q 30 24 56 33" stroke-width="2"/>
-    <path d="M4 41 Q 30 31 56 40" stroke-width="2"/>
+    <!-- Nearer hill, peaking left of the sun and crossing behind the tree. -->
+    <path class="mark__hill" fill="none" stroke="currentColor" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round"
+          d="M0 63.5 Q 22 54 42.5 45.6 Q 66 53 100 61.5"/>
+
+    <!-- Sun: a ring at the crest, a shade right of centre. -->
+    <circle class="mark__sun" cx="51.6" cy="26" r="7.1"
+            fill="none" stroke="currentColor" stroke-width="1.9"/>
+
+    <!-- Tree: a nearly straight trunk running to the ground, with two stubs. -->
+    <path class="mark__trunk" fill="none" stroke="currentColor" stroke-width="2.4"
+          stroke-linecap="round"
+          d="M52.7 118 C 52.2 100, 53.1 84, 52.4 68 C 52.1 61, 52.9 56, 53.6 51.5"/>
+    <path class="mark__trunk" fill="none" stroke="currentColor" stroke-width="1.6"
+          stroke-linecap="round"
+          d="M52.5 76 L 47.8 71.6 M52.4 66 L 57.4 62.4"/>
+
+    <!-- Fourteen fruit, in four staggered columns. -->
+    <g class="mark__fruit" fill="currentColor">
+      <circle cx="44.6" cy="56.5" r="5.15"/>
+      <circle cx="60.0" cy="63.2" r="5.15"/>
+      <circle cx="33.6" cy="65.4" r="5.15"/>
+      <circle cx="44.6" cy="70.1" r="5.15"/>
+      <circle cx="72.9" cy="70.4" r="5.15"/>
+      <circle cx="60.8" cy="75.4" r="5.15"/>
+      <circle cx="33.3" cy="79.4" r="5.15"/>
+      <circle cx="72.8" cy="81.2" r="5.15"/>
+      <circle cx="44.5" cy="83.5" r="5.15"/>
+      <circle cx="61.4" cy="88.6" r="5.15"/>
+      <circle cx="33.4" cy="91.7" r="5.15"/>
+      <circle cx="73.3" cy="92.9" r="5.15"/>
+      <circle cx="44.5" cy="95.3" r="5.15"/>
+      <circle cx="61.5" cy="99.9" r="5.15"/>
+    </g>
   </g>
 
-  <!-- Field texture between the ridge lines. Hidden at small sizes (see
-       .mark--compact) where these dots read as dirt on the screen rather
-       than as a ploughed field. -->
-  <g class="mark__texture" fill="currentColor" opacity="0.55">
-    <circle cx="10" cy="36.6" r="0.75"/><circle cx="15" cy="35.3" r="0.75"/>
-    <circle cx="20" cy="34.2" r="0.75"/><circle cx="25" cy="33.4" r="0.75"/>
-    <circle cx="30" cy="33.1" r="0.75"/><circle cx="35" cy="33.4" r="0.75"/>
-    <circle cx="40" cy="34.1" r="0.75"/><circle cx="45" cy="35.1" r="0.75"/>
-    <circle cx="50" cy="36.3" r="0.75"/>
-    <circle cx="12.5" cy="39.2" r="0.75"/><circle cx="17.5" cy="37.9" r="0.75"/>
-    <circle cx="22.5" cy="36.9" r="0.75"/><circle cx="27.5" cy="36.3" r="0.75"/>
-    <circle cx="32.5" cy="36.3" r="0.75"/><circle cx="37.5" cy="36.8" r="0.75"/>
-    <circle cx="42.5" cy="37.6" r="0.75"/><circle cx="47.5" cy="38.7" r="0.75"/>
-  </g>
-
-  <!-- Tree: trunk, two branches, and the fruit -->
-  <g fill="none" stroke="currentColor" stroke-width="2"
-     stroke-linecap="round" stroke-linejoin="round">
-    <path d="M30 60 V 42"/>
-    <path d="M30 50 l -5 -4"/>
-    <path d="M30 53 l 5 -4"/>
-  </g>
-
-  <g fill="currentColor">
-    <circle cx="30" cy="41" r="2.6"/>
-    <circle cx="23" cy="45" r="2.6"/><circle cx="37" cy="45" r="2.6"/>
-    <circle cx="18" cy="50" r="2.6"/><circle cx="42" cy="50" r="2.6"/>
-    <circle cx="25" cy="51" r="2.6"/><circle cx="35" cy="51" r="2.6"/>
-    <circle cx="20" cy="56" r="2.6"/><circle cx="40" cy="56" r="2.6"/>
-    <circle cx="27" cy="57" r="2.6"/><circle cx="33" cy="57" r="2.6"/>
-  </g>
+  <!-- Frame last, so it sits cleanly over anything reaching the edge. -->
+  <rect class="mark__frame" x="2.6" y="2.6" width="94.8" height="116.8" rx="5.5"
+        fill="none" stroke="currentColor" stroke-width="5.2"/>
 </svg>
