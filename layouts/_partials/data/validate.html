@@ -1,0 +1,92 @@
+{{- /*
+  BUILD-TIME ASSERTIONS
+
+  Hugo has no test runner. This partial is the substitute. It is called once
+  from baseof.html, and every `errorf` below fails the build with a non-zero
+  exit code, so CI catches these rather than a resident noticing.
+
+  It exists because a previous version of this site stored the office email in
+  both hugo.toml and a data file, they drifted, and the site shipped two
+  different spellings of the same address. See docs/DECISIONS.md #2.
+*/ -}}
+
+{{- $org := hugo.Data.organization -}}
+
+{{- if not $org -}}
+  {{- errorf "data/organization.yaml is missing or empty. Every page depends on it." -}}
+{{- end -}}
+
+{{- /* 1. Required top-level keys */ -}}
+{{- range $key := slice "legal_name" "short_name" "office" "emails" "dues" "meetings" "external" -}}
+  {{- if not (index $org $key) -}}
+    {{- errorf "data/organization.yaml: required key %q is missing." $key -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 2. Required office fields */ -}}
+{{- range $key := slice "street" "city" "state" "zip" "phone" "email" "hours" -}}
+  {{- if not (index $org.office $key) -}}
+    {{- errorf "data/organization.yaml: office.%s is missing." $key -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 3. Required email roles. Templates reference these by key, so a missing
+       one produces a silently empty mailto rather than a visible error. */ -}}
+{{- range $key := slice "general" "acc" "pool_rec" -}}
+  {{- if not (index $org.emails $key) -}}
+    {{- errorf "data/organization.yaml: emails.%s is missing. Templates reference this key by name." $key -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 4. THE ANTI-DUPLICATION RULE.
+       Organizational facts belong in data/organization.yaml and nowhere else.
+       If any of these reappear in hugo.toml [params], fail loudly and say why. */ -}}
+{{- range $key := slice "phone" "fax" "email" "address" "mailing" "officeHours" "office_hours" "contact" -}}
+  {{- if isset site.Params $key -}}
+    {{- errorf `hugo.toml [params].%s is an organizational fact and must not live in the config. Move it to data/organization.yaml so there is exactly one source of truth. This check exists because these values previously drifted between two files. See docs/DECISIONS.md #2.` $key -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 5. Dues must be internally consistent. The old site displayed an annual
+       figure that did not match four times the quarterly figure. */ -}}
+{{- with $org.dues -}}
+  {{- if and .annual .quarterly -}}
+    {{- if ne (int .annual) (mul (int .quarterly) 4) -}}
+      {{- errorf "data/organization.yaml: dues.annual (%v) does not equal 4 x dues.quarterly (%v). Residents pay against these numbers - one of them is wrong." .annual .quarterly -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 6. Every email_key reference across the data files must resolve to a real
+       address. This is what makes `email_key` safe to use instead of literal
+       addresses in committees.yaml and problems.yaml. */ -}}
+{{- with hugo.Data.committees -}}
+  {{- range .committees -}}
+    {{- with .email_key -}}
+      {{- if not (index $org.emails .) -}}
+        {{- errorf "data/committees.yaml: unknown email_key %q. Valid keys: %s" . (delimit (partial "util/map-keys.html" $org.emails) ", ") -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- with hugo.Data.problems -}}
+  {{- range .entries -}}
+    {{- with .email_key -}}
+      {{- if not (index $org.emails .) -}}
+        {{- errorf "data/problems.yaml: unknown email_key %q. Valid keys: %s" . (delimit (partial "util/map-keys.html" $org.emails) ", ") -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- /* 7. Every external service entry needs a label, and a URL unless it is
+       explicitly disabled. */ -}}
+{{- range $key, $svc := $org.external -}}
+  {{- if not $svc.label -}}
+    {{- errorf "data/organization.yaml: external.%s has no label." $key -}}
+  {{- end -}}
+  {{- if and (ne $svc.enabled false) (not $svc.url) (not $svc.portal_url) -}}
+    {{- errorf "data/organization.yaml: external.%s has no url. Set enabled:false to hide it instead of leaving the link empty." $key -}}
+  {{- end -}}
+{{- end -}}

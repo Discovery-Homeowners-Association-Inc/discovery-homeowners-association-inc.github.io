@@ -1,0 +1,25 @@
+{{ define "main" }}
+  <div class="section section--loose">
+    <div class="wrap wrap--prose stack-m">
+      <span class="eyebrow">Page not found</span>
+      <h1>We couldn&rsquo;t find that page</h1>
+      <p class="lede">
+        The link may be out of date, or the page may have moved when the site was
+        rebuilt. Here are the places people usually want.
+      </p>
+
+      <ul class="grid-auto grid-auto--narrow" role="list">
+        {{- range site.Menus.main }}
+        <li class="card card--linked card--quiet">
+          <h2 class="card__title"><a href="{{ .URL }}">{{ .Name }}</a></h2>
+        </li>
+        {{- end }}
+      </ul>
+
+      <p>
+        Still stuck? Call the office at {{ partial "util/phone-link.html" . }}
+        or email {{ partial "util/email-link.html" (dict "key" "general") }}.
+      </p>
+    </div>
+  </div>
+{{ end }}

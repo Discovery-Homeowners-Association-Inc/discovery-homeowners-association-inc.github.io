@@ -1,0 +1,33 @@
+{{- /*
+  Main navigation.
+
+  A native <details> element on mobile: it opens, closes and is keyboard
+  operable with no JavaScript at all. Above 56rem a media query hides the
+  summary and forces the panel open, so the same markup is a horizontal bar on
+  desktop.
+
+  assets/js/nav.js only adds Escape-to-close, outside-click-to-close and
+  aria-expanded mirroring. If it fails to load, the menu still works.
+*/ -}}
+
+<details class="nav" id="site-nav">
+  <summary class="nav__toggle" aria-label="Main menu">
+    <span class="nav__toggle-icon" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </span>
+    <span class="nav__toggle-text">Menu</span>
+  </summary>
+
+  <nav class="nav__panel" aria-label="Main">
+    <ul class="nav__list" role="list">
+      {{- range site.Menus.main }}
+      {{- $active := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) -}}
+      <li class="nav__item">
+        <a class="nav__link{{ if $active }} is-active{{ end }}"
+           href="{{ .URL }}"
+           {{ if $active }}aria-current="page"{{ end }}>{{ .Name }}</a>
+      </li>
+      {{- end }}
+    </ul>
+  </nav>
+</details>

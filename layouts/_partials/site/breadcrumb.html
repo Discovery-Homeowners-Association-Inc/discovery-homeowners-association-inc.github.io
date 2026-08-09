@@ -1,0 +1,16 @@
+{{- /* Ancestors are ordered deepest-first, so reverse them. Skipped on the
+       home page, where there is nothing to go back to. */ -}}
+{{- if not .IsHome }}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="wrap">
+    <ol class="breadcrumb__list" role="list">
+      {{- range .Ancestors.Reverse }}
+      <li class="breadcrumb__item">
+        <a href="{{ .RelPermalink }}">{{ if .IsHome }}Home{{ else }}{{ .Title }}{{ end }}</a>
+      </li>
+      {{- end }}
+      <li class="breadcrumb__item" aria-current="page">{{ .Title }}</li>
+    </ol>
+  </div>
+</nav>
+{{- end }}

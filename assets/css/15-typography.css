@@ -1,0 +1,184 @@
+/* ===========================================================================
+   TYPOGRAPHY
+   One self-hosted display face for headings; system stack for body copy.
+   =========================================================================== */
+
+/* Served from static/fonts/ at a stable, unfingerprinted URL, and preloaded in
+   the document head. The filename encodes the subset, so a future change to the
+   character set gets a new filename rather than a stale cache.
+   font-display:swap means text is readable immediately in Georgia and reflows
+   once Fraunces arrives. See static/fonts/README.md. */
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-display.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Headings ──────────────────────────────────────────────────────────── */
+
+h1, h2, h3,
+.h1, .h2, .h3 {
+  font-family: var(--font-display);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  font-variation-settings: "wght" 600;
+}
+
+h1, .h1 { font-size: var(--step-4); }
+h2, .h2 { font-size: var(--step-3); }
+h3, .h3 { font-size: var(--step-2); }
+
+h4, .h4 {
+  font-family: var(--font-body);
+  font-size: var(--step-1);
+  font-weight: 650;
+  line-height: var(--leading-snug);
+}
+
+h5, h6 {
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  font-weight: 650;
+  line-height: var(--leading-snug);
+}
+
+/* ── Eyebrow — small caps label above a heading ────────────────────────── */
+
+.eyebrow {
+  display: block;
+  margin-bottom: var(--space-2xs);
+  font-family: var(--font-body);
+  font-size: var(--step--1);
+  font-weight: 650;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-accent-text);
+}
+
+/* ── Lede — the opening paragraph of a page ────────────────────────────── */
+
+.lede {
+  font-size: var(--step-1);
+  line-height: var(--leading-snug);
+  color: var(--color-text-muted);
+  max-width: 55ch;
+}
+
+/* ── Prose — long-form markdown body copy ──────────────────────────────── */
+
+.prose {
+  max-width: var(--measure);
+}
+
+.prose > * + * {
+  margin-top: var(--space-s);
+}
+
+.prose > * + :is(h2, h3, h4) {
+  margin-top: var(--space-xl);
+}
+
+.prose :is(h2, h3, h4) + * {
+  margin-top: var(--space-xs);
+}
+
+/* A short terracotta rule under section headings, rather than a full-width
+   border. Quieter, and it reads as a mark rather than a divider. */
+.prose h2::after {
+  content: "";
+  display: block;
+  width: 2.5rem;
+  height: 3px;
+  margin-top: var(--space-2xs);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+}
+
+.prose :is(ul, ol) {
+  padding-left: 1.25em;
+}
+
+.prose li + li {
+  margin-top: var(--space-3xs);
+}
+
+.prose blockquote {
+  margin-inline: 0;
+  padding: var(--space-s) var(--space-m);
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 var(--radius-m) var(--radius-m) 0;
+  background: var(--color-surface-sunk);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.prose blockquote > * + * {
+  margin-top: var(--space-2xs);
+}
+
+.prose :is(code, kbd, samp) {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-s);
+  background: var(--color-surface-sunk);
+}
+
+.prose pre {
+  overflow-x: auto;
+  padding: var(--space-s);
+  border-radius: var(--radius-m);
+  background: var(--color-surface-sunk);
+}
+
+.prose pre code {
+  padding: 0;
+  background: none;
+}
+
+.prose strong {
+  font-weight: 650;
+}
+
+/* ── Heading anchors (added by the heading render hook) ────────────────── */
+
+.heading-anchor {
+  margin-left: 0.35em;
+  font-size: 0.75em;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+:is(h2, h3, h4):hover .heading-anchor,
+.heading-anchor:focus-visible {
+  opacity: 1;
+}
+
+/* Touch devices have no hover, so never hide the anchor there. */
+@media (hover: none) {
+  .heading-anchor { opacity: 0.5; }
+}
+
+/* ── Muted / small ─────────────────────────────────────────────────────── */
+
+.text-muted { color: var(--color-text-muted); }
+.text-small { font-size: var(--step--1); }
+.text-tiny  { font-size: var(--step--2); }
+
+/* ── Spanish blocks (the {{< es >}} shortcode) ─────────────────────────── */
+
+[lang="es"] {
+  padding: var(--space-m);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-m);
+  background: var(--color-surface-sunk);
+}
+
+[lang="es"] > * + * {
+  margin-top: var(--space-s);
+}

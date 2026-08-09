@@ -1,0 +1,94 @@
+/* ===========================================================================
+   BASE — document-level defaults
+   =========================================================================== */
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--color-bg);
+  color: var(--color-text);
+
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: var(--leading-body);
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* ── Links ─────────────────────────────────────────────────────────────── */
+
+a {
+  color: var(--color-primary);
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 0.08em;
+  transition: color var(--transition), text-decoration-color var(--transition);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+  text-decoration-color: currentColor;
+}
+
+/* ── Skip link ─────────────────────────────────────────────────────────── */
+
+.skip-link {
+  position: absolute;
+  top: var(--space-2xs);
+  left: var(--space-2xs);
+  z-index: 100;
+
+  padding: var(--space-2xs) var(--space-s);
+  border-radius: var(--radius-s);
+
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-weight: 600;
+  text-decoration: none;
+
+  /* Visually hidden until focused — not display:none, which is unfocusable. */
+  transform: translateY(-200%);
+  transition: transform var(--transition);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+  color: var(--color-on-primary);
+}
+
+/* ── Screen-reader-only ────────────────────────────────────────────────── */
+
+.visually-hidden:not(:focus):not(:active) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ── Horizontal rule ───────────────────────────────────────────────────── */
+
+hr {
+  height: 1px;
+  margin-block: var(--space-l);
+  border: 0;
+  background: var(--color-border);
+}
+
+/* ── Selection ─────────────────────────────────────────────────────────── */
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-text);
+}

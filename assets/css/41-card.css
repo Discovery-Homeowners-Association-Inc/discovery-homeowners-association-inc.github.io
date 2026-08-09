@@ -1,0 +1,134 @@
+/* ===========================================================================
+   CARDS
+   Container queries, not modifier classes: the same card markup works in a
+   three-up grid on the home page and full width in a list.
+   =========================================================================== */
+
+.card {
+  container-type: inline-size;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: var(--space-m);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-1);
+
+  transition: box-shadow var(--transition), border-color var(--transition),
+              transform var(--transition);
+}
+
+.card > * + * {
+  margin-top: var(--space-2xs);
+}
+
+.card__title {
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  line-height: var(--leading-snug);
+  font-variation-settings: "wght" 600;
+}
+
+.card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Make the whole card clickable without nesting interactive elements —
+   the pseudo-element covers the card, and the real link stays the focus target. */
+.card--linked {
+  position: relative;
+}
+
+.card--linked .card__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.card--linked:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-2);
+}
+
+.card--linked:has(a:focus-visible) {
+  outline: var(--ring);
+  outline-offset: 3px;
+}
+
+.card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3xs) var(--space-2xs);
+  align-items: center;
+  font-size: var(--step--1);
+  color: var(--color-text-muted);
+}
+
+.card__body {
+  color: var(--color-text-muted);
+}
+
+/* Pushes a footer to the bottom so cards in a row align. */
+.card__foot {
+  margin-top: auto;
+  padding-top: var(--space-s);
+}
+
+/* ── Media card: image above the text, edge to edge ────────────────────── */
+
+.card--media {
+  padding: 0;
+  overflow: hidden;
+}
+
+.card--media .card__figure {
+  margin: 0;
+  aspect-ratio: 16 / 10;
+  background: var(--color-surface-sunk);
+}
+
+.card--media .card__figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card--media .card__content {
+  padding: var(--space-m);
+}
+
+.card--media .card__content > * + * {
+  margin-top: var(--space-2xs);
+}
+
+/* When the card is wide enough, put the image beside the text instead.
+   Container query, so this depends on the card, not the viewport. */
+@container (min-width: 34rem) {
+  .card--media {
+    flex-direction: row;
+  }
+
+  .card--media .card__figure {
+    flex: 0 0 14rem;
+    aspect-ratio: auto;
+  }
+}
+
+/* ── Quiet card: no shadow, for dense lists ────────────────────────────── */
+
+.card--quiet {
+  box-shadow: none;
+  background: var(--color-surface-sunk);
+}
+
+/* ── Emphasised card: for the Pay Dues block ───────────────────────────── */
+
+.card--feature {
+  border-color: var(--color-primary);
+  border-width: 2px;
+  background: var(--color-primary-soft);
+}

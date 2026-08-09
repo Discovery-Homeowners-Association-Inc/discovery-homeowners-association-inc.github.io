@@ -1,0 +1,47 @@
+{{ define "main" }}
+  {{- /*
+    Generic section landing: the section's own copy, then its child pages as
+    cards.
+
+    This template is deliberately real and used. The previous version of this
+    site shipped a `_default/list.html` that no section ever rendered, and it
+    sat there as dead code. `hugo --printUnusedTemplates` in CI guards against
+    that returning.
+  */ -}}
+
+  {{ partial "site/breadcrumb.html" . }}
+
+  <div class="section">
+    <div class="wrap">
+
+      <header class="page-head">
+        <h1>{{ .Title }}</h1>
+        {{- with or .Params.summary .Description }}
+        <p class="lede">{{ . }}</p>
+        {{- end }}
+      </header>
+
+      {{- with .Content }}
+      <div class="prose">{{ . }}</div>
+      {{- end }}
+
+      {{- $children := .Pages.ByWeight -}}
+      {{- with $children }}
+      <ul class="grid-auto grid-auto--feature section-children" role="list">
+        {{- range . }}
+        <li class="card card--linked">
+          <h2 class="card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{- with or .Params.summary .Description }}
+          <p class="card__body">{{ . }}</p>
+          {{- end }}
+          <p class="card__foot text-small">
+            <span class="link-arrow">Read more {{ partial "ui/icon.html" "arrow" }}</span>
+          </p>
+        </li>
+        {{- end }}
+      </ul>
+      {{- end }}
+
+    </div>
+  </div>
+{{ end }}

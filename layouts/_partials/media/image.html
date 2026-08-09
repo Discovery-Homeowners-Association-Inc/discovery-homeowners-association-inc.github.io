@@ -1,0 +1,80 @@
+{{- /*
+  Responsive <picture> for an image referenced from front matter.
+
+    {{ partial "media/image.html" (dict "src" .Params.hero "alt" .Params.hero_alt) }}
+    {{ partial "media/image.html" (dict "src" $p.image "alt" $p.image_alt
+                                        "sizes" "(min-width: 56rem) 20rem, 100vw") }}
+
+  Emits WebP with a JPEG fallback. Hugo cannot encode AVIF, so the ladder stops
+  at WebP — do not add a Node image tool to chase it.
+
+  Every image carries explicit width and height so the page never shifts as
+  images load (CLS).
+
+  Params:
+    src      - required: CMS media path
+    alt      - required: empty string is allowed ONLY for decorative images,
+               and must be passed explicitly so it is a decision, not a default
+    sizes    - optional: defaults to a sensible full-width value
+    priority - optional: true for the LCP image (no lazy loading, high priority)
+    class    - optional
+    page     - optional: improves the warning message on a bad path
+*/ -}}
+
+{{- $src := .src -}}
+{{- $alt := .alt -}}
+{{- $sizes := .sizes | default "(min-width: 72rem) 68rem, 100vw" -}}
+{{- $priority := .priority | default false -}}
+{{- $class := .class -}}
+{{- $page := .page -}}
+
+{{- /* Alt text is required. An image with no alt is invisible to a screen
+       reader, so this warns — and fails CI — rather than shipping silently.
+       Decorative images must pass alt="" explicitly. */ -}}
+{{- if and (not (isset . "alt")) $src -}}
+  {{- $where := "" -}}
+  {{- with $page -}}{{- $where = printf " on %s" .RelPermalink -}}{{- end -}}
+  {{- warnf `media/image.html: no alt text for %q%s. Pass alt="" if the image is decorative.` $src $where -}}
+{{- end -}}
+
+{{- $res := partial "media/resolve.html" (dict "src" $src "page" $page) -}}
+
+{{- with $res -}}
+  {{- $widths := site.Params.imageWidths | default (slice 400 640 900 1280 1800) -}}
+
+  {{- /* Never upscale: drop any target wider than the original. */ -}}
+  {{- $usable := slice -}}
+  {{- range $widths -}}
+    {{- if le . $res.Width -}}{{- $usable = $usable | append . -}}{{- end -}}
+  {{- end -}}
+  {{- if not $usable -}}{{- $usable = slice $res.Width -}}{{- end -}}
+
+  {{- $webp := slice -}}
+  {{- $jpeg := slice -}}
+  {{- range $usable -}}
+    {{- $w := . -}}
+    {{- with $res.Resize (printf "%dx webp q82" $w) -}}
+      {{- $webp = $webp | append (printf "%s %dw" .RelPermalink $w) -}}
+    {{- end -}}
+    {{- with $res.Resize (printf "%dx jpg q82" $w) -}}
+      {{- $jpeg = $jpeg | append (printf "%s %dw" .RelPermalink $w) -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- /* The <img> fallback uses the largest usable width so its intrinsic
+         dimensions are correct even if srcset is ignored. */ -}}
+  {{- $fallback := $res.Resize (printf "%dx jpg q82" (index (last 1 $usable) 0)) -}}
+
+  <picture>
+    <source type="image/webp" srcset="{{ delimit $webp ", " }}" sizes="{{ $sizes }}">
+    <img
+      src="{{ $fallback.RelPermalink }}"
+      srcset="{{ delimit $jpeg ", " }}"
+      sizes="{{ $sizes }}"
+      width="{{ $fallback.Width }}"
+      height="{{ $fallback.Height }}"
+      alt="{{ $alt }}"
+      {{ if $priority }}fetchpriority="high" decoding="async"{{ else }}loading="lazy" decoding="async"{{ end }}
+      {{- with $class }} class="{{ . }}"{{ end }}>
+  </picture>
+{{- end -}}

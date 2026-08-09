@@ -1,0 +1,181 @@
+/* ===========================================================================
+   NAVIGATION
+
+   One markup structure, two presentations:
+     < 56rem  a <details> disclosure — a real dropdown drawer, no JS needed
+     >= 56rem the summary is hidden and the panel is forced open as a bar
+
+   Nothing here depends on JavaScript. assets/js/nav.js only adds
+   Escape-to-close and outside-click-to-close.
+   =========================================================================== */
+
+.nav {
+  position: static;
+}
+
+/* ── Toggle (mobile only) ──────────────────────────────────────────────── */
+
+.nav__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+
+  min-height: 2.75rem;
+  padding: var(--space-3xs) var(--space-2xs);
+  border-radius: var(--radius-pill);
+
+  font-size: var(--step--1);
+  font-weight: 650;
+  cursor: pointer;
+  list-style: none;          /* remove the default disclosure triangle */
+}
+
+.nav__toggle::-webkit-details-marker {
+  display: none;
+}
+
+.nav__toggle:hover {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+/* Hamburger that becomes an X when open. */
+.nav__toggle-icon {
+  position: relative;
+  width: 1.25rem;
+  height: 0.875rem;
+  flex: none;
+}
+
+.nav__toggle-icon span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.nav__toggle-icon span:nth-child(1) { top: 0; }
+.nav__toggle-icon span:nth-child(2) { top: 50%; translate: 0 -50%; }
+.nav__toggle-icon span:nth-child(3) { bottom: 0; }
+
+.nav[open] .nav__toggle-icon span:nth-child(1) {
+  top: 50%;
+  translate: 0 -50%;
+  rotate: 45deg;
+}
+
+.nav[open] .nav__toggle-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav[open] .nav__toggle-icon span:nth-child(3) {
+  bottom: auto;
+  top: 50%;
+  translate: 0 -50%;
+  rotate: -45deg;
+}
+
+/* ── Panel ─────────────────────────────────────────────────────────────── */
+
+.nav__panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+
+  padding: var(--space-2xs) var(--space-s) var(--space-m);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-2);
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav__link {
+  display: block;
+  padding: var(--space-xs) var(--space-2xs);   /* comfortably over 44px tall */
+  border-radius: var(--radius-m);
+
+  color: var(--color-text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav__link:hover {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.nav__link.is-active {
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+/* ── Desktop ───────────────────────────────────────────────────────────── */
+
+@media (min-width: 56rem) {
+  .nav__toggle {
+    display: none;
+  }
+
+  /* Reveal the panel regardless of the <details> open state, so the disclosure
+     has no effect at this width.
+
+     Two rules are needed because browsers hide closed <details> content in two
+     different ways. Firefox and Safari hide the child, which `display:block`
+     overrides. Chrome hides the ::details-content pseudo-element that wraps it,
+     so the child computes as visible with a real height but is never painted —
+     only the pseudo-element rule reaches it. */
+  .nav::details-content {
+    content-visibility: visible;
+    block-size: auto;
+    overflow: visible;
+  }
+
+  .nav__panel {
+    display: block !important;
+    position: static;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-3xs);
+  }
+
+  .nav__link {
+    padding: var(--space-2xs) var(--space-xs);
+    font-size: var(--step--1);
+    white-space: nowrap;
+  }
+
+  /* A quiet underline for the current section rather than a filled pill. */
+  .nav__link.is-active {
+    background: none;
+    box-shadow: inset 0 -2px 0 var(--color-accent);
+    border-radius: 0;
+  }
+}
+
+/* Between the widest phone and the desktop bar there is not room for seven
+   items plus the brand, so keep the drawer until there genuinely is. */
+@media (min-width: 56rem) and (max-width: 68rem) {
+  .nav__link {
+    padding-inline: var(--space-2xs);
+    font-size: var(--step--2);
+  }
+}

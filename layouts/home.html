@@ -1,0 +1,81 @@
+{{ define "main" }}
+  {{- $org := hugo.Data.organization -}}
+
+  {{- /* ── Hero ──────────────────────────────────────────────────────────
+       A real photograph of the neighborhood, not a gradient. The scrim is a
+       warm overlay so the headline stays legible over any image. */ -}}
+  <section class="hero">
+    {{- with .Params.hero }}
+    <div class="hero__media">
+      {{ partial "media/image.html" (dict
+          "src" .
+          "alt" ($.Params.hero_alt | default "")
+          "sizes" "100vw"
+          "priority" true
+          "class" "hero__img") }}
+    </div>
+    {{- end }}
+
+    <div class="hero__body">
+      <div class="wrap">
+        <h1 class="hero__title">
+          {{ .Params.hero_heading | default $org.tagline }}
+        </h1>
+        {{- with .Params.hero_sub }}
+        <p class="hero__sub">{{ . }}</p>
+        {{- end }}
+
+        <div class="btn-group btn-group--stack hero__actions">
+          {{- with partial "util/external-url.html" (dict "key" "payhoa" "field" "pay_url") }}
+          <a class="btn btn--accent btn--large" href="{{ . }}" target="_blank" rel="noopener">
+            {{ partial "ui/icon.html" "payment" }}
+            {{ $org.external.payhoa.label }}
+          </a>
+          {{- end }}
+          {{- with partial "util/external-url.html" (dict "key" "payhoa" "field" "portal_url") }}
+          <a class="btn btn--outline btn--large hero__portal" href="{{ . }}" target="_blank" rel="noopener">
+            {{ $org.external.payhoa.portal_label }}
+            {{ partial "ui/icon.html" "external" }}
+          </a>
+          {{- end }}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{- /* ── Quick links ───────────────────────────────────────────────────
+       The handful of things residents actually arrive looking for. Editable
+       from the CMS as a list, capped at six. */ -}}
+  {{- with .Params.quick_links }}
+  <section class="section section--tight">
+    <div class="wrap">
+      <h2 class="visually-hidden">Quick links</h2>
+      <ul class="grid-auto grid-auto--narrow quick-links" role="list">
+        {{- range . }}
+        <li class="card card--linked quick-link">
+          <span class="quick-link__icon" aria-hidden="true">
+            {{- partial "ui/icon.html" (.icon | default "arrow") -}}
+          </span>
+          <h3 class="card__title"><a href="{{ .url }}">{{ .label }}</a></h3>
+          {{- with .note }}<p class="card__body text-small">{{ . }}</p>{{ end }}
+        </li>
+        {{- end }}
+      </ul>
+    </div>
+  </section>
+  {{- end }}
+
+  {{- /* ── Welcome copy + office card ────────────────────────────────── */}}
+  <section class="section">
+    <div class="wrap with-rail">
+      <div class="prose">
+        {{ .Content }}
+      </div>
+
+      <aside class="stack-m">
+        {{ partial "content/contact-block.html" . }}
+        {{ partial "content/dues-block.html" . }}
+      </aside>
+    </div>
+  </section>
+{{ end }}

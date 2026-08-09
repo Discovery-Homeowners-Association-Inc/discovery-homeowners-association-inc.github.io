@@ -1,0 +1,46 @@
+{{- $org := hugo.Data.organization -}}
+{{- $payUrl := partial "util/external-url.html" (dict "key" "payhoa" "field" "pay_url") -}}
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+
+    <a class="site-brand" href="{{ "/" | relURL }}">
+      <span class="site-brand__mark" aria-hidden="true">
+        {{- partial "ui/icon.html" "home" -}}
+      </span>
+      <span class="site-brand__text">
+        <span class="site-brand__name">{{ site.Params.logoText }}</span>
+        <span class="site-brand__sub">{{ $org.locality }}, {{ $org.state_abbr }}</span>
+      </span>
+    </a>
+
+    {{ partial "site/nav.html" . }}
+
+    <div class="site-header__actions">
+      {{- /* Plain GET form: works with JavaScript disabled, and only the
+             /search/ page loads any search code. */ -}}
+      <form class="site-search" action="{{ "/search/" | relURL }}" method="get" role="search">
+        <label class="visually-hidden" for="site-search-input">Search this site</label>
+        <input
+          id="site-search-input"
+          class="site-search__input"
+          type="search"
+          name="q"
+          placeholder="Search…"
+          autocomplete="off">
+        <button class="site-search__submit" type="submit">
+          <span class="visually-hidden">Search</span>
+          {{- partial "ui/icon.html" "search" -}}
+        </button>
+      </form>
+
+      {{- with $payUrl }}
+      <a class="btn btn--accent btn--small site-header__pay" href="{{ . }}"
+         target="_blank" rel="noopener">
+        {{ $org.external.payhoa.label }}
+      </a>
+      {{- end }}
+    </div>
+
+  </div>
+</header>

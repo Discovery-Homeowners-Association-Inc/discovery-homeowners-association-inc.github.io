@@ -1,0 +1,166 @@
+/* ===========================================================================
+   TOKENS
+   The only file that defines a raw colour, a font stack, or a size.
+   Everything downstream references the semantic layer, never --c-* directly.
+
+   Design direction: "warm & neighborly" — sand paper, deep planted green,
+   terracotta. Reads as a place people live, not a management portal.
+   =========================================================================== */
+
+:root {
+  color-scheme: light dark;
+
+  /* ── Raw palette ──────────────────────────────────────────────────────── */
+  --c-green-900: #16301f;
+  --c-green-800: #1e4029;
+  --c-green-700: #2f5d43;
+  --c-green-500: #4e8664;
+  --c-green-200: #bcd6c5;
+  --c-green-50:  #eef4ef;
+
+  --c-clay-700:  #8f4227;
+  --c-clay-600:  #b4593a;
+  --c-clay-400:  #d98a6a;
+  --c-clay-100:  #f6e2d8;
+
+  --c-sand-50:   #faf6ef;
+  --c-sand-100:  #f4ede1;
+  --c-sand-200:  #e7dbc8;
+  --c-sand-300:  #d6c6ab;
+
+  --c-ink-900:   #22201c;
+  --c-ink-700:   #3f3a33;
+  --c-ink-500:   #6b6259;
+
+  --c-white:     #fffdf9;
+
+  /* ── Semantic colour ──────────────────────────────────────────────────── */
+  --color-bg:            var(--c-sand-50);
+  --color-bg-alt:        var(--c-sand-100);
+  --color-surface:       var(--c-white);
+  --color-surface-sunk:  var(--c-sand-100);
+
+  --color-text:          var(--c-ink-900);
+  --color-text-muted:    var(--c-ink-500);
+
+  --color-primary:       var(--c-green-700);
+  --color-primary-hover: var(--c-green-800);
+  --color-primary-soft:  var(--c-green-50);
+  --color-on-primary:    var(--c-white);
+
+  /* Accent clears 4.5:1 on --color-bg but not by much, so it is used for
+     rules, borders, badges and large text. Accent-coloured body copy uses
+     --color-accent-text instead. */
+  --color-accent:        var(--c-clay-600);
+  --color-accent-hover:  var(--c-clay-700);
+  --color-accent-text:   var(--c-clay-700);
+  --color-accent-soft:   var(--c-clay-100);
+  --color-on-accent:     var(--c-white);
+
+  --color-border:        var(--c-sand-200);
+  --color-border-strong: var(--c-sand-300);
+  --color-focus:         var(--c-clay-600);
+
+  --color-scrim:         rgb(28 24 18 / .55);
+
+  /* ── Type ─────────────────────────────────────────────────────────────── */
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  /* Fraunces is self-hosted and loaded only if the file is present; Georgia is
+     a genuine fallback, not a placeholder. */
+  --font-display: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Fluid scale. clamp() removes most of the breakpoints a fixed scale needs. */
+  --step--2: clamp(0.78rem, 0.76rem + 0.10vw, 0.84rem);
+  --step--1: clamp(0.875rem, 0.845rem + 0.15vw, 0.95rem);
+  --step-0:  clamp(1rem, 0.96rem + 0.20vw, 1.125rem);
+  --step-1:  clamp(1.2rem, 1.13rem + 0.35vw, 1.4rem);
+  --step-2:  clamp(1.45rem, 1.33rem + 0.60vw, 1.85rem);
+  --step-3:  clamp(1.75rem, 1.55rem + 1.00vw, 2.5rem);
+  --step-4:  clamp(2.1rem, 1.75rem + 1.75vw, 3.4rem);
+
+  --leading-tight: 1.15;
+  --leading-snug:  1.35;
+  --leading-body:  1.65;
+
+  --tracking-tight: -0.015em;
+  --tracking-wide:   0.06em;
+
+  --measure: 66ch;
+
+  /* ── Space (4px base, fluid at the top end) ───────────────────────────── */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs:  0.75rem;
+  --space-s:   1rem;
+  --space-m:   1.5rem;
+  --space-l:   2rem;
+  --space-xl:  clamp(2.5rem, 2rem + 2vw, 4rem);
+  --space-2xl: clamp(4rem, 3rem + 4vw, 7rem);
+
+  /* ── Shape & depth ────────────────────────────────────────────────────── */
+  --radius-s:    0.375rem;
+  --radius-m:    0.75rem;
+  --radius-l:    1.25rem;
+  --radius-pill: 999px;
+
+  --shadow-1: 0 1px 2px rgb(34 32 28 / .06), 0 2px 8px rgb(34 32 28 / .05);
+  --shadow-2: 0 4px 12px rgb(34 32 28 / .08), 0 12px 32px rgb(34 32 28 / .07);
+
+  --ring: 3px solid var(--color-focus);
+
+  /* ── Measure ──────────────────────────────────────────────────────────── */
+  --width-content: 72rem;
+  --width-prose:   44rem;
+  --width-wide:    82rem;
+
+  --transition: 150ms ease;
+}
+
+/* ── Dark mode ───────────────────────────────────────────────────────────
+   Media query only. No toggle means no JavaScript and no flash of the wrong
+   theme on first paint. Primary and accent are lightened to hold contrast
+   against a dark ground. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:            #17150f;
+    --color-bg-alt:        #1f1c15;
+    --color-surface:       #221f18;
+    --color-surface-sunk:  #1b1811;
+
+    --color-text:          #f0e9dc;
+    --color-text-muted:    #b6ab98;
+
+    --color-primary:       #7fb392;
+    --color-primary-hover: #9ac9ac;
+    --color-primary-soft:  #1e2a22;
+    --color-on-primary:    #10241a;
+
+    --color-accent:        #e39b7c;
+    --color-accent-hover:  #f0b294;
+    --color-accent-text:   #e39b7c;
+    --color-accent-soft:   #2e2019;
+    --color-on-accent:     #2a1409;
+
+    --color-border:        #3a352a;
+    --color-border-strong: #4d4638;
+    --color-focus:         #e39b7c;
+
+    --color-scrim:         rgb(8 7 5 / .62);
+
+    --shadow-1: 0 1px 2px rgb(0 0 0 / .5);
+    --shadow-2: 0 8px 28px rgb(0 0 0 / .55);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

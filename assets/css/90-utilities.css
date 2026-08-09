@@ -1,0 +1,62 @@
+/* ===========================================================================
+   UTILITIES — icon sizing, dev banner, small helpers
+   Last in the cascade so these can override component defaults.
+   =========================================================================== */
+
+.icon {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  vertical-align: -0.18em;
+  flex: none;
+}
+
+.icon--large { width: 1.5em; height: 1.5em; }
+.icon--small { width: 0.95em; height: 0.95em; }
+
+/* ── External link marker (added by the link render hook) ──────────────── */
+
+.link-external .icon {
+  width: 0.8em;
+  height: 0.8em;
+  margin-left: 0.15em;
+  color: var(--color-text-muted);
+}
+
+/* ── Development-only placeholder banner ───────────────────────────────── */
+
+.dev-banner {
+  padding-block: var(--space-2xs);
+  background: #fde68a;
+  color: #422006;
+  font-size: var(--step--1);
+  border-bottom: 2px solid #b45309;
+}
+
+.dev-banner__title {
+  margin: 0;
+}
+
+.dev-banner__list {
+  margin: var(--space-3xs) 0 0;
+  padding-left: 1.1em;
+}
+
+.dev-banner code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+.dev-banner .text-muted {
+  color: #713f12;
+}
+
+/* ── Spacing helpers ───────────────────────────────────────────────────── */
+
+.mt-0 { margin-top: 0 !important; }
+.mt-s { margin-top: var(--space-s) !important; }
+.mt-m { margin-top: var(--space-m) !important; }
+.mt-l { margin-top: var(--space-l) !important; }
+
+.center { text-align: center; }
+.nowrap { white-space: nowrap; }

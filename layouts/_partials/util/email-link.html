@@ -1,0 +1,30 @@
+{{- /*
+  Renders a mailto link for one of the association's role addresses.
+
+  Always call this with a KEY, never a literal address — that is what keeps
+  every email on the site pointing at data/organization.yaml.
+
+    {{ partial "util/email-link.html" (dict "key" "acc") }}
+    {{ partial "util/email-link.html" (dict "key" "general" "label" "Email the office") }}
+    {{ partial "util/email-link.html" (dict "key" "pool_rec" "subject" "Pool pass question") }}
+
+  Params:
+    key     - required: general | acc | pool_rec (validated in data/validate.html)
+    label   - optional link text; defaults to the address itself
+    subject - optional mailto subject line
+    class   - optional CSS class
+*/ -}}
+
+{{- $emails := hugo.Data.organization.emails -}}
+{{- $addr := index $emails .key -}}
+
+{{- if not $addr -}}
+  {{- errorf "util/email-link.html: unknown email key %q. Valid keys: %s" .key (delimit (partial "util/map-keys.html" $emails) ", ") -}}
+{{- end -}}
+
+{{- $href := printf "mailto:%s" $addr -}}
+{{- with .subject -}}
+  {{- $href = printf "%s?subject=%s" $href (. | urlquery) -}}
+{{- end -}}
+
+<a href="{{ $href }}"{{ with .class }} class="{{ . }}"{{ end }}>{{ or .label $addr }}</a>

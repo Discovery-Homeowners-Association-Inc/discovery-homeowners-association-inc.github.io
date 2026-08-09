@@ -1,0 +1,121 @@
+/* ===========================================================================
+   LAYOUT
+   Intrinsic layouts. One auto-fit grid rule covers the card grids on the home
+   page, every section landing, the documents library and the events list —
+   which is why this file is short and there are only three breakpoints in the
+   whole stylesheet.
+   =========================================================================== */
+
+/* ── Containers ────────────────────────────────────────────────────────── */
+
+.wrap {
+  width: 100%;
+  max-width: var(--width-content);
+  margin-inline: auto;
+  padding-inline: var(--space-s);
+}
+
+.wrap--wide  { max-width: var(--width-wide); }
+.wrap--prose { max-width: var(--width-prose); }
+
+@media (min-width: 40rem) {
+  .wrap { padding-inline: var(--space-m); }
+}
+
+/* ── Vertical rhythm between page sections ─────────────────────────────── */
+
+.section {
+  padding-block: var(--space-xl);
+}
+
+.section--tight { padding-block: var(--space-l); }
+.section--loose { padding-block: var(--space-2xl); }
+
+.section--alt {
+  background: var(--color-bg-alt);
+}
+
+.section__head {
+  margin-bottom: var(--space-l);
+}
+
+.section__head > * + * {
+  margin-top: var(--space-2xs);
+}
+
+/* A section heading with a "see all" link pushed to the right. */
+.section__head--row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+/* ── The one grid ──────────────────────────────────────────────────────── */
+
+.grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+  gap: var(--space-m);
+}
+
+.grid-auto--narrow {
+  grid-template-columns: repeat(auto-fit, minmax(min(14rem, 100%), 1fr));
+}
+
+.grid-auto--wide {
+  grid-template-columns: repeat(auto-fit, minmax(min(24rem, 100%), 1fr));
+}
+
+/* Section landings: the first card spans two columns so the page does not read
+   as a uniform template. Only once there is room for it. */
+@media (min-width: 56rem) {
+  .grid-auto--feature > :first-child {
+    grid-column: span 2;
+  }
+}
+
+/* ── Sidebar layout: content plus a rail that drops below on narrow screens ─ */
+
+.with-rail {
+  display: grid;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+@media (min-width: 56rem) {
+  .with-rail {
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem);
+  }
+
+  .with-rail--left {
+    grid-template-columns: minmax(16rem, 22rem) minmax(0, 1fr);
+  }
+}
+
+/* ── Stack: vertical flow with a consistent gap ────────────────────────── */
+
+.stack > * + * { margin-top: var(--space-s); }
+.stack-s > * + * { margin-top: var(--space-2xs); }
+.stack-m > * + * { margin-top: var(--space-m); }
+.stack-l > * + * { margin-top: var(--space-l); }
+
+/* ── Cluster: inline items that wrap ───────────────────────────────────── */
+
+.cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-s);
+  align-items: center;
+}
+
+.cluster--tight { gap: var(--space-3xs) var(--space-2xs); }
+
+/* ── Full-bleed: escape the container without a wrapper ────────────────── */
+
+.full-bleed {
+  width: 100vw;
+  margin-left: 50%;
+  translate: -50% 0;
+}

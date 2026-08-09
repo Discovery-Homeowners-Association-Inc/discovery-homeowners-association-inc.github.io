@@ -1,0 +1,43 @@
+{{- $dues := hugo.Data.organization.dues -}}
+
+<div class="card card--feature info-card">
+  <h2 class="card__title">
+    {{ partial "ui/icon.html" "payment" }}
+    {{ $dues.year }} assessment
+  </h2>
+
+  <p class="dues-amount">
+    <strong>${{ $dues.annual }}</strong>
+    <span class="text-muted">per year</span>
+  </p>
+
+  <p class="text-small">
+    Or four quarterly payments of <strong>${{ $dues.quarterly }}</strong>, due
+    {{ delimit $dues.due_dates ", " " and " }}.
+    {{- with $dues.pay_in_full_note }} {{ . }}{{ end }}
+  </p>
+
+  {{- with $dues.late_penalty }}
+  <p class="text-small text-muted">Late payments accrue {{ . }}.</p>
+  {{- end }}
+
+  {{- with $dues.zelle }}
+  {{- if .enabled }}
+  <div class="zelle">
+    <h3 class="zelle__title">Paying by Zelle</h3>
+    <dl class="zelle__detail">
+      <dt>Send to</dt>
+      <dd>{{ .recipient }}<br><code>{{ .identifier }}</code></dd>
+    </dl>
+    <p class="text-small">{{ .memo_instruction }}</p>
+  </div>
+  {{- end }}
+  {{- end }}
+
+  {{- if $dues.no_cash_dropbox }}
+  <p class="text-small callout callout--warning">
+    {{ partial "ui/icon.html" "alert" }}
+    Please don&rsquo;t put cash in the drop box.
+  </p>
+  {{- end }}
+</div>

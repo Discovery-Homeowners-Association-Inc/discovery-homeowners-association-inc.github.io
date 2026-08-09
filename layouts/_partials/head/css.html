@@ -1,0 +1,23 @@
+{{- /*
+  CSS pipeline — no Node, no Sass, no PostCSS.
+
+  Files in assets/css/ are concatenated in FILENAME ORDER, which is why they
+  carry numeric prefixes (00-tokens, 05-reset, 10-base …). The cascade order is
+  the filename order, so adding a stylesheet needs no change here.
+
+  `[[build.cachebusters]]` in hugo.toml makes `hugo server` rebuild this bundle
+  when any part changes.
+*/ -}}
+
+{{- $parts := sort (resources.Match "css/*.css") "Name" -}}
+{{- if not $parts -}}
+  {{- errorf "No stylesheets found in assets/css/. The site would render unstyled." -}}
+{{- end -}}
+
+{{- $css := $parts | resources.Concat "css/site.css" -}}
+{{- if hugo.IsProduction -}}
+  {{- $css = $css | minify | fingerprint "sha256" -}}
+{{- end -}}
+
+<link rel="stylesheet" href="{{ $css.RelPermalink }}"
+  {{- with $css.Data.Integrity }} integrity="{{ . }}"{{ end }}>

@@ -1,0 +1,34 @@
+{{- /*
+  JavaScript.
+
+  Bundled by esbuild, which ships inside the Hugo extended binary — there is no
+  Node in this build. Every script is deferred, fingerprinted and
+  integrity-checked, and loaded ONLY on the pages that need it.
+
+  Budget: every page except /search/ ships one ~18-line file. See
+  docs/DECISIONS.md and the plan's JavaScript budget.
+*/ -}}
+
+{{- $opts := dict "minify" hugo.IsProduction "target" "es2020" -}}
+
+{{- /* Collect the scripts this particular page needs. */ -}}
+{{- $scripts := slice "js/nav.js" -}}
+
+{{- if eq .Layout "search" -}}
+  {{- $scripts = $scripts | append "js/search.js" -}}
+{{- end -}}
+
+{{- if eq .Section "documents" -}}
+  {{- $scripts = $scripts | append "js/doc-filter.js" -}}
+{{- end -}}
+
+{{- range $scripts -}}
+  {{- with resources.Get . -}}
+    {{- $js := . | js.Build $opts -}}
+    {{- if hugo.IsProduction -}}
+      {{- $js = $js | fingerprint "sha256" -}}
+    {{- end -}}
+    <script defer src="{{ $js.RelPermalink }}"
+      {{- with $js.Data.Integrity }} integrity="{{ . }}"{{ end }}></script>
+  {{- end -}}
+{{- end -}}

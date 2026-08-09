@@ -1,0 +1,53 @@
+/* ===========================================================================
+   CALLOUTS — a highlighted note inside prose
+   =========================================================================== */
+
+.callout {
+  display: flex;
+  gap: var(--space-2xs);
+  align-items: flex-start;
+
+  padding: var(--space-s) var(--space-m);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-text-muted);
+  border-radius: var(--radius-m);
+  background: var(--color-surface-sunk);
+}
+
+.callout > * + * {
+  margin-top: var(--space-2xs);
+}
+
+.callout .icon {
+  flex: none;
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: 0.15em;
+}
+
+.callout__body > * + * {
+  margin-top: var(--space-2xs);
+}
+
+.callout--note {
+  border-left-color: var(--color-primary);
+  background: var(--color-primary-soft);
+}
+
+.callout--warning {
+  border-left-color: var(--color-accent);
+  background: var(--color-accent-soft);
+  color: var(--color-accent-text);
+}
+
+.callout--warning .icon {
+  color: var(--color-accent);
+}
+
+/* Deadlines, towing, enforcement — things with a consequence. */
+.callout--important {
+  border-left-color: var(--color-accent);
+  border-left-width: 4px;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-1);
+}

@@ -1,0 +1,44 @@
+{{- /*
+  Resolves an external service from data/organization.yaml and returns its URL
+  as a plain string (no markup), so callers can use it in href, and so no
+  template hardcodes a third-party URL.
+
+    {{ $url := partial "util/external-url.html" "payhoa" }}
+    {{ $url := partial "util/external-url.html" (dict "key" "payhoa" "field" "pay_url") }}
+
+  Returns an empty string when the service is disabled, so callers can write:
+
+    {{ with partial "util/external-url.html" "payhoa" }}<a href="{{ . }}">…</a>{{ end }}
+
+  Params (string shorthand sets `key`):
+    key   - required: a key under organization.external
+    field - optional: which URL field to read; defaults to `url`, falling back
+            to `portal_url` for services that only define that
+*/ -}}
+
+{{- $key := "" -}}
+{{- $field := "" -}}
+{{- if reflect.IsMap . -}}
+  {{- $key = .key -}}
+  {{- $field = .field -}}
+{{- else -}}
+  {{- $key = . -}}
+{{- end -}}
+
+{{- $external := hugo.Data.organization.external -}}
+{{- $svc := index $external $key -}}
+
+{{- if not $svc -}}
+  {{- errorf "util/external-url.html: unknown external service %q. Valid keys: %s" $key (delimit (partial "util/map-keys.html" $external) ", ") -}}
+{{- end -}}
+
+{{- $url := "" -}}
+{{- if ne $svc.enabled false -}}
+  {{- if $field -}}
+    {{- $url = index $svc $field -}}
+  {{- else -}}
+    {{- $url = or $svc.url $svc.portal_url -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $url -}}
