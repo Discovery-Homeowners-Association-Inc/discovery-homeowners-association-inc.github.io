@@ -1,0 +1,71 @@
+{{- /*
+  "Who do I call?" directory, grouped by category, from data/problems.yaml.
+
+  Rendered as a description list of cards rather than a table: the third column
+  of a phone-number table is always the one that gets cut off, and this is a
+  page people open in a hurry.
+*/ -}}
+
+{{- $entries := sort hugo.Data.problems.entries "order" -}}
+{{- $office := hugo.Data.organization.office -}}
+
+{{- /* Group by category while preserving the `order` sequence — GroupBy is for
+       page collections, not plain data, and would also sort alphabetically,
+       which would put "Animals" above "Emergency". */ -}}
+{{- $groups := slice -}}
+{{- $seen := slice -}}
+{{- range $entries -}}
+  {{- $cat := .category | default "Other" -}}
+  {{- if not (in $seen $cat) -}}
+    {{- $seen = $seen | append $cat -}}
+    {{- $groups = $groups | append (dict "name" $cat "items" (where $entries "category" $cat)) -}}
+  {{- end -}}
+{{- end -}}
+
+<div class="problem-directory stack-l">
+  {{- range $groups }}
+  <section class="problem-group">
+    <h2 class="problem-group__title">{{ .name }}</h2>
+
+    <ul class="stack-s" role="list">
+      {{- range .items }}
+      <li class="card card--quiet problem{{ if .urgent }} problem--urgent{{ end }}">
+        <h3 class="problem__issue">
+          {{- if .urgent }}{{ partial "ui/icon.html" "alert" }} {{ end -}}
+          {{ .issue }}
+        </h3>
+
+        <p class="problem__contact">{{ .contact }}</p>
+
+        <p class="cluster cluster--tight problem__actions">
+          {{- with .phone }}
+          <span class="problem__action">
+            {{ partial "ui/icon.html" "phone" }}
+            {{ partial "util/phone-link.html" (dict "number" .) }}
+          </span>
+          {{- end }}
+          {{- if .phone_key }}
+          {{- /* phone_key means "the office number", resolved from
+                 organization.yaml rather than repeated in the data file. */ -}}
+          <span class="problem__action">
+            {{ partial "ui/icon.html" "phone" }}
+            {{ partial "util/phone-link.html" (dict "number" $office.phone) }}
+          </span>
+          {{- end }}
+          {{- with .email_key }}
+          <span class="problem__action">
+            {{ partial "ui/icon.html" "mail" }}
+            {{ partial "util/email-link.html" (dict "key" .) }}
+          </span>
+          {{- end }}
+        </p>
+
+        {{- with .note }}
+        <p class="text-small text-muted">{{ . }}</p>
+        {{- end }}
+      </li>
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+</div>

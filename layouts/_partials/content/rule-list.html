@@ -1,0 +1,40 @@
+{{- /*
+  A list of rules or requirements.
+
+    {{ partial "content/rule-list.html" (dict "items" .Params.rules "title" "Pool rules") }}
+    {{ partial "content/rule-list.html" (dict "items" $.accepted "variant" "yes") }}
+
+  Params:
+    items    - required: list of strings
+    title    - optional heading
+    variant  - plain (default) | yes | no | numbered
+                yes/no add a tick or cross, for "accepted / not accepted" pairs
+*/ -}}
+
+{{- $variant := .variant | default "plain" -}}
+{{- with .items }}
+<div class="rule-list rule-list--{{ $variant }}">
+  {{- with $.title }}
+  <h3 class="rule-list__title">{{ . }}</h3>
+  {{- end }}
+
+  {{- if eq $variant "numbered" }}
+  <ol class="rule-list__items">
+    {{- range . }}
+    <li>{{ . }}</li>
+    {{- end }}
+  </ol>
+  {{- else }}
+  <ul class="rule-list__items" role="list">
+    {{- range . }}
+    <li>
+      {{- if eq $variant "yes" }}{{ partial "ui/icon.html" "check" }}
+      {{- else if eq $variant "no" }}{{ partial "ui/icon.html" "cross" }}
+      {{- end }}
+      <span>{{ . }}</span>
+    </li>
+    {{- end }}
+  </ul>
+  {{- end }}
+</div>
+{{- end }}

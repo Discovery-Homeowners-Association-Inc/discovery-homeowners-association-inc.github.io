@@ -1,0 +1,103 @@
+{{ define "main" }}
+  {{- $season := .Params.season -}}
+  {{ partial "site/breadcrumb.html" . }}
+
+  <article class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <span class="eyebrow">Amenities</span>
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      <div class="with-rail">
+        <div class="stack-l">
+          {{- with $season }}
+          <div class="card card--feature season">
+            <h2 class="card__title">{{ partial "ui/icon.html" "pool" }} {{ .year }} season</h2>
+            <p class="season__dates">
+              <strong>{{ dateFormat "January 2" .opens }}</strong>
+              through
+              <strong>{{ dateFormat "January 2" .closes }}</strong>
+            </p>
+            {{- with .open_days }}<p class="text-small">Open {{ . }}.</p>{{ end }}
+            {{- with .closed_weekday }}<p class="text-small text-muted">Closed {{ . }} all season.</p>{{ end }}
+          </div>
+          {{- end }}
+
+          <div class="prose">{{ .Content }}</div>
+
+          {{ partial "content/rule-list.html" (dict "items" .Params.rules "title" "The four that matter most") }}
+
+          <div>
+            <h2>Hours</h2>
+            <div class="table-scroll mt-m" role="region" tabindex="0" aria-label="Pool hours">
+              <table class="table">
+                <caption>{{ $season.year }} operating hours</caption>
+                <thead>
+                  <tr><th scope="col">When</th><th scope="col">Hours</th></tr>
+                </thead>
+                <tbody>
+                  {{- range .Params.hours }}
+                  <tr>
+                    <th scope="row" class="table__label">{{ .period }}</th>
+                    <td class="nowrap">{{ .time }}</td>
+                  </tr>
+                  {{- end }}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div>
+            <h2>Membership</h2>
+            <div class="mt-m">
+              {{ partial "content/fee-table.html" (dict
+                  "rows" .Params.fees_resident
+                  "caption" (printf "Discovery residents, %v" $season.year)) }}
+            </div>
+            <div class="mt-m">
+              {{ partial "content/fee-table.html" (dict
+                  "rows" .Params.fees_nonresident
+                  "caption" (printf "Non-residents, %v" $season.year)) }}
+            </div>
+            {{- with .Params.guest_passes }}
+            <p class="text-small text-muted mt-m">{{ . }}</p>
+            {{- end }}
+          </div>
+        </div>
+
+        <aside class="stack-m">
+          <div class="card">
+            <h2 class="card__title">Get a pass</h2>
+            {{- with $season.prerequisite }}
+            <p class="text-small">{{ . }}</p>
+            {{- end }}
+            {{- with partial "util/external-url.html" "pool_registration" }}
+            <p class="card__foot">
+              <a class="btn btn--primary btn--block" href="{{ . }}" target="_blank" rel="noopener">
+                Register online {{ partial "ui/icon.html" "external" }}
+              </a>
+            </p>
+            {{- end }}
+            {{- with $season.registration_note }}
+            <p class="text-small text-muted">{{ . }}</p>
+            {{- end }}
+            {{- if $season.no_cash }}
+            <p class="text-small"><strong>No cash is taken at the pool.</strong></p>
+            {{- end }}
+          </div>
+
+          <div class="card card--quiet">
+            <h2 class="card__title">Questions</h2>
+            <p class="text-small">The Pool &amp; Recreation Committee handles passes and events.</p>
+            <ul class="info-card__contact" role="list">
+              <li>{{ partial "ui/icon.html" "mail" }} {{ partial "util/email-link.html" (dict "key" "pool_rec") }}</li>
+              <li>{{ partial "ui/icon.html" "phone" }} {{ partial "util/phone-link.html" . }}</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+{{ end }}

@@ -1,0 +1,84 @@
+{{ define "main" }}
+  {{- $org := hugo.Data.organization -}}
+  {{ partial "site/breadcrumb.html" . }}
+
+  <div class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      <div class="with-rail">
+        <div class="stack-l">
+          <div class="prose">{{ .Content }}</div>
+
+          <div>
+            <h2>Who handles what</h2>
+            <ul class="grid-auto mt-m" role="list">
+              <li class="card card--quiet">
+                <h3 class="card__title">The office</h3>
+                <p class="card__body text-small">
+                  Assessments, forms, Rec Center rentals, RV lot registration,
+                  and general questions.
+                </p>
+                <p class="card__foot text-small">
+                  {{ partial "util/email-link.html" (dict "key" "general") }}
+                </p>
+              </li>
+              <li class="card card--quiet">
+                <h3 class="card__title">Architectural Control</h3>
+                <p class="card__body text-small">
+                  Applications for anything you are changing on the outside of
+                  your home.
+                </p>
+                <p class="card__foot text-small">
+                  {{ partial "util/email-link.html" (dict "key" "acc") }}
+                </p>
+              </li>
+              <li class="card card--quiet">
+                <h3 class="card__title">Pool &amp; Recreation</h3>
+                <p class="card__body text-small">
+                  Pool passes, the pool season, and community events.
+                </p>
+                <p class="card__foot text-small">
+                  {{ partial "util/email-link.html" (dict "key" "pool_rec") }}
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          {{- with .Pages.ByWeight }}
+          <div>
+            <h2>More</h2>
+            <ul class="grid-auto mt-m" role="list">
+              {{- range . }}
+              <li class="card card--linked">
+                <h3 class="card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                {{- with .Params.summary }}<p class="card__body text-small">{{ . }}</p>{{ end }}
+              </li>
+              {{- end }}
+            </ul>
+          </div>
+          {{- end }}
+        </div>
+
+        <aside class="stack-m">
+          {{ partial "content/contact-block.html" . }}
+
+          {{- with partial "util/external-url.html" "governing_documents" }}
+          <div class="card card--quiet">
+            <h2 class="card__title">{{ partial "ui/icon.html" "document" }} Governing documents</h2>
+            <p class="text-small">{{ $org.external.governing_documents.note }}</p>
+            <p class="card__foot">
+              <a class="btn btn--outline btn--small btn--block" href="{{ . }}" target="_blank" rel="noopener">
+                Read them {{ partial "ui/icon.html" "external" }}
+              </a>
+            </p>
+          </div>
+          {{- end }}
+        </aside>
+      </div>
+    </div>
+  </div>
+{{ end }}

@@ -1,0 +1,370 @@
+/* ===========================================================================
+   CONTENT BLOCKS — rule lists, directories, board cards, projects, excerpts
+   =========================================================================== */
+
+/* ── Rule lists ────────────────────────────────────────────────────────── */
+
+.rule-list__title {
+  margin-bottom: var(--space-2xs);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  font-weight: 700;
+}
+
+.rule-list__items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rule-list--numbered .rule-list__items {
+  list-style: decimal;
+  padding-left: 1.4em;
+}
+
+.rule-list__items li {
+  display: flex;
+  gap: var(--space-2xs);
+  align-items: flex-start;
+  padding-block: var(--space-3xs);
+}
+
+.rule-list--numbered .rule-list__items li {
+  display: list-item;
+  padding-left: 0.25em;
+}
+
+.rule-list--plain .rule-list__items li::before {
+  content: "";
+  flex: none;
+  width: 0.4em;
+  height: 0.4em;
+  margin-top: 0.62em;
+  border-radius: 50%;
+  background: var(--color-border-strong);
+}
+
+.rule-list__items .icon {
+  margin-top: 0.22em;
+}
+
+.rule-list--yes .icon { color: var(--color-primary); }
+.rule-list--no  .icon { color: var(--color-accent); }
+
+/* ── Community links directory ─────────────────────────────────────────── */
+
+.directory__group {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.directory__group[open] {
+  box-shadow: var(--shadow-1);
+}
+
+.directory__summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+
+  padding: var(--space-s) var(--space-m);
+  min-height: 3.25rem;
+
+  font-weight: 650;
+  cursor: pointer;
+  list-style: none;
+}
+
+.directory__summary::-webkit-details-marker {
+  display: none;
+}
+
+.directory__summary:hover {
+  background: var(--color-surface-sunk);
+}
+
+.directory__icon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  flex: none;
+  border-radius: var(--radius-s);
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.directory__name {
+  margin-right: auto;
+}
+
+.directory__count {
+  font-size: var(--step--2);
+  font-weight: 650;
+  color: var(--color-text-muted);
+}
+
+/* A chevron that rotates when the group opens. */
+.directory__summary::after {
+  content: "";
+  flex: none;
+  width: 0.55em;
+  height: 0.55em;
+  margin-left: var(--space-2xs);
+  border-right: 2px solid var(--color-text-muted);
+  border-bottom: 2px solid var(--color-text-muted);
+  rotate: 45deg;
+  transition: rotate var(--transition);
+}
+
+.directory__group[open] .directory__summary::after {
+  rotate: -135deg;
+}
+
+.directory__items {
+  margin: 0;
+  padding: 0 var(--space-m) var(--space-s);
+  list-style: none;
+  display: grid;
+  gap: var(--space-s);
+}
+
+@media (min-width: 44rem) {
+  .directory__items {
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  }
+}
+
+.directory__item {
+  padding-top: var(--space-s);
+  border-top: 1px solid var(--color-border);
+}
+
+.directory__item-name {
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  font-weight: 650;
+}
+
+.directory__note {
+  margin-top: var(--space-3xs);
+}
+
+.directory__meta {
+  margin: var(--space-2xs) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--space-3xs);
+  color: var(--color-text-muted);
+}
+
+.directory__meta li {
+  display: flex;
+  gap: var(--space-2xs);
+  align-items: flex-start;
+}
+
+.directory__meta .icon {
+  margin-top: 0.18em;
+  color: var(--color-border-strong);
+}
+
+/* ── Who-to-call directory ─────────────────────────────────────────────── */
+
+.problem-group__title {
+  font-size: var(--step-1);
+  margin-top: 0;
+  margin-bottom: var(--space-s);
+  padding-bottom: var(--space-3xs);
+  border-bottom: 2px solid var(--color-accent);
+  display: inline-block;
+}
+
+.problem__issue {
+  display: flex;
+  gap: var(--space-2xs);
+  align-items: flex-start;
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  font-weight: 650;
+}
+
+.problem__contact {
+  color: var(--color-text-muted);
+  font-size: var(--step--1);
+}
+
+.problem__actions {
+  margin-top: var(--space-2xs);
+}
+
+.problem__action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3xs);
+  font-weight: 650;
+}
+
+.problem--urgent {
+  border-color: var(--color-accent);
+  border-left: 4px solid var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.problem--urgent .problem__issue .icon {
+  color: var(--color-accent);
+  margin-top: 0.15em;
+}
+
+/* ── Board roster ──────────────────────────────────────────────────────── */
+
+.board-card__head {
+  display: flex;
+  gap: var(--space-s);
+  align-items: center;
+}
+
+.board-card__photo,
+.board-card__initials {
+  width: 3.5rem;
+  height: 3.5rem;
+  flex: none;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* No headshot needed: initials on a warm ground read as intentional rather
+   than as a missing image. */
+.board-card__initials {
+  display: grid;
+  place-items: center;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-variation-settings: "wght" 650;
+  letter-spacing: 0.02em;
+}
+
+.board-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.board-card__name {
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  font-weight: 700;
+}
+
+.board-card__role {
+  font-size: var(--step--1);
+  color: var(--color-accent-text);
+  font-weight: 650;
+}
+
+.board-card__committees {
+  margin-top: var(--space-2xs);
+}
+
+/* ── Committees ────────────────────────────────────────────────────────── */
+
+.committee__members {
+  font-size: var(--step--1);
+}
+
+.committee__members summary {
+  cursor: pointer;
+  font-weight: 650;
+  color: var(--color-primary);
+  padding-block: var(--space-3xs);
+}
+
+.committee__members ul {
+  margin: var(--space-2xs) 0 0;
+  padding-left: 1.1em;
+}
+
+/* ── Projects ──────────────────────────────────────────────────────────── */
+
+.project__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.project--in-progress {
+  border-left: 4px solid var(--color-accent);
+}
+
+.project__streets {
+  font-size: var(--step--1);
+  margin-top: var(--space-2xs);
+}
+
+.project__streets summary {
+  cursor: pointer;
+  font-weight: 650;
+  color: var(--color-primary);
+  padding-block: var(--space-3xs);
+}
+
+.project__streets ul {
+  margin: var(--space-2xs) 0 0;
+  padding-left: 1.1em;
+  columns: 2;
+  column-gap: var(--space-m);
+}
+
+@media (max-width: 30rem) {
+  .project__streets ul { columns: 1; }
+}
+
+/* ── Quoted by-law excerpts ────────────────────────────────────────────── */
+
+.excerpt {
+  margin: 0;
+  padding: var(--space-m);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-border-strong);
+  border-radius: 0 var(--radius-m) var(--radius-m) 0;
+  background: var(--color-surface-sunk);
+}
+
+.excerpt p {
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.excerpt__cite {
+  display: block;
+  margin-top: var(--space-2xs);
+  font-size: var(--step--2);
+  font-style: normal;
+  font-weight: 650;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* ── Spanish blocks ────────────────────────────────────────────────────── */
+
+.es-block .eyebrow {
+  margin-bottom: var(--space-2xs);
+}
+
+/* ── Pool season / meeting callouts ────────────────────────────────────── */
+
+.season__dates {
+  font-size: var(--step-1);
+}
+
+.meeting-callout p {
+  margin-top: var(--space-2xs);
+}

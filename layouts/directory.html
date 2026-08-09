@@ -1,0 +1,18 @@
+{{ define "main" }}
+  {{ partial "site/breadcrumb.html" . }}
+
+  <article class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      {{- with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+
+      <div class="mt-l">
+        {{ partial "content/links-directory.html" . }}
+      </div>
+    </div>
+  </article>
+{{ end }}

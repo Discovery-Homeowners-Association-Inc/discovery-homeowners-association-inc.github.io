@@ -1,0 +1,19 @@
+{{- /*
+  A Spanish-language block inside an otherwise English page.
+
+      {{< es >}}
+      Si está pensando en realizar algún trabajo en el exterior de su casa…
+      {{< /es >}}
+
+  The lang attribute is the point: it makes a screen reader switch to Spanish
+  pronunciation instead of reading Spanish words with an English voice.
+
+  Deliberately not Hugo's multilingual mode — only two pages need Spanish, and
+  a parallel site would double every page and every CMS entry to serve them.
+  See docs/DECISIONS.md #9.
+*/ -}}
+
+<section lang="es" class="es-block">
+  <p class="eyebrow">En español</p>
+  {{ .Inner | .Page.RenderString (dict "display" "block") }}
+</section>

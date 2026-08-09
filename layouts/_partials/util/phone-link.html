@@ -38,4 +38,6 @@
   {{- $href = printf "+1%s" $digits -}}
 {{- end -}}
 
+{{- /* Trailing trim marker: see the note in util/email-link.html. */ -}}
 <a href="tel:{{ $href }}"{{ with $class }} class="{{ . }}"{{ end }}>{{ or $label $number }}</a>
+{{- /**/ -}}

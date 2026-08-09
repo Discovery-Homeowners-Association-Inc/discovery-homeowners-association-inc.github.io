@@ -1,0 +1,28 @@
+/* ===========================================================================
+   FIGURES — an image with a caption, from the markdown image render hook
+   =========================================================================== */
+
+.figure {
+  margin: 0;
+}
+
+.figure img {
+  width: 100%;
+  border-radius: var(--radius-m);
+}
+
+.figure__caption {
+  margin-top: var(--space-2xs);
+  font-size: var(--step--1);
+  color: var(--color-text-muted);
+  text-wrap: pretty;
+}
+
+/* Standalone images in prose (no caption) get the same rounding. */
+.prose :is(img, picture img) {
+  border-radius: var(--radius-m);
+}
+
+.prose picture {
+  display: block;
+}

@@ -1,0 +1,66 @@
+{{ define "main" }}
+  {{ partial "site/breadcrumb.html" . }}
+
+  <article class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <span class="eyebrow">Amenities</span>
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      <div class="with-rail">
+        <div class="stack-l">
+          <div class="prose">{{ .Content }}</div>
+
+          <div>
+            <h2>What it costs</h2>
+            <div class="mt-m">
+              {{ partial "content/fee-table.html" (dict
+                  "rows" .Params.rental_fees
+                  "caption" "Rental fees for Discovery residents") }}
+            </div>
+            <p class="text-small text-muted mt-m">
+              Plus a {{ .Params.deposit }} refundable deposit, paid at least
+              {{ .Params.notice_days }} days before the event.
+            </p>
+          </div>
+
+          {{ partial "content/rule-list.html" (dict
+              "items" .Params.rules
+              "title" "House rules"
+              "variant" "numbered") }}
+
+          {{ partial "content/rule-list.html" (dict
+              "items" .Params.before_leaving
+              "title" "Before you leave"
+              "variant" "yes") }}
+        </div>
+
+        <aside class="stack-m">
+          <div class="card card--feature">
+            <h2 class="card__title">{{ partial "ui/icon.html" "people" }} Capacity {{ .Params.capacity }}</h2>
+            <p class="text-small">
+              This is a Frederick County Fire Code limit, not an association
+              preference. Exceeding it forfeits the deposit.
+            </p>
+          </div>
+
+          <div class="card card--quiet">
+            <h2 class="card__title">Book it</h2>
+            <p class="text-small">{{ .Params.eligibility }}</p>
+            <p class="text-small">
+              At least {{ .Params.notice_days }} days ahead, through the office.
+            </p>
+            <ul class="info-card__contact" role="list">
+              <li>{{ partial "ui/icon.html" "phone" }} {{ partial "util/phone-link.html" . }}</li>
+              <li>{{ partial "ui/icon.html" "mail" }} {{ partial "util/email-link.html" (dict "key" "general") }}</li>
+            </ul>
+          </div>
+
+          {{ partial "content/contact-block.html" . }}
+        </aside>
+      </div>
+    </div>
+  </article>
+{{ end }}

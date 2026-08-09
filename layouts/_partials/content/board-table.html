@@ -1,0 +1,73 @@
+{{- /*
+  The board roster, from data/board.yaml.
+
+  Renders as cards rather than a table: a four-column table of names, roles,
+  committees and contact links is unreadable on a phone, and this is data people
+  most often look up on a phone.
+
+  A director with no photo gets a typographic initials mark, which is why the
+  board does not need to chase seven headshots before the site can launch.
+*/ -}}
+
+{{- $board := hugo.Data.board -}}
+{{- $office := hugo.Data.organization.emails.general -}}
+
+<ul class="grid-auto grid-auto--narrow board-list" role="list">
+  {{- range sort $board.members "order" }}
+  <li class="card board-card">
+    <div class="board-card__head">
+      {{- if .photo }}
+      <div class="board-card__photo">
+        {{ partial "media/image.html" (dict
+            "src" .photo
+            "alt" (printf "%s, %s" .name .role)
+            "sizes" "6rem") }}
+      </div>
+      {{- else }}
+      {{- /* Initials from the first and last words of the name, ignoring any
+             nickname in quotes. */ -}}
+      {{- $clean := replaceRE `"[^"]*"` "" .name -}}
+      {{- $words := split (trim $clean " ") " " -}}
+      {{- $initials := "" -}}
+      {{- range $i, $w := $words -}}
+        {{- with (trim $w " ") -}}
+          {{- if or (eq $i 0) (eq $i (sub (len $words) 1)) -}}
+            {{- $initials = printf "%s%s" $initials (substr . 0 1) -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+      <div class="board-card__initials" aria-hidden="true">{{ upper $initials }}</div>
+      {{- end }}
+
+      <div>
+        <h3 class="board-card__name">{{ .name }}</h3>
+        <p class="board-card__role">{{ .role }}</p>
+      </div>
+    </div>
+
+    {{- with .committees }}
+    <ul class="cluster cluster--tight board-card__committees" role="list">
+      {{- range . }}
+      <li class="badge">{{ . }}</li>
+      {{- end }}
+    </ul>
+    {{- end }}
+
+    {{- with .note }}
+    <p class="text-small text-muted">{{ . }}</p>
+    {{- end }}
+
+    <p class="card__foot text-small">
+      {{- if .email }}
+      <a href="mailto:{{ .email }}">{{ .email }}</a>
+      {{- else }}
+      <a href="mailto:{{ $office }}">{{ $office }}</a>
+      {{- end }}
+    </p>
+  </li>
+  {{- end }}
+</ul>
+
+{{- with $board.term_note }}
+<p class="text-small text-muted mt-m">{{ . }}</p>
+{{- end }}

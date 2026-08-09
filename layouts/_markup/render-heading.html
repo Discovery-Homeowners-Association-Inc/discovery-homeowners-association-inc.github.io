@@ -1,0 +1,12 @@
+{{- /*
+  Heading render hook — adds a stable id and a discreet anchor link, so someone
+  can send a neighbour a link straight to "Yard waste" rather than "scroll down
+  about halfway".
+*/ -}}
+
+<h{{ .Level }} id="{{ .Anchor }}">
+  {{- .Text | safeHTML -}}
+  {{- if ge .Level 2 }}
+  <a class="heading-anchor" href="#{{ .Anchor }}" aria-label="Link to this section">#</a>
+  {{- end -}}
+</h{{ .Level }}>

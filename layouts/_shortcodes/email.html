@@ -1,0 +1,15 @@
+{{- /*
+  A mailto link to one of the association's role addresses.
+
+      Email {{< email "acc" >}} before you start work.
+      {{< email key="general" label="the office" >}}
+
+  Takes a KEY, not an address, so every email on the site resolves through
+  data/organization.yaml.
+*/ -}}
+
+{{- $key := or (.Get "key") (.Get 0) -}}
+{{- partial "util/email-link.html" (dict
+    "key" $key
+    "label" (.Get "label")
+    "subject" (.Get "subject")) -}}

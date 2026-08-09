@@ -1,0 +1,58 @@
+{{ define "main" }}
+  {{ partial "site/breadcrumb.html" . }}
+
+  <article class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <span class="eyebrow">Rules &amp; Requests</span>
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      <div class="with-rail">
+        <div>
+          <div class="prose">{{ .Content }}</div>
+
+          {{- with .Params.bylaw_excerpts }}
+          <div class="stack-m mt-l">
+            {{- range . }}
+            <blockquote class="excerpt">
+              <p>{{ .text }}</p>
+              <cite class="excerpt__cite">{{ .cite }}</cite>
+            </blockquote>
+            {{- end }}
+          </div>
+          {{- end }}
+        </div>
+
+        <aside class="stack-m">
+          {{- with .Params.requires_approval }}
+          <div class="card">
+            <h2 class="card__title">Needs approval</h2>
+            {{ partial "content/rule-list.html" (dict "items" . "variant" "yes") }}
+            <p class="card__foot text-small text-muted">
+              Not sure? Ask {{ partial "util/email-link.html" (dict "key" "acc" "label" "the committee") }}
+              before you start.
+            </p>
+          </div>
+          {{- end }}
+
+          {{- /* The ACC's own membership, pulled from the committees data so it
+                 is not typed twice. */ -}}
+          {{- range where hugo.Data.committees.committees "slug" "acc" }}
+          {{- with .members }}
+          <div class="card card--quiet">
+            <h2 class="card__title">The committee</h2>
+            <ul class="stack-s" role="list">
+              {{- range . }}
+              <li>{{ .name }}{{ with .role }} <span class="text-muted text-small">— {{ . }}</span>{{ end }}</li>
+              {{- end }}
+            </ul>
+          </div>
+          {{- end }}
+          {{- end }}
+        </aside>
+      </div>
+    </div>
+  </article>
+{{ end }}

@@ -1,0 +1,50 @@
+# Committees. Edited at /admin/ → "Committees".
+#
+# `email_key` names a role address in organization.yaml rather than repeating a
+# literal address. The build fails if a key here does not exist there, so these
+# can never drift apart.
+#
+# Note the wrapping `committees:` key — the CMS models a file as an object, so a
+# bare top-level list would not be editable. Templates read
+# hugo.Data.committees.committees.
+
+committees:
+  - slug: acc
+    name: "Architectural Control Committee"
+    abbr: "ACC"
+    email_key: acc
+    purpose: >-
+      Reviews applications for exterior changes so the neighborhood stays
+      consistent and property values hold.
+    page: "/rules/architectural-control/"
+    volunteers_wanted: false
+    members:
+      - { name: 'Robert "Bobby" Brown', role: "Chairperson" }
+      - { name: "Valentina Duk" }
+      - { name: "Jonathon Berkowitz" }
+      - { name: "Donald Jack" }
+      - { name: "Candice Swet" }
+      - { name: "Ralph Picarella" }
+
+  - slug: pool-rec
+    name: "Pool & Recreation Committee"
+    abbr: ""
+    email_key: pool_rec
+    purpose: >-
+      Runs the pool season and the community events calendar — craft days, the
+      ice cream socials, the food truck nights.
+    meets: "Second Tuesday of each month, around 6:30 pm, in Walkersville"
+    page: "/amenities/pool/"
+    volunteers_wanted: true
+    members: []
+
+  - slug: welcome
+    name: "Welcome Committee"
+    abbr: ""
+    email_key: general
+    purpose: >-
+      Greets new neighbors and helps them find their footing in their first
+      few weeks.
+    page: "/about/welcome-committee/"
+    volunteers_wanted: true
+    members: []

@@ -1,0 +1,20 @@
+{{- /*
+  A highlighted note inside prose.
+
+      {{< callout type="warning" >}}
+      Unregistered vehicles are towed at the owner's expense.
+      {{< /callout >}}
+
+  type: note (default) | warning | important
+*/ -}}
+
+{{- $type := .Get "type" | default "note" -}}
+{{- $icons := dict "note" "alert" "warning" "alert" "important" "alert" -}}
+{{- $icon := index $icons $type | default "alert" -}}
+
+<aside class="callout callout--{{ $type }}">
+  {{ partial "ui/icon.html" $icon }}
+  <div class="callout__body">
+    {{ .Inner | .Page.RenderString (dict "display" "block") }}
+  </div>
+</aside>

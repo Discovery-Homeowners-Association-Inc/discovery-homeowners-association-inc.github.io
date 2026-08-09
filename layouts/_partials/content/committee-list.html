@@ -1,0 +1,41 @@
+{{- /* Committees, from data/committees.yaml. */ -}}
+
+{{- $committees := hugo.Data.committees.committees -}}
+
+<ul class="grid-auto committee-list" role="list">
+  {{- range $committees }}
+  {{- $c := . }}
+  <li class="card committee">
+    <h3 class="card__title">
+      {{- with $c.page }}<a href="{{ . }}">{{ $c.name }}</a>{{ else }}{{ $c.name }}{{ end -}}
+    </h3>
+
+    <p class="card__body">{{ $c.purpose }}</p>
+
+    {{- with $c.meets }}
+    <p class="text-small">
+      {{ partial "ui/icon.html" "calendar" }} Meets {{ . | lower }}
+    </p>
+    {{- end }}
+
+    {{- with $c.members }}
+    <details class="committee__members">
+      <summary>{{ len . }} member{{ if ne (len .) 1 }}s{{ end }}</summary>
+      <ul role="list">
+        {{- range . }}
+        <li>{{ .name }}{{ with .role }} <span class="text-muted">— {{ . }}</span>{{ end }}</li>
+        {{- end }}
+      </ul>
+    </details>
+    {{- end }}
+
+    <p class="card__foot text-small cluster cluster--tight">
+      {{ partial "ui/icon.html" "mail" }}
+      {{ partial "util/email-link.html" (dict "key" $c.email_key) }}
+      {{- if $c.volunteers_wanted }}
+      <span class="badge badge--accent">Volunteers welcome</span>
+      {{- end }}
+    </p>
+  </li>
+  {{- end }}
+</ul>

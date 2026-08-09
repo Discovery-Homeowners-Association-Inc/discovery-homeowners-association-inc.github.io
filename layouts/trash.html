@@ -1,0 +1,82 @@
+{{ define "main" }}
+  {{- $trash := hugo.Data.trash -}}
+  {{ partial "site/breadcrumb.html" . }}
+
+  <article class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <span class="eyebrow">Rules &amp; Requests</span>
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      <div class="prose">{{ .Content }}</div>
+
+      <div class="mt-l">
+        {{ partial "content/trash-schedule.html" . }}
+      </div>
+
+      <p class="mt-m">
+        {{- with partial "util/external-url.html" "county_recycling" }}
+        <a class="btn btn--outline" href="{{ . }}" target="_blank" rel="noopener">
+          Look up your recycling week by address
+          {{ partial "ui/icon.html" "external" }}
+        </a>
+        {{- end }}
+      </p>
+
+      <div class="callout callout--note mt-l">
+        {{ partial "ui/icon.html" "recycle" }}
+        <div class="callout__body">
+          <p>{{ $trash.tipping_fee_note }}</p>
+        </div>
+      </div>
+
+      <div class="prose mt-l">
+        <h2>Containers</h2>
+        <p>{{ $trash.container_rule }}</p>
+
+        <h2>Yard waste</h2>
+        <p>Twice-monthly collection runs {{ $trash.yard_waste.season }}.</p>
+      </div>
+
+      <div class="grid-auto mt-m">
+        <div class="card card--quiet">
+          {{ partial "content/rule-list.html" (dict
+              "items" $trash.yard_waste.accepted
+              "title" "Goes in yard waste"
+              "variant" "yes") }}
+        </div>
+        <div class="card card--quiet">
+          {{ partial "content/rule-list.html" (dict
+              "items" $trash.yard_waste.not_accepted
+              "title" "Does not"
+              "variant" "no") }}
+        </div>
+      </div>
+
+      <p class="text-small text-muted mt-m">{{ $trash.yard_waste.bundling }}</p>
+
+      {{- with $trash.contacts }}
+      <div class="prose mt-l"><h2>County contacts</h2></div>
+      <ul class="grid-auto mt-m" role="list">
+        {{- range . }}
+        {{- $c := . }}
+        <li class="card card--quiet">
+          <h3 class="card__title">
+            {{- with $c.url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ $c.name }}</a>
+            {{- else }}{{ $c.name }}{{ end -}}
+          </h3>
+          {{- with $c.address }}<p class="text-small text-muted">{{ . }}</p>{{ end }}
+          <ul class="text-small stack-s" role="list">
+            {{- range $c.phones }}
+            <li>{{ .label }}: {{ partial "util/phone-link.html" (dict "number" .number) }}</li>
+            {{- end }}
+          </ul>
+        </li>
+        {{- end }}
+      </ul>
+      {{- end }}
+    </div>
+  </article>
+{{ end }}

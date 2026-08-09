@@ -1,0 +1,46 @@
+{{- /*
+  Renders any list of {label, amount, unit, note} as a two-column table.
+
+    {{ partial "content/fee-table.html" (dict
+        "rows" .Params.fees_resident
+        "caption" "Resident pool memberships, 2026") }}
+
+  One template, four uses: resident pool fees, non-resident pool fees,
+  Recreation Center rental fees, and the assessment schedule. The old site
+  hand-wrote four separate markdown tables that drifted independently.
+
+  Params:
+    rows    - required: list of {label, amount, unit?, note?}
+    caption - optional but strongly encouraged; screen readers announce it
+    class   - optional
+*/ -}}
+
+{{- with .rows }}
+<div class="table-scroll" role="region" tabindex="0" aria-label="{{ $.caption | default "Fees" }}">
+  <table class="table table--fees{{ with $.class }} {{ . }}{{ end }}">
+    {{- with $.caption }}
+    <caption>{{ . }}</caption>
+    {{- end }}
+    <thead>
+      <tr>
+        <th scope="col">What</th>
+        <th scope="col" class="table__amount">Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{- range . }}
+      <tr>
+        <th scope="row" class="table__label">
+          {{ .label }}
+          {{- with .note }}<span class="table__note">{{ . }}</span>{{ end }}
+        </th>
+        <td class="table__amount">
+          {{ .amount }}
+          {{- with .unit }} <span class="text-muted text-small">{{ . }}</span>{{ end }}
+        </td>
+      </tr>
+      {{- end }}
+    </tbody>
+  </table>
+</div>
+{{- end }}
