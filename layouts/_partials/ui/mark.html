@@ -1,12 +1,18 @@
 {{- /*
-  Inlines the association's mark so CSS can colour it (currentColor) and hide
+  Inlines the association's mark so CSS can colour it (currentColor) and drop
   its finer detail at small sizes. Inlining also avoids a separate request for
-  an image that appears on every page.
+  something that appears on every page.
 
     {{ partial "ui/mark.html" (dict "class" "mark--compact") }}
 
+  The mark carries a clipPath and a mask, and the About page renders it twice.
+  Duplicate element ids in one document are invalid and make the second copy
+  depend on the first, so each instance gets its own suffix.
+
   Params:
-    class - optional extra class, e.g. mark--compact to drop the field texture
+    class - optional extra class, e.g. mark--compact to flatten the ridge stipple
+    id    - optional explicit suffix; defaults to one derived from the page and
+            the class, which is stable across builds
 */ -}}
 
 {{- $res := resources.Get "brand/dhoa-mark.svg" -}}
@@ -14,8 +20,16 @@
   {{- errorf "ui/mark.html: assets/brand/dhoa-mark.svg is missing." -}}
 {{- end -}}
 
+{{- $class := .class | default "" -}}
+{{- $suffix := .id | default (printf "%s" (substr (sha1 (printf "%s|%s" (.page | default "") $class)) 0 6)) -}}
+
 {{- $svg := $res.Content -}}
-{{- with .class -}}
+{{- range $id := slice "mark-interior" "mark-stipple" -}}
+  {{- $svg = replace $svg $id (printf "%s-%s" $id $suffix) -}}
+{{- end -}}
+
+{{- with $class -}}
   {{- $svg = replace $svg `class="mark"` (printf `class="mark %s"` .) 1 -}}
 {{- end -}}
+
 {{- $svg | safeHTML -}}

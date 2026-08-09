@@ -1,7 +1,8 @@
 /* ===========================================================================
    THE ASSOCIATION MARK
-   A sun rising over farmland with an orchard tree — the association's own
-   emblem, redrawn from the only surviving copy (a scanned letterhead).
+   A ring sun at the crest of a stippled ridge, a nearer hill behind, and an
+   orchard tree of fourteen fruit — the association's own emblem, redrawn from
+   the only surviving copy (a scanned letterhead).
    =========================================================================== */
 
 .mark {
@@ -9,13 +10,14 @@
   color: inherit;
 }
 
-/* Below roughly 48px the ploughed-field stipple stops reading as texture and
-   starts reading as dirt on the screen, so the compact variant drops it. */
-.mark--compact .mark__texture {
-  display: none;
+/* Below roughly 48px the ridge stipple stops reading as a ploughed field and
+   starts reading as dirt on the screen. Dropping the mask leaves a solid band,
+   which is what the mark should collapse to at small sizes. */
+.mark--compact .mark__ridge {
+  mask: none;
 }
 
-/* Large display use — the About page and the footer. */
+/* Large display use — the About page. */
 .mark--display {
   width: clamp(6rem, 14vw, 9rem);
   color: var(--color-primary);
