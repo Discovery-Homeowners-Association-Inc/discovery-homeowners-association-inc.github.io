@@ -1,0 +1,25 @@
+# Exceptions to the regular board meeting schedule.
+#
+# Board meetings are generated automatically from the rule in
+# organization.yaml (third Tuesday of every month), so nobody has to enter
+# twelve events every January. This file handles the months that differ.
+#
+# Edited at /admin/ → "Meeting Exceptions".
+#
+# date     — the date the meeting WOULD fall on, in YYYY-MM-DD
+# status   — cancelled | moved | note
+# moved_to — the replacement date, when status is "moved"
+# time     — a different time, when status is "moved"
+# location — a different place
+# note     — shown alongside the entry
+
+overrides: []
+# Example:
+#   - date: 2026-12-15
+#     status: cancelled
+#     note: "No December meeting. The board resumes in January."
+#   - date: 2026-07-21
+#     status: moved
+#     moved_to: 2026-07-28
+#     time: "7:00 pm"
+#     note: "Moved a week later so it does not clash with the town carnival."

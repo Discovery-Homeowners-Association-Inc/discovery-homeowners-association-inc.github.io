@@ -1,0 +1,28 @@
+{{- $p := .page -}}
+{{- $pinned := .pinned | default false -}}
+{{- $cats := dict
+    "general" "General" "pool" "Pool" "acc" "Architectural Control"
+    "maintenance" "Maintenance" "meetings" "Meetings" "trash" "Trash & Recycling"
+    "events" "Events" -}}
+{{- $label := index $cats ($p.Params.category | default "general") | default "General" -}}
+
+<li class="card card--linked announcement{{ if $pinned }} announcement--pinned{{ end }}">
+  <p class="card__meta">
+    {{- if $pinned }}<span class="badge badge--accent">Pinned</span>{{ end }}
+    <span class="badge">{{ $label }}</span>
+    <time datetime="{{ $p.Date.Format "2006-01-02" }}">{{ $p.Date.Format "2 January 2006" }}</time>
+  </p>
+
+  <h2 class="card__title"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h2>
+
+  {{- with $p.Params.summary }}
+  <p class="card__body">{{ . }}</p>
+  {{- end }}
+
+  {{- with $p.Params.expiryDate }}
+  <p class="text-tiny text-muted">
+    {{ partial "ui/icon.html" "clock" }}
+    Comes down after {{ (time.AsTime .).Format "2 January 2006" }}
+  </p>
+  {{- end }}
+</li>

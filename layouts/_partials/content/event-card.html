@@ -1,0 +1,42 @@
+{{- $e := .event -}}
+{{- $cats := dict
+    "board-meeting" "Board meeting" "recreation" "Recreation" "pool" "Pool"
+    "community" "Community" "maintenance" "Maintenance" "external" "Nearby" -}}
+{{- $label := index $cats $e.category | default "Community" -}}
+{{- $start := $e.start -}}
+
+<li class="card event{{ if $e.cancelled }} event--cancelled{{ end }}">
+  {{- /* A date block reads faster than a sentence when you are scanning for
+         "is there anything this weekend". */ -}}
+  <div class="event__date" aria-hidden="true">
+    <span class="event__month">{{ $start.Format "Jan" }}</span>
+    <span class="event__day">{{ $start.Format "2" }}</span>
+  </div>
+
+  <div class="event__body">
+    <p class="card__meta">
+      <span class="badge{{ if eq $e.category "board-meeting" }} badge--primary{{ end }}">{{ $label }}</span>
+      {{- if $e.cancelled }}<span class="badge badge--accent">Cancelled</span>{{ end }}
+    </p>
+
+    <h3 class="card__title">
+      {{- with $e.permalink }}<a href="{{ . }}">{{ $e.title }}</a>{{ else }}{{ $e.title }}{{ end -}}
+    </h3>
+
+    <p class="event__when">
+      <time datetime="{{ $start.Format "2006-01-02T15:04:05" }}">
+        {{ $start.Format "Monday 2 January" }}
+        {{- if not $e.all_day }}, {{ $start.Format "3:04 pm" }}{{ end }}
+      </time>
+    </p>
+
+    {{- with $e.summary }}<p class="card__body text-small">{{ . }}</p>{{ end }}
+
+    <p class="cluster cluster--tight text-small text-muted">
+      {{- with $e.location_name }}
+      <span>{{ partial "ui/icon.html" "pin" }} {{ . }}</span>
+      {{- end }}
+      {{- with $e.cost }}<span>{{ . }}</span>{{ end }}
+    </p>
+  </div>
+</li>

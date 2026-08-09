@@ -1,0 +1,53 @@
+{{- /*
+  Merges the two sources of events into one sorted list:
+
+    * pages under content/events/ — one-off community events
+    * board meetings generated from the recurring rule
+
+  Both are normalised to the same shape so a card, a list, or the .ics writer
+  never has to care which is which.
+
+    {{ $events := partial "content/all-events.html" (dict "page" .) }}
+
+  Returns dicts of:
+    {title, start, end, all_day, location_name, location_address, category,
+     cost, summary, permalink, generated, cancelled}
+*/ -}}
+
+{{- $site := .page.Site -}}
+{{- $out := slice -}}
+
+{{- range where $site.RegularPages "Section" "events" -}}
+  {{- $p := . -}}
+  {{- with $p.Params.start -}}
+    {{- $start := time.AsTime . -}}
+    {{- $end := cond (isset $p.Params "end") (time.AsTime $p.Params.end) ($start.Add (time.ParseDuration "2h")) -}}
+
+    {{- /* Ask for the html output explicitly. Inside the .ics template
+           .RelPermalink resolves to the current output format, so a plain
+           .RelPermalink pointed the calendar's URL: field at the .ics file
+           rather than at the event page. */ -}}
+    {{- $href := $p.RelPermalink -}}
+    {{- with $p.OutputFormats.Get "html" }}{{ $href = .RelPermalink }}{{ end -}}
+    {{- $out = $out | append (dict
+        "title" $p.Title
+        "start" $start
+        "end" $end
+        "all_day" ($p.Params.all_day | default false)
+        "location_name" ($p.Params.location_name | default "Discovery Recreation Center")
+        "location_address" ($p.Params.location_address | default "8740 Stauffer Road, Walkersville, MD 21793")
+        "category" ($p.Params.category | default "community")
+        "cost" ($p.Params.cost | default "")
+        "summary" ($p.Params.summary | default "")
+        "permalink" $href
+        "generated" false
+        "cancelled" false
+    ) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- range partial "events/board-meetings.html" (dict "months" 12 "back" 2) -}}
+  {{- $out = $out | append (merge . (dict "cost" "Free")) -}}
+{{- end -}}
+
+{{- return (sort $out "start") -}}

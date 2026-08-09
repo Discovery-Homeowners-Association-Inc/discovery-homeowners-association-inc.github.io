@@ -78,4 +78,31 @@
       </aside>
     </div>
   </section>
+
+  {{- /* ── Latest announcements + what's coming up ────────────────────── */}}
+  {{- $news := first 3 (where site.RegularPages "Section" "news").ByDate.Reverse -}}
+  {{- if $news }}
+  <section class="section section--alt">
+    <div class="wrap">
+      <div class="section__head section__head--row">
+        <h2>Latest news</h2>
+        <a class="link-arrow" href="{{ "/news/" | relURL }}">
+          All announcements {{ partial "ui/icon.html" "arrow" }}
+        </a>
+      </div>
+
+      <div class="with-rail">
+        <ul class="stack-m" role="list">
+          {{- range $news }}
+          {{ partial "content/announcement-card.html" (dict "page" .) }}
+          {{- end }}
+        </ul>
+
+        <aside>
+          {{ partial "content/upcoming-events.html" (dict "limit" 5 "page" .) }}
+        </aside>
+      </div>
+    </div>
+  </section>
+  {{- end }}
 {{ end }}
