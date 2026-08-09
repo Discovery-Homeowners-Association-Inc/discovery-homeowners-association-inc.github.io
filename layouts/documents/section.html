@@ -1,0 +1,98 @@
+{{ define "main" }}
+  {{- $org := hugo.Data.organization -}}
+  {{- $docs := .Pages -}}
+
+  {{- /* Category labels in display order. Anything with an unrecognised
+         category still appears, under "Other", rather than vanishing. */ -}}
+  {{- $categories := slice
+      (dict "key" "acc"         "label" "Architectural Control")
+      (dict "key" "rec-center"  "label" "Recreation Center")
+      (dict "key" "rv-lot"      "label" "RV Lot")
+      (dict "key" "pool"        "label" "Pool")
+      (dict "key" "parks"       "label" "Parks")
+      (dict "key" "minutes"     "label" "Meeting minutes & agendas")
+      (dict "key" "newsletters" "label" "Newsletters")
+      (dict "key" "financial"   "label" "Financial")
+      (dict "key" "general"     "label" "General")
+  -}}
+
+  {{- $known := slice -}}
+  {{- range $categories }}{{ $known = $known | append .key }}{{ end -}}
+
+  {{ partial "site/breadcrumb.html" . }}
+
+  <div class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      <div class="with-rail">
+        <div class="stack-l">
+          {{- with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+
+          {{- /* Every row is rendered by Hugo and grouped under a heading, so
+                 this page is complete and usable with no JavaScript at all.
+                 Phase 6 layers a filter on top of exactly this markup. */ -}}
+          {{- range $categories }}
+            {{- $label := .label -}}
+            {{- $group := where $docs "Params.category" .key -}}
+            {{- with $group }}
+          <section class="doc-group">
+            <h2 class="doc-group__title">{{ $label }}</h2>
+            <ul class="doc-list" role="list">
+              {{- range . }}
+              {{ partial "content/document-row.html" (dict "doc" .) }}
+              {{- end }}
+            </ul>
+          </section>
+            {{- end }}
+          {{- end }}
+
+          {{- $other := where $docs "Params.category" "not in" $known -}}
+          {{- with $other }}
+          <section class="doc-group">
+            <h2 class="doc-group__title">Other</h2>
+            <ul class="doc-list" role="list">
+              {{- range . }}
+              {{ partial "content/document-row.html" (dict "doc" .) }}
+              {{- end }}
+            </ul>
+          </section>
+          {{- end }}
+
+          {{- if not $docs }}
+          <p class="text-muted">No documents have been published yet.</p>
+          {{- end }}
+        </div>
+
+        <aside class="stack-m">
+          {{- with partial "util/external-url.html" "governing_documents" }}
+          <div class="card card--feature">
+            <h2 class="card__title">{{ partial "ui/icon.html" "document" }} Governing documents</h2>
+            <p class="text-small">{{ $org.external.governing_documents.note }}</p>
+            <p class="card__foot">
+              <a class="btn btn--primary btn--small btn--block" href="{{ . }}"
+                 target="_blank" rel="noopener">
+                Read them {{ partial "ui/icon.html" "external" }}
+              </a>
+            </p>
+          </div>
+          {{- end }}
+
+          <div class="card card--quiet">
+            <h2 class="card__title">Can&rsquo;t find something?</h2>
+            <p class="text-small">
+              The office can send you any association form directly.
+            </p>
+            <ul class="info-card__contact" role="list">
+              <li>{{ partial "ui/icon.html" "phone" }} {{ partial "util/phone-link.html" . }}</li>
+              <li>{{ partial "ui/icon.html" "mail" }} {{ partial "util/email-link.html" (dict "key" "general") }}</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+{{ end }}

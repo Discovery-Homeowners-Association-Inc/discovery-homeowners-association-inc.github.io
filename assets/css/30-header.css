@@ -31,20 +31,19 @@
   text-decoration: none;
 }
 
+/* The association's own mark, not a generic icon. It carries its own frame,
+   so it sits directly on the header rather than inside a coloured tile. */
 .site-brand__mark {
   display: grid;
   place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.1rem;
   flex: none;
-  border-radius: var(--radius-m);
-  background: var(--color-primary);
-  color: var(--color-on-primary);
+  color: var(--color-primary);
 }
 
-.site-brand__mark .icon {
-  width: 1.25rem;
-  height: 1.25rem;
+.site-brand__mark .mark {
+  width: 100%;
+  height: auto;
 }
 
 .site-brand__text {

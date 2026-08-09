@@ -1,0 +1,50 @@
+{{ define "main" }}
+  {{- $org := hugo.Data.organization -}}
+  {{ partial "site/breadcrumb.html" . }}
+
+  <div class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      <div class="with-rail">
+        <div class="stack-l">
+          <div class="prose">{{ .Content }}</div>
+
+          {{- with .Pages.ByWeight }}
+          <ul class="grid-auto" role="list">
+            {{- range . }}
+            <li class="card card--linked">
+              <h2 class="card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+              {{- with .Params.summary }}<p class="card__body">{{ . }}</p>{{ end }}
+            </li>
+            {{- end }}
+          </ul>
+          {{- end }}
+        </div>
+
+        <aside class="stack-m">
+          <div class="card card--quiet center">
+            {{ partial "ui/mark.html" (dict "class" "mark--display") }}
+            <p class="text-small text-muted mt-s">
+              The association&rsquo;s mark: a sun rising over farmland, with an
+              orchard tree below. Fitting, for {{ $org.founded }} — the whole
+              neighborhood was a farm the year before.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section--alt">
+    <div class="wrap">
+      <div class="section__head">
+        <h2>Where Discovery is</h2>
+      </div>
+      {{ partial "content/neighborhood-map.html" . }}
+    </div>
+  </div>
+{{ end }}

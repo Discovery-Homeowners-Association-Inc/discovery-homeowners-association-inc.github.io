@@ -1,9 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Discovery HOA">
+  <!-- A simplified form of the association's mark: at 16-32px the full emblem's
+       ridge stipple and eleven pieces of fruit merge into a smudge, so the
+       favicon keeps only the sun, the ridge, and a five-fruit tree. -->
   <rect width="64" height="64" rx="14" fill="#2f5d43"/>
-  <path d="M14 32.5 32 17l18 15.5" fill="none" stroke="#faf6ef" stroke-width="4.5"
-        stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M19 30v18h26V30" fill="none" stroke="#faf6ef" stroke-width="4.5"
-        stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M28 48v-10h8v10" fill="none" stroke="#b4593a" stroke-width="4.5"
-        stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="none" stroke="#faf6ef" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="22" r="6"/>
+    <path d="M9 33 Q 32 24 55 32"/>
+    <path d="M32 55 V 40"/>
+  </g>
+  <g fill="#faf6ef">
+    <circle cx="32" cy="39" r="3.6"/>
+    <circle cx="23" cy="44" r="3.6"/>
+    <circle cx="41" cy="44" r="3.6"/>
+    <circle cx="26" cy="51" r="3.6"/>
+    <circle cx="38" cy="51" r="3.6"/>
+  </g>
 </svg>

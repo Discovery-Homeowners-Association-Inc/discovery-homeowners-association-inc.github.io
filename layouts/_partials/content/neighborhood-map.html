@@ -1,0 +1,29 @@
+{{- /*
+  The neighborhood street map.
+
+  Drawn from OpenStreetMap vector data rather than captured as a tile
+  screenshot, so it carries the site's palette, follows dark mode, weighs about
+  4.5 KB gzipped, and makes no third-party request when the page loads.
+
+  Regenerate with tools/render-neighborhood-map.py if the street network
+  changes. Attribution below is required by the ODbL and must stay.
+*/ -}}
+
+{{- $res := resources.Get "map/discovery-map.svg" -}}
+{{- if not $res -}}
+  {{- errorf "content/neighborhood-map.html: assets/map/discovery-map.svg is missing. Regenerate it with tools/render-neighborhood-map.py." -}}
+{{- end -}}
+
+<figure class="neighborhood-map">
+  <div class="neighborhood-map__frame">
+    {{ $res.Content | safeHTML }}
+  </div>
+  <figcaption class="neighborhood-map__caption">
+    Discovery&rsquo;s streets, picked out against the surrounding road network.
+    <span class="text-muted">
+      Map data &copy;
+      <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>
+      contributors.
+    </span>
+  </figcaption>
+</figure>

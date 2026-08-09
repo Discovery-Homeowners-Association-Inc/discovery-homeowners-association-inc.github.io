@@ -2,6 +2,7 @@
 title: "About Discovery"
 summary: "How the neighborhood came to be, and the people who keep it running."
 weight: 10
+layout: "about"
 ---
 
 Discovery is a neighborhood of single-family homes and townhouses in

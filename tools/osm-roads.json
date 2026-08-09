@@ -1,0 +1,5837 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-08-09T22:31:34Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "way",
+  "id": 11535524,
+  "bounds": {
+    "minlat": 39.4640540,
+    "minlon": -77.3635044,
+    "maxlat": 39.4652717,
+    "maxlon": -77.3626020
+  },
+  "nodes": [
+    102840835,
+    4604951520,
+    4403366336,
+    4403366338,
+    4403366340,
+    4403366342,
+    102840836,
+    102840838
+  ],
+  "geometry": [
+    { "lat": 39.4652717, "lon": -77.3635044 },
+    { "lat": 39.4652536, "lon": -77.3633877 },
+    { "lat": 39.4651788, "lon": -77.3632661 },
+    { "lat": 39.4650627, "lon": -77.3631071 },
+    { "lat": 39.4649430, "lon": -77.3629431 },
+    { "lat": 39.4648205, "lon": -77.3627753 },
+    { "lat": 39.4646940, "lon": -77.3626020 },
+    { "lat": 39.4640540, "lon": -77.3627770 }
+  ],
+  "tags": {
+    "highway": "service",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11535526,
+  "bounds": {
+    "minlat": 39.4636975,
+    "minlon": -77.3634030,
+    "maxlat": 39.4640570,
+    "maxlon": -77.3624110
+  },
+  "nodes": [
+    102840839,
+    11528059298,
+    4697925615,
+    102840841,
+    102840838,
+    102840813
+  ],
+  "geometry": [
+    { "lat": 39.4636975, "lon": -77.3624765 },
+    { "lat": 39.4637962, "lon": -77.3624728 },
+    { "lat": 39.4639296, "lon": -77.3624562 },
+    { "lat": 39.4640500, "lon": -77.3624110 },
+    { "lat": 39.4640540, "lon": -77.3627770 },
+    { "lat": 39.4640570, "lon": -77.3634030 }
+  ],
+  "tags": {
+    "highway": "service",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11539748,
+  "bounds": {
+    "minlat": 39.4636854,
+    "minlon": -77.3645518,
+    "maxlat": 39.4638603,
+    "maxlon": -77.3608700
+  },
+  "nodes": [
+    102890421,
+    13032423060,
+    1724669711,
+    11528059296,
+    102884553,
+    1724669760,
+    102884555,
+    102840811,
+    102840839,
+    103025928,
+    2852751771,
+    11528059290,
+    102999006
+  ],
+  "geometry": [
+    { "lat": 39.4638603, "lon": -77.3645518 },
+    { "lat": 39.4637771, "lon": -77.3644270 },
+    { "lat": 39.4637683, "lon": -77.3644138 },
+    { "lat": 39.4637191, "lon": -77.3641521 },
+    { "lat": 39.4636977, "lon": -77.3639985 },
+    { "lat": 39.4636885, "lon": -77.3638825 },
+    { "lat": 39.4636854, "lon": -77.3637375 },
+    { "lat": 39.4636922, "lon": -77.3634171 },
+    { "lat": 39.4636975, "lon": -77.3624765 },
+    { "lat": 39.4637067, "lon": -77.3619055 },
+    { "lat": 39.4637127, "lon": -77.3610405 },
+    { "lat": 39.4637138, "lon": -77.3609913 },
+    { "lat": 39.4637680, "lon": -77.3608700 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "name": "Stauffer Road",
+    "oneway": "yes",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Stauffer",
+    "tiger:name_type": "Rd",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 11539896,
+  "bounds": {
+    "minlat": 39.4722480,
+    "minlon": -77.3608135,
+    "maxlat": 39.4749670,
+    "maxlon": -77.3569640
+  },
+  "nodes": [
+    102886200,
+    102886199,
+    102886198,
+    102886197,
+    8403553707,
+    102886196,
+    102886194,
+    103061776,
+    103061778,
+    103061779,
+    103061780,
+    103061781,
+    102842379
+  ],
+  "geometry": [
+    { "lat": 39.4722771, "lon": -77.3608135 },
+    { "lat": 39.4722700, "lon": -77.3607550 },
+    { "lat": 39.4722480, "lon": -77.3604500 },
+    { "lat": 39.4722621, "lon": -77.3602921 },
+    { "lat": 39.4722630, "lon": -77.3602820 },
+    { "lat": 39.4723580, "lon": -77.3601150 },
+    { "lat": 39.4727510, "lon": -77.3598250 },
+    { "lat": 39.4730330, "lon": -77.3596420 },
+    { "lat": 39.4733390, "lon": -77.3593520 },
+    { "lat": 39.4739870, "lon": -77.3586650 },
+    { "lat": 39.4745780, "lon": -77.3577270 },
+    { "lat": 39.4749520, "lon": -77.3570480 },
+    { "lat": 39.4749670, "lon": -77.3569640 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Antietam Drive",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Antietam",
+    "tiger:name_type": "Dr",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 11540324,
+  "bounds": {
+    "minlat": 39.4638603,
+    "minlon": -77.3661953,
+    "maxlat": 39.4640986,
+    "maxlon": -77.3645518
+  },
+  "nodes": [
+    102890421,
+    102890422,
+    1724669740,
+    4509175552,
+    102890423
+  ],
+  "geometry": [
+    { "lat": 39.4638603, "lon": -77.3645518 },
+    { "lat": 39.4639859, "lon": -77.3652744 },
+    { "lat": 39.4640667, "lon": -77.3658163 },
+    { "lat": 39.4640986, "lon": -77.3660145 },
+    { "lat": 39.4640968, "lon": -77.3661953 }
+  ],
+  "tags": {
+    "highway": "unclassified",
+    "name": "Stauffer Court",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11541954,
+  "bounds": {
+    "minlat": 39.4663626,
+    "minlon": -77.3620450,
+    "maxlat": 39.4667050,
+    "maxlon": -77.3618079
+  },
+  "nodes": [
+    102907695,
+    102907697,
+    102907699,
+    102907701
+  ],
+  "geometry": [
+    { "lat": 39.4663750, "lon": -77.3620450 },
+    { "lat": 39.4667050, "lon": -77.3620235 },
+    { "lat": 39.4667010, "lon": -77.3618079 },
+    { "lat": 39.4663626, "lon": -77.3618267 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11542080,
+  "bounds": {
+    "minlat": 39.4710230,
+    "minlon": -77.3614512,
+    "maxlat": 39.4711886,
+    "maxlon": -77.3609080
+  },
+  "nodes": [
+    102908812,
+    1723586319
+  ],
+  "geometry": [
+    { "lat": 39.4710230, "lon": -77.3609080 },
+    { "lat": 39.4711886, "lon": -77.3614512 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:reviewed": "no",
+    "tiger:separated": "no",
+    "tiger:source": "tiger_import_dch_v0.6_20070813",
+    "tiger:tlid": "60721378",
+    "tiger:upload_uuid": "bulk_upload.pl-13e6d4a7-82b9-4c98-b013-db4402cdc17c"
+  }
+},
+{
+  "type": "way",
+  "id": 11542289,
+  "bounds": {
+    "minlat": 39.4624776,
+    "minlon": -77.3639900,
+    "maxlat": 39.4626879,
+    "maxlon": -77.3634965
+  },
+  "nodes": [
+    102911150,
+    102911152,
+    102911154,
+    102911156
+  ],
+  "geometry": [
+    { "lat": 39.4626104, "lon": -77.3634965 },
+    { "lat": 39.4626879, "lon": -77.3639505 },
+    { "lat": 39.4625540, "lon": -77.3639900 },
+    { "lat": 39.4624776, "lon": -77.3635366 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11542314,
+  "bounds": {
+    "minlat": 39.4616671,
+    "minlon": -77.3642570,
+    "maxlat": 39.4618815,
+    "maxlon": -77.3637409
+  },
+  "nodes": [
+    102911233,
+    102911235,
+    102911237,
+    102911239
+  ],
+  "geometry": [
+    { "lat": 39.4618132, "lon": -77.3637409 },
+    { "lat": 39.4618815, "lon": -77.3642041 },
+    { "lat": 39.4617080, "lon": -77.3642570 },
+    { "lat": 39.4616671, "lon": -77.3637801 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11542706,
+  "bounds": {
+    "minlat": 39.4647900,
+    "minlon": -77.3636470,
+    "maxlat": 39.4656900,
+    "maxlon": -77.3621590
+  },
+  "nodes": [
+    102914743,
+    102914745,
+    102914747,
+    102914749,
+    102840835,
+    4403366335,
+    102840817
+  ],
+  "geometry": [
+    { "lat": 39.4652970, "lon": -77.3621590 },
+    { "lat": 39.4655950, "lon": -77.3626170 },
+    { "lat": 39.4655830, "lon": -77.3628150 },
+    { "lat": 39.4656900, "lon": -77.3633658 },
+    { "lat": 39.4652717, "lon": -77.3635044 },
+    { "lat": 39.4649295, "lon": -77.3636110 },
+    { "lat": 39.4647900, "lon": -77.3636470 }
+  ],
+  "tags": {
+    "highway": "service",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11543247,
+  "bounds": {
+    "minlat": 39.4603833,
+    "minlon": -77.3660368,
+    "maxlat": 39.4609073,
+    "maxlon": -77.3657071
+  },
+  "nodes": [
+    4509178114,
+    102920463,
+    4509178118,
+    4509178119,
+    4509178120,
+    4509178121
+  ],
+  "geometry": [
+    { "lat": 39.4609073, "lon": -77.3657071 },
+    { "lat": 39.4604229, "lon": -77.3658545 },
+    { "lat": 39.4604022, "lon": -77.3658797 },
+    { "lat": 39.4603883, "lon": -77.3659209 },
+    { "lat": 39.4603833, "lon": -77.3659866 },
+    { "lat": 39.4603893, "lon": -77.3660368 }
+  ],
+  "tags": {
+    "highway": "service",
+    "oneway": "yes",
+    "service": "parking_aisle",
+    "surface": "asphalt",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11544340,
+  "bounds": {
+    "minlat": 39.4639859,
+    "minlon": -77.3656165,
+    "maxlat": 39.4648368,
+    "maxlon": -77.3651029
+  },
+  "nodes": [
+    102890422,
+    8201817370,
+    8201817368,
+    4401890639
+  ],
+  "geometry": [
+    { "lat": 39.4639859, "lon": -77.3652744 },
+    { "lat": 39.4642287, "lon": -77.3652205 },
+    { "lat": 39.4647582, "lon": -77.3651029 },
+    { "lat": 39.4648368, "lon": -77.3656165 }
+  ],
+  "tags": {
+    "access": "customers",
+    "highway": "service",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11545039,
+  "bounds": {
+    "minlat": 39.4675983,
+    "minlon": -77.3667229,
+    "maxlat": 39.4680891,
+    "maxlon": -77.3633456
+  },
+  "nodes": [
+    102939449,
+    102939451,
+    3824605701,
+    3824605699,
+    3824605698,
+    3824605697,
+    3824605695,
+    102939453,
+    3824605693,
+    3824605777,
+    102939455
+  ],
+  "geometry": [
+    { "lat": 39.4680891, "lon": -77.3667229 },
+    { "lat": 39.4680784, "lon": -77.3664085 },
+    { "lat": 39.4680591, "lon": -77.3662627 },
+    { "lat": 39.4680360, "lon": -77.3661988 },
+    { "lat": 39.4680037, "lon": -77.3661330 },
+    { "lat": 39.4679405, "lon": -77.3660412 },
+    { "lat": 39.4679035, "lon": -77.3659534 },
+    { "lat": 39.4678747, "lon": -77.3658270 },
+    { "lat": 39.4678681, "lon": -77.3657359 },
+    { "lat": 39.4677310, "lon": -77.3645825 },
+    { "lat": 39.4675983, "lon": -77.3633456 }
+  ],
+  "tags": {
+    "access": "destination",
+    "highway": "service",
+    "service": "driveway",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11546511,
+  "bounds": {
+    "minlat": 39.4652320,
+    "minlon": -77.3614408,
+    "maxlat": 39.4654570,
+    "maxlon": -77.3611220
+  },
+  "nodes": [
+    102953282,
+    102953285,
+    102953288,
+    102953291
+  ],
+  "geometry": [
+    { "lat": 39.4652320, "lon": -77.3614311 },
+    { "lat": 39.4654522, "lon": -77.3614408 },
+    { "lat": 39.4654570, "lon": -77.3611290 },
+    { "lat": 39.4652390, "lon": -77.3611220 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11546523,
+  "bounds": {
+    "minlat": 39.4651346,
+    "minlon": -77.3599662,
+    "maxlat": 39.4653286,
+    "maxlon": -77.3594594
+  },
+  "nodes": [
+    102953442,
+    102953446,
+    102953448,
+    102953450
+  ],
+  "geometry": [
+    { "lat": 39.4651346, "lon": -77.3594740 },
+    { "lat": 39.4652903, "lon": -77.3594594 },
+    { "lat": 39.4653286, "lon": -77.3599470 },
+    { "lat": 39.4651775, "lon": -77.3599662 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11546773,
+  "bounds": {
+    "minlat": 39.4647900,
+    "minlon": -77.3639524,
+    "maxlat": 39.4660389,
+    "maxlon": -77.3636470
+  },
+  "nodes": [
+    102840817,
+    4697925620,
+    102956507,
+    4403366343,
+    102956509,
+    4403366344,
+    102956511
+  ],
+  "geometry": [
+    { "lat": 39.4647900, "lon": -77.3636470 },
+    { "lat": 39.4648882, "lon": -77.3638174 },
+    { "lat": 39.4649177, "lon": -77.3638686 },
+    { "lat": 39.4650017, "lon": -77.3639315 },
+    { "lat": 39.4650650, "lon": -77.3639524 },
+    { "lat": 39.4653618, "lon": -77.3639223 },
+    { "lat": 39.4660389, "lon": -77.3638541 }
+  ],
+  "tags": {
+    "highway": "service",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A63",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11546937,
+  "bounds": {
+    "minlat": 39.4608650,
+    "minlon": -77.3659110,
+    "maxlat": 39.4609073,
+    "maxlon": -77.3654320
+  },
+  "nodes": [
+    4509178113,
+    4509178114,
+    102958441
+  ],
+  "geometry": [
+    { "lat": 39.4608835, "lon": -77.3659110 },
+    { "lat": 39.4609073, "lon": -77.3657071 },
+    { "lat": 39.4608650, "lon": -77.3654320 }
+  ],
+  "tags": {
+    "highway": "service",
+    "lanes": "3",
+    "surface": "asphalt",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11547435,
+  "bounds": {
+    "minlat": 39.4633970,
+    "minlon": -77.3622280,
+    "maxlat": 39.4635190,
+    "maxlon": -77.3618952
+  },
+  "nodes": [
+    102962931,
+    102962937,
+    102962942
+  ],
+  "geometry": [
+    { "lat": 39.4633970, "lon": -77.3622280 },
+    { "lat": 39.4635165, "lon": -77.3622276 },
+    { "lat": 39.4635190, "lon": -77.3618952 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11549064,
+  "bounds": {
+    "minlat": 39.4672286,
+    "minlon": -77.3624550,
+    "maxlat": 39.4674220,
+    "maxlon": -77.3621942
+  },
+  "nodes": [
+    102976377,
+    102976379,
+    102976381,
+    102976384,
+    102976377
+  ],
+  "geometry": [
+    { "lat": 39.4674220, "lon": -77.3624124 },
+    { "lat": 39.4673985, "lon": -77.3621942 },
+    { "lat": 39.4672286, "lon": -77.3622414 },
+    { "lat": 39.4672650, "lon": -77.3624550 },
+    { "lat": 39.4674220, "lon": -77.3624124 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11549070,
+  "bounds": {
+    "minlat": 39.4660496,
+    "minlon": -77.3625622,
+    "maxlat": 39.4663809,
+    "maxlon": -77.3622970
+  },
+  "nodes": [
+    102976459,
+    102976461,
+    102976463,
+    102976465,
+    102976459
+  ],
+  "geometry": [
+    { "lat": 39.4660496, "lon": -77.3623252 },
+    { "lat": 39.4663770, "lon": -77.3622970 },
+    { "lat": 39.4663809, "lon": -77.3625342 },
+    { "lat": 39.4660576, "lon": -77.3625622 },
+    { "lat": 39.4660496, "lon": -77.3623252 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11550785,
+  "bounds": {
+    "minlat": 39.4682610,
+    "minlon": -77.3614800,
+    "maxlat": 39.4695723,
+    "maxlon": -77.3613450
+  },
+  "nodes": [
+    102989276,
+    102989277,
+    102989278,
+    102989279
+  ],
+  "geometry": [
+    { "lat": 39.4695723, "lon": -77.3614126 },
+    { "lat": 39.4687695, "lon": -77.3613450 },
+    { "lat": 39.4684100, "lon": -77.3614190 },
+    { "lat": 39.4682610, "lon": -77.3614800 }
+  ],
+  "tags": {
+    "highway": "service",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11552022,
+  "bounds": {
+    "minlat": 39.4678070,
+    "minlon": -77.3606180,
+    "maxlat": 39.4682920,
+    "maxlon": -77.3559390
+  },
+  "nodes": [
+    2852751797,
+    103001190,
+    103001191,
+    103001192,
+    103001194,
+    103001196,
+    8902828555,
+    103001198,
+    103001201,
+    103001203,
+    102999016
+  ],
+  "geometry": [
+    { "lat": 39.4679407, "lon": -77.3559390 },
+    { "lat": 39.4678768, "lon": -77.3564275 },
+    { "lat": 39.4678208, "lon": -77.3568604 },
+    { "lat": 39.4678070, "lon": -77.3572540 },
+    { "lat": 39.4678990, "lon": -77.3576810 },
+    { "lat": 39.4681200, "lon": -77.3581460 },
+    { "lat": 39.4682626, "lon": -77.3586478 },
+    { "lat": 39.4682760, "lon": -77.3586950 },
+    { "lat": 39.4682920, "lon": -77.3590010 },
+    { "lat": 39.4682610, "lon": -77.3593970 },
+    { "lat": 39.4682150, "lon": -77.3606180 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Adventure Avenue",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Adventure",
+    "tiger:name_type": "Ave",
+    "tiger:zip_left": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11552053,
+  "bounds": {
+    "minlat": 39.4715950,
+    "minlon": -77.3569640,
+    "maxlat": 39.4749670,
+    "maxlon": -77.3557430
+  },
+  "nodes": [
+    102842379,
+    103001628,
+    103001631,
+    103001633
+  ],
+  "geometry": [
+    { "lat": 39.4749670, "lon": -77.3569640 },
+    { "lat": 39.4749250, "lon": -77.3568640 },
+    { "lat": 39.4728310, "lon": -77.3561630 },
+    { "lat": 39.4715950, "lon": -77.3557430 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Hickory Hill",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Hickory Hill",
+    "tiger:reviewed": "no",
+    "tiger:separated": "no",
+    "tiger:source": "tiger_import_dch_v0.6_20070813",
+    "tiger:tlid": "60676708:60676846",
+    "tiger:upload_uuid": "bulk_upload.pl-13e6d4a7-82b9-4c98-b013-db4402cdc17c",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11552142,
+  "bounds": {
+    "minlat": 39.4649956,
+    "minlon": -77.3575365,
+    "maxlat": 39.4651900,
+    "maxlon": -77.3568420
+  },
+  "nodes": [
+    103002544,
+    103002546
+  ],
+  "geometry": [
+    { "lat": 39.4651900, "lon": -77.3568420 },
+    { "lat": 39.4649956, "lon": -77.3575365 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Successful Way",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Successful",
+    "tiger:name_type": "Way",
+    "tiger:reviewed": "no",
+    "tiger:separated": "no",
+    "tiger:source": "tiger_import_dch_v0.6_20070813",
+    "tiger:tlid": "60676263",
+    "tiger:upload_uuid": "bulk_upload.pl-13e6d4a7-82b9-4c98-b013-db4402cdc17c",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11553190,
+  "bounds": {
+    "minlat": 39.4638630,
+    "minlon": -77.3585845,
+    "maxlat": 39.4644110,
+    "maxlon": -77.3582070
+  },
+  "nodes": [
+    103014473,
+    2852751776,
+    103014478,
+    2852751778,
+    2852751775,
+    2852751776
+  ],
+  "geometry": [
+    { "lat": 39.4638630, "lon": -77.3582070 },
+    { "lat": 39.4642795, "lon": -77.3583663 },
+    { "lat": 39.4644110, "lon": -77.3584166 },
+    { "lat": 39.4643703, "lon": -77.3585845 },
+    { "lat": 39.4642382, "lon": -77.3585319 },
+    { "lat": 39.4642795, "lon": -77.3583663 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Vision Lane",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Vision",
+    "tiger:name_type": "Ln",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11553202,
+  "bounds": {
+    "minlat": 39.4668730,
+    "minlon": -77.3581840,
+    "maxlat": 39.4670860,
+    "maxlon": -77.3565060
+  },
+  "nodes": [
+    103014617,
+    103014619,
+    103014620
+  ],
+  "geometry": [
+    { "lat": 39.4668730, "lon": -77.3565060 },
+    { "lat": 39.4669830, "lon": -77.3571240 },
+    { "lat": 39.4670860, "lon": -77.3581840 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Triumphant Court",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Triumphant",
+    "tiger:name_type": "Ct",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11553511,
+  "bounds": {
+    "minlat": 39.4646544,
+    "minlon": -77.3614307,
+    "maxlat": 39.4646640,
+    "maxlon": -77.3608550
+  },
+  "nodes": [
+    102999008,
+    103016966
+  ],
+  "geometry": [
+    { "lat": 39.4646640, "lon": -77.3608550 },
+    { "lat": 39.4646544, "lon": -77.3614307 }
+  ],
+  "tags": {
+    "highway": "service",
+    "service": "parking_aisle",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 11553808,
+  "bounds": {
+    "minlat": 39.4651122,
+    "minlon": -77.3608770,
+    "maxlat": 39.4652440,
+    "maxlon": -77.3591489
+  },
+  "nodes": [
+    102999010,
+    102953450,
+    102953442,
+    103019047
+  ],
+  "geometry": [
+    { "lat": 39.4652440, "lon": -77.3608770 },
+    { "lat": 39.4651775, "lon": -77.3599662 },
+    { "lat": 39.4651346, "lon": -77.3594740 },
+    { "lat": 39.4651122, "lon": -77.3591489 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Eureka Lane",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Eureka",
+    "tiger:name_type": "Ln",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11554115,
+  "bounds": {
+    "minlat": 39.4658359,
+    "minlon": -77.3607647,
+    "maxlat": 39.4660306,
+    "maxlon": -77.3601112
+  },
+  "nodes": [
+    2852751790,
+    2852751789,
+    103021174,
+    103021176,
+    2852751783,
+    2852751785,
+    2852751789
+  ],
+  "geometry": [
+    { "lat": 39.4660306, "lon": -77.3607647 },
+    { "lat": 39.4660018, "lon": -77.3602765 },
+    { "lat": 39.4659912, "lon": -77.3601112 },
+    { "lat": 39.4658359, "lon": -77.3601286 },
+    { "lat": 39.4658455, "lon": -77.3602496 },
+    { "lat": 39.4658871, "lon": -77.3602900 },
+    { "lat": 39.4660018, "lon": -77.3602765 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Utopia Place",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Utopia",
+    "tiger:name_type": "Pl",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11554463,
+  "bounds": {
+    "minlat": 39.4667120,
+    "minlon": -77.3594510,
+    "maxlat": 39.4682610,
+    "maxlon": -77.3593970
+  },
+  "nodes": [
+    103023924,
+    103001203
+  ],
+  "geometry": [
+    { "lat": 39.4667120, "lon": -77.3594510 },
+    { "lat": 39.4682610, "lon": -77.3593970 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Adventure Court",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Adventure",
+    "tiger:name_type": "Ct",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11554496,
+  "bounds": {
+    "minlat": 39.4617912,
+    "minlon": -77.3604447,
+    "maxlat": 39.4704774,
+    "maxlon": -77.3561850
+  },
+  "nodes": [
+    102999003,
+    103024192,
+    103024194,
+    103024196,
+    103024198,
+    103024199,
+    103024200,
+    103024201,
+    103024204,
+    103024206,
+    103002544,
+    103024208,
+    103024209,
+    8902828547,
+    103024210,
+    103014617,
+    103024211,
+    103024213,
+    103024215,
+    103001190,
+    103024217,
+    103024219,
+    103024220,
+    8902828562,
+    8902828572,
+    103024222,
+    103024224,
+    103024227,
+    103024229,
+    8902828563,
+    103024231,
+    103024233,
+    102999032
+  ],
+  "geometry": [
+    { "lat": 39.4617912, "lon": -77.3604447 },
+    { "lat": 39.4621932, "lon": -77.3587259 },
+    { "lat": 39.4625350, "lon": -77.3570090 },
+    { "lat": 39.4626570, "lon": -77.3565750 },
+    { "lat": 39.4627410, "lon": -77.3563990 },
+    { "lat": 39.4629930, "lon": -77.3562010 },
+    { "lat": 39.4632940, "lon": -77.3561850 },
+    { "lat": 39.4639010, "lon": -77.3562540 },
+    { "lat": 39.4643400, "lon": -77.3564140 },
+    { "lat": 39.4646070, "lon": -77.3565750 },
+    { "lat": 39.4651900, "lon": -77.3568420 },
+    { "lat": 39.4657210, "lon": -77.3569784 },
+    { "lat": 39.4659760, "lon": -77.3569584 },
+    { "lat": 39.4661150, "lon": -77.3569184 },
+    { "lat": 39.4662240, "lon": -77.3568870 },
+    { "lat": 39.4668730, "lon": -77.3565060 },
+    { "lat": 39.4672160, "lon": -77.3563460 },
+    { "lat": 39.4673230, "lon": -77.3563230 },
+    { "lat": 39.4676240, "lon": -77.3563530 },
+    { "lat": 39.4678768, "lon": -77.3564275 },
+    { "lat": 39.4681320, "lon": -77.3564980 },
+    { "lat": 39.4684180, "lon": -77.3566660 },
+    { "lat": 39.4685510, "lon": -77.3568490 },
+    { "lat": 39.4691215, "lon": -77.3582087 },
+    { "lat": 39.4691753, "lon": -77.3583303 },
+    { "lat": 39.4692261, "lon": -77.3584450 },
+    { "lat": 39.4693550, "lon": -77.3586730 },
+    { "lat": 39.4695434, "lon": -77.3589005 },
+    { "lat": 39.4696606, "lon": -77.3590082 },
+    { "lat": 39.4698099, "lon": -77.3590972 },
+    { "lat": 39.4699470, "lon": -77.3591610 },
+    { "lat": 39.4701763, "lon": -77.3592325 },
+    { "lat": 39.4704774, "lon": -77.3592587 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Inspiration Avenue",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Inspiration",
+    "tiger:name_type": "Ave",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11554675,
+  "bounds": {
+    "minlat": 39.4637680,
+    "minlon": -77.3608700,
+    "maxlat": 39.4643400,
+    "maxlon": -77.3564140
+  },
+  "nodes": [
+    103024204,
+    8902828623,
+    8902816013,
+    103014473,
+    103025912,
+    103025917,
+    103025922,
+    103025924,
+    102999006
+  ],
+  "geometry": [
+    { "lat": 39.4643400, "lon": -77.3564140 },
+    { "lat": 39.4640840, "lon": -77.3573762 },
+    { "lat": 39.4639773, "lon": -77.3577773 },
+    { "lat": 39.4638630, "lon": -77.3582070 },
+    { "lat": 39.4637980, "lon": -77.3585960 },
+    { "lat": 39.4637900, "lon": -77.3588630 },
+    { "lat": 39.4637760, "lon": -77.3594430 },
+    { "lat": 39.4637680, "lon": -77.3597940 },
+    { "lat": 39.4637680, "lon": -77.3608700 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "name": "Stauffer Road",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Stauffer",
+    "tiger:name_type": "Rd",
+    "tiger:reviewed": "no"
+  }
+},
+{
+  "type": "way",
+  "id": 11554679,
+  "bounds": {
+    "minlat": 39.4643400,
+    "minlon": -77.3564140,
+    "maxlat": 39.4670064,
+    "maxlon": -77.3461193
+  },
+  "nodes": [
+    103024204,
+    103025938,
+    103025942,
+    103025945,
+    102967897,
+    103025948,
+    102967922,
+    4433179511,
+    2852751794,
+    103025961
+  ],
+  "geometry": [
+    { "lat": 39.4643400, "lon": -77.3564140 },
+    { "lat": 39.4644880, "lon": -77.3557843 },
+    { "lat": 39.4646355, "lon": -77.3552216 },
+    { "lat": 39.4649230, "lon": -77.3542020 },
+    { "lat": 39.4658210, "lon": -77.3506000 },
+    { "lat": 39.4659690, "lon": -77.3500060 },
+    { "lat": 39.4661810, "lon": -77.3491900 },
+    { "lat": 39.4662583, "lon": -77.3488867 },
+    { "lat": 39.4665688, "lon": -77.3476675 },
+    { "lat": 39.4670064, "lon": -77.3461193 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "name": "Stauffer Road",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Stauffer",
+    "tiger:name_type": "Rd",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11555470,
+  "bounds": {
+    "minlat": 39.4699879,
+    "minlon": -77.3609040,
+    "maxlat": 39.4703562,
+    "maxlon": -77.3604046
+  },
+  "nodes": [
+    102999024,
+    103032786
+  ],
+  "geometry": [
+    { "lat": 39.4699879, "lon": -77.3604046 },
+    { "lat": 39.4703562, "lon": -77.3609040 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Inovation Court",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Inovation",
+    "tiger:name_type": "Ct",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11556179,
+  "bounds": {
+    "minlat": 39.4639650,
+    "minlon": -77.3594675,
+    "maxlat": 39.4643836,
+    "maxlon": -77.3592857
+  },
+  "nodes": [
+    103037910,
+    103037912,
+    103037915,
+    103037917,
+    103037908,
+    103037910
+  ],
+  "geometry": [
+    { "lat": 39.4643836, "lon": -77.3594654 },
+    { "lat": 39.4643830, "lon": -77.3592857 },
+    { "lat": 39.4639650, "lon": -77.3592931 },
+    { "lat": 39.4639660, "lon": -77.3594430 },
+    { "lat": 39.4639655, "lon": -77.3594675 },
+    { "lat": 39.4643836, "lon": -77.3594654 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Foresight Lane",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Challenge",
+    "tiger:name_type": "Lane"
+  }
+},
+{
+  "type": "way",
+  "id": 11556181,
+  "bounds": {
+    "minlat": 39.4637760,
+    "minlon": -77.3594430,
+    "maxlat": 39.4639660,
+    "maxlon": -77.3594430
+  },
+  "nodes": [
+    103037917,
+    103025922
+  ],
+  "geometry": [
+    { "lat": 39.4639660, "lon": -77.3594430 },
+    { "lat": 39.4637760, "lon": -77.3594430 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Foresight Lane",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Challenge",
+    "tiger:name_type": "Lane"
+  }
+},
+{
+  "type": "way",
+  "id": 11556347,
+  "bounds": {
+    "minlat": 39.4635089,
+    "minlon": -77.3634218,
+    "maxlat": 39.4635204,
+    "maxlon": -77.3626300
+  },
+  "nodes": [
+    103039852,
+    103039854
+  ],
+  "geometry": [
+    { "lat": 39.4635089, "lon": -77.3634218 },
+    { "lat": 39.4635204, "lon": -77.3626300 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Inquiry Court",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Inquiry",
+    "tiger:name_type": "Ct",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11557415,
+  "bounds": {
+    "minlat": 39.4633955,
+    "minlon": -77.3622280,
+    "maxlat": 39.4638068,
+    "maxlon": -77.3618938
+  },
+  "nodes": [
+    11528059291,
+    103025928,
+    102962942,
+    103050006,
+    102962931
+  ],
+  "geometry": [
+    { "lat": 39.4638068, "lon": -77.3619082 },
+    { "lat": 39.4637067, "lon": -77.3619055 },
+    { "lat": 39.4635190, "lon": -77.3618952 },
+    { "lat": 39.4633955, "lon": -77.3618938 },
+    { "lat": 39.4633970, "lon": -77.3622280 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Dream Place",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Dream",
+    "tiger:name_type": "Pl",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11557447,
+  "bounds": {
+    "minlat": 39.4652320,
+    "minlon": -77.3614311,
+    "maxlat": 39.4652440,
+    "maxlon": -77.3608770
+  },
+  "nodes": [
+    102999010,
+    102953291,
+    102953282
+  ],
+  "geometry": [
+    { "lat": 39.4652440, "lon": -77.3608770 },
+    { "lat": 39.4652390, "lon": -77.3611220 },
+    { "lat": 39.4652320, "lon": -77.3614311 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Beacon Circle",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Beacon",
+    "tiger:name_type": "Cir"
+  }
+},
+{
+  "type": "way",
+  "id": 11558089,
+  "bounds": {
+    "minlat": 39.4650138,
+    "minlon": -77.3708077,
+    "maxlat": 39.4660026,
+    "maxlon": -77.3648645
+  },
+  "nodes": [
+    3824605671,
+    103056933,
+    3824605674,
+    103056936,
+    102979975,
+    103056937,
+    103056938,
+    102964507,
+    2852751782,
+    2852751786,
+    3824602845,
+    3824602847,
+    102905240
+  ],
+  "geometry": [
+    { "lat": 39.4650138, "lon": -77.3648645 },
+    { "lat": 39.4651330, "lon": -77.3656133 },
+    { "lat": 39.4651901, "lon": -77.3659250 },
+    { "lat": 39.4652697, "lon": -77.3664599 },
+    { "lat": 39.4653057, "lon": -77.3666820 },
+    { "lat": 39.4654279, "lon": -77.3675304 },
+    { "lat": 39.4656393, "lon": -77.3689265 },
+    { "lat": 39.4656780, "lon": -77.3691560 },
+    { "lat": 39.4658206, "lon": -77.3701882 },
+    { "lat": 39.4658578, "lon": -77.3704162 },
+    { "lat": 39.4659071, "lon": -77.3706227 },
+    { "lat": 39.4659456, "lon": -77.3707205 },
+    { "lat": 39.4660026, "lon": -77.3708077 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "name": "Fountain Rock Road",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Fountain Rock",
+    "tiger:name_type": "Rd",
+    "tiger:reviewed": "aerial",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11558306,
+  "bounds": {
+    "minlat": 39.4635879,
+    "minlon": -77.3597974,
+    "maxlat": 39.4637680,
+    "maxlon": -77.3597940
+  },
+  "nodes": [
+    103025924,
+    103058938
+  ],
+  "geometry": [
+    { "lat": 39.4637680, "lon": -77.3597940 },
+    { "lat": 39.4635879, "lon": -77.3597974 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Seekers Walk",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Seekers",
+    "tiger:name_type": "Walk"
+  }
+},
+{
+  "type": "way",
+  "id": 11558308,
+  "bounds": {
+    "minlat": 39.4635879,
+    "minlon": -77.3603153,
+    "maxlat": 39.4635940,
+    "maxlon": -77.3592202
+  },
+  "nodes": [
+    103058940,
+    103058938,
+    103058942
+  ],
+  "geometry": [
+    { "lat": 39.4635885, "lon": -77.3603153 },
+    { "lat": 39.4635879, "lon": -77.3597974 },
+    { "lat": 39.4635940, "lon": -77.3592202 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Seekers Walk",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Seekers",
+    "tiger:name_type": "Walk",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11558376,
+  "bounds": {
+    "minlat": 39.4714960,
+    "minlon": -77.3599090,
+    "maxlat": 39.4715950,
+    "maxlon": -77.3557430
+  },
+  "nodes": [
+    103059475,
+    103001633
+  ],
+  "geometry": [
+    { "lat": 39.4714960, "lon": -77.3599090 },
+    { "lat": 39.4715950, "lon": -77.3557430 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Wildwood Court",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Wildwood",
+    "tiger:name_type": "Ct",
+    "tiger:reviewed": "no",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11559662,
+  "bounds": {
+    "minlat": 39.4616671,
+    "minlon": -77.3637801,
+    "maxlat": 39.4636922,
+    "maxlon": -77.3633963
+  },
+  "nodes": [
+    102840811,
+    103039852,
+    2852751763,
+    103071181,
+    8902815982,
+    102911150,
+    102911156,
+    102911233,
+    102911239
+  ],
+  "geometry": [
+    { "lat": 39.4636922, "lon": -77.3634171 },
+    { "lat": 39.4635089, "lon": -77.3634218 },
+    { "lat": 39.4630477, "lon": -77.3633963 },
+    { "lat": 39.4629007, "lon": -77.3634127 },
+    { "lat": 39.4628789, "lon": -77.3634190 },
+    { "lat": 39.4626104, "lon": -77.3634965 },
+    { "lat": 39.4624776, "lon": -77.3635366 },
+    { "lat": 39.4618132, "lon": -77.3637409 },
+    { "lat": 39.4616671, "lon": -77.3637801 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Revelation Avenue",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Revelation",
+    "tiger:name_type": "Ave",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11559790,
+  "bounds": {
+    "minlat": 39.4673985,
+    "minlon": -77.3621942,
+    "maxlat": 39.4683570,
+    "maxlon": -77.3618690
+  },
+  "nodes": [
+    103001207,
+    102976379
+  ],
+  "geometry": [
+    { "lat": 39.4683570, "lon": -77.3618690 },
+    { "lat": 39.4673985, "lon": -77.3621942 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Fortune Place",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Fortune",
+    "tiger:name_type": "Pl",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11559837,
+  "bounds": {
+    "minlat": 39.4627136,
+    "minlon": -77.3607208,
+    "maxlat": 39.4631110,
+    "maxlon": -77.3597860
+  },
+  "nodes": [
+    102999004,
+    103072752,
+    103072754
+  ],
+  "geometry": [
+    { "lat": 39.4627136, "lon": -77.3607208 },
+    { "lat": 39.4628860, "lon": -77.3598090 },
+    { "lat": 39.4631110, "lon": -77.3597860 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Whimsey Court",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Whimsey",
+    "tiger:name_type": "Ct",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11559908,
+  "bounds": {
+    "minlat": 39.4663613,
+    "minlon": -77.3622970,
+    "maxlat": 39.4663966,
+    "maxlon": -77.3607170
+  },
+  "nodes": [
+    102923803,
+    2852751793,
+    2852751792,
+    102907701,
+    102907695,
+    102976461
+  ],
+  "geometry": [
+    { "lat": 39.4663650, "lon": -77.3607170 },
+    { "lat": 39.4663966, "lon": -77.3611359 },
+    { "lat": 39.4663613, "lon": -77.3617178 },
+    { "lat": 39.4663626, "lon": -77.3618267 },
+    { "lat": 39.4663750, "lon": -77.3620450 },
+    { "lat": 39.4663770, "lon": -77.3622970 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Treasure Avenue",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Treasure",
+    "tiger:name_type": "Ave",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11560229,
+  "bounds": {
+    "minlat": 39.4685510,
+    "minlon": -77.3568490,
+    "maxlat": 39.4696460,
+    "maxlon": -77.3565994
+  },
+  "nodes": [
+    103024220,
+    103075437,
+    2852751798,
+    103075439,
+    8902828588,
+    2852751799,
+    103075441,
+    103075443
+  ],
+  "geometry": [
+    { "lat": 39.4685510, "lon": -77.3568490 },
+    { "lat": 39.4688786, "lon": -77.3566447 },
+    { "lat": 39.4690399, "lon": -77.3566052 },
+    { "lat": 39.4691839, "lon": -77.3565994 },
+    { "lat": 39.4692396, "lon": -77.3566085 },
+    { "lat": 39.4693252, "lon": -77.3566224 },
+    { "lat": 39.4695320, "lon": -77.3566890 },
+    { "lat": 39.4696460, "lon": -77.3567960 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Imagination Court",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Imagination",
+    "tiger:name_type": "Ct",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11560250,
+  "bounds": {
+    "minlat": 39.4673462,
+    "minlon": -77.3613428,
+    "maxlat": 39.4675797,
+    "maxlon": -77.3606046
+  },
+  "nodes": [
+    102999014,
+    2852751796,
+    103075657,
+    103075658,
+    2852751795,
+    2852751796
+  ],
+  "geometry": [
+    { "lat": 39.4675797, "lon": -77.3606046 },
+    { "lat": 39.4675740, "lon": -77.3610794 },
+    { "lat": 39.4675708, "lon": -77.3613428 },
+    { "lat": 39.4673462, "lon": -77.3613375 },
+    { "lat": 39.4673491, "lon": -77.3611359 },
+    { "lat": 39.4675740, "lon": -77.3610794 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Victory Court",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Victory",
+    "tiger:name_type": "Ct",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11560772,
+  "bounds": {
+    "minlat": 39.4727510,
+    "minlon": -77.3598250,
+    "maxlat": 39.4728310,
+    "maxlon": -77.3561630
+  },
+  "nodes": [
+    102886194,
+    103079809,
+    103001631
+  ],
+  "geometry": [
+    { "lat": 39.4727510, "lon": -77.3598250 },
+    { "lat": 39.4727740, "lon": -77.3578410 },
+    { "lat": 39.4728310, "lon": -77.3561630 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Raleigh Road",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Raleigh",
+    "tiger:name_type": "Rd",
+    "tiger:reviewed": "no",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11561046,
+  "bounds": {
+    "minlat": 39.4615930,
+    "minlon": -77.3625860,
+    "maxlat": 39.4617912,
+    "maxlon": -77.3604447
+  },
+  "nodes": [
+    103082339,
+    103082340,
+    103082341,
+    102999003
+  ],
+  "geometry": [
+    { "lat": 39.4616920, "lon": -77.3625860 },
+    { "lat": 39.4615930, "lon": -77.3620370 },
+    { "lat": 39.4616120, "lon": -77.3614270 },
+    { "lat": 39.4617912, "lon": -77.3604447 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Inspiration Court",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Inspiration",
+    "tiger:name_type": "Ct",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11561571,
+  "bounds": {
+    "minlat": 39.4625620,
+    "minlon": -77.3619070,
+    "maxlat": 39.4627136,
+    "maxlon": -77.3607208
+  },
+  "nodes": [
+    103086540,
+    103086543,
+    102999004
+  ],
+  "geometry": [
+    { "lat": 39.4625890, "lon": -77.3619070 },
+    { "lat": 39.4625620, "lon": -77.3616710 },
+    { "lat": 39.4627136, "lon": -77.3607208 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Daring Court",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Daring",
+    "tiger:name_type": "Ct",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 11561673,
+  "bounds": {
+    "minlat": 39.4621932,
+    "minlon": -77.3589080,
+    "maxlat": 39.4635250,
+    "maxlon": -77.3575236
+  },
+  "nodes": [
+    103024192,
+    4868751922,
+    8902828609,
+    103087558,
+    2852751762,
+    2852751764,
+    2852751768,
+    103087560,
+    2852751770,
+    103087562
+  ],
+  "geometry": [
+    { "lat": 39.4621932, "lon": -77.3587259 },
+    { "lat": 39.4625132, "lon": -77.3588279 },
+    { "lat": 39.4625391, "lon": -77.3588362 },
+    { "lat": 39.4627642, "lon": -77.3589080 },
+    { "lat": 39.4628928, "lon": -77.3588574 },
+    { "lat": 39.4630550, "lon": -77.3587200 },
+    { "lat": 39.4631611, "lon": -77.3585422 },
+    { "lat": 39.4632180, "lon": -77.3583380 },
+    { "lat": 39.4633587, "lon": -77.3576640 },
+    { "lat": 39.4635250, "lon": -77.3575236 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Curiosity Court",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Curiosity",
+    "tiger:name_type": "Ct",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 160421074,
+  "bounds": {
+    "minlat": 39.4637680,
+    "minlon": -77.3645518,
+    "maxlat": 39.4638663,
+    "maxlon": -77.3608700
+  },
+  "nodes": [
+    102999006,
+    11528059299,
+    11528059291,
+    11528059298,
+    11528059297,
+    11528059295,
+    11528059294,
+    11528059293,
+    11528059292,
+    1724669746,
+    102890421
+  ],
+  "geometry": [
+    { "lat": 39.4637680, "lon": -77.3608700 },
+    { "lat": 39.4638078, "lon": -77.3610046 },
+    { "lat": 39.4638068, "lon": -77.3619082 },
+    { "lat": 39.4637962, "lon": -77.3624728 },
+    { "lat": 39.4637885, "lon": -77.3634173 },
+    { "lat": 39.4637839, "lon": -77.3637501 },
+    { "lat": 39.4637904, "lon": -77.3639345 },
+    { "lat": 39.4638038, "lon": -77.3640594 },
+    { "lat": 39.4638275, "lon": -77.3641803 },
+    { "lat": 39.4638663, "lon": -77.3643662 },
+    { "lat": 39.4638603, "lon": -77.3645518 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "name": "Stauffer Road",
+    "oneway": "yes",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Stauffer",
+    "tiger:name_type": "Rd"
+  }
+},
+{
+  "type": "way",
+  "id": 182149289,
+  "bounds": {
+    "minlat": 39.4734959,
+    "minlon": -77.3621786,
+    "maxlat": 39.4742554,
+    "maxlon": -77.3617320
+  },
+  "nodes": [
+    1924962375,
+    1924962401,
+    1924962404,
+    1924962406,
+    1924962408,
+    1924962410,
+    1924962411
+  ],
+  "geometry": [
+    { "lat": 39.4734959, "lon": -77.3621786 },
+    { "lat": 39.4740995, "lon": -77.3617526 },
+    { "lat": 39.4741494, "lon": -77.3617320 },
+    { "lat": 39.4741993, "lon": -77.3617555 },
+    { "lat": 39.4742310, "lon": -77.3618025 },
+    { "lat": 39.4742537, "lon": -77.3618819 },
+    { "lat": 39.4742554, "lon": -77.3618980 }
+  ],
+  "tags": {
+    "highway": "service",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 182149291,
+  "bounds": {
+    "minlat": 39.4736404,
+    "minlon": -77.3623369,
+    "maxlat": 39.4742554,
+    "maxlon": -77.3618980
+  },
+  "nodes": [
+    1924962411,
+    1924962381
+  ],
+  "geometry": [
+    { "lat": 39.4742554, "lon": -77.3618980 },
+    { "lat": 39.4736404, "lon": -77.3623369 }
+  ],
+  "tags": {
+    "highway": "service",
+    "oneway": "yes",
+    "service": "parking_aisle"
+  }
+},
+{
+  "type": "way",
+  "id": 182149296,
+  "bounds": {
+    "minlat": 39.4726821,
+    "minlon": -77.3631810,
+    "maxlat": 39.4737228,
+    "maxlon": -77.3617702
+  },
+  "nodes": [
+    102852399,
+    8638091552,
+    1924962359,
+    1924962361,
+    1924962362,
+    1924962364,
+    1924962365,
+    1924962367,
+    1924962368,
+    1924962374,
+    8638091575,
+    8638091647,
+    1924962385,
+    1924962386,
+    1924962384,
+    1924962382,
+    1924962379,
+    1924962377,
+    8638091571,
+    1924962370,
+    1924962369,
+    1924962371,
+    8638091568,
+    1924962373,
+    1924962374
+  ],
+  "geometry": [
+    { "lat": 39.4726821, "lon": -77.3619124 },
+    { "lat": 39.4727810, "lon": -77.3618594 },
+    { "lat": 39.4728652, "lon": -77.3618143 },
+    { "lat": 39.4729469, "lon": -77.3617820 },
+    { "lat": 39.4730490, "lon": -77.3617702 },
+    { "lat": 39.4731261, "lon": -77.3617967 },
+    { "lat": 39.4731874, "lon": -77.3618466 },
+    { "lat": 39.4732600, "lon": -77.3619378 },
+    { "lat": 39.4732986, "lon": -77.3620259 },
+    { "lat": 39.4733892, "lon": -77.3622424 },
+    { "lat": 39.4734525, "lon": -77.3623993 },
+    { "lat": 39.4736591, "lon": -77.3629111 },
+    { "lat": 39.4737183, "lon": -77.3630576 },
+    { "lat": 39.4737228, "lon": -77.3631164 },
+    { "lat": 39.4736911, "lon": -77.3631664 },
+    { "lat": 39.4736480, "lon": -77.3631810 },
+    { "lat": 39.4736071, "lon": -77.3631634 },
+    { "lat": 39.4735822, "lon": -77.3631105 },
+    { "lat": 39.4733292, "lon": -77.3625097 },
+    { "lat": 39.4733143, "lon": -77.3624742 },
+    { "lat": 39.4732999, "lon": -77.3623870 },
+    { "lat": 39.4733175, "lon": -77.3623059 },
+    { "lat": 39.4733242, "lon": -77.3622978 },
+    { "lat": 39.4733416, "lon": -77.3622768 },
+    { "lat": 39.4733892, "lon": -77.3622424 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 182149297,
+  "bounds": {
+    "minlat": 39.4725105,
+    "minlon": -77.3617560,
+    "maxlat": 39.4763428,
+    "maxlon": -77.3602929
+  },
+  "nodes": [
+    102886149,
+    8638091549,
+    1924962360,
+    1924962363,
+    1924962366,
+    1924962372,
+    1924962391,
+    1924962397,
+    1924962409,
+    1924962417,
+    1924962420,
+    1924962434,
+    8638091725,
+    1924962448,
+    1924962454,
+    8638091730,
+    1924962455,
+    1924962460,
+    1924962462,
+    1924962464,
+    8638038803,
+    1924962465,
+    8638038806,
+    8638038808,
+    1924962471,
+    1924962478,
+    1924962480,
+    1924962479,
+    1924962475
+  ],
+  "geometry": [
+    { "lat": 39.4725105, "lon": -77.3615024 },
+    { "lat": 39.4726177, "lon": -77.3614243 },
+    { "lat": 39.4729384, "lon": -77.3611907 },
+    { "lat": 39.4730700, "lon": -77.3611117 },
+    { "lat": 39.4732016, "lon": -77.3610743 },
+    { "lat": 39.4733299, "lon": -77.3610743 },
+    { "lat": 39.4738529, "lon": -77.3611117 },
+    { "lat": 39.4740615, "lon": -77.3610785 },
+    { "lat": 39.4742476, "lon": -77.3609870 },
+    { "lat": 39.4744337, "lon": -77.3608499 },
+    { "lat": 39.4745362, "lon": -77.3607596 },
+    { "lat": 39.4747168, "lon": -77.3606006 },
+    { "lat": 39.4747583, "lon": -77.3605640 },
+    { "lat": 39.4749342, "lon": -77.3604092 },
+    { "lat": 39.4750529, "lon": -77.3603427 },
+    { "lat": 39.4750743, "lon": -77.3603372 },
+    { "lat": 39.4751079, "lon": -77.3603287 },
+    { "lat": 39.4752486, "lon": -77.3602929 },
+    { "lat": 39.4754604, "lon": -77.3602970 },
+    { "lat": 39.4756561, "lon": -77.3603760 },
+    { "lat": 39.4757888, "lon": -77.3604791 },
+    { "lat": 39.4758486, "lon": -77.3605256 },
+    { "lat": 39.4758995, "lon": -77.3605870 },
+    { "lat": 39.4760000, "lon": -77.3607083 },
+    { "lat": 39.4760145, "lon": -77.3607259 },
+    { "lat": 39.4763203, "lon": -77.3610951 },
+    { "lat": 39.4763428, "lon": -77.3611658 },
+    { "lat": 39.4763363, "lon": -77.3612323 },
+    { "lat": 39.4760925, "lon": -77.3617560 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 182149301,
+  "bounds": {
+    "minlat": 39.4722771,
+    "minlon": -77.3661879,
+    "maxlat": 39.4734694,
+    "maxlon": -77.3608135
+  },
+  "nodes": [
+    102886200,
+    102886201,
+    102886149,
+    102852399,
+    102886202,
+    7102070204,
+    7102070205,
+    9470316000,
+    9470315999,
+    7102070206,
+    7102070207,
+    8204576720,
+    7102070208,
+    9470316001,
+    7102070209,
+    7102070210,
+    7102070211
+  ],
+  "geometry": [
+    { "lat": 39.4722771, "lon": -77.3608135 },
+    { "lat": 39.4723890, "lon": -77.3611910 },
+    { "lat": 39.4725105, "lon": -77.3615024 },
+    { "lat": 39.4726821, "lon": -77.3619124 },
+    { "lat": 39.4727630, "lon": -77.3621290 },
+    { "lat": 39.4731136, "lon": -77.3630477 },
+    { "lat": 39.4733807, "lon": -77.3638501 },
+    { "lat": 39.4734251, "lon": -77.3640559 },
+    { "lat": 39.4734530, "lon": -77.3642617 },
+    { "lat": 39.4734694, "lon": -77.3644884 },
+    { "lat": 39.4734619, "lon": -77.3647705 },
+    { "lat": 39.4734248, "lon": -77.3650324 },
+    { "lat": 39.4733658, "lon": -77.3652417 },
+    { "lat": 39.4732777, "lon": -77.3655013 },
+    { "lat": 39.4731649, "lon": -77.3657289 },
+    { "lat": 39.4729902, "lon": -77.3659848 },
+    { "lat": 39.4728034, "lon": -77.3661879 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Kerchner Road"
+  }
+},
+{
+  "type": "way",
+  "id": 265227560,
+  "bounds": {
+    "minlat": 39.4686151,
+    "minlon": -77.3628969,
+    "maxlat": 39.4746571,
+    "maxlon": -77.3584600
+  },
+  "nodes": [
+    103001209,
+    103007189,
+    103007191,
+    1723586319,
+    103007195,
+    102886200,
+    8638091545,
+    102985337,
+    103007197,
+    103007199,
+    103007201,
+    103007203
+  ],
+  "geometry": [
+    { "lat": 39.4686151, "lon": -77.3628969 },
+    { "lat": 39.4694034, "lon": -77.3625330 },
+    { "lat": 39.4702087, "lon": -77.3620622 },
+    { "lat": 39.4711886, "lon": -77.3614512 },
+    { "lat": 39.4717519, "lon": -77.3611359 },
+    { "lat": 39.4722771, "lon": -77.3608135 },
+    { "lat": 39.4723991, "lon": -77.3607241 },
+    { "lat": 39.4724826, "lon": -77.3606651 },
+    { "lat": 39.4731833, "lon": -77.3601180 },
+    { "lat": 39.4735476, "lon": -77.3597771 },
+    { "lat": 39.4741393, "lon": -77.3591557 },
+    { "lat": 39.4746571, "lon": -77.3584600 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Woodsboro Pike",
+    "ref": "MD 194",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 265231392,
+  "bounds": {
+    "minlat": 39.4571312,
+    "minlon": -77.3628030,
+    "maxlat": 39.4593739,
+    "maxlon": -77.3581746
+  },
+  "nodes": [
+    2708956043,
+    2708956045,
+    2708956046,
+    2708956047,
+    2708956048,
+    2708956049,
+    2708956050,
+    2708956051,
+    2708956052,
+    2708956053,
+    2708956054,
+    2708956055,
+    2708956056,
+    2708956057,
+    2708956058,
+    2708956059,
+    2708956060,
+    2708956061,
+    2708956062,
+    2708956063,
+    2708956064,
+    2708956065,
+    2708956066,
+    2708956067,
+    2708956068,
+    2708956069,
+    2708956070,
+    2708956071,
+    2708956072,
+    2708956073,
+    2708956074,
+    2708956075,
+    2708956076,
+    2708956077,
+    2708956078,
+    2708956079,
+    2708956080,
+    2708956081,
+    2708956082,
+    2708956083,
+    2708956084,
+    2708956085,
+    2708956086
+  ],
+  "geometry": [
+    { "lat": 39.4571312, "lon": -77.3621417 },
+    { "lat": 39.4571531, "lon": -77.3622061 },
+    { "lat": 39.4571899, "lon": -77.3622680 },
+    { "lat": 39.4572208, "lon": -77.3623363 },
+    { "lat": 39.4572586, "lon": -77.3624343 },
+    { "lat": 39.4572815, "lon": -77.3625130 },
+    { "lat": 39.4572984, "lon": -77.3626135 },
+    { "lat": 39.4573114, "lon": -77.3626767 },
+    { "lat": 39.4573313, "lon": -77.3627244 },
+    { "lat": 39.4573631, "lon": -77.3627605 },
+    { "lat": 39.4574009, "lon": -77.3627876 },
+    { "lat": 39.4574418, "lon": -77.3628030 },
+    { "lat": 39.4574876, "lon": -77.3628030 },
+    { "lat": 39.4575244, "lon": -77.3627863 },
+    { "lat": 39.4575702, "lon": -77.3627540 },
+    { "lat": 39.4576468, "lon": -77.3626819 },
+    { "lat": 39.4578101, "lon": -77.3625632 },
+    { "lat": 39.4579982, "lon": -77.3624304 },
+    { "lat": 39.4581485, "lon": -77.3623325 },
+    { "lat": 39.4582889, "lon": -77.3622551 },
+    { "lat": 39.4584073, "lon": -77.3621997 },
+    { "lat": 39.4584541, "lon": -77.3621739 },
+    { "lat": 39.4584949, "lon": -77.3621197 },
+    { "lat": 39.4585248, "lon": -77.3620566 },
+    { "lat": 39.4585417, "lon": -77.3619857 },
+    { "lat": 39.4585457, "lon": -77.3618928 },
+    { "lat": 39.4585527, "lon": -77.3614841 },
+    { "lat": 39.4585576, "lon": -77.3608434 },
+    { "lat": 39.4585656, "lon": -77.3603406 },
+    { "lat": 39.4585775, "lon": -77.3595670 },
+    { "lat": 39.4585845, "lon": -77.3591119 },
+    { "lat": 39.4585935, "lon": -77.3590281 },
+    { "lat": 39.4586174, "lon": -77.3589688 },
+    { "lat": 39.4586412, "lon": -77.3589327 },
+    { "lat": 39.4586821, "lon": -77.3588902 },
+    { "lat": 39.4587716, "lon": -77.3588283 },
+    { "lat": 39.4589170, "lon": -77.3587548 },
+    { "lat": 39.4590404, "lon": -77.3586865 },
+    { "lat": 39.4591121, "lon": -77.3586426 },
+    { "lat": 39.4591559, "lon": -77.3585988 },
+    { "lat": 39.4591947, "lon": -77.3585408 },
+    { "lat": 39.4592554, "lon": -77.3584273 },
+    { "lat": 39.4593739, "lon": -77.3581746 }
+  ],
+  "tags": {
+    "access": "private",
+    "highway": "track",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 281306023,
+  "bounds": {
+    "minlat": 39.4639614,
+    "minlon": -77.3604977,
+    "maxlat": 39.4640712,
+    "maxlon": -77.3594675
+  },
+  "nodes": [
+    103037908,
+    2852751772,
+    103037921,
+    2852751774,
+    2852751773,
+    2852751772
+  ],
+  "geometry": [
+    { "lat": 39.4639655, "lon": -77.3594675 },
+    { "lat": 39.4639621, "lon": -77.3603333 },
+    { "lat": 39.4639614, "lon": -77.3604955 },
+    { "lat": 39.4640712, "lon": -77.3604977 },
+    { "lat": 39.4640702, "lon": -77.3603333 },
+    { "lat": 39.4639621, "lon": -77.3603333 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Challenge Walk",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Challenge",
+    "tiger:name_type": "Walk"
+  }
+},
+{
+  "type": "way",
+  "id": 281306027,
+  "bounds": {
+    "minlat": 39.4682150,
+    "minlon": -77.3607100,
+    "maxlat": 39.4705013,
+    "maxlon": -77.3578397
+  },
+  "nodes": [
+    102999016,
+    102999018,
+    102999020,
+    102999022,
+    102999024,
+    102999026,
+    2852753603,
+    102999030,
+    2852753604,
+    102999032,
+    102999034,
+    102999036
+  ],
+  "geometry": [
+    { "lat": 39.4682150, "lon": -77.3606180 },
+    { "lat": 39.4694440, "lon": -77.3607100 },
+    { "lat": 39.4696310, "lon": -77.3606640 },
+    { "lat": 39.4697450, "lon": -77.3606030 },
+    { "lat": 39.4699879, "lon": -77.3604046 },
+    { "lat": 39.4703027, "lon": -77.3600162 },
+    { "lat": 39.4703886, "lon": -77.3598276 },
+    { "lat": 39.4704580, "lon": -77.3595960 },
+    { "lat": 39.4704749, "lon": -77.3594424 },
+    { "lat": 39.4704774, "lon": -77.3592587 },
+    { "lat": 39.4705013, "lon": -77.3580404 },
+    { "lat": 39.4704446, "lon": -77.3578397 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Discovery Boulevard",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Discovery",
+    "tiger:name_type": "Blvd",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 281306033,
+  "bounds": {
+    "minlat": 39.4631224,
+    "minlon": -77.3610587,
+    "maxlat": 39.4637127,
+    "maxlon": -77.3607967
+  },
+  "nodes": [
+    2852751771,
+    2852751769,
+    2852751767,
+    8902815996,
+    2852751765,
+    2852751766
+  ],
+  "geometry": [
+    { "lat": 39.4637127, "lon": -77.3610405 },
+    { "lat": 39.4631901, "lon": -77.3610587 },
+    { "lat": 39.4631415, "lon": -77.3610244 },
+    { "lat": 39.4631280, "lon": -77.3609879 },
+    { "lat": 39.4631224, "lon": -77.3609730 },
+    { "lat": 39.4631276, "lon": -77.3607967 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Discovery Place"
+  }
+},
+{
+  "type": "way",
+  "id": 379080111,
+  "bounds": {
+    "minlat": 39.4573033,
+    "minlon": -77.3664720,
+    "maxlat": 39.4638603,
+    "maxlon": -77.3645518
+  },
+  "nodes": [
+    2708912080,
+    103007177,
+    103007179,
+    103007181,
+    103007183,
+    102958441,
+    102967841,
+    102844207,
+    102884549,
+    102890421
+  ],
+  "geometry": [
+    { "lat": 39.4573033, "lon": -77.3664720 },
+    { "lat": 39.4582013, "lon": -77.3662046 },
+    { "lat": 39.4595530, "lon": -77.3658460 },
+    { "lat": 39.4596900, "lon": -77.3658060 },
+    { "lat": 39.4600670, "lon": -77.3656860 },
+    { "lat": 39.4608650, "lon": -77.3654320 },
+    { "lat": 39.4622300, "lon": -77.3650260 },
+    { "lat": 39.4623290, "lon": -77.3649970 },
+    { "lat": 39.4638060, "lon": -77.3645630 },
+    { "lat": 39.4638603, "lon": -77.3645518 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Woodsboro Pike",
+    "ref": "MD 194",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 379080112,
+  "bounds": {
+    "minlat": 39.4645749,
+    "minlon": -77.3642780,
+    "maxlat": 39.4648862,
+    "maxlon": -77.3641820
+  },
+  "nodes": [
+    3824440267,
+    103007187
+  ],
+  "geometry": [
+    { "lat": 39.4645749, "lon": -77.3642780 },
+    { "lat": 39.4648862, "lon": -77.3641820 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "1",
+    "name": "Woodsboro Pike",
+    "oneway": "yes",
+    "ref": "MD 194",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 379080113,
+  "bounds": {
+    "minlat": 39.4644530,
+    "minlon": -77.3643103,
+    "maxlat": 39.4645749,
+    "maxlon": -77.3642780
+  },
+  "nodes": [
+    102840823,
+    3824440267
+  ],
+  "geometry": [
+    { "lat": 39.4644530, "lon": -77.3643103 },
+    { "lat": 39.4645749, "lon": -77.3642780 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "1",
+    "name": "Woodsboro Pike",
+    "oneway": "yes",
+    "ref": "MD 194",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 379080114,
+  "bounds": {
+    "minlat": 39.4638603,
+    "minlon": -77.3645518,
+    "maxlat": 39.4644143,
+    "maxlon": -77.3643573
+  },
+  "nodes": [
+    102890421,
+    103007185,
+    10001562346,
+    9843240767
+  ],
+  "geometry": [
+    { "lat": 39.4638603, "lon": -77.3645518 },
+    { "lat": 39.4639425, "lon": -77.3645235 },
+    { "lat": 39.4640975, "lon": -77.3644689 },
+    { "lat": 39.4644143, "lon": -77.3643573 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "5",
+    "lanes:backward": "3",
+    "lanes:forward": "2",
+    "name": "Woodsboro Pike",
+    "ref": "MD 194",
+    "surface": "asphalt",
+    "turn:lanes:backward": "none|none|right"
+  }
+},
+{
+  "type": "way",
+  "id": 379080115,
+  "bounds": {
+    "minlat": 39.4639550,
+    "minlon": -77.3649040,
+    "maxlat": 39.4648569,
+    "maxlon": -77.3643664
+  },
+  "nodes": [
+    3824440265,
+    3824440263,
+    3824440262,
+    3824440259,
+    3824440260,
+    3824440261,
+    3824440264,
+    3824440266,
+    3824440271,
+    3824440274,
+    3824440275,
+    3824440276,
+    3824440277
+  ],
+  "geometry": [
+    { "lat": 39.4640170, "lon": -77.3649040 },
+    { "lat": 39.4639920, "lon": -77.3648856 },
+    { "lat": 39.4639789, "lon": -77.3648490 },
+    { "lat": 39.4639550, "lon": -77.3647008 },
+    { "lat": 39.4639571, "lon": -77.3646627 },
+    { "lat": 39.4639713, "lon": -77.3646359 },
+    { "lat": 39.4640007, "lon": -77.3646204 },
+    { "lat": 39.4641543, "lon": -77.3645724 },
+    { "lat": 39.4647687, "lon": -77.3643847 },
+    { "lat": 39.4648068, "lon": -77.3643692 },
+    { "lat": 39.4648253, "lon": -77.3643664 },
+    { "lat": 39.4648384, "lon": -77.3643692 },
+    { "lat": 39.4648569, "lon": -77.3643777 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 379080116,
+  "bounds": {
+    "minlat": 39.4639425,
+    "minlon": -77.3646627,
+    "maxlat": 39.4639571,
+    "maxlon": -77.3643706
+  },
+  "nodes": [
+    3824440260,
+    13032423057,
+    13032423056,
+    3824440258,
+    103007185,
+    13032423053,
+    3824440257
+  ],
+  "geometry": [
+    { "lat": 39.4639571, "lon": -77.3646627 },
+    { "lat": 39.4639553, "lon": -77.3646554 },
+    { "lat": 39.4639530, "lon": -77.3646456 },
+    { "lat": 39.4639506, "lon": -77.3646359 },
+    { "lat": 39.4639425, "lon": -77.3645235 },
+    { "lat": 39.4639429, "lon": -77.3643973 },
+    { "lat": 39.4639430, "lon": -77.3643706 }
+  ],
+  "tags": {
+    "footway": "crossing",
+    "highway": "footway",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 379091024,
+  "bounds": {
+    "minlat": 39.4649047,
+    "minlon": -77.3648645,
+    "maxlat": 39.4650138,
+    "maxlon": -77.3642522
+  },
+  "nodes": [
+    3824605671,
+    9843240764
+  ],
+  "geometry": [
+    { "lat": 39.4650138, "lon": -77.3648645 },
+    { "lat": 39.4649047, "lon": -77.3642522 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "3",
+    "lanes:backward": "1",
+    "lanes:forward": "2",
+    "name": "Fountain Rock Road",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Fountain Rock",
+    "tiger:name_type": "Rd",
+    "tiger:reviewed": "aerial",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793",
+    "turn:lanes:forward": "left|right"
+  }
+},
+{
+  "type": "way",
+  "id": 379091026,
+  "bounds": {
+    "minlat": 39.4647317,
+    "minlon": -77.3676874,
+    "maxlat": 39.4654279,
+    "maxlon": -77.3674759
+  },
+  "nodes": [
+    103056937,
+    3824605677,
+    3824605675,
+    3824605673,
+    3824605672,
+    3824605670,
+    3824605667,
+    3824605665,
+    3824605664,
+    3824605663,
+    3824605659,
+    3824605491
+  ],
+  "geometry": [
+    { "lat": 39.4654279, "lon": -77.3675304 },
+    { "lat": 39.4653079, "lon": -77.3675557 },
+    { "lat": 39.4652231, "lon": -77.3675457 },
+    { "lat": 39.4651307, "lon": -77.3675298 },
+    { "lat": 39.4650491, "lon": -77.3675218 },
+    { "lat": 39.4649612, "lon": -77.3674998 },
+    { "lat": 39.4648935, "lon": -77.3674759 },
+    { "lat": 39.4648442, "lon": -77.3674839 },
+    { "lat": 39.4648241, "lon": -77.3675238 },
+    { "lat": 39.4648134, "lon": -77.3675816 },
+    { "lat": 39.4647656, "lon": -77.3676515 },
+    { "lat": 39.4647317, "lon": -77.3676874 }
+  ],
+  "tags": {
+    "access": "private",
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 379091028,
+  "bounds": {
+    "minlat": 39.4656780,
+    "minlon": -77.3691560,
+    "maxlat": 39.4681207,
+    "maxlon": -77.3671566
+  },
+  "nodes": [
+    102964507,
+    3824602849,
+    3824605760,
+    3824605766,
+    3824605767,
+    3824605769,
+    3824605771,
+    3824605774,
+    3824605775,
+    3824605773,
+    3824605770,
+    3824605772,
+    3824605776,
+    3824605692,
+    3824605694,
+    3824605696,
+    3824605700,
+    3824605702
+  ],
+  "geometry": [
+    { "lat": 39.4656780, "lon": -77.3691560 },
+    { "lat": 39.4661305, "lon": -77.3689725 },
+    { "lat": 39.4669423, "lon": -77.3686652 },
+    { "lat": 39.4674861, "lon": -77.3684497 },
+    { "lat": 39.4675739, "lon": -77.3684117 },
+    { "lat": 39.4676601, "lon": -77.3683658 },
+    { "lat": 39.4676755, "lon": -77.3683519 },
+    { "lat": 39.4676987, "lon": -77.3683219 },
+    { "lat": 39.4677002, "lon": -77.3682741 },
+    { "lat": 39.4676925, "lon": -77.3681523 },
+    { "lat": 39.4676755, "lon": -77.3676555 },
+    { "lat": 39.4676879, "lon": -77.3675517 },
+    { "lat": 39.4677218, "lon": -77.3674579 },
+    { "lat": 39.4678111, "lon": -77.3672903 },
+    { "lat": 39.4678789, "lon": -77.3671846 },
+    { "lat": 39.4679390, "lon": -77.3671566 },
+    { "lat": 39.4680453, "lon": -77.3671586 },
+    { "lat": 39.4681207, "lon": -77.3671786 }
+  ],
+  "tags": {
+    "access": "private",
+    "highway": "track"
+  }
+},
+{
+  "type": "way",
+  "id": 379091031,
+  "bounds": {
+    "minlat": 39.4640968,
+    "minlon": -77.3661953,
+    "maxlat": 39.4651901,
+    "maxlon": -77.3659250
+  },
+  "nodes": [
+    3824605674,
+    8201817359,
+    8201817366,
+    102890423
+  ],
+  "geometry": [
+    { "lat": 39.4651901, "lon": -77.3659250 },
+    { "lat": 39.4649191, "lon": -77.3659920 },
+    { "lat": 39.4643520, "lon": -77.3661321 },
+    { "lat": 39.4640968, "lon": -77.3661953 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 379091032,
+  "bounds": {
+    "minlat": 39.4653057,
+    "minlon": -77.3666820,
+    "maxlat": 39.4678747,
+    "maxlon": -77.3658217
+  },
+  "nodes": [
+    102979975,
+    3824605685,
+    3824602848,
+    3824605758,
+    3824605768,
+    3824605778,
+    3824605779,
+    102939453
+  ],
+  "geometry": [
+    { "lat": 39.4653057, "lon": -77.3666820 },
+    { "lat": 39.4655283, "lon": -77.3666208 },
+    { "lat": 39.4659760, "lon": -77.3664797 },
+    { "lat": 39.4668560, "lon": -77.3661689 },
+    { "lat": 39.4676324, "lon": -77.3658895 },
+    { "lat": 39.4677495, "lon": -77.3658376 },
+    { "lat": 39.4678003, "lon": -77.3658217 },
+    { "lat": 39.4678747, "lon": -77.3658270 }
+  ],
+  "tags": {
+    "access": "private",
+    "highway": "track"
+  }
+},
+{
+  "type": "way",
+  "id": 379091033,
+  "bounds": {
+    "minlat": 39.4652832,
+    "minlon": -77.3689286,
+    "maxlat": 39.4656393,
+    "maxlon": -77.3688348
+  },
+  "nodes": [
+    103056938,
+    3824605687,
+    3824605686,
+    3824605684,
+    3824605681,
+    3824605679,
+    3824605678,
+    3824605676
+  ],
+  "geometry": [
+    { "lat": 39.4656393, "lon": -77.3689265 },
+    { "lat": 39.4655774, "lon": -77.3689286 },
+    { "lat": 39.4655482, "lon": -77.3689206 },
+    { "lat": 39.4655020, "lon": -77.3688906 },
+    { "lat": 39.4654542, "lon": -77.3688487 },
+    { "lat": 39.4653987, "lon": -77.3688348 },
+    { "lat": 39.4653571, "lon": -77.3688368 },
+    { "lat": 39.4652832, "lon": -77.3688567 }
+  ],
+  "tags": {
+    "access": "destination",
+    "highway": "track"
+  }
+},
+{
+  "type": "way",
+  "id": 399820395,
+  "bounds": {
+    "minlat": 39.4682150,
+    "minlon": -77.3628969,
+    "maxlat": 39.4686151,
+    "maxlon": -77.3606180
+  },
+  "nodes": [
+    102999016,
+    103001205,
+    102989279,
+    103001207,
+    103001209
+  ],
+  "geometry": [
+    { "lat": 39.4682150, "lon": -77.3606180 },
+    { "lat": 39.4682190, "lon": -77.3610760 },
+    { "lat": 39.4682610, "lon": -77.3614800 },
+    { "lat": 39.4683570, "lon": -77.3618690 },
+    { "lat": 39.4686151, "lon": -77.3628969 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "lanes": "2",
+    "name": "Adventure Avenue",
+    "surface": "asphalt",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Adventure",
+    "tiger:name_type": "Ave",
+    "tiger:zip_left": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 399820397,
+  "bounds": {
+    "minlat": 39.4617912,
+    "minlon": -77.3608700,
+    "maxlat": 39.4637680,
+    "maxlon": -77.3604447
+  },
+  "nodes": [
+    102999003,
+    4868751925,
+    102999004,
+    2852751766,
+    102999005,
+    102999006
+  ],
+  "geometry": [
+    { "lat": 39.4617912, "lon": -77.3604447 },
+    { "lat": 39.4623816, "lon": -77.3606394 },
+    { "lat": 39.4627136, "lon": -77.3607208 },
+    { "lat": 39.4631276, "lon": -77.3607967 },
+    { "lat": 39.4634430, "lon": -77.3608550 },
+    { "lat": 39.4637680, "lon": -77.3608700 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Discovery Boulevard",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Discovery",
+    "tiger:name_type": "Blvd",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 399820398,
+  "bounds": {
+    "minlat": 39.4637680,
+    "minlon": -77.3608770,
+    "maxlat": 39.4682150,
+    "maxlon": -77.3606046
+  },
+  "nodes": [
+    102999006,
+    8902815997,
+    102999008,
+    102999010,
+    8902828597,
+    2852751790,
+    102923803,
+    102999012,
+    102999014,
+    102999016
+  ],
+  "geometry": [
+    { "lat": 39.4637680, "lon": -77.3608700 },
+    { "lat": 39.4644871, "lon": -77.3608580 },
+    { "lat": 39.4646640, "lon": -77.3608550 },
+    { "lat": 39.4652440, "lon": -77.3608770 },
+    { "lat": 39.4657287, "lon": -77.3608078 },
+    { "lat": 39.4660306, "lon": -77.3607647 },
+    { "lat": 39.4663650, "lon": -77.3607170 },
+    { "lat": 39.4673650, "lon": -77.3606100 },
+    { "lat": 39.4675797, "lon": -77.3606046 },
+    { "lat": 39.4682150, "lon": -77.3606180 }
+  ],
+  "tags": {
+    "highway": "tertiary",
+    "name": "Discovery Boulevard",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD",
+    "tiger:name_base": "Discovery",
+    "tiger:name_type": "Blvd",
+    "tiger:zip_left": "21793",
+    "tiger:zip_right": "21793"
+  }
+},
+{
+  "type": "way",
+  "id": 399820412,
+  "bounds": {
+    "minlat": 39.4652197,
+    "minlon": -77.3641064,
+    "maxlat": 39.4660389,
+    "maxlon": -77.3638541
+  },
+  "nodes": [
+    9843240766,
+    102956511
+  ],
+  "geometry": [
+    { "lat": 39.4652197, "lon": -77.3641064 },
+    { "lat": 39.4660389, "lon": -77.3638541 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Woodsboro Pike",
+    "ref": "MD 194",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 442507744,
+  "bounds": {
+    "minlat": 39.4640667,
+    "minlon": -77.3658163,
+    "maxlat": 39.4651330,
+    "maxlon": -77.3656133
+  },
+  "nodes": [
+    1724669740,
+    8201817369,
+    4401890639,
+    103056933
+  ],
+  "geometry": [
+    { "lat": 39.4640667, "lon": -77.3658163 },
+    { "lat": 39.4643223, "lon": -77.3657500 },
+    { "lat": 39.4648368, "lon": -77.3656165 },
+    { "lat": 39.4651330, "lon": -77.3656133 }
+  ],
+  "tags": {
+    "access": "customers",
+    "highway": "service",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 442664941,
+  "bounds": {
+    "minlat": 39.4649295,
+    "minlon": -77.3636110,
+    "maxlat": 39.4651788,
+    "maxlon": -77.3632661
+  },
+  "nodes": [
+    4403366335,
+    4403366336
+  ],
+  "geometry": [
+    { "lat": 39.4649295, "lon": -77.3636110 },
+    { "lat": 39.4651788, "lon": -77.3632661 }
+  ],
+  "tags": {
+    "highway": "service",
+    "service": "parking_aisle"
+  }
+},
+{
+  "type": "way",
+  "id": 442664942,
+  "bounds": {
+    "minlat": 39.4647033,
+    "minlon": -77.3635379,
+    "maxlat": 39.4650627,
+    "maxlon": -77.3631071
+  },
+  "nodes": [
+    4403366337,
+    4403366338
+  ],
+  "geometry": [
+    { "lat": 39.4647033, "lon": -77.3635379 },
+    { "lat": 39.4650627, "lon": -77.3631071 }
+  ],
+  "tags": {
+    "highway": "service",
+    "service": "parking_aisle"
+  }
+},
+{
+  "type": "way",
+  "id": 442664943,
+  "bounds": {
+    "minlat": 39.4645792,
+    "minlon": -77.3633816,
+    "maxlat": 39.4649430,
+    "maxlon": -77.3629431
+  },
+  "nodes": [
+    4403366339,
+    4403366340
+  ],
+  "geometry": [
+    { "lat": 39.4645792, "lon": -77.3633816 },
+    { "lat": 39.4649430, "lon": -77.3629431 }
+  ],
+  "tags": {
+    "highway": "service",
+    "service": "parking_aisle"
+  }
+},
+{
+  "type": "way",
+  "id": 442664944,
+  "bounds": {
+    "minlat": 39.4644013,
+    "minlon": -77.3632761,
+    "maxlat": 39.4648205,
+    "maxlon": -77.3627753
+  },
+  "nodes": [
+    4403366341,
+    4403366342
+  ],
+  "geometry": [
+    { "lat": 39.4644013, "lon": -77.3632761 },
+    { "lat": 39.4648205, "lon": -77.3627753 }
+  ],
+  "tags": {
+    "highway": "service",
+    "service": "parking_aisle"
+  }
+},
+{
+  "type": "way",
+  "id": 442664945,
+  "bounds": {
+    "minlat": 39.4640570,
+    "minlon": -77.3634030,
+    "maxlat": 39.4646940,
+    "maxlon": -77.3626020
+  },
+  "nodes": [
+    102840813,
+    102840836
+  ],
+  "geometry": [
+    { "lat": 39.4640570, "lon": -77.3634030 },
+    { "lat": 39.4646940, "lon": -77.3626020 }
+  ],
+  "tags": {
+    "highway": "service",
+    "service": "parking_aisle"
+  }
+},
+{
+  "type": "way",
+  "id": 442664946,
+  "bounds": {
+    "minlat": 39.4636922,
+    "minlon": -77.3636470,
+    "maxlat": 39.4647900,
+    "maxlon": -77.3632580
+  },
+  "nodes": [
+    102840817,
+    4403366337,
+    4403366339,
+    102840815,
+    4403366341,
+    14058461659,
+    102840813,
+    4697925616,
+    11528059297,
+    102840811
+  ],
+  "geometry": [
+    { "lat": 39.4647900, "lon": -77.3636470 },
+    { "lat": 39.4647033, "lon": -77.3635379 },
+    { "lat": 39.4645792, "lon": -77.3633816 },
+    { "lat": 39.4644810, "lon": -77.3632580 },
+    { "lat": 39.4644013, "lon": -77.3632761 },
+    { "lat": 39.4642141, "lon": -77.3633451 },
+    { "lat": 39.4640570, "lon": -77.3634030 },
+    { "lat": 39.4639156, "lon": -77.3634175 },
+    { "lat": 39.4637885, "lon": -77.3634173 },
+    { "lat": 39.4636922, "lon": -77.3634171 }
+  ],
+  "tags": {
+    "highway": "service",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 454352712,
+  "bounds": {
+    "minlat": 39.4608835,
+    "minlon": -77.3659110,
+    "maxlat": 39.4615040,
+    "maxlon": -77.3657195
+  },
+  "nodes": [
+    4509178104,
+    4509178116,
+    4509178106,
+    4509178113
+  ],
+  "geometry": [
+    { "lat": 39.4615040, "lon": -77.3657195 },
+    { "lat": 39.4611477, "lon": -77.3658305 },
+    { "lat": 39.4611043, "lon": -77.3658441 },
+    { "lat": 39.4608835, "lon": -77.3659110 }
+  ],
+  "tags": {
+    "highway": "service",
+    "oneway": "yes",
+    "service": "parking_aisle",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 454352713,
+  "bounds": {
+    "minlat": 39.4615040,
+    "minlon": -77.3660270,
+    "maxlat": 39.4623100,
+    "maxlon": -77.3652261
+  },
+  "nodes": [
+    4509178104,
+    102920470,
+    102920472,
+    102920474,
+    102920476,
+    102920478,
+    2852751761,
+    2852751760,
+    2852751759,
+    2852751758,
+    102920470
+  ],
+  "geometry": [
+    { "lat": 39.4615040, "lon": -77.3657195 },
+    { "lat": 39.4615170, "lon": -77.3658060 },
+    { "lat": 39.4615510, "lon": -77.3660270 },
+    { "lat": 39.4617950, "lon": -77.3658980 },
+    { "lat": 39.4623100, "lon": -77.3654250 },
+    { "lat": 39.4622885, "lon": -77.3653293 },
+    { "lat": 39.4622723, "lon": -77.3652490 },
+    { "lat": 39.4622385, "lon": -77.3652261 },
+    { "lat": 39.4621900, "lon": -77.3652337 },
+    { "lat": 39.4616649, "lon": -77.3657271 },
+    { "lat": 39.4615170, "lon": -77.3658060 }
+  ],
+  "tags": {
+    "highway": "service",
+    "service": "parking_aisle",
+    "surface": "asphalt",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 454352714,
+  "bounds": {
+    "minlat": 39.4609073,
+    "minlon": -77.3657071,
+    "maxlat": 39.4610061,
+    "maxlon": -77.3656806
+  },
+  "nodes": [
+    4509178114,
+    4509178105
+  ],
+  "geometry": [
+    { "lat": 39.4609073, "lon": -77.3657071 },
+    { "lat": 39.4610061, "lon": -77.3656806 }
+  ],
+  "tags": {
+    "highway": "service",
+    "oneway": "yes",
+    "surface": "asphalt",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 454352715,
+  "bounds": {
+    "minlat": 39.4608835,
+    "minlon": -77.3659930,
+    "maxlat": 39.4611043,
+    "maxlon": -77.3656806
+  },
+  "nodes": [
+    4509178105,
+    4509178106,
+    4509178107,
+    4509178108,
+    4509178109,
+    4509178110,
+    4509178111,
+    4509178112,
+    4509178113
+  ],
+  "geometry": [
+    { "lat": 39.4610061, "lon": -77.3656806 },
+    { "lat": 39.4611043, "lon": -77.3658441 },
+    { "lat": 39.4611034, "lon": -77.3658758 },
+    { "lat": 39.4610875, "lon": -77.3659389 },
+    { "lat": 39.4610676, "lon": -77.3659582 },
+    { "lat": 39.4609393, "lon": -77.3659930 },
+    { "lat": 39.4609075, "lon": -77.3659801 },
+    { "lat": 39.4608916, "lon": -77.3659505 },
+    { "lat": 39.4608835, "lon": -77.3659110 }
+  ],
+  "tags": {
+    "highway": "service",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 454352716,
+  "bounds": {
+    "minlat": 39.4610061,
+    "minlon": -77.3657195,
+    "maxlat": 39.4615040,
+    "maxlon": -77.3655543
+  },
+  "nodes": [
+    4509178105,
+    102920467,
+    4509178104
+  ],
+  "geometry": [
+    { "lat": 39.4610061, "lon": -77.3656806 },
+    { "lat": 39.4614769, "lon": -77.3655543 },
+    { "lat": 39.4615040, "lon": -77.3657195 }
+  ],
+  "tags": {
+    "highway": "service",
+    "oneway": "yes",
+    "service": "parking_aisle",
+    "surface": "asphalt",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 454352717,
+  "bounds": {
+    "minlat": 39.4611477,
+    "minlon": -77.3660652,
+    "maxlat": 39.4611910,
+    "maxlon": -77.3658305
+  },
+  "nodes": [
+    4509178116,
+    4509178117
+  ],
+  "geometry": [
+    { "lat": 39.4611477, "lon": -77.3658305 },
+    { "lat": 39.4611910, "lon": -77.3660652 }
+  ],
+  "tags": {
+    "highway": "service",
+    "service": "parking_aisle",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 454352718,
+  "bounds": {
+    "minlat": 39.4603893,
+    "minlon": -77.3660368,
+    "maxlat": 39.4608835,
+    "maxlon": -77.3659110
+  },
+  "nodes": [
+    4509178113,
+    4509178121
+  ],
+  "geometry": [
+    { "lat": 39.4608835, "lon": -77.3659110 },
+    { "lat": 39.4603893, "lon": -77.3660368 }
+  ],
+  "tags": {
+    "highway": "service",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 454352719,
+  "bounds": {
+    "minlat": 39.4603893,
+    "minlon": -77.3670185,
+    "maxlat": 39.4606598,
+    "maxlon": -77.3660368
+  },
+  "nodes": [
+    4509178121,
+    4509178122,
+    4509178123,
+    4509178124
+  ],
+  "geometry": [
+    { "lat": 39.4603893, "lon": -77.3660368 },
+    { "lat": 39.4604788, "lon": -77.3665277 },
+    { "lat": 39.4605126, "lon": -77.3666475 },
+    { "lat": 39.4606598, "lon": -77.3670185 }
+  ],
+  "tags": {
+    "highway": "service",
+    "service": "parking_aisle",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 454353890,
+  "bounds": {
+    "minlat": 39.4638596,
+    "minlon": -77.3662148,
+    "maxlat": 39.4640968,
+    "maxlon": -77.3661953
+  },
+  "nodes": [
+    102890423,
+    4509175553
+  ],
+  "geometry": [
+    { "lat": 39.4640968, "lon": -77.3661953 },
+    { "lat": 39.4638596, "lon": -77.3662148 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 454353892,
+  "bounds": {
+    "minlat": 39.4607988,
+    "minlon": -77.3681119,
+    "maxlat": 39.4640968,
+    "maxlon": -77.3661953
+  },
+  "nodes": [
+    102890423,
+    4509175554,
+    4509175555,
+    4509175556,
+    4509175557,
+    4509175558,
+    4509175559,
+    4509175560,
+    7594770495,
+    7594770500,
+    7594770496,
+    7594770497,
+    7594770498,
+    7594770499,
+    4509175561,
+    4509175562,
+    4509175563,
+    8002034763,
+    8002034764,
+    8002034765,
+    8002034766,
+    8002034767,
+    8002034768,
+    8002034769,
+    8002034770,
+    8002034771,
+    4509175565
+  ],
+  "geometry": [
+    { "lat": 39.4640968, "lon": -77.3661953 },
+    { "lat": 39.4640297, "lon": -77.3664462 },
+    { "lat": 39.4640176, "lon": -77.3666100 },
+    { "lat": 39.4639784, "lon": -77.3667272 },
+    { "lat": 39.4639390, "lon": -77.3668289 },
+    { "lat": 39.4639170, "lon": -77.3669031 },
+    { "lat": 39.4638380, "lon": -77.3670611 },
+    { "lat": 39.4635715, "lon": -77.3677792 },
+    { "lat": 39.4634700, "lon": -77.3680490 },
+    { "lat": 39.4634147, "lon": -77.3680997 },
+    { "lat": 39.4633535, "lon": -77.3681119 },
+    { "lat": 39.4629000, "lon": -77.3676976 },
+    { "lat": 39.4626035, "lon": -77.3673650 },
+    { "lat": 39.4624484, "lon": -77.3673025 },
+    { "lat": 39.4616345, "lon": -77.3674271 },
+    { "lat": 39.4615615, "lon": -77.3675632 },
+    { "lat": 39.4614800, "lon": -77.3677460 },
+    { "lat": 39.4613667, "lon": -77.3679894 },
+    { "lat": 39.4611984, "lon": -77.3680058 },
+    { "lat": 39.4609923, "lon": -77.3680178 },
+    { "lat": 39.4608812, "lon": -77.3679044 },
+    { "lat": 39.4607988, "lon": -77.3677497 },
+    { "lat": 39.4608173, "lon": -77.3675808 },
+    { "lat": 39.4608871, "lon": -77.3674609 },
+    { "lat": 39.4610276, "lon": -77.3673639 },
+    { "lat": 39.4612893, "lon": -77.3673486 },
+    { "lat": 39.4613272, "lon": -77.3673574 }
+  ],
+  "tags": {
+    "highway": "service",
+    "service": "driveway"
+  }
+},
+{
+  "type": "way",
+  "id": 454353895,
+  "bounds": {
+    "minlat": 39.4613272,
+    "minlon": -77.3674271,
+    "maxlat": 39.4616345,
+    "maxlon": -77.3673574
+  },
+  "nodes": [
+    4509175565,
+    4509175561
+  ],
+  "geometry": [
+    { "lat": 39.4613272, "lon": -77.3673574 },
+    { "lat": 39.4616345, "lon": -77.3674271 }
+  ],
+  "tags": {
+    "highway": "service",
+    "service": "driveway"
+  }
+},
+{
+  "type": "way",
+  "id": 465738271,
+  "bounds": {
+    "minlat": 39.4676978,
+    "minlon": -77.3540579,
+    "maxlat": 39.4679419,
+    "maxlon": -77.3514641
+  },
+  "nodes": [
+    4606632766,
+    4606632767,
+    4606632768,
+    4606632769
+  ],
+  "geometry": [
+    { "lat": 39.4679419, "lon": -77.3514641 },
+    { "lat": 39.4678790, "lon": -77.3523311 },
+    { "lat": 39.4678351, "lon": -77.3524448 },
+    { "lat": 39.4676978, "lon": -77.3540579 }
+  ],
+  "tags": {
+    "access": "private",
+    "highway": "track",
+    "tracktype": "grade5"
+  }
+},
+{
+  "type": "way",
+  "id": 476145516,
+  "bounds": {
+    "minlat": 39.4639156,
+    "minlon": -77.3640573,
+    "maxlat": 39.4658243,
+    "maxlon": -77.3624562
+  },
+  "nodes": [
+    4697925615,
+    4697925616,
+    4697925617,
+    4697925618,
+    4697925619,
+    4697925620,
+    4697925621
+  ],
+  "geometry": [
+    { "lat": 39.4639296, "lon": -77.3624562 },
+    { "lat": 39.4639156, "lon": -77.3634175 },
+    { "lat": 39.4639407, "lon": -77.3638758 },
+    { "lat": 39.4641033, "lon": -77.3640573 },
+    { "lat": 39.4648034, "lon": -77.3638443 },
+    { "lat": 39.4648882, "lon": -77.3638174 },
+    { "lat": 39.4658243, "lon": -77.3635222 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 495084877,
+  "bounds": {
+    "minlat": 39.4623816,
+    "minlon": -77.3606394,
+    "maxlat": 39.4625132,
+    "maxlon": -77.3588279
+  },
+  "nodes": [
+    4868751922,
+    4868751923,
+    4868751926,
+    4868751921,
+    8902815964,
+    4868751924,
+    4868751925
+  ],
+  "geometry": [
+    { "lat": 39.4625132, "lon": -77.3588279 },
+    { "lat": 39.4624410, "lon": -77.3592506 },
+    { "lat": 39.4624555, "lon": -77.3593793 },
+    { "lat": 39.4624493, "lon": -77.3594973 },
+    { "lat": 39.4623909, "lon": -77.3598608 },
+    { "lat": 39.4624937, "lon": -77.3601415 },
+    { "lat": 39.4623816, "lon": -77.3606394 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 760238345,
+  "bounds": {
+    "minlat": 39.4734248,
+    "minlon": -77.3667534,
+    "maxlat": 39.4746118,
+    "maxlon": -77.3650324
+  },
+  "nodes": [
+    8204576720,
+    8204576721,
+    7102070212,
+    7102070213,
+    7102070214,
+    7102070215,
+    7102070216,
+    7102070217
+  ],
+  "geometry": [
+    { "lat": 39.4734248, "lon": -77.3650324 },
+    { "lat": 39.4740574, "lon": -77.3652545 },
+    { "lat": 39.4742767, "lon": -77.3653864 },
+    { "lat": 39.4744447, "lon": -77.3656302 },
+    { "lat": 39.4745645, "lon": -77.3658778 },
+    { "lat": 39.4746118, "lon": -77.3661417 },
+    { "lat": 39.4745800, "lon": -77.3664931 },
+    { "lat": 39.4745124, "lon": -77.3667534 }
+  ],
+  "tags": {
+    "highway": "residential"
+  }
+},
+{
+  "type": "way",
+  "id": 760238346,
+  "bounds": {
+    "minlat": 39.4711691,
+    "minlon": -77.3703454,
+    "maxlat": 39.4728034,
+    "maxlon": -77.3661879
+  },
+  "nodes": [
+    7102070211,
+    7102070224,
+    7102070218,
+    7102070219,
+    7102070220,
+    7102070221,
+    7102070245,
+    7102070223
+  ],
+  "geometry": [
+    { "lat": 39.4728034, "lon": -77.3661879 },
+    { "lat": 39.4722346, "lon": -77.3666957 },
+    { "lat": 39.4716419, "lon": -77.3672316 },
+    { "lat": 39.4715290, "lon": -77.3673861 },
+    { "lat": 39.4714533, "lon": -77.3675583 },
+    { "lat": 39.4714005, "lon": -77.3677609 },
+    { "lat": 39.4713149, "lon": -77.3687824 },
+    { "lat": 39.4711691, "lon": -77.3703454 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Kerchner Road"
+  }
+},
+{
+  "type": "way",
+  "id": 760238347,
+  "bounds": {
+    "minlat": 39.4716708,
+    "minlon": -77.3666957,
+    "maxlat": 39.4722346,
+    "maxlon": -77.3640465
+  },
+  "nodes": [
+    7102070224,
+    7102070225,
+    9470316002,
+    7102070226,
+    7102070228,
+    7102070227
+  ],
+  "geometry": [
+    { "lat": 39.4722346, "lon": -77.3666957 },
+    { "lat": 39.4718599, "lon": -77.3659734 },
+    { "lat": 39.4717531, "lon": -77.3656431 },
+    { "lat": 39.4716876, "lon": -77.3653075 },
+    { "lat": 39.4716708, "lon": -77.3649905 },
+    { "lat": 39.4717508, "lon": -77.3640465 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Bell Flower Court"
+  }
+},
+{
+  "type": "way",
+  "id": 760238348,
+  "bounds": {
+    "minlat": 39.4706661,
+    "minlon": -77.3705146,
+    "maxlat": 39.4738164,
+    "maxlon": -77.3666957
+  },
+  "nodes": [
+    7102070224,
+    7102070229,
+    7102070230,
+    7102070240,
+    7102070231,
+    7102070232,
+    9470316003,
+    7102070233,
+    7102070234,
+    7102070235,
+    7102070236,
+    9470316004,
+    7102070237,
+    7102070238,
+    7102070247,
+    7102070223,
+    7102070239
+  ],
+  "geometry": [
+    { "lat": 39.4722346, "lon": -77.3666957 },
+    { "lat": 39.4726364, "lon": -77.3674020 },
+    { "lat": 39.4727773, "lon": -77.3675843 },
+    { "lat": 39.4729538, "lon": -77.3677889 },
+    { "lat": 39.4735245, "lon": -77.3681732 },
+    { "lat": 39.4736242, "lon": -77.3682764 },
+    { "lat": 39.4738150, "lon": -77.3687370 },
+    { "lat": 39.4738164, "lon": -77.3689201 },
+    { "lat": 39.4737607, "lon": -77.3691600 },
+    { "lat": 39.4734984, "lon": -77.3701641 },
+    { "lat": 39.4734084, "lon": -77.3703370 },
+    { "lat": 39.4733221, "lon": -77.3704334 },
+    { "lat": 39.4732029, "lon": -77.3705138 },
+    { "lat": 39.4730440, "lon": -77.3705146 },
+    { "lat": 39.4723274, "lon": -77.3704533 },
+    { "lat": 39.4711691, "lon": -77.3703454 },
+    { "lat": 39.4706661, "lon": -77.3702799 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Vista Glen Road"
+  }
+},
+{
+  "type": "way",
+  "id": 760238349,
+  "bounds": {
+    "minlat": 39.4724881,
+    "minlon": -77.3688204,
+    "maxlat": 39.4729538,
+    "maxlon": -77.3677889
+  },
+  "nodes": [
+    7102070240,
+    7102070241,
+    7102070242
+  ],
+  "geometry": [
+    { "lat": 39.4729538, "lon": -77.3677889 },
+    { "lat": 39.4726152, "lon": -77.3686583 },
+    { "lat": 39.4724881, "lon": -77.3688204 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Cartwright Road"
+  }
+},
+{
+  "type": "way",
+  "id": 760238350,
+  "bounds": {
+    "minlat": 39.4713149,
+    "minlon": -77.3689259,
+    "maxlat": 39.4724881,
+    "maxlon": -77.3687824
+  },
+  "nodes": [
+    7102070242,
+    7102070243,
+    7102070244,
+    7102070245
+  ],
+  "geometry": [
+    { "lat": 39.4724881, "lon": -77.3688204 },
+    { "lat": 39.4723765, "lon": -77.3689114 },
+    { "lat": 39.4722417, "lon": -77.3689259 },
+    { "lat": 39.4713149, "lon": -77.3687824 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "name": "Bell Springs Road"
+  }
+},
+{
+  "type": "way",
+  "id": 813084765,
+  "bounds": {
+    "minlat": 39.4630136,
+    "minlon": -77.3665494,
+    "maxlat": 39.4638596,
+    "maxlon": -77.3662148
+  },
+  "nodes": [
+    4509175553,
+    7594770501,
+    7594770502
+  ],
+  "geometry": [
+    { "lat": 39.4638596, "lon": -77.3662148 },
+    { "lat": 39.4637520, "lon": -77.3664506 },
+    { "lat": 39.4630136, "lon": -77.3665494 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 813084766,
+  "bounds": {
+    "minlat": 39.4628071,
+    "minlon": -77.3678464,
+    "maxlat": 39.4638596,
+    "maxlon": -77.3650082
+  },
+  "nodes": [
+    4509175553,
+    7594770516,
+    7594770503,
+    7594770515,
+    7594770513,
+    7594770504,
+    7594770514,
+    7594770502,
+    7594770505,
+    7594770511,
+    7594770506,
+    7594770512,
+    7594770510,
+    7594770507,
+    7594770509,
+    7594770508,
+    7594770517,
+    7594770501
+  ],
+  "geometry": [
+    { "lat": 39.4638596, "lon": -77.3662148 },
+    { "lat": 39.4636433, "lon": -77.3650444 },
+    { "lat": 39.4636237, "lon": -77.3650127 },
+    { "lat": 39.4636023, "lon": -77.3650082 },
+    { "lat": 39.4630098, "lon": -77.3651381 },
+    { "lat": 39.4629849, "lon": -77.3651581 },
+    { "lat": 39.4629734, "lon": -77.3651929 },
+    { "lat": 39.4630136, "lon": -77.3665494 },
+    { "lat": 39.4630221, "lon": -77.3666474 },
+    { "lat": 39.4628078, "lon": -77.3672304 },
+    { "lat": 39.4628071, "lon": -77.3672785 },
+    { "lat": 39.4628344, "lon": -77.3673220 },
+    { "lat": 39.4633680, "lon": -77.3678455 },
+    { "lat": 39.4633959, "lon": -77.3678464 },
+    { "lat": 39.4634125, "lon": -77.3678277 },
+    { "lat": 39.4638187, "lon": -77.3667242 },
+    { "lat": 39.4637725, "lon": -77.3665874 },
+    { "lat": 39.4637520, "lon": -77.3664506 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 858379093,
+  "bounds": {
+    "minlat": 39.4614330,
+    "minlon": -77.3673010,
+    "maxlat": 39.4624250,
+    "maxlon": -77.3649970
+  },
+  "nodes": [
+    102844199,
+    102844201,
+    102844203,
+    102844205,
+    102844207
+  ],
+  "geometry": [
+    { "lat": 39.4614330, "lon": -77.3673010 },
+    { "lat": 39.4623180, "lon": -77.3656990 },
+    { "lat": 39.4624060, "lon": -77.3655470 },
+    { "lat": 39.4624250, "lon": -77.3654090 },
+    { "lat": 39.4623290, "lon": -77.3649970 }
+  ],
+  "tags": {
+    "highway": "service",
+    "service": "driveway",
+    "tiger:cfcc": "A41",
+    "tiger:county": "Frederick, MD"
+  }
+},
+{
+  "type": "way",
+  "id": 881935991,
+  "bounds": {
+    "minlat": 39.4643520,
+    "minlon": -77.3665867,
+    "maxlat": 39.4649627,
+    "maxlon": -77.3659920
+  },
+  "nodes": [
+    8201817359,
+    8201817360,
+    8201817361,
+    8201817362,
+    8201817363,
+    8201817364,
+    8201817365,
+    8201817366
+  ],
+  "geometry": [
+    { "lat": 39.4649191, "lon": -77.3659920 },
+    { "lat": 39.4649627, "lon": -77.3663190 },
+    { "lat": 39.4649452, "lon": -77.3664908 },
+    { "lat": 39.4648362, "lon": -77.3665867 },
+    { "lat": 39.4645556, "lon": -77.3665760 },
+    { "lat": 39.4644590, "lon": -77.3664722 },
+    { "lat": 39.4643829, "lon": -77.3662844 },
+    { "lat": 39.4643520, "lon": -77.3661321 }
+  ],
+  "tags": {
+    "access": "private",
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 881935992,
+  "bounds": {
+    "minlat": 39.4648368,
+    "minlon": -77.3659920,
+    "maxlat": 39.4649191,
+    "maxlon": -77.3656165
+  },
+  "nodes": [
+    8201817359,
+    4401890639
+  ],
+  "geometry": [
+    { "lat": 39.4649191, "lon": -77.3659920 },
+    { "lat": 39.4648368, "lon": -77.3656165 }
+  ],
+  "tags": {
+    "access": "customers",
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 881935993,
+  "bounds": {
+    "minlat": 39.4642287,
+    "minlon": -77.3657500,
+    "maxlat": 39.4643223,
+    "maxlon": -77.3652205
+  },
+  "nodes": [
+    8201817369,
+    8201817370
+  ],
+  "geometry": [
+    { "lat": 39.4643223, "lon": -77.3657500 },
+    { "lat": 39.4642287, "lon": -77.3652205 }
+  ],
+  "tags": {
+    "access": "customers",
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 904893784,
+  "bounds": {
+    "minlat": 39.4719204,
+    "minlon": -77.3602921,
+    "maxlat": 39.4722621,
+    "maxlon": -77.3599726
+  },
+  "nodes": [
+    102886197,
+    8403553708,
+    8403553701,
+    8403553702,
+    8403553703,
+    8403553704,
+    8403553705,
+    8403553706
+  ],
+  "geometry": [
+    { "lat": 39.4722621, "lon": -77.3602921 },
+    { "lat": 39.4721772, "lon": -77.3602129 },
+    { "lat": 39.4721210, "lon": -77.3601419 },
+    { "lat": 39.4720609, "lon": -77.3600303 },
+    { "lat": 39.4720324, "lon": -77.3599835 },
+    { "lat": 39.4719969, "lon": -77.3599726 },
+    { "lat": 39.4719594, "lon": -77.3599866 },
+    { "lat": 39.4719204, "lon": -77.3599973 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 931760785,
+  "bounds": {
+    "minlat": 39.4723657,
+    "minlon": -77.3608436,
+    "maxlat": 39.4724333,
+    "maxlon": -77.3606036
+  },
+  "nodes": [
+    8638091543,
+    8638091545,
+    13030687321,
+    8638091544
+  ],
+  "geometry": [
+    { "lat": 39.4723657, "lon": -77.3606036 },
+    { "lat": 39.4723991, "lon": -77.3607241 },
+    { "lat": 39.4724247, "lon": -77.3608136 },
+    { "lat": 39.4724333, "lon": -77.3608436 }
+  ],
+  "tags": {
+    "crossing": "marked",
+    "footway": "crossing",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760786,
+  "bounds": {
+    "minlat": 39.4724063,
+    "minlon": -77.3613374,
+    "maxlat": 39.4725838,
+    "maxlon": -77.3608436
+  },
+  "nodes": [
+    8638091544,
+    8638091546,
+    8638091547
+  ],
+  "geometry": [
+    { "lat": 39.4724333, "lon": -77.3608436 },
+    { "lat": 39.4724063, "lon": -77.3608657 },
+    { "lat": 39.4725838, "lon": -77.3613374 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760787,
+  "bounds": {
+    "minlat": 39.4725838,
+    "minlon": -77.3614898,
+    "maxlat": 39.4726433,
+    "maxlon": -77.3613374
+  },
+  "nodes": [
+    8638091547,
+    8638091549,
+    8638091548
+  ],
+  "geometry": [
+    { "lat": 39.4725838, "lon": -77.3613374 },
+    { "lat": 39.4726177, "lon": -77.3614243 },
+    { "lat": 39.4726433, "lon": -77.3614898 }
+  ],
+  "tags": {
+    "crossing": "marked",
+    "footway": "crossing",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760788,
+  "bounds": {
+    "minlat": 39.4726433,
+    "minlon": -77.3618085,
+    "maxlat": 39.4727622,
+    "maxlon": -77.3614898
+  },
+  "nodes": [
+    8638091548,
+    8638091767,
+    8638091550
+  ],
+  "geometry": [
+    { "lat": 39.4726433, "lon": -77.3614898 },
+    { "lat": 39.4726561, "lon": -77.3615241 },
+    { "lat": 39.4727622, "lon": -77.3618085 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760789,
+  "bounds": {
+    "minlat": 39.4727622,
+    "minlon": -77.3619539,
+    "maxlat": 39.4728159,
+    "maxlon": -77.3618085
+  },
+  "nodes": [
+    8638091550,
+    8638091552,
+    8638091551
+  ],
+  "geometry": [
+    { "lat": 39.4727622, "lon": -77.3618085 },
+    { "lat": 39.4727810, "lon": -77.3618594 },
+    { "lat": 39.4728159, "lon": -77.3619539 }
+  ],
+  "tags": {
+    "crossing": "unmarked",
+    "footway": "crossing",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760790,
+  "bounds": {
+    "minlat": 39.4728159,
+    "minlon": -77.3622621,
+    "maxlat": 39.4733025,
+    "maxlon": -77.3618873
+  },
+  "nodes": [
+    8638091551,
+    8638091553,
+    8638091554,
+    8638091555,
+    8638091556,
+    8638091557,
+    8638091558,
+    8638091559,
+    8638091560,
+    8638091561,
+    8638091562,
+    8638091563,
+    8638091564,
+    8638091565,
+    8638091566
+  ],
+  "geometry": [
+    { "lat": 39.4728159, "lon": -77.3619539 },
+    { "lat": 39.4728294, "lon": -77.3619842 },
+    { "lat": 39.4728632, "lon": -77.3619597 },
+    { "lat": 39.4729218, "lon": -77.3619229 },
+    { "lat": 39.4729754, "lon": -77.3618996 },
+    { "lat": 39.4730267, "lon": -77.3618873 },
+    { "lat": 39.4730736, "lon": -77.3618873 },
+    { "lat": 39.4731245, "lon": -77.3619060 },
+    { "lat": 39.4731718, "lon": -77.3619422 },
+    { "lat": 39.4732029, "lon": -77.3619807 },
+    { "lat": 39.4732354, "lon": -77.3620426 },
+    { "lat": 39.4732539, "lon": -77.3620928 },
+    { "lat": 39.4732710, "lon": -77.3621751 },
+    { "lat": 39.4732872, "lon": -77.3622486 },
+    { "lat": 39.4733025, "lon": -77.3622621 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760791,
+  "bounds": {
+    "minlat": 39.4733025,
+    "minlon": -77.3623765,
+    "maxlat": 39.4733719,
+    "maxlon": -77.3622621
+  },
+  "nodes": [
+    8638091566,
+    8638091568,
+    8638091567
+  ],
+  "geometry": [
+    { "lat": 39.4733025, "lon": -77.3622621 },
+    { "lat": 39.4733242, "lon": -77.3622978 },
+    { "lat": 39.4733719, "lon": -77.3623765 }
+  ],
+  "tags": {
+    "crossing": "marked",
+    "footway": "crossing",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760792,
+  "bounds": {
+    "minlat": 39.4733719,
+    "minlon": -77.3627927,
+    "maxlat": 39.4735508,
+    "maxlon": -77.3623765
+  },
+  "nodes": [
+    8638091567,
+    8638091572,
+    8638091570,
+    8638091569
+  ],
+  "geometry": [
+    { "lat": 39.4733719, "lon": -77.3623765 },
+    { "lat": 39.4733992, "lon": -77.3624400 },
+    { "lat": 39.4734089, "lon": -77.3624625 },
+    { "lat": 39.4735508, "lon": -77.3627927 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760793,
+  "bounds": {
+    "minlat": 39.4733292,
+    "minlon": -77.3625097,
+    "maxlat": 39.4734089,
+    "maxlon": -77.3624625
+  },
+  "nodes": [
+    8638091570,
+    8638091571
+  ],
+  "geometry": [
+    { "lat": 39.4734089, "lon": -77.3624625 },
+    { "lat": 39.4733292, "lon": -77.3625097 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760794,
+  "bounds": {
+    "minlat": 39.4733992,
+    "minlon": -77.3624400,
+    "maxlat": 39.4734147,
+    "maxlon": -77.3624284
+  },
+  "nodes": [
+    8638091572,
+    8638091573
+  ],
+  "geometry": [
+    { "lat": 39.4733992, "lon": -77.3624400 },
+    { "lat": 39.4734147, "lon": -77.3624284 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760795,
+  "bounds": {
+    "minlat": 39.4734147,
+    "minlon": -77.3624284,
+    "maxlat": 39.4734715,
+    "maxlon": -77.3623847
+  },
+  "nodes": [
+    8638091573,
+    8638091575,
+    8638091574
+  ],
+  "geometry": [
+    { "lat": 39.4734147, "lon": -77.3624284 },
+    { "lat": 39.4734525, "lon": -77.3623993 },
+    { "lat": 39.4734715, "lon": -77.3623847 }
+  ],
+  "tags": {
+    "crossing": "marked",
+    "footway": "crossing",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760796,
+  "bounds": {
+    "minlat": 39.4734715,
+    "minlon": -77.3628832,
+    "maxlat": 39.4737415,
+    "maxlon": -77.3623724
+  },
+  "nodes": [
+    8638091574,
+    8638091576,
+    8638091603,
+    8638091577,
+    8638091578
+  ],
+  "geometry": [
+    { "lat": 39.4734715, "lon": -77.3623847 },
+    { "lat": 39.4734864, "lon": -77.3623724 },
+    { "lat": 39.4735671, "lon": -77.3625646 },
+    { "lat": 39.4737009, "lon": -77.3628832 },
+    { "lat": 39.4737415, "lon": -77.3628537 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760797,
+  "bounds": {
+    "minlat": 39.4737009,
+    "minlon": -77.3632544,
+    "maxlat": 39.4749616,
+    "maxlon": -77.3618190
+  },
+  "nodes": [
+    8638091577,
+    8638091579,
+    8638091606,
+    8638091605,
+    8638091604,
+    8638091580,
+    8638091581,
+    8638091582,
+    8638091615,
+    8638091583,
+    8638091584,
+    8638091585,
+    8638091660,
+    8638091586,
+    8638091587,
+    8638091662,
+    8638091588,
+    8638091589,
+    8638091616,
+    8638091590,
+    8638091591,
+    8638091592,
+    8638091593,
+    8638091618,
+    8638091595,
+    8638091594
+  ],
+  "geometry": [
+    { "lat": 39.4737009, "lon": -77.3628832 },
+    { "lat": 39.4738604, "lon": -77.3632544 },
+    { "lat": 39.4738699, "lon": -77.3632483 },
+    { "lat": 39.4738974, "lon": -77.3632304 },
+    { "lat": 39.4739466, "lon": -77.3631986 },
+    { "lat": 39.4739631, "lon": -77.3631879 },
+    { "lat": 39.4740816, "lon": -77.3631085 },
+    { "lat": 39.4741312, "lon": -77.3632223 },
+    { "lat": 39.4741627, "lon": -77.3632307 },
+    { "lat": 39.4741686, "lon": -77.3632323 },
+    { "lat": 39.4742988, "lon": -77.3631465 },
+    { "lat": 39.4746998, "lon": -77.3628557 },
+    { "lat": 39.4748945, "lon": -77.3627165 },
+    { "lat": 39.4749242, "lon": -77.3626952 },
+    { "lat": 39.4749414, "lon": -77.3626870 },
+    { "lat": 39.4749491, "lon": -77.3626546 },
+    { "lat": 39.4749616, "lon": -77.3626018 },
+    { "lat": 39.4746579, "lon": -77.3619036 },
+    { "lat": 39.4746254, "lon": -77.3618716 },
+    { "lat": 39.4746088, "lon": -77.3618552 },
+    { "lat": 39.4745349, "lon": -77.3618190 },
+    { "lat": 39.4744876, "lon": -77.3618266 },
+    { "lat": 39.4743687, "lon": -77.3619124 },
+    { "lat": 39.4743546, "lon": -77.3619175 },
+    { "lat": 39.4743308, "lon": -77.3619262 },
+    { "lat": 39.4743029, "lon": -77.3619363 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760798,
+  "bounds": {
+    "minlat": 39.4736387,
+    "minlon": -77.3625148,
+    "maxlat": 39.4743714,
+    "maxlon": -77.3619262
+  },
+  "nodes": [
+    8638091595,
+    8638091596,
+    8638091597,
+    8638091634,
+    8638091632,
+    8638091598,
+    8638091599,
+    8638091630,
+    8638091600,
+    8638091601
+  ],
+  "geometry": [
+    { "lat": 39.4743308, "lon": -77.3619262 },
+    { "lat": 39.4743714, "lon": -77.3620823 },
+    { "lat": 39.4743011, "lon": -77.3621599 },
+    { "lat": 39.4741726, "lon": -77.3622527 },
+    { "lat": 39.4738998, "lon": -77.3624496 },
+    { "lat": 39.4738879, "lon": -77.3624582 },
+    { "lat": 39.4738442, "lon": -77.3624781 },
+    { "lat": 39.4738052, "lon": -77.3624660 },
+    { "lat": 39.4737423, "lon": -77.3624465 },
+    { "lat": 39.4736387, "lon": -77.3625148 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760799,
+  "bounds": {
+    "minlat": 39.4735901,
+    "minlon": -77.3625494,
+    "maxlat": 39.4736387,
+    "maxlon": -77.3625148
+  },
+  "nodes": [
+    8638091601,
+    8638091602
+  ],
+  "geometry": [
+    { "lat": 39.4736387, "lon": -77.3625148 },
+    { "lat": 39.4735901, "lon": -77.3625494 }
+  ],
+  "tags": {
+    "highway": "steps"
+  }
+},
+{
+  "type": "way",
+  "id": 931760800,
+  "bounds": {
+    "minlat": 39.4735671,
+    "minlon": -77.3625646,
+    "maxlat": 39.4735901,
+    "maxlon": -77.3625494
+  },
+  "nodes": [
+    8638091602,
+    8638091603
+  ],
+  "geometry": [
+    { "lat": 39.4735901, "lon": -77.3625494 },
+    { "lat": 39.4735671, "lon": -77.3625646 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760802,
+  "bounds": {
+    "minlat": 39.4739631,
+    "minlon": -77.3632223,
+    "maxlat": 39.4741312,
+    "maxlon": -77.3631879
+  },
+  "nodes": [
+    8638091580,
+    8638091582
+  ],
+  "geometry": [
+    { "lat": 39.4739631, "lon": -77.3631879 },
+    { "lat": 39.4741312, "lon": -77.3632223 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760803,
+  "bounds": {
+    "minlat": 39.4738699,
+    "minlon": -77.3633637,
+    "maxlat": 39.4741627,
+    "maxlon": -77.3632307
+  },
+  "nodes": [
+    8638091606,
+    8638091607,
+    8638091608,
+    8638091609,
+    8638091610,
+    8638091611,
+    8638091612,
+    8638091613,
+    8638091614,
+    8638091615
+  ],
+  "geometry": [
+    { "lat": 39.4738699, "lon": -77.3632483 },
+    { "lat": 39.4739121, "lon": -77.3633398 },
+    { "lat": 39.4739941, "lon": -77.3632854 },
+    { "lat": 39.4740180, "lon": -77.3632890 },
+    { "lat": 39.4740592, "lon": -77.3633251 },
+    { "lat": 39.4740972, "lon": -77.3633627 },
+    { "lat": 39.4741302, "lon": -77.3633637 },
+    { "lat": 39.4741545, "lon": -77.3633474 },
+    { "lat": 39.4741624, "lon": -77.3633073 },
+    { "lat": 39.4741627, "lon": -77.3632307 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760806,
+  "bounds": {
+    "minlat": 39.4738052,
+    "minlon": -77.3624660,
+    "maxlat": 39.4743029,
+    "maxlon": -77.3619363
+  },
+  "nodes": [
+    8638091594,
+    8638091636,
+    8638091620,
+    8638091621,
+    8638091622,
+    8638091623,
+    8638091624,
+    8638091633,
+    8638091625,
+    8638091626,
+    8638091627,
+    8638091631,
+    8638091628,
+    8638091629,
+    1924962389,
+    8638091630
+  ],
+  "geometry": [
+    { "lat": 39.4743029, "lon": -77.3619363 },
+    { "lat": 39.4742634, "lon": -77.3619747 },
+    { "lat": 39.4742341, "lon": -77.3620033 },
+    { "lat": 39.4742161, "lon": -77.3619946 },
+    { "lat": 39.4741918, "lon": -77.3620104 },
+    { "lat": 39.4741851, "lon": -77.3620226 },
+    { "lat": 39.4742063, "lon": -77.3620815 },
+    { "lat": 39.4741278, "lon": -77.3621390 },
+    { "lat": 39.4741043, "lon": -77.3621562 },
+    { "lat": 39.4740023, "lon": -77.3622294 },
+    { "lat": 39.4738960, "lon": -77.3623077 },
+    { "lat": 39.4738556, "lon": -77.3623371 },
+    { "lat": 39.4738485, "lon": -77.3623422 },
+    { "lat": 39.4738160, "lon": -77.3623712 },
+    { "lat": 39.4738125, "lon": -77.3624020 },
+    { "lat": 39.4738052, "lon": -77.3624660 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760808,
+  "bounds": {
+    "minlat": 39.4738556,
+    "minlon": -77.3624496,
+    "maxlat": 39.4738998,
+    "maxlon": -77.3623371
+  },
+  "nodes": [
+    8638091631,
+    1924962393,
+    8638091632
+  ],
+  "geometry": [
+    { "lat": 39.4738556, "lon": -77.3623371 },
+    { "lat": 39.4738761, "lon": -77.3623892 },
+    { "lat": 39.4738998, "lon": -77.3624496 }
+  ],
+  "tags": {
+    "crossing": "marked",
+    "footway": "crossing",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760811,
+  "bounds": {
+    "minlat": 39.4736198,
+    "minlon": -77.3631279,
+    "maxlat": 39.4737009,
+    "maxlon": -77.3628832
+  },
+  "nodes": [
+    8638091577,
+    8638091645,
+    8638091647,
+    8638091646,
+    8638091637,
+    8638091638,
+    8638091639,
+    8638091640,
+    8638091641,
+    8638091642,
+    8638091643
+  ],
+  "geometry": [
+    { "lat": 39.4737009, "lon": -77.3628832 },
+    { "lat": 39.4736849, "lon": -77.3628939 },
+    { "lat": 39.4736591, "lon": -77.3629111 },
+    { "lat": 39.4736359, "lon": -77.3629266 },
+    { "lat": 39.4736198, "lon": -77.3629373 },
+    { "lat": 39.4736712, "lon": -77.3630501 },
+    { "lat": 39.4736838, "lon": -77.3630674 },
+    { "lat": 39.4736795, "lon": -77.3630928 },
+    { "lat": 39.4736673, "lon": -77.3631172 },
+    { "lat": 39.4736469, "lon": -77.3631279 },
+    { "lat": 39.4736316, "lon": -77.3631208 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760812,
+  "bounds": {
+    "minlat": 39.4736026,
+    "minlon": -77.3629373,
+    "maxlat": 39.4736198,
+    "maxlon": -77.3628936
+  },
+  "nodes": [
+    8638091637,
+    8638091644
+  ],
+  "geometry": [
+    { "lat": 39.4736198, "lon": -77.3629373 },
+    { "lat": 39.4736026, "lon": -77.3628936 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760814,
+  "bounds": {
+    "minlat": 39.4734864,
+    "minlon": -77.3624647,
+    "maxlat": 39.4737423,
+    "maxlon": -77.3623590
+  },
+  "nodes": [
+    8638091600,
+    8638091648,
+    8638091649,
+    8638091650,
+    8638091651,
+    8638091652,
+    8638091653,
+    8638091654,
+    8638091655,
+    8638091656,
+    8638091657,
+    8638091658,
+    8638091576
+  ],
+  "geometry": [
+    { "lat": 39.4737423, "lon": -77.3624465 },
+    { "lat": 39.4736928, "lon": -77.3624408 },
+    { "lat": 39.4736638, "lon": -77.3624495 },
+    { "lat": 39.4736316, "lon": -77.3624647 },
+    { "lat": 39.4736014, "lon": -77.3624601 },
+    { "lat": 39.4735775, "lon": -77.3624434 },
+    { "lat": 39.4735728, "lon": -77.3624134 },
+    { "lat": 39.4735673, "lon": -77.3623951 },
+    { "lat": 39.4735492, "lon": -77.3623748 },
+    { "lat": 39.4735328, "lon": -77.3623656 },
+    { "lat": 39.4735167, "lon": -77.3623590 },
+    { "lat": 39.4735010, "lon": -77.3623605 },
+    { "lat": 39.4734864, "lon": -77.3623724 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 931760846,
+  "bounds": {
+    "minlat": 39.4726561,
+    "minlon": -77.3615241,
+    "maxlat": 39.4743211,
+    "maxlon": -77.3611990
+  },
+  "nodes": [
+    8638091757,
+    8638091758,
+    8638091759,
+    8638091760,
+    8638091761,
+    8638091762,
+    8638091763,
+    8638091764,
+    8638091765,
+    8638091766,
+    8638091767
+  ],
+  "geometry": [
+    { "lat": 39.4743211, "lon": -77.3613808 },
+    { "lat": 39.4743174, "lon": -77.3613640 },
+    { "lat": 39.4740860, "lon": -77.3612634 },
+    { "lat": 39.4740586, "lon": -77.3612621 },
+    { "lat": 39.4735881, "lon": -77.3612741 },
+    { "lat": 39.4733334, "lon": -77.3612795 },
+    { "lat": 39.4733081, "lon": -77.3612748 },
+    { "lat": 39.4732258, "lon": -77.3612118 },
+    { "lat": 39.4731957, "lon": -77.3611990 },
+    { "lat": 39.4731579, "lon": -77.3612151 },
+    { "lat": 39.4726561, "lon": -77.3615241 }
+  ],
+  "tags": {
+    "footway": "sidewalk",
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 942459442,
+  "bounds": {
+    "minlat": 39.4714783,
+    "minlon": -77.3557430,
+    "maxlat": 39.4715950,
+    "maxlon": -77.3555452
+  },
+  "nodes": [
+    103001633,
+    8727268968
+  ],
+  "geometry": [
+    { "lat": 39.4715950, "lon": -77.3557430 },
+    { "lat": 39.4714783, "lon": -77.3555452 }
+  ],
+  "tags": {
+    "highway": "service",
+    "name": "Hickory Hill Avenue"
+  }
+},
+{
+  "type": "way",
+  "id": 942459443,
+  "bounds": {
+    "minlat": 39.4711338,
+    "minlon": -77.3556871,
+    "maxlat": 39.4714783,
+    "maxlon": -77.3555452
+  },
+  "nodes": [
+    8727268968,
+    8727268969,
+    8727268970,
+    8727268971,
+    8727268972,
+    8727268973,
+    8727268974
+  ],
+  "geometry": [
+    { "lat": 39.4714783, "lon": -77.3555452 },
+    { "lat": 39.4713744, "lon": -77.3556488 },
+    { "lat": 39.4712817, "lon": -77.3556807 },
+    { "lat": 39.4712078, "lon": -77.3556871 },
+    { "lat": 39.4711644, "lon": -77.3556820 },
+    { "lat": 39.4711446, "lon": -77.3556603 },
+    { "lat": 39.4711338, "lon": -77.3555977 }
+  ],
+  "tags": {
+    "highway": "service",
+    "service": "driveway"
+  }
+},
+{
+  "type": "way",
+  "id": 962463808,
+  "bounds": {
+    "minlat": 39.4620933,
+    "minlon": -77.3625853,
+    "maxlat": 39.4628926,
+    "maxlon": -77.3606394
+  },
+  "nodes": [
+    4868751925,
+    8902815965,
+    8902815966,
+    8902815967,
+    8902815968,
+    8902815969,
+    8902815970,
+    8902815971,
+    8902815972,
+    8902815973,
+    8902815974,
+    8902815975,
+    8902815976,
+    8902815977,
+    8902815978,
+    8902815979,
+    8902815980,
+    8902815981
+  ],
+  "geometry": [
+    { "lat": 39.4623816, "lon": -77.3606394 },
+    { "lat": 39.4623467, "lon": -77.3607099 },
+    { "lat": 39.4622947, "lon": -77.3610921 },
+    { "lat": 39.4622025, "lon": -77.3611864 },
+    { "lat": 39.4621596, "lon": -77.3612453 },
+    { "lat": 39.4621284, "lon": -77.3613530 },
+    { "lat": 39.4620972, "lon": -77.3616813 },
+    { "lat": 39.4620933, "lon": -77.3618597 },
+    { "lat": 39.4621050, "lon": -77.3619978 },
+    { "lat": 39.4621531, "lon": -77.3621863 },
+    { "lat": 39.4622194, "lon": -77.3623564 },
+    { "lat": 39.4622856, "lon": -77.3624506 },
+    { "lat": 39.4623870, "lon": -77.3625247 },
+    { "lat": 39.4625118, "lon": -77.3625718 },
+    { "lat": 39.4626067, "lon": -77.3625853 },
+    { "lat": 39.4626937, "lon": -77.3625752 },
+    { "lat": 39.4627925, "lon": -77.3625483 },
+    { "lat": 39.4628926, "lon": -77.3625668 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 962463809,
+  "bounds": {
+    "minlat": 39.4628250,
+    "minlon": -77.3634190,
+    "maxlat": 39.4631280,
+    "maxlon": -77.3609879
+  },
+  "nodes": [
+    8902815982,
+    8902815983,
+    8902815984,
+    8902815985,
+    8902815986,
+    8902815987,
+    8902815981,
+    8902815988,
+    8902815989,
+    8902815990,
+    8902815991,
+    8902815992,
+    8902815993,
+    8902815994,
+    8902815995,
+    8902815996
+  ],
+  "geometry": [
+    { "lat": 39.4628789, "lon": -77.3634190 },
+    { "lat": 39.4628575, "lon": -77.3633159 },
+    { "lat": 39.4628380, "lon": -77.3631560 },
+    { "lat": 39.4628250, "lon": -77.3629119 },
+    { "lat": 39.4628354, "lon": -77.3627200 },
+    { "lat": 39.4628497, "lon": -77.3626594 },
+    { "lat": 39.4628926, "lon": -77.3625668 },
+    { "lat": 39.4629888, "lon": -77.3623732 },
+    { "lat": 39.4630590, "lon": -77.3622284 },
+    { "lat": 39.4630784, "lon": -77.3621375 },
+    { "lat": 39.4631243, "lon": -77.3618011 },
+    { "lat": 39.4630598, "lon": -77.3615696 },
+    { "lat": 39.4630615, "lon": -77.3614725 },
+    { "lat": 39.4630860, "lon": -77.3612681 },
+    { "lat": 39.4630999, "lon": -77.3610241 },
+    { "lat": 39.4631280, "lon": -77.3609879 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 962463810,
+  "bounds": {
+    "minlat": 39.4639773,
+    "minlon": -77.3608580,
+    "maxlat": 39.4648687,
+    "maxlon": -77.3577773
+  },
+  "nodes": [
+    8902815997,
+    8902815998,
+    8902815999,
+    8902816000,
+    8902816001,
+    8902816002,
+    8902816003,
+    8902816004,
+    8902816005,
+    8902816006,
+    8902816007,
+    8902816008,
+    8902816009,
+    8902816010,
+    8902816011,
+    8902816012,
+    8902816013
+  ],
+  "geometry": [
+    { "lat": 39.4644871, "lon": -77.3608580 },
+    { "lat": 39.4645124, "lon": -77.3601231 },
+    { "lat": 39.4645524, "lon": -77.3600019 },
+    { "lat": 39.4646742, "lon": -77.3597500 },
+    { "lat": 39.4646965, "lon": -77.3596481 },
+    { "lat": 39.4647410, "lon": -77.3592615 },
+    { "lat": 39.4647291, "lon": -77.3591077 },
+    { "lat": 39.4646890, "lon": -77.3589711 },
+    { "lat": 39.4646965, "lon": -77.3589077 },
+    { "lat": 39.4647855, "lon": -77.3586442 },
+    { "lat": 39.4648553, "lon": -77.3584615 },
+    { "lat": 39.4648687, "lon": -77.3584000 },
+    { "lat": 39.4648271, "lon": -77.3582884 },
+    { "lat": 39.4647098, "lon": -77.3581615 },
+    { "lat": 39.4645688, "lon": -77.3580269 },
+    { "lat": 39.4642986, "lon": -77.3579211 },
+    { "lat": 39.4639773, "lon": -77.3577773 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 962463811,
+  "bounds": {
+    "minlat": 39.4648687,
+    "minlon": -77.3592192,
+    "maxlat": 39.4665359,
+    "maxlon": -77.3575557
+  },
+  "nodes": [
+    8902816008,
+    8902816014,
+    8902816015,
+    8902816016,
+    8902828517,
+    8902828518,
+    8902828519,
+    8902828520,
+    8902828521,
+    8902828522,
+    8902828523,
+    8902828524,
+    8902828525,
+    8902828526,
+    8902828527,
+    8902828528,
+    8902828529,
+    8902828530,
+    8902828531,
+    8902828532,
+    8902828533,
+    8902828534,
+    8902828535,
+    8902828536,
+    8902828537,
+    8902828538,
+    8902828539,
+    8902828540,
+    8902828541,
+    8902828542,
+    8902828543,
+    8902828544,
+    8902828545,
+    8902816016
+  ],
+  "geometry": [
+    { "lat": 39.4648687, "lon": -77.3584000 },
+    { "lat": 39.4650097, "lon": -77.3584038 },
+    { "lat": 39.4650661, "lon": -77.3583904 },
+    { "lat": 39.4652473, "lon": -77.3582384 },
+    { "lat": 39.4653245, "lon": -77.3581596 },
+    { "lat": 39.4653972, "lon": -77.3580500 },
+    { "lat": 39.4654833, "lon": -77.3578365 },
+    { "lat": 39.4655501, "lon": -77.3576692 },
+    { "lat": 39.4656051, "lon": -77.3576134 },
+    { "lat": 39.4656659, "lon": -77.3575807 },
+    { "lat": 39.4658292, "lon": -77.3575788 },
+    { "lat": 39.4660089, "lon": -77.3575634 },
+    { "lat": 39.4661306, "lon": -77.3575557 },
+    { "lat": 39.4662375, "lon": -77.3575731 },
+    { "lat": 39.4662806, "lon": -77.3576000 },
+    { "lat": 39.4664840, "lon": -77.3578481 },
+    { "lat": 39.4665300, "lon": -77.3579269 },
+    { "lat": 39.4665359, "lon": -77.3580115 },
+    { "lat": 39.4665344, "lon": -77.3582384 },
+    { "lat": 39.4664988, "lon": -77.3584115 },
+    { "lat": 39.4664572, "lon": -77.3585250 },
+    { "lat": 39.4663756, "lon": -77.3586500 },
+    { "lat": 39.4663088, "lon": -77.3587538 },
+    { "lat": 39.4662063, "lon": -77.3588846 },
+    { "lat": 39.4659896, "lon": -77.3591500 },
+    { "lat": 39.4659391, "lon": -77.3591981 },
+    { "lat": 39.4658797, "lon": -77.3592192 },
+    { "lat": 39.4657892, "lon": -77.3591711 },
+    { "lat": 39.4656273, "lon": -77.3590058 },
+    { "lat": 39.4654254, "lon": -77.3587827 },
+    { "lat": 39.4652799, "lon": -77.3585750 },
+    { "lat": 39.4652517, "lon": -77.3585038 },
+    { "lat": 39.4652384, "lon": -77.3584000 },
+    { "lat": 39.4652473, "lon": -77.3582384 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 962463812,
+  "bounds": {
+    "minlat": 39.4661150,
+    "minlon": -77.3575731,
+    "maxlat": 39.4662375,
+    "maxlon": -77.3569184
+  },
+  "nodes": [
+    8902828526,
+    8902828546,
+    8902828547
+  ],
+  "geometry": [
+    { "lat": 39.4662375, "lon": -77.3575731 },
+    { "lat": 39.4662197, "lon": -77.3574365 },
+    { "lat": 39.4661150, "lon": -77.3569184 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 962463813,
+  "bounds": {
+    "minlat": 39.4663088,
+    "minlon": -77.3588269,
+    "maxlat": 39.4682626,
+    "maxlon": -77.3586478
+  },
+  "nodes": [
+    8902828535,
+    8902828548,
+    8902828549,
+    8902828550,
+    8902828551,
+    8902828552,
+    8902828553,
+    8902828554,
+    8902828555
+  ],
+  "geometry": [
+    { "lat": 39.4663088, "lon": -77.3587538 },
+    { "lat": 39.4667245, "lon": -77.3588077 },
+    { "lat": 39.4669204, "lon": -77.3588058 },
+    { "lat": 39.4669961, "lon": -77.3588269 },
+    { "lat": 39.4672010, "lon": -77.3587923 },
+    { "lat": 39.4673821, "lon": -77.3587692 },
+    { "lat": 39.4678884, "lon": -77.3587192 },
+    { "lat": 39.4680012, "lon": -77.3587134 },
+    { "lat": 39.4682626, "lon": -77.3586478 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 962463814,
+  "bounds": {
+    "minlat": 39.4682760,
+    "minlon": -77.3587038,
+    "maxlat": 39.4691215,
+    "maxlon": -77.3582087
+  },
+  "nodes": [
+    103001198,
+    8902828556,
+    8902828557,
+    8902828558,
+    8902828559,
+    8902828560,
+    8902828561,
+    8902828562
+  ],
+  "geometry": [
+    { "lat": 39.4682760, "lon": -77.3586950 },
+    { "lat": 39.4683041, "lon": -77.3587038 },
+    { "lat": 39.4687450, "lon": -77.3586788 },
+    { "lat": 39.4687643, "lon": -77.3585980 },
+    { "lat": 39.4687656, "lon": -77.3584673 },
+    { "lat": 39.4687863, "lon": -77.3584509 },
+    { "lat": 39.4690255, "lon": -77.3582726 },
+    { "lat": 39.4691215, "lon": -77.3582087 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 962463815,
+  "bounds": {
+    "minlat": 39.4687450,
+    "minlon": -77.3596488,
+    "maxlat": 39.4692509,
+    "maxlon": -77.3586788
+  },
+  "nodes": [
+    8902828557,
+    8902828564,
+    8902828565,
+    8902828566,
+    8902828567,
+    8902828568,
+    8902828569,
+    8902828570,
+    8902828571
+  ],
+  "geometry": [
+    { "lat": 39.4687450, "lon": -77.3586788 },
+    { "lat": 39.4687996, "lon": -77.3592315 },
+    { "lat": 39.4687952, "lon": -77.3592661 },
+    { "lat": 39.4687640, "lon": -77.3594200 },
+    { "lat": 39.4687699, "lon": -77.3594584 },
+    { "lat": 39.4688011, "lon": -77.3594892 },
+    { "lat": 39.4690060, "lon": -77.3595353 },
+    { "lat": 39.4690921, "lon": -77.3595584 },
+    { "lat": 39.4692509, "lon": -77.3596488 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 962463816,
+  "bounds": {
+    "minlat": 39.4691753,
+    "minlon": -77.3583303,
+    "maxlat": 39.4703605,
+    "maxlon": -77.3572500
+  },
+  "nodes": [
+    8902828572,
+    8902828573,
+    8902828574,
+    8902828575,
+    8902828576,
+    8902828577,
+    8902828578,
+    8902828579,
+    8902828580,
+    8902828581
+  ],
+  "geometry": [
+    { "lat": 39.4691753, "lon": -77.3583303 },
+    { "lat": 39.4695529, "lon": -77.3580434 },
+    { "lat": 39.4697417, "lon": -77.3579160 },
+    { "lat": 39.4698020, "lon": -77.3578420 },
+    { "lat": 39.4699099, "lon": -77.3576529 },
+    { "lat": 39.4699670, "lon": -77.3575501 },
+    { "lat": 39.4700590, "lon": -77.3574330 },
+    { "lat": 39.4701638, "lon": -77.3573446 },
+    { "lat": 39.4702923, "lon": -77.3572665 },
+    { "lat": 39.4703605, "lon": -77.3572500 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 962463817,
+  "bounds": {
+    "minlat": 39.4703557,
+    "minlon": -77.3578397,
+    "maxlat": 39.4704446,
+    "maxlon": -77.3566910
+  },
+  "nodes": [
+    8902828582,
+    8902828583,
+    8902828581,
+    102999036
+  ],
+  "geometry": [
+    { "lat": 39.4704033, "lon": -77.3566910 },
+    { "lat": 39.4703557, "lon": -77.3571904 },
+    { "lat": 39.4703605, "lon": -77.3572500 },
+    { "lat": 39.4704446, "lon": -77.3578397 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 962463818,
+  "bounds": {
+    "minlat": 39.4691670,
+    "minlon": -77.3580434,
+    "maxlat": 39.4695529,
+    "maxlon": -77.3566085
+  },
+  "nodes": [
+    8902828573,
+    8902828584,
+    8902828585,
+    8902828586,
+    8902828587,
+    8902828588
+  ],
+  "geometry": [
+    { "lat": 39.4695529, "lon": -77.3580434 },
+    { "lat": 39.4695282, "lon": -77.3579412 },
+    { "lat": 39.4693004, "lon": -77.3574410 },
+    { "lat": 39.4691809, "lon": -77.3572143 },
+    { "lat": 39.4691670, "lon": -77.3571261 },
+    { "lat": 39.4692396, "lon": -77.3566085 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 962463819,
+  "bounds": {
+    "minlat": 39.4658341,
+    "minlon": -77.3607170,
+    "maxlat": 39.4664255,
+    "maxlon": -77.3590231
+  },
+  "nodes": [
+    8902828589,
+    8902828539,
+    8902828590,
+    8902828591,
+    8902828592,
+    8902828593,
+    8902828594,
+    8902828595,
+    8902828596,
+    102923803
+  ],
+  "geometry": [
+    { "lat": 39.4658341, "lon": -77.3590231 },
+    { "lat": 39.4658797, "lon": -77.3592192 },
+    { "lat": 39.4659027, "lon": -77.3592866 },
+    { "lat": 39.4662173, "lon": -77.3597033 },
+    { "lat": 39.4663214, "lon": -77.3598657 },
+    { "lat": 39.4663711, "lon": -77.3599975 },
+    { "lat": 39.4664137, "lon": -77.3601905 },
+    { "lat": 39.4664255, "lon": -77.3603437 },
+    { "lat": 39.4664184, "lon": -77.3604785 },
+    { "lat": 39.4663650, "lon": -77.3607170 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 962463820,
+  "bounds": {
+    "minlat": 39.4657124,
+    "minlon": -77.3623252,
+    "maxlat": 39.4660496,
+    "maxlon": -77.3608078
+  },
+  "nodes": [
+    8902828597,
+    8902828598,
+    8902828599,
+    8902828600,
+    8902828601,
+    8902828602,
+    8902828603,
+    8902828604,
+    8902828605,
+    8902828606,
+    8902828607,
+    8902828608,
+    102976459
+  ],
+  "geometry": [
+    { "lat": 39.4657287, "lon": -77.3608078 },
+    { "lat": 39.4657523, "lon": -77.3609318 },
+    { "lat": 39.4657903, "lon": -77.3611173 },
+    { "lat": 39.4658302, "lon": -77.3616785 },
+    { "lat": 39.4658175, "lon": -77.3617466 },
+    { "lat": 39.4657396, "lon": -77.3619109 },
+    { "lat": 39.4657215, "lon": -77.3620189 },
+    { "lat": 39.4657124, "lon": -77.3621387 },
+    { "lat": 39.4657287, "lon": -77.3621809 },
+    { "lat": 39.4657668, "lon": -77.3621880 },
+    { "lat": 39.4659045, "lon": -77.3621762 },
+    { "lat": 39.4659263, "lon": -77.3621809 },
+    { "lat": 39.4660496, "lon": -77.3623252 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 962463821,
+  "bounds": {
+    "minlat": 39.4625391,
+    "minlon": -77.3588362,
+    "maxlat": 39.4640840,
+    "maxlon": -77.3568843
+  },
+  "nodes": [
+    8902828609,
+    8902828610,
+    8902828611,
+    8902828612,
+    8902828613,
+    8902828614,
+    8902828615,
+    8902828616,
+    8902828617,
+    8902828618,
+    8902828619,
+    8902828620,
+    8902828621,
+    8902828622,
+    8902828623
+  ],
+  "geometry": [
+    { "lat": 39.4625391, "lon": -77.3588362 },
+    { "lat": 39.4626202, "lon": -77.3584493 },
+    { "lat": 39.4628043, "lon": -77.3582618 },
+    { "lat": 39.4629097, "lon": -77.3577103 },
+    { "lat": 39.4630044, "lon": -77.3572925 },
+    { "lat": 39.4630406, "lon": -77.3572029 },
+    { "lat": 39.4631034, "lon": -77.3570870 },
+    { "lat": 39.4631577, "lon": -77.3570181 },
+    { "lat": 39.4632727, "lon": -77.3569257 },
+    { "lat": 39.4633834, "lon": -77.3568843 },
+    { "lat": 39.4635697, "lon": -77.3569037 },
+    { "lat": 39.4637847, "lon": -77.3570539 },
+    { "lat": 39.4638560, "lon": -77.3571518 },
+    { "lat": 39.4640029, "lon": -77.3573380 },
+    { "lat": 39.4640840, "lon": -77.3573762 }
+  ],
+  "tags": {
+    "highway": "footway"
+  }
+},
+{
+  "type": "way",
+  "id": 1026712048,
+  "bounds": {
+    "minlat": 39.4660389,
+    "minlon": -77.3638541,
+    "maxlat": 39.4686151,
+    "maxlon": -77.3628969
+  },
+  "nodes": [
+    102956511,
+    102939455,
+    103001209
+  ],
+  "geometry": [
+    { "lat": 39.4660389, "lon": -77.3638541 },
+    { "lat": 39.4675983, "lon": -77.3633456 },
+    { "lat": 39.4686151, "lon": -77.3628969 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Woodsboro Pike",
+    "ref": "MD 194",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1072918125,
+  "bounds": {
+    "minlat": 39.4644143,
+    "minlon": -77.3643573,
+    "maxlat": 39.4644530,
+    "maxlon": -77.3643103
+  },
+  "nodes": [
+    9843240767,
+    102840823
+  ],
+  "geometry": [
+    { "lat": 39.4644143, "lon": -77.3643573 },
+    { "lat": 39.4644530, "lon": -77.3643103 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "1",
+    "name": "Woodsboro Pike",
+    "oneway": "yes",
+    "ref": "MD 194",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1072918126,
+  "bounds": {
+    "minlat": 39.4644668,
+    "minlon": -77.3643798,
+    "maxlat": 39.4649047,
+    "maxlon": -77.3642522
+  },
+  "nodes": [
+    9843240764,
+    9843240768,
+    9843240770
+  ],
+  "geometry": [
+    { "lat": 39.4649047, "lon": -77.3642522 },
+    { "lat": 39.4645867, "lon": -77.3643483 },
+    { "lat": 39.4644668, "lon": -77.3643798 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "2",
+    "name": "Woodsboro Pike",
+    "oneway": "yes",
+    "ref": "MD 194",
+    "surface": "asphalt",
+    "turn:lanes": "none|right"
+  }
+},
+{
+  "type": "way",
+  "id": 1072918127,
+  "bounds": {
+    "minlat": 39.4648862,
+    "minlon": -77.3641820,
+    "maxlat": 39.4652197,
+    "maxlon": -77.3641009
+  },
+  "nodes": [
+    103007187,
+    9843240765,
+    9843240766
+  ],
+  "geometry": [
+    { "lat": 39.4648862, "lon": -77.3641820 },
+    { "lat": 39.4651404, "lon": -77.3641009 },
+    { "lat": 39.4652197, "lon": -77.3641064 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "1",
+    "name": "Woodsboro Pike",
+    "oneway": "yes",
+    "ref": "MD 194",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1072918128,
+  "bounds": {
+    "minlat": 39.4649047,
+    "minlon": -77.3642522,
+    "maxlat": 39.4652197,
+    "maxlon": -77.3641064
+  },
+  "nodes": [
+    9843240766,
+    9843240769,
+    9843240764
+  ],
+  "geometry": [
+    { "lat": 39.4652197, "lon": -77.3641064 },
+    { "lat": 39.4651542, "lon": -77.3641687 },
+    { "lat": 39.4649047, "lon": -77.3642522 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "1",
+    "name": "Woodsboro Pike",
+    "oneway": "yes",
+    "ref": "MD 194",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1072918129,
+  "bounds": {
+    "minlat": 39.4644143,
+    "minlon": -77.3643798,
+    "maxlat": 39.4644668,
+    "maxlon": -77.3643573
+  },
+  "nodes": [
+    9843240770,
+    9843240767
+  ],
+  "geometry": [
+    { "lat": 39.4644668, "lon": -77.3643798 },
+    { "lat": 39.4644143, "lon": -77.3643573 }
+  ],
+  "tags": {
+    "highway": "primary",
+    "lanes": "3",
+    "name": "Woodsboro Pike",
+    "oneway": "yes",
+    "ref": "MD 194",
+    "surface": "asphalt",
+    "turn:lanes": "none|none|right"
+  }
+},
+{
+  "type": "way",
+  "id": 1078114735,
+  "bounds": {
+    "minlat": 39.4734959,
+    "minlon": -77.3623369,
+    "maxlat": 39.4736404,
+    "maxlon": -77.3621786
+  },
+  "nodes": [
+    1924962381,
+    1924962378,
+    1924962376,
+    1924962375
+  ],
+  "geometry": [
+    { "lat": 39.4736404, "lon": -77.3623369 },
+    { "lat": 39.4735912, "lon": -77.3623022 },
+    { "lat": 39.4735436, "lon": -77.3622493 },
+    { "lat": 39.4734959, "lon": -77.3621786 }
+  ],
+  "tags": {
+    "highway": "service",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1086876530,
+  "bounds": {
+    "minlat": 39.4736404,
+    "minlon": -77.3624020,
+    "maxlat": 39.4742719,
+    "maxlon": -77.3618980
+  },
+  "nodes": [
+    1924962411,
+    8638091636,
+    1924962413,
+    1924962412,
+    1924962407,
+    8638091635,
+    1924962393,
+    1924962389,
+    1924962387,
+    1924962383,
+    1924962381
+  ],
+  "geometry": [
+    { "lat": 39.4742554, "lon": -77.3618980 },
+    { "lat": 39.4742634, "lon": -77.3619747 },
+    { "lat": 39.4742719, "lon": -77.3620553 },
+    { "lat": 39.4742583, "lon": -77.3620965 },
+    { "lat": 39.4742242, "lon": -77.3621406 },
+    { "lat": 39.4741494, "lon": -77.3621940 },
+    { "lat": 39.4738761, "lon": -77.3623892 },
+    { "lat": 39.4738125, "lon": -77.3624020 },
+    { "lat": 39.4737296, "lon": -77.3623875 },
+    { "lat": 39.4736661, "lon": -77.3623551 },
+    { "lat": 39.4736404, "lon": -77.3623369 }
+  ],
+  "tags": {
+    "highway": "service",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1086876531,
+  "bounds": {
+    "minlat": 39.4733892,
+    "minlon": -77.3622424,
+    "maxlat": 39.4734959,
+    "maxlon": -77.3621786
+  },
+  "nodes": [
+    1924962374,
+    1924962375
+  ],
+  "geometry": [
+    { "lat": 39.4733892, "lon": -77.3622424 },
+    { "lat": 39.4734959, "lon": -77.3621786 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 1092059121,
+  "bounds": {
+    "minlat": 39.4640975,
+    "minlon": -77.3644689,
+    "maxlat": 39.4648042,
+    "maxlon": -77.3636470
+  },
+  "nodes": [
+    10001562346,
+    10001562347,
+    10001562348,
+    10001562349,
+    10001562350,
+    10001562351,
+    4697925619,
+    10001562352,
+    102840817
+  ],
+  "geometry": [
+    { "lat": 39.4640975, "lon": -77.3644689 },
+    { "lat": 39.4642330, "lon": -77.3643266 },
+    { "lat": 39.4645009, "lon": -77.3642179 },
+    { "lat": 39.4646213, "lon": -77.3641622 },
+    { "lat": 39.4646988, "lon": -77.3640841 },
+    { "lat": 39.4647601, "lon": -77.3639852 },
+    { "lat": 39.4648034, "lon": -77.3638443 },
+    { "lat": 39.4648042, "lon": -77.3637457 },
+    { "lat": 39.4647900, "lon": -77.3636470 }
+  ],
+  "tags": {
+    "highway": "service",
+    "oneway": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1545666236,
+  "bounds": {
+    "minlat": 39.4642141,
+    "minlon": -77.3638952,
+    "maxlat": 39.4647033,
+    "maxlon": -77.3633451
+  },
+  "nodes": [
+    4403366337,
+    14058461656,
+    14058461657,
+    14058461658,
+    14058461663,
+    14058461665,
+    14058461660,
+    14058461659
+  ],
+  "geometry": [
+    { "lat": 39.4647033, "lon": -77.3635379 },
+    { "lat": 39.4645084, "lon": -77.3637465 },
+    { "lat": 39.4644625, "lon": -77.3638556 },
+    { "lat": 39.4643128, "lon": -77.3638952 },
+    { "lat": 39.4642911, "lon": -77.3637744 },
+    { "lat": 39.4642694, "lon": -77.3636533 },
+    { "lat": 39.4642453, "lon": -77.3635192 },
+    { "lat": 39.4642141, "lon": -77.3633451 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 1545666237,
+  "bounds": {
+    "minlat": 39.4642453,
+    "minlon": -77.3637465,
+    "maxlat": 39.4645084,
+    "maxlon": -77.3634634
+  },
+  "nodes": [
+    14058461660,
+    14058461661,
+    14058461664,
+    14058461662,
+    14058461656
+  ],
+  "geometry": [
+    { "lat": 39.4642453, "lon": -77.3635192 },
+    { "lat": 39.4644341, "lon": -77.3634634 },
+    { "lat": 39.4644667, "lon": -77.3635876 },
+    { "lat": 39.4644991, "lon": -77.3637109 },
+    { "lat": 39.4645084, "lon": -77.3637465 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 1545666238,
+  "bounds": {
+    "minlat": 39.4643373,
+    "minlon": -77.3637603,
+    "maxlat": 39.4644426,
+    "maxlon": -77.3637282
+  },
+  "nodes": [
+    14058461666,
+    14058461667
+  ],
+  "geometry": [
+    { "lat": 39.4644426, "lon": -77.3637282 },
+    { "lat": 39.4643373, "lon": -77.3637603 }
+  ],
+  "tags": {
+    "covered": "yes",
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 1545666239,
+  "bounds": {
+    "minlat": 39.4643153,
+    "minlon": -77.3636380,
+    "maxlat": 39.4644185,
+    "maxlon": -77.3636037
+  },
+  "nodes": [
+    14058461668,
+    14058461669
+  ],
+  "geometry": [
+    { "lat": 39.4644185, "lon": -77.3636037 },
+    { "lat": 39.4643153, "lon": -77.3636380 }
+  ],
+  "tags": {
+    "covered": "yes",
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 1545666240,
+  "bounds": {
+    "minlat": 39.4644426,
+    "minlon": -77.3637282,
+    "maxlat": 39.4644991,
+    "maxlon": -77.3637109
+  },
+  "nodes": [
+    14058461662,
+    14058461666
+  ],
+  "geometry": [
+    { "lat": 39.4644991, "lon": -77.3637109 },
+    { "lat": 39.4644426, "lon": -77.3637282 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 1545666241,
+  "bounds": {
+    "minlat": 39.4642911,
+    "minlon": -77.3637744,
+    "maxlat": 39.4643373,
+    "maxlon": -77.3637603
+  },
+  "nodes": [
+    14058461667,
+    14058461663
+  ],
+  "geometry": [
+    { "lat": 39.4643373, "lon": -77.3637603 },
+    { "lat": 39.4642911, "lon": -77.3637744 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 1545666242,
+  "bounds": {
+    "minlat": 39.4644185,
+    "minlon": -77.3636037,
+    "maxlat": 39.4644667,
+    "maxlon": -77.3635876
+  },
+  "nodes": [
+    14058461664,
+    14058461668
+  ],
+  "geometry": [
+    { "lat": 39.4644667, "lon": -77.3635876 },
+    { "lat": 39.4644185, "lon": -77.3636037 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+},
+{
+  "type": "way",
+  "id": 1545666243,
+  "bounds": {
+    "minlat": 39.4642694,
+    "minlon": -77.3636533,
+    "maxlat": 39.4643153,
+    "maxlon": -77.3636380
+  },
+  "nodes": [
+    14058461669,
+    14058461665
+  ],
+  "geometry": [
+    { "lat": 39.4643153, "lon": -77.3636380 },
+    { "lat": 39.4642694, "lon": -77.3636533 }
+  ],
+  "tags": {
+    "highway": "service"
+  }
+}
+
+  ]
+}

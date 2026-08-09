@@ -1,0 +1,21 @@
+{{- /*
+  Inlines the association's mark so CSS can colour it (currentColor) and hide
+  its finer detail at small sizes. Inlining also avoids a separate request for
+  an image that appears on every page.
+
+    {{ partial "ui/mark.html" (dict "class" "mark--compact") }}
+
+  Params:
+    class - optional extra class, e.g. mark--compact to drop the field texture
+*/ -}}
+
+{{- $res := resources.Get "brand/dhoa-mark.svg" -}}
+{{- if not $res -}}
+  {{- errorf "ui/mark.html: assets/brand/dhoa-mark.svg is missing." -}}
+{{- end -}}
+
+{{- $svg := $res.Content -}}
+{{- with .class -}}
+  {{- $svg = replace $svg `class="mark"` (printf `class="mark %s"` .) 1 -}}
+{{- end -}}
+{{- $svg | safeHTML -}}
