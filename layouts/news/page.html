@@ -1,0 +1,55 @@
+{{ define "main" }}
+  {{- $cats := dict
+      "general" "General" "pool" "Pool" "acc" "Architectural Control"
+      "maintenance" "Maintenance" "meetings" "Meetings" "trash" "Trash & Recycling"
+      "events" "Events" -}}
+
+  {{ partial "site/breadcrumb.html" . }}
+
+  <article class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <p class="cluster cluster--tight">
+          <span class="badge">{{ index $cats (.Params.category | default "general") | default "General" }}</span>
+          <time class="text-small text-muted" datetime="{{ .Date.Format "2006-01-02" }}">
+            {{ .Date.Format "2 January 2006" }}
+          </time>
+        </p>
+        <h1>{{ .Title }}</h1>
+        {{- with .Params.summary }}<p class="lede">{{ . }}</p>{{ end }}
+      </header>
+
+      <div class="with-rail">
+        <div class="stack-l">
+          <div class="prose">{{ .Content }}</div>
+
+          {{- with .Params.attachments }}
+          <div>
+            <h2>Attached</h2>
+            <ul class="doc-list mt-m" role="list">
+              {{- range . }}
+              <li class="doc">
+                <a class="doc__link" href="{{ .file }}">
+                  <span class="doc__icon" aria-hidden="true">{{ partial "ui/icon.html" "pdf" }}</span>
+                  <span class="doc__text"><span class="doc__title">{{ .label }}</span></span>
+                </a>
+              </li>
+              {{- end }}
+            </ul>
+          </div>
+          {{- end }}
+
+          <p>
+            <a class="btn btn--outline btn--small" href="{{ "/news/" | relURL }}">
+              All announcements
+            </a>
+          </p>
+        </div>
+
+        <aside class="stack-m">
+          {{ partial "content/upcoming-events.html" (dict "limit" 3 "page" .) }}
+        </aside>
+      </div>
+    </div>
+  </article>
+{{ end }}

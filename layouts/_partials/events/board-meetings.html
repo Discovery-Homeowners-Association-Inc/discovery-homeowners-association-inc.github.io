@@ -1,0 +1,108 @@
+{{- /*
+  Generates the board's recurring meetings from the rule in
+  organization.yaml (e.g. "3rd Tuesday"), so nobody re-enters twelve events
+  every January.
+
+    {{ $meetings := partial "events/board-meetings.html" (dict "months" 12) }}
+
+  Returns a slice of dicts shaped like the event pages the templates already
+  render, so a generated meeting and a hand-written event can go through the
+  same card and the same .ics writer:
+
+    {title, start, end, all_day, location_name, location_address, category,
+     summary, permalink, generated, cancelled, note}
+
+  Exceptions live in data/meetings-overrides.yaml — a cancelled December, or a
+  meeting shifted a week. Anything cancelled is still returned, flagged, so the
+  calendar can say "cancelled" rather than silently omitting a date people
+  already have in their diary.
+
+  Params:
+    months - how many months ahead to generate (default 12)
+    back   - how many months behind to include (default 2, so the events page
+             can show recent past meetings)
+*/ -}}
+
+{{- $org := hugo.Data.organization -}}
+{{- $rule := $org.meetings.board -}}
+{{- $months := .months | default 12 -}}
+{{- $back := .back | default 2 -}}
+
+{{- $ordinal := int ($rule.ordinal | default 3) -}}
+{{- $weekday := int ($rule.weekday | default 2) -}}
+
+{{- $overrides := dict -}}
+{{- with hugo.Data.meetings_overrides -}}
+  {{- range .overrides -}}
+    {{- $key := (time.AsTime .date).Format "2006-01-02" -}}
+    {{- $overrides = merge $overrides (dict $key .) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $out := slice -}}
+{{- $now := now -}}
+
+{{- range $i := seq (mul $back -1) (sub $months 1) -}}
+  {{- /* First day of the target month. */ -}}
+  {{- $anchor := $now.AddDate 0 $i 0 -}}
+  {{- $first := time.AsTime (printf "%04d-%02d-01T00:00:00" $anchor.Year (int $anchor.Month)) -}}
+
+  {{- /* Step forward to the first matching weekday, then on by whole weeks. */ -}}
+  {{- $shift := mod (add (sub $weekday (int $first.Weekday)) 7) 7 -}}
+  {{- $day := $first.AddDate 0 0 (add $shift (mul (sub $ordinal 1) 7)) -}}
+
+  {{- /* Guard against a fifth-occurrence rule overflowing into next month. */ -}}
+  {{- if eq (int $day.Month) (int $first.Month) -}}
+    {{- $key := $day.Format "2006-01-02" -}}
+    {{- $ov := index $overrides $key -}}
+
+    {{- $cancelled := false -}}
+    {{- $note := "" -}}
+    {{- $time := $rule.time -}}
+    {{- $location := $rule.location -}}
+
+    {{- with $ov -}}
+      {{- $note = .note | default "" -}}
+      {{- if eq .status "cancelled" -}}
+        {{- $cancelled = true -}}
+      {{- else if eq .status "moved" -}}
+        {{- with .moved_to }}{{ $day = time.AsTime . }}{{ end -}}
+        {{- with .time }}{{ $time = . }}{{ end -}}
+      {{- end -}}
+      {{- with .location }}{{ $location = . }}{{ end -}}
+    {{- end -}}
+
+    {{- /* Parse the meeting time ("7:00 pm") onto the date. */ -}}
+    {{- $raw := lower $time -}}
+    {{- $pm := strings.Contains $raw "pm" -}}
+    {{- $clock := trim (replaceRE `(am|pm)` "" $raw) " " -}}
+    {{- $parts := split $clock ":" -}}
+    {{- $h := int (index $parts 0) -}}
+    {{- $m := "00" -}}
+    {{- if gt (len $parts) 1 }}{{ $m = index $parts 1 }}{{ end -}}
+    {{- if and $pm (lt $h 12) }}{{ $h = add $h 12 }}{{ end -}}
+    {{- if and (not $pm) (eq $h 12) }}{{ $h = 0 }}{{ end -}}
+
+    {{- $start := time.AsTime (printf "%sT%02d:%s:00" ($day.Format "2006-01-02") $h $m) -}}
+    {{- $end := $start.Add (time.ParseDuration "2h") -}}
+
+    {{- $out = $out | append (dict
+        "title" (cond $cancelled "Board meeting — cancelled" "Board meeting")
+        "start" $start
+        "end" $end
+        "all_day" false
+        "location_name" $location
+        "location_address" (printf "%s, %s, %s %s" $org.office.street $org.office.city $org.office.state $org.office.zip)
+        "category" "board-meeting"
+        "summary" (cond $cancelled
+            (printf "This month's board meeting is cancelled. %s" $note | strings.TrimSpace)
+            $rule.open_to)
+        "permalink" "/board/meetings/"
+        "generated" true
+        "cancelled" $cancelled
+        "note" $note
+    ) -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $out -}}

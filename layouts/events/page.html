@@ -1,0 +1,54 @@
+{{ define "main" }}
+  {{- $start := time.AsTime .Params.start -}}
+  {{- $end := cond (isset .Params "end") (time.AsTime .Params.end) ($start.Add (time.ParseDuration "2h")) -}}
+
+  {{ partial "site/breadcrumb.html" . }}
+
+  <article class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <span class="eyebrow">Event</span>
+        <h1>{{ .Title }}</h1>
+        {{- with .Params.summary }}<p class="lede">{{ . }}</p>{{ end }}
+      </header>
+
+      <div class="with-rail">
+        <div class="prose">{{ .Content }}</div>
+
+        <aside class="stack-m">
+          <div class="card card--feature">
+            <h2 class="card__title">{{ partial "ui/icon.html" "calendar" }} When</h2>
+            <p>
+              <strong>{{ $start.Format "Monday 2 January 2006" }}</strong><br>
+              {{ if .Params.all_day }}All day{{ else }}{{ $start.Format "3:04 pm" }} &ndash; {{ $end.Format "3:04 pm" }}{{ end }}
+            </p>
+
+            {{- with .OutputFormats.Get "ics" }}
+            <p class="card__foot">
+              <a class="btn btn--primary btn--small btn--block" href="{{ .RelPermalink }}" download>
+                Add to calendar
+              </a>
+            </p>
+            {{- end }}
+          </div>
+
+          <div class="card card--quiet">
+            <h2 class="card__title">{{ partial "ui/icon.html" "pin" }} Where</h2>
+            <address class="info-card__address">
+              {{ .Params.location_name | default "Discovery Recreation Center" }}<br>
+              <span class="text-muted">{{ .Params.location_address | default "8740 Stauffer Road, Walkersville, MD 21793" }}</span>
+            </address>
+            {{- with .Params.cost }}<p class="text-small">Cost: {{ . }}</p>{{ end }}
+            {{- with .Params.audience }}<p class="text-small text-muted">{{ . }}</p>{{ end }}
+            {{- with .Params.contact_email_key }}
+            <p class="card__foot text-small">
+              {{ partial "ui/icon.html" "mail" }}
+              {{ partial "util/email-link.html" (dict "key" .) }}
+            </p>
+            {{- end }}
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+{{ end }}

@@ -1,0 +1,61 @@
+{{ define "main" }}
+  {{- /* Announcements, newest first, with anything pinned lifted to the top.
+         Hugo drops pages past their expiryDate automatically, so a notice with
+         an end date takes itself down. */ -}}
+  {{- $pinned := where .Pages "Params.pinned" true -}}
+  {{- $rest := where .Pages "Params.pinned" "!=" true -}}
+
+  {{ partial "site/breadcrumb.html" . }}
+
+  <div class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      <div class="with-rail">
+        <div class="stack-l">
+          {{- with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+
+          {{- with $pinned }}
+          <ul class="stack-m" role="list">
+            {{- range .ByDate.Reverse }}
+            {{ partial "content/announcement-card.html" (dict "page" . "pinned" true) }}
+            {{- end }}
+          </ul>
+          {{- end }}
+
+          {{- with $rest }}
+          <ul class="stack-m" role="list">
+            {{- range .ByDate.Reverse }}
+            {{ partial "content/announcement-card.html" (dict "page" .) }}
+            {{- end }}
+          </ul>
+          {{- end }}
+
+          {{- if not .Pages }}
+          <p class="text-muted">Nothing to announce at the moment.</p>
+          {{- end }}
+        </div>
+
+        <aside class="stack-m">
+          {{ partial "content/upcoming-events.html" (dict "limit" 4 "page" .) }}
+
+          <div class="card card--quiet">
+            <h2 class="card__title">Stay in touch</h2>
+            <p class="text-small">
+              Announcements are also read out at the monthly board meeting, which
+              any homeowner or renter can attend.
+            </p>
+            <p class="card__foot">
+              <a class="btn btn--outline btn--small" href="{{ "/board/meetings/" | relURL }}">
+                Meeting details {{ partial "ui/icon.html" "arrow" }}
+              </a>
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+{{ end }}

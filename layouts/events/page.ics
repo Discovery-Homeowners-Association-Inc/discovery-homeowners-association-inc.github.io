@@ -1,0 +1,30 @@
+{{- /* A single event as an .ics download, so "Add to calendar" is a plain link
+       and not a JavaScript widget. RFC 5545 wants CRLF. */ -}}
+{{- $org := hugo.Data.organization -}}
+{{- $start := time.AsTime .Params.start -}}
+{{- $end := cond (isset .Params "end") (time.AsTime .Params.end) ($start.Add (time.ParseDuration "2h")) -}}
+{{- $place := .Params.location_name | default "Discovery Recreation Center" -}}
+{{- with .Params.location_address }}{{ $place = printf "%s, %s" $place . }}{{ end -}}
+{{- $esc := replace (replace (replace $place `\` `\\`) ";" `\;`) "," `\,` -}}
+
+{{- $lines := slice
+    "BEGIN:VCALENDAR"
+    "VERSION:2.0"
+    (printf "PRODID:-//%s//Hugo//EN" $org.legal_name)
+    "CALSCALE:GREGORIAN"
+    "METHOD:PUBLISH"
+    "BEGIN:VEVENT"
+    (printf "UID:%s" .Permalink)
+    (printf "DTSTAMP:%s" (now.UTC.Format "20060102T150405Z"))
+    (printf "DTSTART:%s" ($start.UTC.Format "20060102T150405Z"))
+    (printf "DTEND:%s" ($end.UTC.Format "20060102T150405Z"))
+    (printf "SUMMARY:%s" (.Title | plainify))
+    (printf "LOCATION:%s" $esc)
+    (printf "URL:%s" .Permalink)
+    "STATUS:CONFIRMED"
+-}}
+{{- with .Params.summary -}}
+  {{- $lines = $lines | append (printf "DESCRIPTION:%s" (. | plainify | replaceRE `\r?\n` `\n`)) -}}
+{{- end -}}
+{{- $lines = $lines | append "END:VEVENT" "END:VCALENDAR" -}}
+{{ delimit $lines "\r\n" }}

@@ -1,0 +1,42 @@
+{{- /* A short list of what is coming up. Used on the home page and beside the
+       announcements. */ -}}
+
+{{- $limit := .limit | default 3 -}}
+{{- $all := partial "content/all-events.html" (dict "page" .page) -}}
+{{- $upcoming := slice -}}
+{{- $now := now -}}
+{{- range $all -}}
+  {{- if ge (.end.Unix) ($now.Unix) -}}
+    {{- $upcoming = $upcoming | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- $upcoming = first $limit $upcoming -}}
+
+<div class="card card--quiet">
+  <h2 class="card__title">{{ partial "ui/icon.html" "calendar" }} Coming up</h2>
+
+  {{- with $upcoming }}
+  <ul class="upcoming" role="list">
+    {{- range . }}
+    <li class="upcoming__item{{ if .cancelled }} upcoming__item--cancelled{{ end }}">
+      <time class="upcoming__date" datetime="{{ .start.Format "2006-01-02" }}">
+        {{ .start.Format "2 Jan" }}
+      </time>
+      <span class="upcoming__title">
+        {{- with .permalink }}<a href="{{ . }}">{{ end }}
+        {{- .title }}
+        {{- with .permalink }}</a>{{ end }}
+      </span>
+    </li>
+    {{- end }}
+  </ul>
+  {{- else }}
+  <p class="text-small text-muted">Nothing on the calendar just now.</p>
+  {{- end }}
+
+  <p class="card__foot">
+    <a class="btn btn--outline btn--small" href="{{ "/events/" | relURL }}">
+      Full calendar {{ partial "ui/icon.html" "arrow" }}
+    </a>
+  </p>
+</div>
