@@ -1,0 +1,13 @@
+{{- /* Office hours as a description list. Shared by the footer, the contact
+       page and the office card, so the format never drifts between them. */ -}}
+
+{{- $hours := hugo.Data.organization.office.hours -}}
+
+<dl class="hours">
+  {{- range $hours }}
+  <div class="hours__row">
+    <dt class="hours__days">{{ .days }}</dt>
+    <dd class="hours__time">{{ .open }} &ndash; {{ .close }}</dd>
+  </div>
+  {{- end }}
+</dl>

@@ -1,0 +1,18 @@
+# Parks. Edited at /admin/ → "Parks".
+#
+# The individual park list is intentionally empty for now: the old site said
+# only that there are twenty parks and never named one of them. Rather than
+# invent entries, the page shows the count and the inspection programme, and
+# the board can fill this list in over time. The template handles an empty list.
+
+count: 20
+
+inspection_note: >-
+  An outside inspector reviews all twenty parks each year, usually in late July
+  or early August, checking equipment for safety and wear.
+
+report_note: >-
+  If a swing, slide, or bench is broken or looks unsafe, tell the office. It is
+  logged and scheduled rather than waiting for the annual inspection.
+
+parks: []

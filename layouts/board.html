@@ -1,0 +1,46 @@
+{{ define "main" }}
+  {{- $meetings := hugo.Data.organization.meetings -}}
+  {{ partial "site/breadcrumb.html" . }}
+
+  <div class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      <div class="prose">{{ .Content }}</div>
+
+      <div class="mt-l">
+        <h2>Your board</h2>
+        <div class="mt-m">
+          {{ partial "content/board-table.html" . }}
+        </div>
+      </div>
+
+      {{- with $meetings.board }}
+      <div class="card card--feature mt-l meeting-callout">
+        <h2 class="card__title">{{ partial "ui/icon.html" "calendar" }} {{ .rule }}</h2>
+        <p>{{ .time }} at the {{ .location }}. {{ .open_to }}</p>
+        <p class="card__foot">
+          <a class="btn btn--outline btn--small" href="{{ "/board/meetings/" | relURL }}">
+            More about meetings {{ partial "ui/icon.html" "arrow" }}
+          </a>
+        </p>
+      </div>
+      {{- end }}
+
+      {{- /* Child pages: Meetings, Projects. */ -}}
+      {{- with .Pages.ByWeight }}
+      <ul class="grid-auto mt-l" role="list">
+        {{- range . }}
+        <li class="card card--linked">
+          <h2 class="card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          {{- with .Params.summary }}<p class="card__body">{{ . }}</p>{{ end }}
+        </li>
+        {{- end }}
+      </ul>
+      {{- end }}
+    </div>
+  </div>
+{{ end }}

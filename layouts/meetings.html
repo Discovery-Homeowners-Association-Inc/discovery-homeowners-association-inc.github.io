@@ -1,0 +1,39 @@
+{{ define "main" }}
+  {{- $m := hugo.Data.organization.meetings -}}
+  {{ partial "site/breadcrumb.html" . }}
+
+  <article class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <span class="eyebrow">Board &amp; Governance</span>
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      <div class="with-rail">
+        <div class="prose">{{ .Content }}</div>
+
+        <aside class="stack-m">
+          {{- with $m.board }}
+          <div class="card card--feature">
+            <h2 class="card__title">{{ partial "ui/icon.html" "calendar" }} Board meetings</h2>
+            <p><strong>{{ .rule }}</strong></p>
+            <p class="text-small">{{ .time }} · {{ .location }}</p>
+            <p class="text-small text-muted">{{ .open_to }}</p>
+          </div>
+          {{- end }}
+
+          {{- with $m.pool_rec }}
+          <div class="card card--quiet">
+            <h2 class="card__title">Pool &amp; Recreation Committee</h2>
+            <p class="text-small"><strong>{{ .rule }}</strong></p>
+            <p class="text-small">{{ .time }} · {{ .location }}</p>
+          </div>
+          {{- end }}
+
+          {{ partial "content/contact-block.html" . }}
+        </aside>
+      </div>
+    </div>
+  </article>
+{{ end }}

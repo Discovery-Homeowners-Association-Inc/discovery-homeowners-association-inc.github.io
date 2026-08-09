@@ -1,0 +1,30 @@
+{{- /*
+  Prints a value from data/organization.yaml inside page text.
+
+      Call the office at {{< org "office.phone" >}}.
+      The {{< org "dues.year" >}} assessment is ${{< org "dues.annual" >}}.
+
+  This is how prose references facts. Typing "301-845-2050" into a page is
+  exactly how the old site ended up with stale numbers in half a dozen places;
+  written this way, changing organization.yaml changes every mention at once.
+
+  Fails the build on an unknown path, so a typo cannot render as an empty space.
+*/ -}}
+
+{{- $path := .Get 0 -}}
+{{- if not $path -}}
+  {{- errorf "org shortcode in %s: needs a path, e.g. {{< org \"office.phone\" >}}" .Page.File.Path -}}
+{{- end -}}
+
+{{- $value := hugo.Data.organization -}}
+{{- range $part := split $path "." -}}
+  {{- if $value -}}
+    {{- $value = index $value $part -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if not $value -}}
+  {{- errorf "org shortcode in %s: %q does not resolve to a value in data/organization.yaml" .Page.File.Path $path -}}
+{{- end -}}
+
+{{- $value -}}

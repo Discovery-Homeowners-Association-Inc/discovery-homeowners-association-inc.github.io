@@ -1,0 +1,23 @@
+{{- /*
+  Link render hook.
+
+  External links open in a new tab with rel="noopener" and carry a small icon,
+  so a resident knows before clicking that they are leaving the association's
+  site — which matters most on the pages that link to the county, the town, and
+  the payment portal.
+
+  Internal links pass through untouched.
+*/ -}}
+
+{{- $u := urls.Parse .Destination -}}
+{{- $external := and $u.Host (ne $u.Host (urls.Parse site.BaseURL).Host) -}}
+{{- $isMailto := hasPrefix .Destination "mailto:" -}}
+{{- $isTel := hasPrefix .Destination "tel:" -}}
+
+{{- if and $external (not $isMailto) (not $isTel) -}}
+  <a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}
+     class="link-external" target="_blank" rel="noopener">{{ .Text | safeHTML -}}
+    {{ partial "ui/icon.html" "external" }}<span class="visually-hidden"> (opens in a new tab)</span></a>
+{{- else -}}
+  <a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- end -}}

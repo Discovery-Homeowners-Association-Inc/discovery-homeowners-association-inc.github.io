@@ -27,4 +27,8 @@
   {{- $href = printf "%s?subject=%s" $href (. | urlquery) -}}
 {{- end -}}
 
+{{- /* The trailing trim marker matters: this partial is called inline from
+       prose via the {{< email >}} shortcode, and a trailing newline would
+       render as a space before the following punctuation ("the office ."). */ -}}
 <a href="{{ $href }}"{{ with .class }} class="{{ . }}"{{ end }}>{{ or .label $addr }}</a>
+{{- /**/ -}}

@@ -1,0 +1,33 @@
+{{- /* Collection schedule, from data/trash.yaml. */ -}}
+
+{{- $trash := hugo.Data.trash -}}
+
+<div class="table-scroll" role="region" tabindex="0" aria-label="Collection schedule">
+  <table class="table">
+    <caption>What goes out, and when</caption>
+    <thead>
+      <tr>
+        <th scope="col">Service</th>
+        <th scope="col">When</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{- range $trash.collections }}
+      <tr>
+        <th scope="row" class="table__label">
+          {{ .service }}
+          {{- with .zone }}<span class="table__note">{{ . }}</span>{{ end }}
+        </th>
+        <td>{{ .schedule }}</td>
+      </tr>
+      {{- end }}
+    </tbody>
+  </table>
+</div>
+
+<div class="callout callout--note mt-m">
+  {{ partial "ui/icon.html" "clock" }}
+  <div class="callout__body">
+    <p><strong>{{ $trash.setout_rule }}</strong> {{ $trash.bring_in_rule }}</p>
+  </div>
+</div>

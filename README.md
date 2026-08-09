@@ -42,6 +42,16 @@ hugo server -D --navigateToChanged
 
 Open http://localhost:1313/.
 
+To reach the dev server from another device — a phone, or another machine over
+Tailscale or the LAN — bind it to every interface instead of just loopback:
+
+```bash
+hugo server -D --bind 0.0.0.0 --navigateToChanged
+```
+
+Then browse to `http://<this-machine's-address>:1313/`. Live reload follows the
+address you loaded the page from, so it keeps working from a remote device.
+
 ### Other commands
 
 ```bash

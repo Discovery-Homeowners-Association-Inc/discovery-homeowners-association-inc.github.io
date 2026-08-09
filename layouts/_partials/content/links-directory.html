@@ -1,0 +1,59 @@
+{{- /*
+  The community resource directory, from data/links.yaml.
+
+  Native <details> accordions — no JavaScript, and every entry stays in the page
+  for Ctrl-F and for search engines even while collapsed.
+
+  This content used to be raw HTML pasted into a markdown file, which was the
+  only reason the old site needed goldmark's `unsafe` mode turned on.
+*/ -}}
+
+{{- $categories := sort hugo.Data.links.categories "order" -}}
+
+<div class="directory stack-s">
+  {{- range $categories }}
+  <details class="directory__group">
+    <summary class="directory__summary">
+      <span class="directory__icon" aria-hidden="true">
+        {{- partial "ui/icon.html" (.icon | default "arrow") -}}
+      </span>
+      <span class="directory__name">{{ .category }}</span>
+      <span class="directory__count">{{ len .links }}</span>
+    </summary>
+
+    <ul class="directory__items" role="list">
+      {{- range .links }}
+      {{- $link := . }}
+      <li class="directory__item">
+        <h3 class="directory__item-name">
+          {{- with $link.url -}}
+            <a href="{{ . }}" target="_blank" rel="noopener">{{ $link.name }}</a>
+          {{- else -}}
+            {{ $link.name }}
+          {{- end -}}
+        </h3>
+
+        {{- with $link.note }}
+        <p class="directory__note text-small text-muted">{{ . }}</p>
+        {{- end }}
+
+        <ul class="directory__meta text-small" role="list">
+          {{- with $link.phone }}
+          <li>
+            {{ partial "ui/icon.html" "phone" }}
+            {{ partial "util/phone-link.html" (dict "number" .) }}
+          </li>
+          {{- end }}
+          {{- with $link.address }}
+          <li>{{ partial "ui/icon.html" "pin" }} <span>{{ . }}</span></li>
+          {{- end }}
+          {{- with $link.hours }}
+          <li>{{ partial "ui/icon.html" "clock" }} <span>{{ . }}</span></li>
+          {{- end }}
+        </ul>
+      </li>
+      {{- end }}
+    </ul>
+  </details>
+  {{- end }}
+</div>

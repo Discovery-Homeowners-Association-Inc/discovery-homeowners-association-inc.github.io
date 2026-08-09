@@ -67,4 +67,7 @@
   {{- $schema = merge $schema (dict "faxNumber" .) -}}
 {{- end -}}
 
-<script type="application/ld+json">{{ $schema | jsonify }}</script>
+{{- /* safeJS is required: inside a <script> element Go's template escaper treats
+       the value as a JavaScript string and emits the JSON double-encoded, which
+       is not valid JSON-LD and is silently ignored by search engines. */ -}}
+<script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>

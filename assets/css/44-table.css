@@ -1,0 +1,92 @@
+/* ===========================================================================
+   TABLES
+   Fee schedules and collection days are genuinely tabular, so they are real
+   tables. The wrapper makes them scroll inside their own box rather than
+   pushing the page sideways on a phone.
+   =========================================================================== */
+
+.table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-m);
+  background: var(--color-surface);
+}
+
+/* The wrapper is focusable so a keyboard user can scroll it; that requires a
+   visible focus ring. */
+.table-scroll:focus-visible {
+  outline: var(--ring);
+  outline-offset: 2px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--step--1);
+}
+
+.table caption {
+  padding: var(--space-s) var(--space-m) var(--space-2xs);
+  text-align: left;
+  font-weight: 650;
+  color: var(--color-text-muted);
+}
+
+.table th,
+.table td {
+  padding: var(--space-2xs) var(--space-m);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table thead th {
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: var(--color-surface-sunk);
+  white-space: nowrap;
+}
+
+.table tbody tr:last-child th,
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table__label {
+  font-weight: 600;
+}
+
+/* A secondary line under a row label — a zone name, or a caveat on a fee. */
+.table__note {
+  display: block;
+  margin-top: 0.15em;
+  font-size: var(--step--2);
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.table__amount {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.table--fees td.table__amount {
+  font-weight: 650;
+}
+
+/* Prose tables written in markdown get the same treatment. */
+.prose table {
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+  font-size: var(--step--1);
+}
+
+.prose :is(th, td) {
+  padding: var(--space-2xs) var(--space-s);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}

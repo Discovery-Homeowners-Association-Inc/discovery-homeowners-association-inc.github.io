@@ -1,0 +1,19 @@
+{{ define "main" }}
+  {{ partial "site/breadcrumb.html" . }}
+
+  <article class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <span class="eyebrow">Rules &amp; Requests</span>
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      <div class="prose">{{ .Content }}</div>
+
+      <div class="mt-l">
+        {{ partial "content/problem-directory.html" . }}
+      </div>
+    </div>
+  </article>
+{{ end }}

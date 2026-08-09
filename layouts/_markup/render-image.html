@@ -1,0 +1,26 @@
+{{- /*
+  Image render hook — intercepts every ![alt](/media/…) in a markdown body and
+  turns it into a responsive, resized <picture>.
+
+  Delegates the path mapping to media/resolve.html, the single place that knows
+  how a CMS media path becomes a Hugo resource, so this hook and the
+  front-matter image partial can never disagree.
+
+  A title in the markdown becomes a visible caption:
+      ![Kids at the pool](/media/pool.jpg "Opening day, 2025")
+*/ -}}
+
+{{- $img := partial "media/image.html" (dict
+    "src" .Destination
+    "alt" .Text
+    "page" .Page
+    "sizes" "(min-width: 48rem) 44rem, 100vw") -}}
+
+{{- with .Title -}}
+  <figure class="figure">
+    {{ $img }}
+    <figcaption class="figure__caption">{{ . }}</figcaption>
+  </figure>
+{{- else -}}
+  {{ $img }}
+{{- end -}}

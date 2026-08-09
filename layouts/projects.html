@@ -1,0 +1,44 @@
+{{ define "main" }}
+  {{ partial "site/breadcrumb.html" . }}
+
+  <article class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <span class="eyebrow">Board &amp; Governance</span>
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      <div class="prose">{{ .Content }}</div>
+
+      <ul class="stack-m mt-l" role="list">
+        {{- range .Params.projects }}
+        {{- $p := . }}
+        <li class="card project project--{{ $p.status }}">
+          <div class="project__head">
+            <h2 class="card__title">{{ $p.name }}</h2>
+            <span class="badge badge--{{ if eq $p.status "in-progress" }}accent{{ else }}muted{{ end }}">
+              {{ humanize $p.status }}
+            </span>
+          </div>
+
+          {{- with $p.timing }}
+          <p class="text-small text-muted">{{ partial "ui/icon.html" "clock" }} {{ . }}</p>
+          {{- end }}
+
+          <p class="card__body">{{ $p.summary }}</p>
+
+          {{- with $p.streets }}
+          <details class="project__streets">
+            <summary>Affected streets ({{ len . }})</summary>
+            <ul role="list">
+              {{- range . }}<li>{{ . }}</li>{{ end }}
+            </ul>
+          </details>
+          {{- end }}
+        </li>
+        {{- end }}
+      </ul>
+    </div>
+  </article>
+{{ end }}

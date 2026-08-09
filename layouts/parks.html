@@ -1,0 +1,60 @@
+{{ define "main" }}
+  {{- $parks := hugo.Data.parks -}}
+  {{ partial "site/breadcrumb.html" . }}
+
+  <article class="section">
+    <div class="wrap">
+      <header class="page-head">
+        <span class="eyebrow">Amenities</span>
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      <div class="with-rail">
+        <div class="stack-l">
+          <div class="prose">{{ .Content }}</div>
+
+          {{- /* The individual park list is empty until the board fills it in.
+                 Showing nothing is better than showing an empty table. */ -}}
+          {{- with $parks.parks }}
+          <div>
+            <h2>The parks</h2>
+            <ul class="grid-auto grid-auto--narrow mt-m" role="list">
+              {{- range . }}
+              <li class="card card--quiet">
+                <h3 class="card__title">{{ .name }}</h3>
+                {{- with .location }}<p class="text-small text-muted">{{ . }}</p>{{ end }}
+                {{- with .features }}
+                <ul class="cluster cluster--tight" role="list">
+                  {{- range . }}<li class="badge">{{ . }}</li>{{ end }}
+                </ul>
+                {{- end }}
+                {{- if and .status (ne .status "open") }}
+                <p class="badge badge--accent">{{ humanize .status }}</p>
+                {{- end }}
+              </li>
+              {{- end }}
+            </ul>
+          </div>
+          {{- end }}
+        </div>
+
+        <aside class="stack-m">
+          <div class="card card--feature">
+            <h2 class="card__title">{{ partial "ui/icon.html" "park" }} {{ $parks.count }} parks</h2>
+            <p class="text-small">{{ $parks.inspection_note }}</p>
+          </div>
+
+          <div class="card card--quiet">
+            <h2 class="card__title">Something broken?</h2>
+            <p class="text-small">{{ $parks.report_note }}</p>
+            <ul class="info-card__contact" role="list">
+              <li>{{ partial "ui/icon.html" "phone" }} {{ partial "util/phone-link.html" . }}</li>
+              <li>{{ partial "ui/icon.html" "mail" }} {{ partial "util/email-link.html" (dict "key" "general") }}</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+{{ end }}
