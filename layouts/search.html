@@ -1,0 +1,47 @@
+{{ define "main" }}
+  {{ partial "site/breadcrumb.html" . }}
+
+  <div class="section">
+    <div class="wrap wrap--prose">
+      <header class="page-head">
+        <h1>{{ .Title }}</h1>
+        <p class="lede">{{ .Params.summary }}</p>
+      </header>
+
+      {{- /* A plain GET form. It works with JavaScript switched off — it just
+             reloads this page with ?q= — and it is the same form as the one in
+             the header, so the behaviour is identical either way. */ -}}
+      <form class="search-form" action="{{ .RelPermalink }}" method="get" role="search">
+        <label class="search-form__label" for="q">What are you looking for?</label>
+        <div class="search-form__row">
+          <input class="search-form__input" type="search" id="q" name="q"
+                 autocomplete="off" autofocus
+                 placeholder="pool pass, fence approval, trash day…">
+          <button class="btn btn--primary" type="submit">Search</button>
+        </div>
+      </form>
+
+      {{- /* Everything below is server-rendered. The script reveals the results
+             region and hides the fallback; if it never loads, the visitor is
+             left with a working list of every section instead of an empty box
+             and a spinner. */ -}}
+      <div id="search-status" class="search-status" aria-live="polite" hidden></div>
+      <ol id="search-results" class="search-results" hidden></ol>
+
+      <div id="search-fallback" class="search-fallback">
+        <h2>Browse instead</h2>
+        <ul class="grid-auto grid-auto--narrow mt-m" role="list">
+          {{- range site.Menus.main }}
+          <li class="card card--linked card--quiet">
+            <h3 class="card__title"><a href="{{ .URL }}">{{ .Name }}</a></h3>
+          </li>
+          {{- end }}
+        </ul>
+        <p class="text-small text-muted mt-m">
+          Still stuck? Call the office on {{ partial "util/phone-link.html" . }}
+          or email {{ partial "util/email-link.html" (dict "key" "general") }}.
+        </p>
+      </div>
+    </div>
+  </div>
+{{ end }}
