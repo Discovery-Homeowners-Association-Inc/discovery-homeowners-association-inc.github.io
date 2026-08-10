@@ -1,175 +1,187 @@
 """Generate assets/brand/dhoa-mark.svg — the association's emblem.
 
-The only surviving copy of the mark is the letterhead on a fax-quality scan
-(the RV lot notice of August 2025). Rather than trace that scan — which would
-carry all its noise — the geometry below was measured from it at 1200 dpi and
-is redrawn cleanly here.
+Measured from the artwork the association publishes on its own website, a clean
+467x470 rendering, rather than from the fax-quality letterhead scan an earlier
+version of this script used. The two differ in ways that matter:
 
-How the numbers were obtained:
+  * the frame is SQUARE, not portrait
+  * the sun is an ARCH — a rounded-top shape standing on the ridge — not a disc
+  * the ridge is a solid grey band between two outlines, not a stipple
+  * the fruit are ELLIPSES, about 1.3x wider than tall, not circles
 
-  * The fourteen fruit are centroids. The bitmap was eroded with a 22px disc
-    until only the discs survived and the thin trunk and lines vanished, then
-    connected-component analysis gave each centre.
-  * The ridge and hill lines were sampled column by column across the frame,
-    recording every run of ink. The ridge turned out to be a THIN line with
-    sparse stipple scattered beneath it, not a thick filled band — an earlier
-    version of this drawing got that wrong.
-  * Everything is expressed in a 100 x 122 unit space, which is the aspect
-    ratio of the original frame (776 x 948 px).
+How the numbers were obtained, all from the 467x470 original:
+
+  * fruit centroids — eroded the black-only bitmap with a disc until the trunk
+    and the outlines vanished and only the fruit survived, then took
+    connected-component centroids. Fourteen, in four staggered columns.
+  * ridge band — column scans recording black runs and grey runs separately, so
+    the two outlines could be told apart from the fill between them. The band
+    is a wedge: about 14 units thick at the left, 6 at the right.
+  * sun — row scans. It reads as one span at the top and splits into two legs
+    below, which is an arch, not a disc.
+  * trunk — row scans of its width, which grows from 1.3 units near the crown
+    to 11.6 at the flared base.
 
 Run:  python3 tools/render-dhoa-mark.py
 """
 
-import random
 from pathlib import Path
-
-random.seed(11)
 
 OUT = Path(__file__).resolve().parent.parent / "assets/brand/dhoa-mark.svg"
 
-# ── Measured control points (x, y) in the 100 x 122 unit space ──────────────
-
-# Crest of the far ridge. Apex sits a little right of centre, under the sun.
-#
-# These are CENTRE-LINE values. The column scan reports the top of each ink
-# run, and the ridge run is 2.9 units thick at the left thinning to 1.9 at the
-# right — so half that thickness is added back here. Stroking the run tops
-# directly put the whole ridge about 1.3 units too high, which was the last
-# systematic error against the scan.
-RIDGE = [(0, 46.5), (11.1, 43.3), (22.9, 39.4), (34.8, 35.7), (46.6, 31.4),
-         (55.0, 30.6), (64.4, 34.2), (76.3, 38.0), (88.1, 41.7), (100, 46.6)]
-
-# Two nested hills behind the tree, both peaking left of the ridge apex. They
-# very nearly touch in the middle — at x=34.8 the scan shows a single 3-unit
-# run where the two lines overlap — and separate toward the frame edges. An
-# earlier version collapsed them into one line, which is what made the lower
-# right of the drawing look empty against the original.
-HILL_FAR = [(0, 56.0), (11.1, 53.3), (22.9, 48.5), (34.8, 45.0), (46.0, 43.8),
-            (58.5, 47.0), (70.4, 47.1), (82.2, 47.9), (94.1, 51.0), (100, 52.4)]
-
-HILL_NEAR = [(0, 61.5), (11.1, 58.2), (22.9, 52.5), (34.8, 46.8), (44.0, 45.4),
-             (58.5, 49.5), (70.4, 54.3), (82.2, 59.8), (94.1, 64.9), (100, 67.5)]
-
-# Fourteen fruit, in four staggered columns.
-FRUIT = [(44.6, 56.5), (60.0, 63.2), (33.6, 65.4), (44.6, 70.1),
-         (72.9, 70.4), (60.8, 75.4), (33.3, 79.4), (72.8, 81.2),
-         (44.5, 83.5), (61.4, 88.6), (33.4, 91.7), (73.3, 92.9),
-         (44.5, 95.3), (61.5, 99.9)]
-FRUIT_R = 4.95
-
-SUN = (51.6, 26.0, 6.9)          # cx, cy, r (centre-line of the ring)
+S = 100 / 467                      # the original is 467 px wide
+HEIGHT = round(470 * S, 2)
 
 
-def smooth(points):
-    """A path through the points using Catmull-Rom converted to cubic Bezier —
-    the ridge and hill are surveyed curves, not arcs, so fit them properly."""
-    p = [points[0]] + list(points) + [points[-1]]
-    d = f"M{points[0][0]:.1f} {points[0][1]:.1f}"
-    for i in range(1, len(p) - 2):
-        p0, p1, p2, p3 = p[i - 1], p[i], p[i + 1], p[i + 2]
-        c1 = (p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6)
-        c2 = (p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6)
-        d += (f" C{c1[0]:.1f} {c1[1]:.1f}, {c2[0]:.1f} {c2[1]:.1f},"
-              f" {p2[0]:.1f} {p2[1]:.1f}")
+def p(x, y):
+    return round(x * S, 2), round(y * S, 2)
+
+
+# ── Measured control points, in original pixels ────────────────────────────
+
+RIDGE_TOP = [(0, 197), (30, 184), (70, 168), (110, 153), (150, 139),
+             (190, 126), (230, 117), (252, 114), (310, 131), (350, 142),
+             (390, 154), (430, 167), (467, 179)]
+
+RIDGE_BOTTOM = [(0, 266), (30, 250), (70, 234), (110, 218), (150, 203),
+                (190, 192), (230, 188), (270, 187), (310, 182), (350, 179),
+                (390, 184), (430, 194), (467, 205)]
+
+# On the left the band's lower outline *is* the hillside. On the right the band
+# narrows and this second line carries on down to the corner.
+HILL_RIGHT = [(266, 188), (310, 205), (350, 220), (390, 234), (430, 247),
+              (467, 259)]
+
+FRUIT = [(204.9, 230.6), (274.4, 243.2), (159.9, 257.4), (205.2, 280.7),
+         (319.5, 266.5), (272.8, 290.7), (159.7, 308.6), (318.2, 314.0),
+         (205.0, 332.0), (272.6, 341.9), (318.0, 365.2), (158.3, 356.1),
+         (203.7, 379.4), (272.8, 391.9)]
+FRUIT_RX, FRUIT_RY = 23, 17.5
+
+# Down the stem: (y, centre x, width). The first two rows are the crown, which
+# leans right and tapers to a point — in the original this is continuous with
+# the trunk, so it is modelled here rather than drawn as a separate flick.
+TRUNK = [(193, 256, 1.5), (203, 250, 4), (215, 244, 6), (240, 240, 8),
+         (280, 239, 12), (320, 240, 18), (360, 242, 25), (400, 239, 31),
+         (430, 236, 42), (462, 236, 54)]
+
+# The sun is a flared arch, not a loop: row scans show its outer span growing
+# from 42 px at the crown to 66 px where it meets the ridge, so the legs splay.
+# Centre-line control points, from those scans.
+SUN = [(211, 122), (210, 102), (222, 88), (242, 88), (262, 88), (270, 102), (270, 122)]
+SUN_STROKE = 9
+BORDER = 18
+
+
+def _catmull(pts):
+    ext = [pts[0]] + pts + [pts[-1]]
+    d = ""
+    for i in range(1, len(ext) - 2):
+        p0, p1, p2, p3 = ext[i - 1], ext[i], ext[i + 1], ext[i + 2]
+        c1 = (round(p1[0] + (p2[0] - p0[0]) / 6, 2), round(p1[1] + (p2[1] - p0[1]) / 6, 2))
+        c2 = (round(p2[0] - (p3[0] - p1[0]) / 6, 2), round(p2[1] - (p3[1] - p1[1]) / 6, 2))
+        d += f" C{c1[0]} {c1[1]}, {c2[0]} {c2[1]}, {p2[0]} {p2[1]}"
     return d
 
 
-def interp(points, x):
-    for i in range(len(points) - 1):
-        x0, y0 = points[i]
-        x1, y1 = points[i + 1]
-        if x0 <= x <= x1:
-            return y0 + (y1 - y0) * (x - x0) / (x1 - x0)
-    return points[-1][1]
+def path_through(points):
+    """A smooth path through surveyed points — these are curves, not arcs."""
+    pts = [p(*q) for q in points]
+    return f"M{pts[0][0]} {pts[0][1]}" + _catmull(pts)
 
 
-# ── Stipple: sparse specks between the ridge line and the hill line ────────
-# Denser on the left, where the gap is widest and the original is busiest.
-dots = []
-x = 3.0
-while x < 97:
-    top = interp(RIDGE, x) + 2.4
-    bot = interp(HILL_FAR, x) - 1.8
-    gap = bot - top
-    if gap > 2:
-        density = 0.75 if x < 50 else 0.45      # the original thins to the right
-        n = max(0, int(gap / 3.4 * density * 2))
-        for _ in range(n):
-            yy = random.uniform(top, bot)
-            xx = x + random.uniform(-1.1, 1.1)
-            dots.append((round(xx, 1), round(yy, 1)))
-    x += 3.1
+def band_fill():
+    """The grey wedge: along the top edge, back along the bottom."""
+    bottom = [p(*q) for q in reversed(RIDGE_BOTTOM)]
+    return (path_through(RIDGE_TOP)
+            + f" L{bottom[0][0]} {bottom[0][1]}"
+            + _catmull(bottom) + " Z")
 
-speck_rows = []
-for i in range(0, len(dots), 6):
-    speck_rows.append("      " + "".join(
-        f'<circle cx="{cx}" cy="{cy}" r="0.7"/>' for cx, cy in dots[i:i + 6]))
-specks = "\n".join(speck_rows)
 
-fruit_rows = "\n".join(
-    f'      <circle cx="{cx}" cy="{cy}" r="{FRUIT_R}"/>' for cx, cy in FRUIT)
+def trunk_shape():
+    """A tapered trunk: down the left side, back up the right."""
+    left = [p(cx - w / 2, y) for y, cx, w in TRUNK]
+    right = [p(cx + w / 2, y) for y, cx, w in reversed(TRUNK)]
+    d = f"M{left[0][0]} {left[0][1]}"
+    for x, y in left[1:] + right:
+        d += f" L{x} {y}"
+    return d + " Z"
 
-svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 122" class="mark"
+
+def sun_arch():
+    """Up the left leg, over the crown, down the right — legs splaying out."""
+    q = [p(*c) for c in SUN]
+    return (f"M{q[0][0]} {q[0][1]} "
+            f"C{q[1][0]} {q[1][1]}, {q[2][0]} {q[2][1]}, {q[3][0]} {q[3][1]} "
+            f"C{q[4][0]} {q[4][1]}, {q[5][0]} {q[5][1]}, {q[6][0]} {q[6][1]}")
+
+
+border = round(BORDER * S, 2)
+inset = round(border / 2, 2)
+frx, fry = round(FRUIT_RX * S, 2), round(FRUIT_RY * S, 2)
+
+fruit = "\n".join(
+    f'      <ellipse cx="{p(cx, cy)[0]}" cy="{p(cx, cy)[1]}" rx="{frx}" ry="{fry}"/>'
+    for cx, cy in FRUIT)
+
+svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 {HEIGHT}" class="mark"
      role="img" aria-label="Discovery Homeowners Association">
   <!--
     GENERATED by tools/render-dhoa-mark.py — edit that, not this file.
 
-    The association's emblem, redrawn from measurements of the only surviving
-    copy (a fax-quality letterhead scan) rather than traced from it. A ring sun
-    at the crest of a stippled ridge, a nearer hill crossing behind, and an
-    orchard tree of fourteen fruit in four staggered columns — apt for a
+    The association's emblem: an arched sun at the crest of a ploughed ridge, a
+    nearer hillside, and an orchard tree of fourteen fruit. Apt for a
     neighborhood laid out over a farm in 1972.
 
-    Drawn with currentColor so it inherits its surroundings and works in both
-    light and dark themes.
+    Measured from the association's own 467x470 artwork. Drawn with currentColor
+    so it inherits its surroundings and works in light and dark themes; the
+    ridge fill is the same colour held back to 35% opacity, which reproduces the
+    grey of the original against any background.
   -->
   <defs>
     <clipPath id="mark-interior">
-      <rect x="5.2" y="5.2" width="89.6" height="111.6" rx="4"/>
+      <rect x="{border}" y="{border}" width="{round(100 - 2 * border, 2)}"
+            height="{round(HEIGHT - 2 * border, 2)}"/>
     </clipPath>
   </defs>
 
   <g clip-path="url(#mark-interior)">
-    <!-- Ploughed-field stipple between the two ridges. -->
-    <g class="mark__texture" fill="currentColor">
-{specks}
-    </g>
+    <!-- The ploughed ridge: a grey wedge, thick at the left, thin at the right. -->
+    <path class="mark__band" d="{band_fill()}" fill="currentColor" opacity="0.35"/>
 
-    <!-- The far ridge, and the nearer hill behind the tree. -->
-    <path class="mark__ridge" fill="none" stroke="currentColor" stroke-width="2.1"
-          stroke-linecap="round" stroke-linejoin="round"
-          d="{smooth(RIDGE)}"/>
-    <path class="mark__hill" fill="none" stroke="currentColor" stroke-width="1.6"
-          stroke-linecap="round" stroke-linejoin="round"
-          d="{smooth(HILL_FAR)}"/>
-    <path class="mark__hill" fill="none" stroke="currentColor" stroke-width="1.6"
-          stroke-linecap="round" stroke-linejoin="round"
-          d="{smooth(HILL_NEAR)}"/>
+    <!-- Its two outlines. On the left the lower one is the hillside itself. -->
+    <path class="mark__ridge" d="{path_through(RIDGE_TOP)}"
+          fill="none" stroke="currentColor" stroke-width="1.9"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <path class="mark__ridge" d="{path_through(RIDGE_BOTTOM)}"
+          fill="none" stroke="currentColor" stroke-width="1.9"
+          stroke-linecap="round" stroke-linejoin="round"/>
 
-    <!-- Sun: a ring sitting at the crest. -->
-    <circle class="mark__sun" cx="{SUN[0]}" cy="{SUN[1]}" r="{SUN[2]}"
-            fill="none" stroke="currentColor" stroke-width="1.9"/>
+    <!-- Where the band narrows, the near hillside carries on to the corner. -->
+    <path class="mark__hill" d="{path_through(HILL_RIGHT)}"
+          fill="none" stroke="currentColor" stroke-width="1.9"
+          stroke-linecap="round" stroke-linejoin="round"/>
 
-    <!-- Tree: trunk to the ground, with two short stubs. -->
-    <path class="mark__trunk" fill="none" stroke="currentColor" stroke-width="2.3"
-          stroke-linecap="round"
-          d="M53.0 118 C 52.4 100, 53.2 84, 52.5 68 C 52.2 61, 53.0 56, 53.7 51.5"/>
-    <path class="mark__trunk" fill="none" stroke="currentColor" stroke-width="1.5"
-          stroke-linecap="round"
-          d="M52.6 76 L 48.0 71.8 M52.5 66 L 57.2 62.6"/>
+    <!-- The sun: an arch standing on the ridge. -->
+    <path class="mark__sun" d="{sun_arch()}"
+          fill="none" stroke="currentColor" stroke-width="{round(SUN_STROKE * S, 2)}"
+          stroke-linejoin="round"/>
 
-    <!-- Fourteen fruit. -->
+    <!-- The tree: a tapered trunk flaring into the ground. -->
+    <path class="mark__trunk" d="{trunk_shape()}" fill="currentColor"/>
+
+    <!-- Fourteen fruit, in four staggered columns. -->
     <g class="mark__fruit" fill="currentColor">
-{fruit_rows}
+{fruit}
     </g>
   </g>
 
   <!-- Frame last, so it sits cleanly over anything reaching the edge. -->
-  <rect class="mark__frame" x="2.6" y="2.6" width="94.8" height="116.8" rx="5.5"
-        fill="none" stroke="currentColor" stroke-width="5.2"/>
+  <rect class="mark__frame" x="{inset}" y="{inset}"
+        width="{round(100 - border, 2)}" height="{round(HEIGHT - border, 2)}"
+        fill="none" stroke="currentColor" stroke-width="{border}"/>
 </svg>
 '''
 
 OUT.write_text(svg)
-print(f"{OUT.relative_to(OUT.parents[1])}: {len(svg)/1024:.1f} KB, "
-      f"{len(dots)} specks, {len(FRUIT)} fruit")
+print(f"{OUT.name}: {len(svg)/1024:.1f} KB, {len(FRUIT)} fruit, viewBox 100 x {HEIGHT}")

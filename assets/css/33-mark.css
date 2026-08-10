@@ -1,8 +1,8 @@
 /* ===========================================================================
    THE ASSOCIATION MARK
-   A ring sun at the crest of a stippled ridge, a nearer hill behind, and an
-   orchard tree of fourteen fruit — the association's own emblem, redrawn from
-   the only surviving copy (a scanned letterhead).
+   An arched sun at the crest of a ploughed ridge, a nearer hillside, and an
+   orchard tree of fourteen fruit. Redrawn from the association's own artwork —
+   see tools/render-dhoa-mark.py.
    =========================================================================== */
 
 .mark {
@@ -10,11 +10,12 @@
   color: inherit;
 }
 
-/* Below roughly 48px the ridge stipple stops reading as a ploughed field and
-   starts reading as dirt on the screen. Dropping the mask leaves a solid band,
-   which is what the mark should collapse to at small sizes. */
-.mark--compact .mark__ridge {
-  mask: none;
+/* The ridge fill is currentColor held back, which is how the grey of the
+   original is reproduced on any background. Below about 40px that tint is
+   too faint to read, so the compact variant firms it up rather than losing
+   the ridge altogether. */
+.mark--compact .mark__band {
+  opacity: 0.5;
 }
 
 /* Large display use — the About page. */
