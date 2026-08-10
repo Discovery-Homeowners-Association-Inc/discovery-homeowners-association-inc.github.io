@@ -76,23 +76,37 @@ jobs:
             echo "  $(basename "$f"): $(gzip -c "$f" | wc -c) bytes gzipped"
           done
 
-      - name: Links resolve
+      # Internal links are ours, so a broken one is a bug and blocks the merge.
+      #
+      # --offline restricts the check to local files. --root-dir is required
+      # for root-relative hrefs like /about/ to resolve against the built site
+      # rather than the filesystem root. mailto: is excluded by lychee itself
+      # these days, so no flag is needed for it.
+      - name: Internal links resolve
         uses: lycheeverse/lychee-action@v2
         with:
-          # --root-dir is required for root-relative hrefs like /about/ to
-          # resolve against the built site rather than the filesystem root.
-          #
-          # No --exclude-mail: current lychee excludes mailto: by default and
-          # rejects the old flag outright.
-          #
-          # The site's own absolute URLs (canonical, og:url) are excluded
-          # because they point at the production domain, which is checked here
-          # as local files anyway — and does not exist until the first deploy.
           args: >-
-            --no-progress --max-concurrency 4
+            --offline --no-progress
             --root-dir "${{ github.workspace }}/public"
-            --exclude '^https://dhoa\.naponline\.net'
-            --exclude '^https://app\.payhoa\.com'
-            --exclude '^webcal://'
             'public/**/*.html'
           fail: true
+          output: lychee/internal.md
+
+      # External links belong to other people. They go down, change, and block
+      # CI runners — Xfinity answers 403 to anything that looks automated, and
+      # at least one church site has a broken TLS handshake. Failing a pull
+      # request for that trains everybody to ignore a red tick, so this reports
+      # and does not block. Check the job summary now and then and fix what is
+      # genuinely rotten in data/links.yaml.
+      - name: External links (informational)
+        continue-on-error: true
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress --max-concurrency 4
+            --exclude '^https://dhoa\.naponline\.net'
+            --exclude '^webcal://'
+            --accept '200,206,403,429'
+            'public/**/*.html'
+          fail: false
+          output: lychee/external.md
