@@ -32,6 +32,29 @@
         <div class="stack-l">
           {{- with .Content }}<div class="prose">{{ . }}</div>{{ end }}
 
+          {{- /* Rendered hidden and revealed by assets/js/doc-filter.js. A
+                 visitor without JavaScript gets every document, grouped under
+                 headings, and no controls that do nothing when pressed. */ -}}
+          {{- if $docs }}
+          <div class="doc-filter" id="doc-filter" hidden>
+            <div class="doc-filter__search">
+              <label class="visually-hidden" for="doc-search">Filter documents</label>
+              <input class="doc-filter__input" type="search" id="doc-search"
+                     placeholder="Filter by name…" autocomplete="off">
+              <p class="doc-filter__count" id="doc-count" aria-live="polite"></p>
+            </div>
+
+            <div class="doc-filter__chips" role="group" aria-label="Filter by category">
+              <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+              {{- range $categories }}
+              {{- if where $docs "Params.category" .key }}
+              <button class="chip" type="button" data-filter="{{ .key }}" aria-pressed="false">{{ .label }}</button>
+              {{- end }}
+              {{- end }}
+            </div>
+          </div>
+          {{- end }}
+
           {{- /* Every row is rendered by Hugo and grouped under a heading, so
                  this page is complete and usable with no JavaScript at all.
                  Phase 6 layers a filter on top of exactly this markup. */ -}}
