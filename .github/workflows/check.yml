@@ -79,11 +79,19 @@ jobs:
       - name: Links resolve
         uses: lycheeverse/lychee-action@v2
         with:
+          # --root-dir is required for root-relative hrefs like /about/ to
+          # resolve against the built site rather than the filesystem root.
+          #
           # No --exclude-mail: current lychee excludes mailto: by default and
-          # rejects the old flag outright. The site is full of mailto: links,
-          # so leave it at the default rather than adding --include-mail.
+          # rejects the old flag outright.
+          #
+          # The site's own absolute URLs (canonical, og:url) are excluded
+          # because they point at the production domain, which is checked here
+          # as local files anyway — and does not exist until the first deploy.
           args: >-
             --no-progress --max-concurrency 4
+            --root-dir "${{ github.workspace }}/public"
+            --exclude '^https://dhoa\.naponline\.net'
             --exclude '^https://app\.payhoa\.com'
             --exclude '^webcal://'
             'public/**/*.html'

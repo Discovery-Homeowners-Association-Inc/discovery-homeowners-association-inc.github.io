@@ -198,6 +198,7 @@ collections:
                 name: governing_documents
                 widget: object
                 fields:
+                  - { label: "Show the link", name: enabled, widget: boolean, default: false, hint: "Off until the governing documents are published somewhere the public can reach. The repository is currently private, so the link would give residents a 404." }
                   - { label: "Still a placeholder", name: is_placeholder, widget: boolean, default: true }
                   - { label: "Link label", name: label, widget: string }
                   - { label: "URL", name: url, widget: string }
