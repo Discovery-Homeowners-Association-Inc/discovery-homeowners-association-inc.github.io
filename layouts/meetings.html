@@ -13,7 +13,7 @@
       <div class="with-rail">
         <div class="prose">{{ .Content }}</div>
 
-        <aside class="stack-m">
+        <div class="page-rail stack-m">
           {{- with $m.board }}
           <div class="card card--feature">
             <h2 class="card__title">{{ partial "ui/icon.html" "calendar" }} Board meetings</h2>
@@ -32,7 +32,7 @@
           {{- end }}
 
           {{ partial "content/contact-block.html" . }}
-        </aside>
+        </div>
       </div>
     </div>
   </article>

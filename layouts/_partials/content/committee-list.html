@@ -6,9 +6,9 @@
   {{- range $committees }}
   {{- $c := . }}
   <li class="card committee">
-    <h3 class="card__title">
+    <h2 class="card__title">
       {{- with $c.page }}<a href="{{ . }}">{{ $c.name }}</a>{{ else }}{{ $c.name }}{{ end -}}
-    </h3>
+    </h2>
 
     <p class="card__body">{{ $c.purpose }}</p>
 

@@ -25,7 +25,7 @@
           {{- end }}
         </div>
 
-        <aside class="stack-m">
+        <div class="page-rail stack-m">
           {{- with .Params.fees }}
           <div class="card card--feature">
             <h2 class="card__title">{{ partial "ui/icon.html" "payment" }} What it costs</h2>
@@ -54,7 +54,7 @@
               {{ partial "util/email-link.html" (dict "key" "general") }}
             </p>
           </div>
-        </aside>
+        </div>
       </div>
     </div>
   </article>

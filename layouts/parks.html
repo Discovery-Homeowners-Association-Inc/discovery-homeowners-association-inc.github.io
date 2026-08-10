@@ -39,7 +39,7 @@
           {{- end }}
         </div>
 
-        <aside class="stack-m">
+        <div class="page-rail stack-m">
           <div class="card card--feature">
             <h2 class="card__title">{{ partial "ui/icon.html" "park" }} {{ $parks.count }} parks</h2>
             <p class="text-small">{{ $parks.inspection_note }}</p>
@@ -53,7 +53,7 @@
               <li>{{ partial "ui/icon.html" "mail" }} {{ partial "util/email-link.html" (dict "key" "general") }}</li>
             </ul>
           </div>
-        </aside>
+        </div>
       </div>
     </div>
   </article>

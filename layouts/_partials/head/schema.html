@@ -71,3 +71,49 @@
        the value as a JavaScript string and emits the JSON double-encoded, which
        is not valid JSON-LD and is silently ignored by search engines. */ -}}
 <script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>
+
+{{- /* An event page describes the event itself, so a search engine can show the
+       date and place directly. */ -}}
+{{- if and (eq .Section "events") .Params.start -}}
+  {{- $start := time.AsTime .Params.start -}}
+  {{- $end := cond (isset .Params "end") (time.AsTime .Params.end) ($start.Add (time.ParseDuration "2h")) -}}
+  {{- $event := dict
+      "@context" "https://schema.org"
+      "@type" "Event"
+      "name" .Title
+      "startDate" ($start.Format "2006-01-02T15:04:05-07:00")
+      "endDate" ($end.Format "2006-01-02T15:04:05-07:00")
+      "eventAttendanceMode" "https://schema.org/OfflineEventAttendanceMode"
+      "eventStatus" "https://schema.org/EventScheduled"
+      "url" .Permalink
+      "organizer" (dict "@type" "Organization" "name" $org.legal_name "url" site.BaseURL)
+      "location" (dict
+        "@type" "Place"
+        "name" (.Params.location_name | default $org.meetings.board.location)
+        "address" (dict "@type" "PostalAddress" "streetAddress" $office.street
+          "addressLocality" $office.city "addressRegion" $office.state
+          "postalCode" $office.zip "addressCountry" "US"))
+  -}}
+  {{- with .Params.summary }}{{ $event = merge $event (dict "description" .) }}{{ end -}}
+  {{- if eq (.Params.cost | default "") "Free" -}}
+    {{- $event = merge $event (dict "isAccessibleForFree" true) -}}
+  {{- end }}
+<script type="application/ld+json">{{ $event | jsonify | safeJS }}</script>
+{{- end -}}
+
+{{- /* An announcement is an article. */ -}}
+{{- if eq .Section "news" -}}
+  {{- $article := dict
+      "@context" "https://schema.org"
+      "@type" "NewsArticle"
+      "headline" .Title
+      "datePublished" (.Date.Format "2006-01-02T15:04:05-07:00")
+      "dateModified" (.Lastmod.Format "2006-01-02T15:04:05-07:00")
+      "url" .Permalink
+      "mainEntityOfPage" .Permalink
+      "publisher" (dict "@type" "Organization" "name" $org.legal_name "url" site.BaseURL)
+      "author" (dict "@type" "Organization" "name" $org.legal_name)
+  -}}
+  {{- with .Params.summary }}{{ $article = merge $article (dict "description" .) }}{{ end }}
+<script type="application/ld+json">{{ $article | jsonify | safeJS }}</script>
+{{- end -}}
