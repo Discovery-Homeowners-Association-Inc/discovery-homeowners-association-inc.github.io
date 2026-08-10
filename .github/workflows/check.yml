@@ -1,0 +1,87 @@
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches-ignore: [main]
+  workflow_dispatch:
+
+env:
+  HUGO_VERSION: "0.163.3"
+  TZ: America/New_York
+
+jobs:
+  build:
+    name: Build and validate
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Hugo (extended)
+        run: |
+          curl -sSLf -o /tmp/hugo.deb \
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i /tmp/hugo.deb
+
+      # The CMS rewrites a data file from the fields declared in its config, so
+      # an undeclared key is destroyed on the next Publish. This catches that
+      # before it reaches an editor.
+      - name: CMS schema matches the data files
+        run: |
+          python3 -m pip install --quiet pyyaml
+          python3 tools/check-cms-schema.py
+
+      # --panicOnWarning turns Hugo's warnings into failures: a missing image,
+      # an image with no alt text, a duplicate output path.
+      - name: Build (warnings are errors)
+        env:
+          HUGO_ENVIRONMENT: production
+        run: hugo --gc --minify --panicOnWarning --printPathWarnings
+
+      - name: No unused templates
+        run: |
+          out=$(hugo --printUnusedTemplates --quiet 2>&1 | grep -i 'unused' || true)
+          if [ -n "$out" ]; then
+            echo "::error::Unused templates found — dead code, or a lookup that is not matching:"
+            echo "$out"
+            exit 1
+          fi
+          echo "No unused templates."
+
+      - name: The calendar is valid iCalendar
+        run: |
+          python3 -m pip install --quiet icalendar
+          python3 - <<'PY'
+          from icalendar import Calendar
+          cal = Calendar.from_ical(open('public/events/index.ics','rb').read())
+          events = [c for c in cal.walk() if c.name == 'VEVENT']
+          assert events, "the calendar feed has no events"
+          uids = set()
+          for e in events:
+              uid = str(e['UID'])
+              assert uid not in uids, f"duplicate UID {uid}"
+              uids.add(uid)
+              assert e.decoded('DTEND') > e.decoded('DTSTART'), f"{uid} ends before it starts"
+          print(f"{len(events)} events, all valid")
+          PY
+
+      - name: Weight budget
+        run: |
+          css=$(find public -name '*.css' -exec sh -c 'gzip -c "$1" | wc -c' _ {} \; | paste -sd+ | bc)
+          echo "CSS: $css bytes gzipped"
+          [ "$css" -lt 12288 ] || { echo "::error::CSS exceeds the 12 KB gzipped budget"; exit 1; }
+          for f in $(find public -name '*.js'); do
+            echo "  $(basename "$f"): $(gzip -c "$f" | wc -c) bytes gzipped"
+          done
+
+      - name: Links resolve
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress --max-concurrency 4 --exclude-mail
+            --exclude '^https://app\.payhoa\.com'
+            --exclude '^webcal://'
+            'public/**/*.html'
+          fail: true

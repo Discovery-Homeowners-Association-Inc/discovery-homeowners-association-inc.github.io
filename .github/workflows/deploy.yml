@@ -1,0 +1,90 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it — a half-published
+# site is worse than a slightly stale one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  HUGO_VERSION: "0.163.3"
+  TZ: America/New_York
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # enableGitInfo reads commit history to give each page a real
+          # .Lastmod, so a shallow clone would date everything to now.
+          fetch-depth: 0
+
+      - name: Install Hugo (extended)
+        run: |
+          curl -sSLf -o /tmp/hugo.deb \
+            "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb"
+          sudo dpkg -i /tmp/hugo.deb
+          hugo version
+
+      - name: Cache processed images
+        uses: actions/cache@v4
+        with:
+          path: resources/_gen
+          key: hugo-resources-${{ hashFiles('assets/media/**', 'assets/brand/**') }}
+          restore-keys: hugo-resources-
+
+      - uses: actions/configure-pages@v5
+
+      # NOTE: baseURL is deliberately NOT passed here. hugo.toml already holds
+      # the custom domain, and overriding it with the Pages default URL is
+      # exactly how the previous version of this site ended up serving links
+      # with a stale /hoa/ prefix. See docs/DECISIONS.md #8.
+      - name: Build
+        env:
+          HUGO_ENVIRONMENT: production
+        run: hugo --gc --minify --panicOnWarning
+
+      - name: Check the artifact
+        run: |
+          fail() { echo "::error::$1"; exit 1; }
+
+          [ -f public/CNAME ] || fail "public/CNAME is missing — is static/CNAME committed? Without it GitHub can clear the custom domain on deploy."
+          grep -qx 'dhoa.naponline.net' public/CNAME || fail "public/CNAME does not contain the expected hostname"
+
+          for f in index.html index.json events/index.ics admin/config.yml admin/index.html 404.html; do
+            [ -f "public/$f" ] || fail "public/$f was not generated"
+          done
+
+          if grep -rqF 'napalm255.github.io' public/; then
+            fail "a stale hostname leaked into the build"
+          fi
+          if grep -rqF 'REPLACE-ME' public/admin/config.yml; then
+            echo "::warning::The CMS OAuth base_url is still a placeholder, so /admin/ sign-in will not work yet. See docs/RUNBOOK-oauth.md"
+          fi
+
+          echo "Artifact looks good — $(du -sh public | cut -f1), $(find public -name '*.html' | wc -l) pages"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
