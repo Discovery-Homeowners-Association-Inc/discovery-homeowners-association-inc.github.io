@@ -90,7 +90,7 @@
           {{- end }}
         </div>
 
-        <aside class="stack-m">
+        <div class="page-rail stack-m">
           {{- with partial "util/external-url.html" "governing_documents" }}
           <div class="card card--feature">
             <h2 class="card__title">{{ partial "ui/icon.html" "document" }} Governing documents</h2>
@@ -114,7 +114,7 @@
               <li>{{ partial "ui/icon.html" "mail" }} {{ partial "util/email-link.html" (dict "key" "general") }}</li>
             </ul>
           </div>
-        </aside>
+        </div>
       </div>
     </div>
   </div>

@@ -12,9 +12,13 @@
 {{- $icons := dict "note" "alert" "warning" "alert" "important" "alert" -}}
 {{- $icon := index $icons $type | default "alert" -}}
 
-<aside class="callout callout--{{ $type }}">
+{{- /* A div, not an <aside>: a callout is emphasis inside the prose,
+       not complementary content about the page. Marking it up as a
+       landmark nests one inside <main>, which is both wrong and
+       noisy for anyone navigating by landmark. */ -}}
+<div class="callout callout--{{ $type }}">
   {{ partial "ui/icon.html" $icon }}
   <div class="callout__body">
     {{ .Inner | .Page.RenderString (dict "display" "block") }}
   </div>
-</aside>
+</div>

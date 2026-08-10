@@ -1,0 +1,13 @@
+{{- /* enableRobotsTXT is on in hugo.toml, so Hugo generates this file from
+       this template. A static/robots.txt would be overwritten by the
+       generated one, which is why this is a template and not a static file. */ -}}
+User-agent: *
+Allow: /
+
+# The admin panel is not content. Its own markup is noindexed too.
+Disallow: /admin/
+
+# The search page is a tool, not something worth indexing.
+Disallow: /search/
+
+Sitemap: {{ "sitemap.xml" | absURL }}

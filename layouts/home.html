@@ -72,10 +72,10 @@
         {{ .Content }}
       </div>
 
-      <aside class="stack-m">
+      <div class="page-rail stack-m">
         {{ partial "content/contact-block.html" . }}
         {{ partial "content/dues-block.html" . }}
-      </aside>
+      </div>
     </div>
   </section>
 
@@ -98,9 +98,9 @@
           {{- end }}
         </ul>
 
-        <aside>
+        <div class="page-rail">
           {{ partial "content/upcoming-events.html" (dict "limit" 5 "page" .) }}
-        </aside>
+        </div>
       </div>
     </div>
   </section>

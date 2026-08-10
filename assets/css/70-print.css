@@ -1,0 +1,90 @@
+/* ===========================================================================
+   PRINT
+   Residents genuinely print these pages — the trash schedule goes on a fridge,
+   the who-to-call list goes by the phone. Worth getting right.
+   =========================================================================== */
+
+@media print {
+  /* Ink is expensive and the reader already knows where they are. */
+  .site-header,
+  .site-footer,
+  .breadcrumb,
+  .dev-banner,
+  .doc-filter,
+  .search-form,
+  .search-fallback,
+  .btn,
+  .link-arrow,
+  .heading-anchor,
+  .neighborhood-map {
+    display: none !important;
+  }
+
+  :root {
+    --color-bg: #fff;
+    --color-bg-alt: #fff;
+    --color-surface: #fff;
+    --color-surface-sunk: #fff;
+    --color-text: #000;
+    --color-text-muted: #333;
+    --color-border: #999;
+    --color-border-strong: #666;
+    --shadow-1: none;
+    --shadow-2: none;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+
+  .section,
+  .section--loose,
+  .section--tight {
+    padding-block: 0;
+  }
+
+  /* Collapse the sidebar layout into one column. */
+  .with-rail,
+  .grid-auto {
+    display: block;
+  }
+
+  .card {
+    border: 1px solid #999;
+    box-shadow: none;
+    break-inside: avoid;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Accordions are useless on paper if they print closed. */
+  details {
+    display: block;
+  }
+
+  details > summary {
+    display: none;
+  }
+
+  .directory__items,
+  .committee__members ul,
+  .project__streets ul {
+    display: block !important;
+  }
+
+  /* Print the destination of a link nobody can click. */
+  .prose a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    word-break: break-all;
+  }
+
+  h1, h2, h3 {
+    break-after: avoid;
+  }
+
+  table, figure, li {
+    break-inside: avoid;
+  }
+}
