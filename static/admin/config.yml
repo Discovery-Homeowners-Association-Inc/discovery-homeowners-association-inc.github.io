@@ -1,0 +1,598 @@
+# ═══════════════════════════════════════════════════════════════════════════
+#  Sveltia CMS — the admin panel at /admin/
+#
+#  ⚠ EVERY KEY IN AN EDITED FILE MUST APPEAR BELOW.
+#
+#  The CMS rewrites a file from the fields defined here. Any key that is not
+#  described is silently dropped the first time someone presses Publish. So if
+#  you add a value to data/organization.yaml, add the matching field here in
+#  the same commit — and there is a test for this: tools/check-cms-schema.py
+#  compares the two and fails if they have drifted.
+# ═══════════════════════════════════════════════════════════════════════════
+
+backend:
+  name: github
+  repo: Discovery-Homeowners-Association-Inc/discovery-homeowners-association-inc.github.io
+  branch: main
+  # Cloudflare Worker running sveltia/sveltia-cms-auth, so editors sign in with
+  # "Login with GitHub" and never handle a personal access token.
+  # Set this once the Worker is deployed — see docs/RUNBOOK-oauth.md.
+  base_url: https://REPLACE-ME.workers.dev
+
+# Direct commits to main. Every edit is in git, so a mistake is one revert away.
+# See docs/DECISIONS.md #5 for why this is not editorial_workflow.
+publish_mode: simple
+
+site_url: https://dhoa.naponline.net
+display_url: https://dhoa.naponline.net
+logo_url: /favicon.svg
+
+# Photographs are resized by Hugo, so they live in assets/.
+# PDFs keep permanent unprocessed URLs and are handled per-field below.
+media_folder: "assets/media"
+public_folder: "/media"
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+
+collections:
+
+  # ───────────────────────────────────────────────────────────────────────
+  #  1. Site settings — the single source of truth
+  # ───────────────────────────────────────────────────────────────────────
+  - name: settings
+    label: "Site Settings"
+    icon: settings
+    editor: { preview: false }
+    files:
+      - name: organization
+        label: "Contact, Hours, Dues & Links"
+        file: "data/organization.yaml"
+        description: >-
+          Everything here appears all over the website. Change it once and it
+          updates on every page that mentions it.
+        fields:
+          - { label: "Legal name", name: legal_name, widget: string }
+          - { label: "Short name", name: short_name, widget: string }
+          - { label: "Tagline", name: tagline, widget: string }
+          - { label: "Town", name: locality, widget: string }
+          - { label: "County", name: county, widget: string }
+          - { label: "State", name: state, widget: string }
+          - { label: "State abbreviation", name: state_abbr, widget: string }
+          - { label: "Year founded", name: founded, widget: number, value_type: int }
+
+          - label: "The office"
+            name: office
+            widget: object
+            fields:
+              - { label: "Street address", name: street, widget: string }
+              - { label: "Town", name: city, widget: string }
+              - { label: "State", name: state, widget: string }
+              - { label: "ZIP", name: zip, widget: string }
+              - { label: "Mailing address", name: mailing, widget: string }
+              - label: "Phone"
+                name: phone
+                widget: string
+                pattern: ['^\d{3}-\d{3}-\d{4}$', "Use the form 301-555-1234"]
+              - { label: "Phone, dialable", name: phone_e164, widget: string, hint: "e.g. +13018452050 — this is what a phone actually dials" }
+              - { label: "Fax", name: fax, widget: string, required: false }
+              - label: "Office email"
+                name: email
+                widget: string
+                pattern: ['^[^@\s]+@[^@\s]+\.[^@\s]+$', "Enter a valid email address"]
+              - label: "Opening hours"
+                name: hours
+                widget: list
+                summary: "{{fields.days}} — {{fields.open}} to {{fields.close}}"
+                fields:
+                  - { label: "Days", name: days, widget: string, hint: "e.g. Monday, Wednesday, Friday" }
+                  - { label: "Opens", name: open, widget: string, hint: "e.g. 9:00 am" }
+                  - { label: "Closes", name: close, widget: string }
+                  - { label: "Note", name: note, widget: string, required: false }
+
+          - label: "Email addresses"
+            name: emails
+            widget: object
+            hint: "Pages refer to these by role, so changing one here changes it everywhere."
+            fields:
+              - { label: "General office", name: general, widget: string }
+              - { label: "Architectural Control", name: acc, widget: string }
+              - { label: "Pool & Recreation", name: pool_rec, widget: string }
+
+          - label: "Assessments & fees"
+            name: dues
+            widget: object
+            fields:
+              - { label: "Year", name: year, widget: number, value_type: int }
+              - { label: "Annual assessment ($)", name: annual, widget: number, value_type: int, hint: "Must equal four times the quarterly amount, or the site will not build." }
+              - { label: "Quarterly assessment ($)", name: quarterly, widget: number, value_type: int }
+              - label: "Quarterly due dates"
+                name: due_dates
+                widget: list
+                field: { label: "Date", name: date, widget: string }
+              - { label: "Note about paying in full", name: pay_in_full_note, widget: string, required: false }
+              - { label: "Late penalty", name: late_penalty, widget: string }
+              - { label: "Water plant fee ($/year)", name: water_plant_fee, widget: number, value_type: int }
+              - { label: "Water bill due", name: water_bill_due, widget: string }
+              - label: "Zelle"
+                name: zelle
+                widget: object
+                fields:
+                  - { label: "Accept Zelle", name: enabled, widget: boolean, default: true }
+                  - { label: "Recipient name", name: recipient, widget: string }
+                  - { label: "Zelle email or phone", name: identifier, widget: string }
+                  - { label: "Memo instruction", name: memo_instruction, widget: string }
+              - { label: "No cash in the drop box", name: no_cash_dropbox, widget: boolean, default: true }
+
+          - label: "Meetings"
+            name: meetings
+            widget: object
+            fields:
+              - label: "Board meetings"
+                name: board
+                widget: object
+                hint: "Board meetings are added to the calendar automatically from these settings."
+                fields:
+                  - { label: "Schedule, in plain English", name: rule, widget: string }
+                  - label: "Which occurrence"
+                    name: ordinal
+                    widget: select
+                    options:
+                      - { label: "First", value: 1 }
+                      - { label: "Second", value: 2 }
+                      - { label: "Third", value: 3 }
+                      - { label: "Fourth", value: 4 }
+                  - label: "Which day"
+                    name: weekday
+                    widget: select
+                    options:
+                      - { label: "Sunday", value: 0 }
+                      - { label: "Monday", value: 1 }
+                      - { label: "Tuesday", value: 2 }
+                      - { label: "Wednesday", value: 3 }
+                      - { label: "Thursday", value: 4 }
+                      - { label: "Friday", value: 5 }
+                      - { label: "Saturday", value: 6 }
+                  - { label: "Time", name: time, widget: string, hint: "e.g. 7:00 pm" }
+                  - { label: "Location", name: location, widget: string }
+                  - { label: "Who may attend", name: open_to, widget: string }
+              - label: "Pool & Recreation Committee"
+                name: pool_rec
+                widget: object
+                fields:
+                  - { label: "Schedule", name: rule, widget: string }
+                  - { label: "Time", name: time, widget: string }
+                  - { label: "Location", name: location, widget: string }
+
+          - label: "External services"
+            name: external
+            widget: object
+            collapsed: true
+            fields:
+              - label: "PayHOA resident portal"
+                name: payhoa
+                widget: object
+                fields:
+                  - { label: "Show the Pay Dues buttons", name: enabled, widget: boolean, default: true }
+                  - { label: "Still a placeholder", name: is_placeholder, widget: boolean, default: false, hint: "Tick this while the URLs are provisional. It shows a warning during local development only." }
+                  - { label: "Button label", name: label, widget: string }
+                  - { label: "Portal button label", name: portal_label, widget: string }
+                  - { label: "Portal URL", name: portal_url, widget: string }
+                  - { label: "Direct pay URL", name: pay_url, widget: string }
+                  - { label: "Sign-up URL", name: signup_url, widget: string, required: false }
+                  - { label: "Helper text", name: help_text, widget: text }
+                  - { label: "What residents can do there", name: features, widget: list, field: { label: "Item", name: item, widget: string } }
+                  - { label: "How to register", name: registration_steps, widget: list, field: { label: "Step", name: step, widget: string } }
+                  - label: "Processing fees"
+                    name: fees
+                    widget: list
+                    summary: "{{fields.method}} — {{fields.amount}}"
+                    fields:
+                      - { label: "Method", name: method, widget: string }
+                      - { label: "Amount", name: amount, widget: string }
+                  - { label: "Note about fees", name: fees_note, widget: string }
+                  - { label: "Note about paying offline", name: offline_note, widget: string }
+
+              - label: "Governing documents"
+                name: governing_documents
+                widget: object
+                fields:
+                  - { label: "Still a placeholder", name: is_placeholder, widget: boolean, default: true }
+                  - { label: "Link label", name: label, widget: string }
+                  - { label: "URL", name: url, widget: string }
+                  - { label: "Note", name: note, widget: string }
+
+              - label: "Pool registration"
+                name: pool_registration
+                widget: object
+                fields:
+                  - { label: "Still a placeholder", name: is_placeholder, widget: boolean, default: false }
+                  - { label: "Link label", name: label, widget: string }
+                  - { label: "URL", name: url, widget: string }
+                  - { label: "Vendor", name: vendor, widget: string }
+
+              - label: "County recycling schedule"
+                name: county_recycling
+                widget: object
+                fields:
+                  - { label: "Still a placeholder", name: is_placeholder, widget: boolean, default: false }
+                  - { label: "Link label", name: label, widget: string }
+                  - { label: "URL", name: url, widget: string }
+
+              - label: "Water bill"
+                name: water_bill
+                widget: object
+                fields:
+                  - { label: "Still a placeholder", name: is_placeholder, widget: boolean, default: false }
+                  - { label: "Link label", name: label, widget: string }
+                  - { label: "URL", name: url, widget: string }
+
+      - name: trash
+        label: "Trash & Recycling"
+        file: "data/trash.yaml"
+        fields:
+          - label: "Collections"
+            name: collections
+            widget: list
+            summary: "{{fields.service}} — {{fields.schedule}}"
+            fields:
+              - { label: "Service", name: service, widget: string }
+              - { label: "When", name: schedule, widget: string }
+              - { label: "Zone", name: zone, widget: string, required: false }
+          - { label: "When to put bins out", name: setout_rule, widget: string }
+          - { label: "When to bring them in", name: bring_in_rule, widget: string }
+          - { label: "Container rule", name: container_rule, widget: text }
+          - label: "Yard waste"
+            name: yard_waste
+            widget: object
+            fields:
+              - { label: "Season", name: season, widget: string }
+              - { label: "Accepted", name: accepted, widget: list, field: { label: "Item", name: item, widget: string } }
+              - { label: "Not accepted", name: not_accepted, widget: list, field: { label: "Item", name: item, widget: string } }
+              - { label: "Bundling rules", name: bundling, widget: text }
+          - { label: "Why recycling matters", name: tipping_fee_note, widget: text }
+          - label: "County contacts"
+            name: contacts
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: name, widget: string }
+              - { label: "Address", name: address, widget: string, required: false }
+              - { label: "Website", name: url, widget: string, required: false }
+              - label: "Phone numbers"
+                name: phones
+                widget: list
+                summary: "{{fields.label}}: {{fields.number}}"
+                fields:
+                  - { label: "Label", name: label, widget: string }
+                  - { label: "Number", name: number, widget: string }
+
+  # ───────────────────────────────────────────────────────────────────────
+  #  2. Board of Directors
+  # ───────────────────────────────────────────────────────────────────────
+  - name: board
+    label: "Board of Directors"
+    icon: groups
+    editor: { preview: false }
+    files:
+      - name: members
+        label: "Board Roster"
+        file: "data/board.yaml"
+        media_folder: "/assets/media/board"
+        public_folder: "/media/board"
+        fields:
+          - { label: "Note about terms", name: term_note, widget: string, required: false }
+          - label: "Members"
+            name: members
+            widget: list
+            summary: "{{fields.order}}. {{fields.name}} — {{fields.role}}"
+            fields:
+              - { label: "Display order", name: order, widget: number, value_type: int }
+              - { label: "Name", name: name, widget: string }
+              - label: "Role"
+                name: role
+                widget: select
+                options: ["President", "Vice President", "Treasurer", "Secretary", "Director"]
+              - label: "Committees"
+                name: committees
+                widget: select
+                multiple: true
+                required: false
+                options: ["Architectural Control", "Pool & Recreation", "Maintenance", "Welcome", "Website"]
+              - { label: "Email", name: email, widget: string, required: false, hint: "Leave blank to show the office address instead — recommended." }
+              - { label: "Photo", name: photo, widget: image, required: false, hint: "Optional. Without one, initials are shown." }
+              - { label: "Note", name: note, widget: string, required: false }
+
+  # ───────────────────────────────────────────────────────────────────────
+  #  3. Committees
+  # ───────────────────────────────────────────────────────────────────────
+  - name: committees
+    label: "Committees"
+    icon: diversity_3
+    editor: { preview: false }
+    files:
+      - name: committees
+        label: "Committee List"
+        file: "data/committees.yaml"
+        fields:
+          - label: "Committees"
+            name: committees
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "URL slug", name: slug, widget: string }
+              - { label: "Name", name: name, widget: string }
+              - { label: "Abbreviation", name: abbr, widget: string, required: false }
+              - label: "Which office email?"
+                name: email_key
+                widget: select
+                options: ["general", "acc", "pool_rec"]
+                hint: "Points at an address in Site Settings, so it can never go stale."
+              - { label: "What it does", name: purpose, widget: text }
+              - { label: "When it meets", name: meets, widget: string, required: false }
+              - { label: "Related page", name: page, widget: string, required: false }
+              - { label: "Looking for volunteers", name: volunteers_wanted, widget: boolean, default: false }
+              - label: "Members"
+                name: members
+                widget: list
+                required: false
+                summary: "{{fields.name}} {{fields.role}}"
+                fields:
+                  - { label: "Name", name: name, widget: string }
+                  - { label: "Role", name: role, widget: string, required: false }
+
+  # ───────────────────────────────────────────────────────────────────────
+  #  4. Report a Problem
+  # ───────────────────────────────────────────────────────────────────────
+  - name: problems
+    label: "Report a Problem"
+    icon: report
+    editor: { preview: false }
+    files:
+      - name: problems
+        label: "Who to Call"
+        file: "data/problems.yaml"
+        fields:
+          - label: "Entries"
+            name: entries
+            widget: list
+            summary: "{{fields.order}}. {{fields.issue}}"
+            fields:
+              - { label: "Sort order", name: order, widget: number, value_type: int, hint: "Lowest first. Most urgent at the top." }
+              - { label: "The problem", name: issue, widget: string }
+              - { label: "Who to contact", name: contact, widget: string }
+              - { label: "Category", name: category, widget: string, hint: "Entries are grouped under this heading." }
+              - { label: "Phone", name: phone, widget: string, required: false }
+              - { label: "Use the office phone", name: phone_key, widget: select, required: false, options: ["office"] }
+              - { label: "Use an office email", name: email_key, widget: select, required: false, options: ["general", "acc", "pool_rec"] }
+              - { label: "Highlight as urgent", name: urgent, widget: boolean, default: false }
+              - { label: "Note", name: note, widget: text, required: false }
+
+  # ───────────────────────────────────────────────────────────────────────
+  #  5. Community Links
+  # ───────────────────────────────────────────────────────────────────────
+  - name: links
+    label: "Community Links"
+    icon: link
+    editor: { preview: false }
+    files:
+      - name: links
+        label: "Link Directory"
+        file: "data/links.yaml"
+        fields:
+          - label: "Categories"
+            name: categories
+            widget: list
+            summary: "{{fields.category}}"
+            fields:
+              - { label: "Category", name: category, widget: string }
+              - label: "Icon"
+                name: icon
+                widget: select
+                options: ["paw", "government", "utility", "school", "book", "help", "park", "church", "news", "phone", "home"]
+              - { label: "Sort order", name: order, widget: number, value_type: int, default: 50 }
+              - label: "Links"
+                name: links
+                widget: list
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: "Name", name: name, widget: string }
+                  - { label: "Website", name: url, widget: string, required: false }
+                  - { label: "Phone", name: phone, widget: string, required: false }
+                  - { label: "Address", name: address, widget: string, required: false }
+                  - { label: "Hours", name: hours, widget: string, required: false }
+                  - { label: "Note", name: note, widget: string, required: false }
+
+  # ───────────────────────────────────────────────────────────────────────
+  #  6. Parks
+  # ───────────────────────────────────────────────────────────────────────
+  - name: parks
+    label: "Parks"
+    icon: park
+    editor: { preview: false }
+    files:
+      - name: parks
+        label: "Park List"
+        file: "data/parks.yaml"
+        fields:
+          - { label: "How many parks", name: count, widget: number, value_type: int }
+          - { label: "About inspections", name: inspection_note, widget: text }
+          - { label: "How to report a problem", name: report_note, widget: text }
+          - label: "Parks"
+            name: parks
+            widget: list
+            required: false
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: name, widget: string }
+              - { label: "URL slug", name: slug, widget: string }
+              - { label: "Where it is", name: location, widget: string }
+              - { label: "Features", name: features, widget: list, required: false, field: { label: "Feature", name: f, widget: string } }
+              - label: "Status"
+                name: status
+                widget: select
+                options: ["open", "under-repair", "closed"]
+                default: "open"
+              - { label: "Last inspected", name: last_inspected, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, required: false }
+
+  # ───────────────────────────────────────────────────────────────────────
+  #  7. Meeting exceptions
+  # ───────────────────────────────────────────────────────────────────────
+  - name: meetings
+    label: "Meeting Exceptions"
+    icon: event_busy
+    editor: { preview: false }
+    files:
+      - name: overrides
+        label: "Cancelled or Moved Meetings"
+        file: "data/meetings-overrides.yaml"
+        description: >-
+          Board meetings are added to the calendar automatically. Use this only
+          for the months that differ — a cancelled December, or a meeting moved
+          by a week.
+        fields:
+          - label: "Exceptions"
+            name: overrides
+            widget: list
+            required: false
+            summary: "{{fields.date}} — {{fields.status}}"
+            fields:
+              - { label: "The date it would have been", name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
+              - label: "What happened"
+                name: status
+                widget: select
+                options:
+                  - { label: "Cancelled", value: cancelled }
+                  - { label: "Moved to another date", value: moved }
+                  - { label: "Going ahead, with a note", value: note }
+              - { label: "Moved to", name: moved_to, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, required: false }
+              - { label: "Different time", name: time, widget: string, required: false }
+              - { label: "Different place", name: location, widget: string, required: false }
+              - { label: "Note", name: note, widget: text, required: false }
+
+  # ───────────────────────────────────────────────────────────────────────
+  #  8. Announcements
+  # ───────────────────────────────────────────────────────────────────────
+  - name: news
+    label: "Announcements"
+    label_singular: "Announcement"
+    icon: campaign
+    folder: "content/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{date}} — {{title}}"
+    sortable_fields: ["date", "title"]
+    media_folder: "/assets/media/news"
+    public_folder: "/media/news"
+    fields:
+      - { label: "Headline", name: title, widget: string }
+      - { label: "Date", name: date, widget: datetime }
+      - { label: "One-line summary", name: summary, widget: text, hint: "Shown on the home page and in search results." }
+      - label: "Category"
+        name: category
+        widget: select
+        options:
+          - { label: "General", value: general }
+          - { label: "Pool", value: pool }
+          - { label: "Architectural Control", value: acc }
+          - { label: "Maintenance & projects", value: maintenance }
+          - { label: "Meetings", value: meetings }
+          - { label: "Trash & recycling", value: trash }
+          - { label: "Events", value: events }
+        default: general
+      - { label: "Pin to the top", name: pinned, widget: boolean, default: false, required: false }
+      - { label: "Take down automatically after", name: expiryDate, widget: datetime, required: false, hint: "Leave blank to keep it up until you remove it." }
+      - label: "Attached files"
+        name: attachments
+        widget: list
+        required: false
+        summary: "{{fields.label}}"
+        fields:
+          - { label: "Link text", name: label, widget: string }
+          - { label: "PDF", name: file, widget: file, media_folder: "/static/documents", public_folder: "/documents" }
+      - { label: "The announcement", name: body, widget: markdown }
+
+  # ───────────────────────────────────────────────────────────────────────
+  #  9. Events
+  # ───────────────────────────────────────────────────────────────────────
+  - name: events
+    label: "Events"
+    label_singular: "Event"
+    icon: event
+    folder: "content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{start}} — {{title}}"
+    sortable_fields: ["start", "title"]
+    media_folder: "/assets/media/events"
+    public_folder: "/media/events"
+    description: >-
+      Board meetings appear on the calendar automatically — you do not need to
+      add them here.
+    fields:
+      - { label: "Event name", name: title, widget: string }
+      - { label: "Announce from", name: date, widget: datetime, hint: "When this listing should start showing." }
+      - { label: "Starts", name: start, widget: datetime }
+      - { label: "Ends", name: end, widget: datetime }
+      - { label: "All day", name: all_day, widget: boolean, default: false, required: false }
+      - { label: "Place", name: location_name, widget: string, required: false, default: "Discovery Recreation Center" }
+      - { label: "Address", name: location_address, widget: string, required: false }
+      - label: "Type"
+        name: category
+        widget: select
+        options:
+          - { label: "Recreation / social", value: recreation }
+          - { label: "Pool", value: pool }
+          - { label: "Community", value: community }
+          - { label: "Maintenance", value: maintenance }
+          - { label: "Nearby, not ours", value: external }
+        default: community
+      - { label: "Cost", name: cost, widget: string, required: false, default: "Free" }
+      - { label: "Who it is for", name: audience, widget: string, required: false }
+      - { label: "Who to ask", name: contact_email_key, widget: select, required: false, options: ["general", "acc", "pool_rec"] }
+      - { label: "One-line summary", name: summary, widget: text }
+      - { label: "Details", name: body, widget: markdown, required: false }
+
+  # ───────────────────────────────────────────────────────────────────────
+  #  10. Documents
+  # ───────────────────────────────────────────────────────────────────────
+  - name: documents
+    label: "Documents & Forms"
+    label_singular: "Document"
+    icon: description
+    folder: "content/documents"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    sortable_fields: ["title", "date"]
+    # PDFs keep permanent, unprocessed URLs, because people print these links
+    # in newsletters and paste them into emails.
+    media_folder: "/static/documents"
+    public_folder: "/documents"
+    fields:
+      - { label: "Document title", name: title, widget: string }
+      - { label: "Date on the document", name: date, widget: datetime, date_format: "YYYY-MM-DD", time_format: false }
+      - label: "Category"
+        name: category
+        widget: select
+        options:
+          - { label: "Architectural Control", value: acc }
+          - { label: "Recreation Center", value: rec-center }
+          - { label: "RV Lot", value: rv-lot }
+          - { label: "Pool", value: pool }
+          - { label: "Parks", value: parks }
+          - { label: "Meeting minutes & agendas", value: minutes }
+          - { label: "Newsletters", value: newsletters }
+          - { label: "Financial", value: financial }
+          - { label: "General", value: general }
+      - { label: "The PDF", name: file, widget: file }
+      - label: "Language"
+        name: language
+        widget: select
+        options:
+          - { label: "English", value: en }
+          - { label: "Español", value: es }
+        default: en
+      - { label: "What is it for?", name: summary, widget: text, hint: "One or two sentences. This is what people read, and what search matches on." }
+      - { label: "Show in the featured row", name: featured, widget: boolean, default: false, required: false }
