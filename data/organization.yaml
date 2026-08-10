@@ -124,8 +124,13 @@ external:
     offline_note: "The office still accepts cash, check, and bank bill-pay."
 
   governing_documents:
-    # PLACEHOLDER — the governing-documents repository has no published site yet,
-    # so this points at the repository itself. Update when Pages is enabled there.
+    # DISABLED until there is somewhere public to point at.
+    #
+    # The governing-documents repository is PRIVATE, so linking to it gave every
+    # resident a GitHub 404. The link check caught this. Re-enable once either
+    # the repository is made public or its MkDocs site is published to Pages —
+    # then set enabled:true and put the real URL here.
+    enabled: false
     is_placeholder: true
     label: "Governing Documents"
     url: "https://github.com/Discovery-Homeowners-Association-Inc/governing-documents"

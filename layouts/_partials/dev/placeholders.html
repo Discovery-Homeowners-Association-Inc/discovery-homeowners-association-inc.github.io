@@ -10,7 +10,7 @@
 {{- if hugo.IsServer -}}
   {{- $pending := slice -}}
   {{- range $key, $svc := hugo.Data.organization.external -}}
-    {{- if and $svc.is_placeholder (ne $svc.enabled false) -}}
+    {{- if $svc.is_placeholder -}}
       {{- $pending = $pending | append (dict "key" $key "svc" $svc) -}}
     {{- end -}}
   {{- end -}}
@@ -26,6 +26,7 @@
         {{- range . }}
         <li>
           <code>external.{{ .key }}</code> — {{ .svc.label }}
+          {{- if eq .svc.enabled false }} <strong>(hidden from the site)</strong>{{ end }}
           <span class="text-muted">({{ or .svc.url .svc.portal_url }})</span>
         </li>
         {{- end }}
