@@ -101,9 +101,13 @@ of them.
 ### Deployment
 
 Every push to `main` triggers `.github/workflows/deploy.yml`, which builds with
-Hugo and publishes to GitHub Pages. Cloudflare provides DNS and SSL. See
-[docs/DECISIONS.md](docs/DECISIONS.md) for the Cloudflare SSL configuration —
-it must be **Full (strict)**, never Flexible.
+Hugo and publishes to GitHub Pages. Cloudflare provides DNS and the certificate
+visitors see.
+
+The `dhoa` record is proxied, which means GitHub never issues its own
+certificate and the Cloudflare → GitHub hop is unauthenticated. That is a
+deliberate tradeoff with one sharp edge — never tick **Enforce HTTPS** while
+Cloudflare is on Flexible. See [docs/DECISIONS.md](docs/DECISIONS.md) #6.
 
 ---
 

@@ -35,44 +35,45 @@ This stops anyone else claiming the hostname on GitHub Pages if this site is
 ever deleted while DNS still points at it. It takes two minutes and closes a
 real takeover route.
 
-## 4. Cloudflare DNS — grey cloud **first**
-
-Create the record:
+## 4. Cloudflare DNS — the record stays proxied
 
 ```
 Type: CNAME   Name: dhoa   Target: discovery-homeowners-association-inc.github.io
-Proxy status: DNS only  (grey cloud)
+Proxy status: Proxied  (orange cloud)
 ```
 
-**Leave it grey-clouded until GitHub has issued the certificate.**
+This is a deliberate tradeoff, recorded in `docs/DECISIONS.md` #6. The short
+version: while the record is proxied, GitHub cannot complete its ACME HTTP-01
+challenge, so it never issues a certificate for the custom domain and **Enforce
+HTTPS** in Settings → Pages stays permanently greyed out.
 
-While the record is proxied, GitHub cannot complete its ACME HTTP-01 challenge.
-The symptom is unhelpful: the **Enforce HTTPS** checkbox in Settings → Pages
-stays greyed out saying the certificate is not yet issued, sometimes for hours,
-with nothing explaining why.
+Visitors are unaffected. Cloudflare presents its own valid certificate, so the
+site is HTTPS in the browser. What is unauthenticated is the Cloudflare → GitHub
+hop behind it.
 
-Correct order:
+## 5. Cloudflare SSL mode — **not** Full (strict)
 
-1. Grey cloud.
-2. Wait for Settings → Pages to say *"Your site is published at
-   https://dhoa.naponline.net"* and show the certificate as issued.
-3. Tick **Enforce HTTPS**.
-4. *Then*, if you want Cloudflare's caching, switch to the orange cloud.
+Cloudflare → **SSL/TLS → Overview**. This must be **Flexible** or **Full**.
 
-## 5. Cloudflare SSL mode — **Full (strict)**
+Do **not** set Full (strict). It validates the origin certificate, and GitHub
+Pages has issued none for `dhoa.naponline.net` — it presents its default
+`CN=*.github.io`, which does not match. Cloudflare rejects it and serves `526
+Invalid SSL Certificate` on every request.
 
-Cloudflare → **SSL/TLS → Overview → Full (strict)**.
+**Never tick Enforce HTTPS while the mode is Flexible.** GitHub would redirect
+HTTP→HTTPS, Cloudflare would fetch the origin over HTTP, receive the redirect
+again, and loop until the browser gives up with `ERR_TOO_MANY_REDIRECTS`. That
+is unreachable today — no certificate exists, so the checkbox is greyed out —
+but it is the failure mode to remember if that ever changes.
 
-**Never use Flexible.** With Flexible, GitHub Pages redirects HTTP to HTTPS,
-Cloudflare fetches the origin over HTTP, receives the redirect again, and loops
-until the browser gives up with `ERR_TOO_MANY_REDIRECTS`. The site appears
-completely broken and the cause is not obvious from either dashboard.
+**SSL/TLS → Edge Certificates → Always Use HTTPS: On** is safe in any mode. It
+acts at the edge, before the origin fetch, so it cannot cause the loop.
 
-GitHub Pages serves a valid publicly-trusted certificate for the custom domain,
-so Full (strict) is both correct and works.
+If you later want the origin hop authenticated, the reversal takes about fifteen
+minutes and ends with the record proxied again. The numbered procedure is in
+`docs/DECISIONS.md` #6.
 
-Once that is right, **SSL/TLS → Edge Certificates → Always Use HTTPS: On** is
-safe and worth having.
+---
 
 ## 6. Optional: caching, once proxied
 
