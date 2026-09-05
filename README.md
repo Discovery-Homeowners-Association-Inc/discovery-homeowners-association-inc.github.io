@@ -3,16 +3,27 @@
 The public website for the Discovery Homeowners Association, Inc. of Walkersville,
 Frederick County, Maryland.
 
-**Live site:** https://dhoa.naponline.net/
-**Edit the site:** https://dhoa.naponline.net/admin/
+> **Not published yet.** This site is built and working, but it is not deployed
+> and has no public address. It is configured for the association's own domain,
+> **`discoveryhomeowners.com`**, which the association owns but does not yet hold
+> in an account it controls — the domain still redirects to the old Google Sites
+> page. Until it is transferred and repointed, the addresses below do not work.
+>
+> The association's current website remains the Google Sites page. See
+> `docs/DECISIONS.md` #10, and the `domain/` area of the private `technology`
+> repository for where the transfer stands.
+
+**Intended site address:** `https://discoveryhomeowners.com/`
+**Intended editing address:** `https://discoveryhomeowners.com/admin/`
 
 ---
 
 ## For board members — editing the site
 
-You do not need to install anything. Go to **https://dhoa.naponline.net/admin/**,
-click **Login with GitHub**, and edit from any browser, including your phone.
-Changes go live about two minutes after you click Publish.
+*Once the site is published,* you will not need to install anything. Go to
+**https://discoveryhomeowners.com/admin/**, click **Login with GitHub**, and edit
+from any browser, including your phone. Changes go live about two minutes after
+you click Publish.
 
 See **[docs/EDITING.md](docs/EDITING.md)** for a walkthrough of adding an
 announcement, adding an event, uploading a form, and changing the office phone

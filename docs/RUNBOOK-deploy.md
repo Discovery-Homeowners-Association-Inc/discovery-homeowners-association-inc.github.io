@@ -18,7 +18,7 @@ Repository → **Settings → Pages**:
 
 ## 2. Set the custom domain
 
-Same page → **Custom domain** → `dhoa.naponline.net` → Save.
+Same page → **Custom domain** → `discoveryhomeowners.com` → Save.
 
 > `static/CNAME` is already committed, and the deploy workflow fails the build
 > if it is missing from the artifact. That matters: with the Actions source
@@ -27,7 +27,7 @@ Same page → **Custom domain** → `dhoa.naponline.net` → Save.
 
 ## 3. Verify the domain at the organization level
 
-Organization → **Settings → Pages → Verified domains** → add `naponline.net`,
+Organization → **Settings → Pages → Verified domains** → add `discoveryhomeowners.com`,
 then create the `_github-pages-challenge-...` TXT record it gives you in
 Cloudflare.
 
@@ -56,7 +56,7 @@ hop behind it.
 Cloudflare → **SSL/TLS → Overview**. This must be **Flexible** or **Full**.
 
 Do **not** set Full (strict). It validates the origin certificate, and GitHub
-Pages has issued none for `dhoa.naponline.net` — it presents its default
+Pages has issued none for `discoveryhomeowners.com` — it presents its default
 `CN=*.github.io`, which does not match. Cloudflare rejects it and serves `526
 Invalid SSL Certificate` on every request.
 
@@ -130,7 +130,7 @@ The site rebuilds and republishes in about two minutes.
 
 ## The domain is a risk worth closing
 
-`dhoa.naponline.net` is a subdomain of a **personally owned** domain, used while
+`discoveryhomeowners.com` is a subdomain of a **personally owned** domain, used while
 the site is being built.
 
 That means the association's entire web presence currently depends on one
@@ -139,6 +139,6 @@ the domain lapses, the site disappears and the association has no way to get it
 back.
 
 **Register an association-owned domain** through a registrar account the
-organization controls, and treat `dhoa.naponline.net` as a temporary alias.
+organization controls, and treat `discoveryhomeowners.com` as a temporary alias.
 Changing `baseURL` afterwards is a one-line edit in `hugo.toml`. Recovering a
 domain after a falling-out is not a one-line anything.

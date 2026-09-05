@@ -60,7 +60,7 @@ jobs:
           fail() { echo "::error::$1"; exit 1; }
 
           [ -f public/CNAME ] || fail "public/CNAME is missing — is static/CNAME committed? Without it GitHub can clear the custom domain on deploy."
-          grep -qx 'dhoa.naponline.net' public/CNAME || fail "public/CNAME does not contain the expected hostname"
+          grep -qx 'discoveryhomeowners.com' public/CNAME || fail "public/CNAME does not contain the expected hostname"
 
           for f in index.html index.json events/index.ics admin/config.yml admin/index.html 404.html; do
             [ -f "public/$f" ] || fail "public/$f was not generated"

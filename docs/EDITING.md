@@ -1,9 +1,14 @@
 # Editing the website
 
+
+> **Not published yet.** The site is not deployed and the address below does
+> not work. This guide describes how editing will work once the association's
+> domain is transferred and the site goes live. See `DECISIONS.md` #10.
+
 You do not need to install anything, and you do not need to know how websites
 are built. Everything happens in a browser, and it works on a phone.
 
-**https://dhoa.naponline.net/admin/**
+**https://discoveryhomeowners.com/admin/**
 
 Changes appear on the live site about two minutes after you press Publish.
 
@@ -25,7 +30,7 @@ Changes appear on the live site about two minutes after you press Publish.
 
 ## The basics
 
-Open **https://dhoa.naponline.net/admin/**, press **Login with GitHub**, and you
+Open **https://discoveryhomeowners.com/admin/**, press **Login with GitHub**, and you
 will see a list down the left:
 
 | Section | What is in it |

@@ -126,27 +126,31 @@ eyes before content goes live. Switching is a one-line config change.
 
 ---
 
-## 6. Cloudflare stays proxied, and the origin hop is unvalidated
+## 6. If Cloudflare fronts the site, it stays proxied and the origin hop is unvalidated
 
-**Decision.** The `dhoa` record stays **orange-clouded (proxied)** permanently.
-GitHub therefore never issues a certificate for the custom domain, and Cloudflare
-SSL/TLS is **Flexible or Full (non-strict)** — *not* Full (strict).
+**Decision.** If the site is fronted by Cloudflare, the record stays
+**orange-clouded (proxied)**, GitHub therefore never issues a certificate for the
+custom domain, and Cloudflare SSL/TLS is **Flexible or Full (non-strict)** —
+*not* Full (strict).
 
-This reverses what this record originally said. The original decision was Full
-(strict) with a grey-cloud window first. It was not adopted, and this file
-describes what is deployed rather than what was once intended.
+**Status: not currently deployed.** This was measured in August 2026 against a
+temporary development hostname on a personally-owned domain. That hostname has
+been retired and its DNS record deleted. The site is not published anywhere
+today, and Cloudflare is a proposal rather than a service the association uses.
 
-**Measured in production, 22 August 2026:**
+The record is kept because the tradeoff and its landmine are real and will apply
+the moment the site goes live behind a proxy. What was observed then:
 
 ```
-https_certificate:   null            GitHub has never issued one
-origin certificate:  CN=*.github.io  does not match dhoa.naponline.net
+https_certificate:   null            GitHub had never issued one
+origin certificate:  CN=*.github.io  did not match the custom domain
 origin over HTTP:    200, no redirect
-Enforce HTTPS:       unavailable (greyed out; the API reports null)
+Enforce HTTPS:       unavailable (greyed out; the API reported null)
 ```
 
-Visitors are unaffected — Cloudflare presents its own valid edge certificate, so
-the site is HTTPS in the browser. The unauthenticated hop is Cloudflare → GitHub.
+Visitors would be unaffected — Cloudflare presents its own valid edge
+certificate, so the site is HTTPS in the browser. The unauthenticated hop is
+Cloudflare → GitHub.
 
 **Why.** A GitHub certificate requires an ACME HTTP-01 challenge, and GitHub
 cannot complete one while the record is proxied. That would mean a temporary
@@ -204,8 +208,18 @@ so this cannot regress unnoticed.
 
 ## 8. baseURL is never overridden on the command line
 
-**Decision.** `hugo.toml` sets `baseURL = "https://dhoa.naponline.net/"` and the
+**Decision.** `hugo.toml` sets `baseURL = "https://discoveryhomeowners.com/"` and the
 deploy workflow does **not** pass `--baseURL`.
+
+**This is a forward declaration.** `discoveryhomeowners.com` is the association's
+own domain and the intended home of this site, but it is not yet held in an
+account the association controls and does not point at GitHub — it currently
+redirects to the old Google Sites page. Until the domain is transferred and its
+DNS repointed, Pages will report the custom domain as unverified and will not
+serve there. Nothing breaks in the meantime, because the site is not published.
+
+See the `domain/` area of the private `technology` repository for the current
+state of the transfer, including the registry locks that have to be lifted first.
 
 **Why.** The previous attempt lived at `https://napalm255.github.io/hoa/` while
 its README claimed a different custom domain, producing links with a stale
@@ -236,16 +250,32 @@ translation is not appropriate; a human should review Spanish copy.
 
 ---
 
-## 10. `dhoa.naponline.net` is temporary
+## 10. The site has no association-controlled domain yet
 
-**Decision.** The site currently answers on a subdomain of a personally-owned
-domain, used for development and testing.
+**Decision.** The site is built for `discoveryhomeowners.com` and is published
+nowhere until that domain is under the association's control.
 
-**Risk.** The association's entire web presence depends on an individual's DNS
-zone and Cloudflare account. If that person leaves the board or the domain
-lapses, the site disappears and the association has no recourse.
+**History.** Development and review were done on a subdomain of a personally
+owned domain. That was always temporary, it was never given to residents, and it
+has now been retired — the DNS record is deleted and the hostname appears nowhere
+in this repository. Do not reintroduce it.
 
-**Recommendation.** Register an association-owned domain through a registrar
-account the organization controls, and treat `dhoa.naponline.net` as an alias.
-Changing `baseURL` later is a one-line edit. Changing who controls a domain after
-a falling-out is not.
+**The risk it existed to illustrate has not gone away.** It has moved. The
+association does own `discoveryhomeowners.com`, and has published under it since
+2011, but:
+
+- the registration sits in a Squarespace account whose custody has not been
+  established;
+- the registry has both `clientTransferProhibited` and `clientDeleteProhibited`
+  set, and lifting them requires that same account;
+- DNSSEC is enabled, so its DS record must be removed before any transfer or the
+  name stops resolving;
+- the registration expires **14 October 2027**.
+
+**Recommendation.** Establish who controls the Squarespace account, then transfer
+the domain into a registrar account registered and billed to the association,
+with a board officer holding recovery access. Changing `baseURL` afterwards is a
+one-line edit. Establishing who controls a domain after a falling-out is not.
+
+Evidence for every statement above, with the commands that reproduce it, is in
+the private `technology` repository under `domain/`.
