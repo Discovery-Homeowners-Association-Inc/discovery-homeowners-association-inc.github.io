@@ -23,8 +23,8 @@ backend:
 # See docs/DECISIONS.md #5 for why this is not editorial_workflow.
 publish_mode: simple
 
-site_url: https://dhoa.naponline.net
-display_url: https://dhoa.naponline.net
+site_url: https://discoveryhomeowners.com
+display_url: https://discoveryhomeowners.com
 logo_url: /favicon.svg
 
 # Photographs are resized by Hugo, so they live in assets/.

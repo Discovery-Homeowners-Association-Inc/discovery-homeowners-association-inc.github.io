@@ -15,7 +15,7 @@
 
 # Root path, not a subpath. This repository is named <org>.github.io, so Pages
 # serves it at "/". Never pass --baseURL on the command line; see DECISIONS #8.
-baseURL = "https://dhoa.naponline.net/"
+baseURL = "https://discoveryhomeowners.com/"
 
 title                  = "Discovery Homeowners Association"
 locale                 = "en-US"

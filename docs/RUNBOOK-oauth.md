@@ -1,6 +1,6 @@
 # Runbook: sign-in for the admin panel
 
-Board members edit the site at **https://dhoa.naponline.net/admin/** by clicking
+Board members edit the site at **https://discoveryhomeowners.com/admin/** by clicking
 **Login with GitHub**. Nobody handles an access token.
 
 Making that work needs one small piece of infrastructure: a Cloudflare Worker
@@ -55,7 +55,7 @@ settings → OAuth Apps → New OAuth App. (A personal app at
 | Field | Value |
 |---|---|
 | Application name | `Discovery HOA Content Manager` |
-| Homepage URL | `https://dhoa.naponline.net/` |
+| Homepage URL | `https://discoveryhomeowners.com/` |
 | Authorization callback URL | `<WORKER_URL>/callback` |
 
 **The `/callback` suffix is required.** Leaving it off is the single most common
@@ -75,7 +75,17 @@ Variables and Secrets:
 |---|---|---|
 | `GITHUB_CLIENT_ID` | the Client ID | plain text |
 | `GITHUB_CLIENT_SECRET` | the Client Secret | **press Encrypt** |
-| `ALLOWED_DOMAINS` | `dhoa.naponline.net` | comma-separated; wildcards allowed |
+| `ALLOWED_DOMAINS` | `discoveryhomeowners.com` | comma-separated; wildcards allowed |
+
+> **This value lives in Cloudflare, not in this repository.** Changing the table
+> above changes documentation only. The Worker keeps its own copy of
+> `ALLOWED_DOMAINS`, and it still holds the retired development hostname until
+> somebody updates it in the Cloudflare dashboard. Until then `/admin/` sign-in
+> will fail on the new hostname with the popup closing and nothing happening —
+> see the troubleshooting table at the end of this runbook.
+>
+> The same applies to the GitHub OAuth App's Homepage and Authorization callback
+> URLs, which are set on github.com rather than here.
 
 Do **not** set `GITHUB_HOSTNAME` — that is only for GitHub Enterprise Server.
 
@@ -106,7 +116,7 @@ Nothing else. They do not need to install anything or learn git.
 
 ## 8. Test it
 
-Open `https://dhoa.naponline.net/admin/` in a private window. You should get a
+Open `https://discoveryhomeowners.com/admin/` in a private window. You should get a
 GitHub consent screen, then land in the CMS with the collections listed.
 
 Make a trivial edit — change the tagline — press Publish, and check that a
